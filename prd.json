@@ -1,0 +1,282 @@
+{
+  "project": "Premium Gen-Z Men's Fashion E-Commerce",
+  "branchName": "ralph/premium-genz-fashion-ecommerce",
+  "description": "High-fashion, production-grade e-commerce web platform for Indian Gen-Z men's streetwear label featuring oversized tees, baggy jeans, full admin dashboard, Razorpay checkout, and Indian sizing/address specifications.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Next.js Foundation & Design System Setup",
+      "description": "As a developer, I need the Next.js App Router project initialized with TypeScript, Tailwind CSS, Lucide icons, and shadcn/ui components configured so that all UI components have a consistent design language.",
+      "acceptanceCriteria": [
+        "Next.js App Router project initialized with TypeScript and Tailwind CSS",
+        "components.json and reusable UI primitives (Button, Card, Badge, Dialog, Drawer, Input, Select, Toast) configured",
+        "Editorial typography and custom color tokens (Onyx Black, Off-White, Acid Volt accent) established",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Database Schema & ORM Setup",
+      "description": "As a database architect, I need a complete database schema with models for users, products, variants, inventory, cart, orders, order items, coupons, banners, and audit logs.",
+      "acceptanceCriteria": [
+        "Database schema defined with Prisma covering User, Address, Product, ProductImage, Category, Variant, InventoryItem, CartItem, Order, OrderItem, Payment, Coupon, Banner, Review",
+        "Unique constraints, foreign keys, and indexes configured for performance",
+        "Initial migration generated and executed",
+        "Seed script populated with realistic Indian streetwear demo products, categories, and test admin credentials",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Brand Navigation, Announcement Bar & Footer",
+      "description": "As a shopper, I want an announcement bar, sticky header with navigation, search autocomplete, bag counter, and an informative footer so that I can easily navigate the brand.",
+      "acceptanceCriteria": [
+        "Announcement bar with dismissible, configurable promotional message and shipping notice",
+        "Sticky header with brand logo, category links, search bar, wishlist button, and cart counter",
+        "Responsive mobile drawer menu for navigation on phones and tablets",
+        "Complete footer with newsletter subscription, brand links, Indian support details, policies, and payment badges",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-004",
+      "title": "Editorial Homepage Experience",
+      "description": "As a shopper, I want to explore a dynamic homepage featuring an editorial hero campaign, category tiles, new drops, bestsellers, 'Shop the Look', brand manifesto, and social proof.",
+      "acceptanceCriteria": [
+        "Hero campaign section with bold tagline ('YOUR FIT. YOUR RULES.'), CTA buttons, and high-impact streetwear visuals",
+        "Shop by Category section with visual cards for Oversized Tees, Graphic Tees, Baggy Jeans, Straight-Fit Jeans",
+        "New Drops and Bestsellers dynamic product grids with quick-view and hover states",
+        "'Shop the Look' interactive outfit bundle section allowing multi-item purchase",
+        "Brand Story section articulating fabric quality, oversized silhouettes, and Gen-Z streetwear culture",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "Product Catalog & Dynamic Collection Filtering",
+      "description": "As a shopper, I want to browse products with sort options and multi-facet filters (size, color, fit, price, category) so that I can quickly find the clothes I want.",
+      "acceptanceCriteria": [
+        "Responsive product grid with alternate hover image, pricing in INR, discount badges, and color swatches",
+        "Filtering by Category, Fit (Oversized, Relaxed, Baggy, Straight), Size (S-XXL, 28-36), and Price range",
+        "Sorting by Newest, Price (Low to High / High to Low), and Popularity",
+        "URL search parameter sync for shareable filter states",
+        "Active filter chips with 'Clear All' action and clean empty states",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "High-Fidelity Product Detail Page (PDP)",
+      "description": "As a shopper, I want an immersive PDP with high-res gallery, size selector, Indian PIN code delivery checker, fabric details, size guide modal, and stock indicators so that I can make a confident purchase.",
+      "acceptanceCriteria": [
+        "Multi-image gallery with zoom preview and thumbnail navigation",
+        "Size selector with real-time stock status (In Stock / Low Stock / Out of Stock)",
+        "Interactive Size Guide modal with Indian size measurements (Chest, Length, Waist)",
+        "Indian PIN code checker verifying delivery availability and estimated delivery days",
+        "'Add to Bag' and instant 'Buy Now' actions with validation feedback",
+        "Product highlights, fabric specifications (240 GSM French Terry Cotton, 100% Rigid Denim), and wash care instructions",
+        "Customer reviews and 'Complete the Look' recommendations",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-007",
+      "title": "Cart Drawer & Full Cart Experience",
+      "description": "As a shopper, I want to view my cart in a slide-over drawer or dedicated page, adjust quantities, apply coupons, and review the cost breakdown so that I am ready to checkout.",
+      "acceptanceCriteria": [
+        "Slide-out Cart Drawer accessible from any page with live item count and badge update",
+        "Quantity increment/decrement, item removal, and variant change",
+        "Coupon code input with instant server-side discount validation and calculation",
+        "Transparent order summary showing Subtotal, Shipping (Free above ₹999), Discount, and Total in INR",
+        "Local storage persistence for guest shoppers and database sync for logged-in users",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "Checkout & Address Handling",
+      "description": "As a shopper, I want a frictionless checkout supporting guest shopping and Indian address validation so that I can enter my delivery information quickly.",
+      "acceptanceCriteria": [
+        "Checkout supports both Guest checkout and authenticated checkout",
+        "Indian address form with Full Name, 10-digit mobile number, Email, Address, Landmark, City, State dropdown, and 6-digit PIN code",
+        "Address saving to customer profile for logged-in users",
+        "Shipping method selection and Cash on Delivery (COD) / Online Payment selection",
+        "Server-side validation of all address fields and contact formats",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-009",
+      "title": "Razorpay Payment Gateway & Order Placement",
+      "description": "As a shopper, I want to securely pay via Razorpay (UPI, Credit/Debit Cards, NetBanking) or choose Cash on Delivery, and receive instant confirmation.",
+      "acceptanceCriteria": [
+        "Razorpay server-side order creation (/api/checkout/razorpay/create-order)",
+        "Razorpay checkout SDK integration in frontend with fallback mock test mode",
+        "Server-side cryptographic signature verification (razorpay_signature HMAC-SHA256) on /api/checkout/razorpay/verify",
+        "Stock decrement executed within atomic database transaction upon verified payment",
+        "COD order placement with instant order creation and inventory decrement",
+        "Order confirmation page (/order-success/[orderId]) with summary, tracking status, and invoice breakdown",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-010",
+      "title": "Customer Authentication & Account Portal",
+      "description": "As a customer, I want to register, log in, view my past orders, track deliveries, manage saved addresses, and manage my wishlist.",
+      "acceptanceCriteria": [
+        "Secure password authentication with JWT/session cookies, password hashing with bcryptjs",
+        "User profile dashboard at /account showing order history and status (Processing, Shipped, Delivered, Cancelled)",
+        "Saved addresses management (Add, Edit, Delete, Set Default)",
+        "Wishlist sync allowing customers to save favorites and transfer directly to bag",
+        "Guest shopping preserved without forced login walls",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-011",
+      "title": "Admin Control Center - Products & Inventory",
+      "description": "As an admin, I want to create, edit, publish, and delete products, manage size/color variants, and adjust stock quantities in real time.",
+      "acceptanceCriteria": [
+        "Admin route /admin/products protected by server-side role check (ADMIN)",
+        "Product creation form with title, slug, price, compare-at price, category, fit, description, fabric details, care instructions, and multiple image URLs",
+        "Variant manager for sizes (S to XXL, 28 to 36) and colors with individual stock quantities",
+        "Low-stock visual alert badges and inventory adjustment logs",
+        "Changes immediately reflect on the public storefront without source code edits",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 11,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-012",
+      "title": "Admin Control Center - Orders & Fulfillment",
+      "description": "As an admin, I want to search and filter orders, view customer details, update order fulfillment status, and inspect payments.",
+      "acceptanceCriteria": [
+        "Admin route /admin/orders displaying all placed orders with status badges (Pending, Paid, Shipped, Delivered, Cancelled)",
+        "Detailed order view showing customer address, phone, ordered items snapshot, payment ID, and tracking code",
+        "Order status updater (Processing -> Shipped -> Delivered) with status timestamp logging",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 12,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-013",
+      "title": "Admin Control Center - Marketing, Coupons & Banners",
+      "description": "As an admin, I want to create discount coupon codes and configure homepage announcement bar and hero banners.",
+      "acceptanceCriteria": [
+        "Admin route /admin/marketing to create percentage and flat ₹ discount coupons with minimum order value and validity dates",
+        "Banner and Announcement Bar management allowing admins to update banner headlines, subtext, CTA links, and announcement texts",
+        "Newsletter subscriber list view with export capability",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes",
+        "Verify in browser using dev-browser skill"
+      ],
+      "priority": 13,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-014",
+      "title": "Technical SEO & Metadata Optimization",
+      "description": "As an SEO specialist, I want structured JSON-LD data, dynamic OpenGraph meta tags, canonical URLs, sitemap.xml, and robots.txt so that search engines index all products and collections.",
+      "acceptanceCriteria": [
+        "Dynamic meta tags (title, description, openGraph, twitter) on all PDPs, collection pages, and homepage",
+        "JSON-LD Product, BreadcrumbList, and Organization schemas implemented with truthful pricing and availability data",
+        "Dynamic /sitemap.xml and /robots.txt route handlers",
+        "noindex, nofollow headers on /admin/*, /account/*, and /checkout/*",
+        "Semantic HTML and alt text on all product photography",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes"
+      ],
+      "priority": 14,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-015",
+      "title": "Security Hardening & Rate Limiting",
+      "description": "As a security engineer, I want rate limiting, input sanitization, CSRF/XSS protection, and strict server-side authorization so that customer data and payments are protected.",
+      "acceptanceCriteria": [
+        "Rate limiting on auth endpoints (/api/auth/*), search, and checkout creation to mitigate brute force and bot attacks",
+        "Zod schema validation on all incoming API payloads",
+        "HTTP-only, Secure, SameSite cookies for session tokens",
+        "Protection against price tampering: prices and totals calculated strictly on server using database records",
+        "Security headers (Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes"
+      ],
+      "priority": 15,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 228 18% 5%;       /* #0B0C10 */
+    --foreground: 240 5% 96%;        /* #F5F5F7 */
+    --card: 228 17% 8%;              /* #101218 */
+    --card-foreground: 240 5% 96%;
+    --popover: 228 17% 8%;
+    --popover-foreground: 240 5% 96%;
+    --primary: 74 100% 50%;          /* #CCFF00 Acid Volt */
+    --primary-foreground: 228 18% 5%;
+    --secondary: 228 14% 15%;        /* #1E212B */
+    --secondary-foreground: 240 5% 96%;
+    --muted: 228 12% 16%;
+    --muted-foreground: 228 10% 65%;
+    --accent: 74 100% 50%;
+    --accent-foreground: 228 18% 5%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 228 12% 18%;           /* #232733 */
+    --input: 228 12% 18%;
+    --ring: 74 100% 50%;
+    --radius: 0.25rem;               /* Sharp architectural streetwear radius */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-volt selection:text-black;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Accessible focus states */
+  :focus-visible {
+    outline: 2px solid #CCFF00;
+    outline-offset: 2px;
+  }
+}
+
+/* Custom streetwear styled scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0C10;
+}
+::-webkit-scrollbar-thumb {
+  background: #232733;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #CCFF00;
+}
+
+/* Tabular numbers for price accuracy without layout shift */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
