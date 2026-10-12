@@ -1,6 +1,6 @@
 {
   "project": "Premium Gen-Z Men's Fashion E-Commerce",
-  "branchName": "ralph/premium-genz-fashion-ecommerce",
+  "branchName": "main",
   "description": "High-fashion, production-grade e-commerce web platform for Indian Gen-Z men's streetwear label featuring oversized tees, baggy jeans, full admin dashboard, Razorpay checkout, and Indian sizing/address specifications.",
   "userStories": [
     {
@@ -16,8 +16,8 @@
         "CodeRabbit review passes"
       ],
       "priority": 1,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Verified build and TypeScript pass."
     },
     {
       "id": "US-002",
@@ -33,8 +33,8 @@
         "CodeRabbit review passes"
       ],
       "priority": 2,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Prisma db push executed and seed script populated with 8 products, 3 coupons, and admin account."
     },
     {
       "id": "US-003",
@@ -51,8 +51,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 3,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Header, AnnouncementBar, and Footer fully functional."
     },
     {
       "id": "US-004",
@@ -70,8 +70,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 4,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Homepage rendered dynamically with live database records."
     },
     {
       "id": "US-005",
@@ -89,8 +89,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 5,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Collection pages support dynamic filtering, sorting, and chips."
     },
     {
       "id": "US-006",
@@ -110,8 +110,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 6,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "PDP with Indian PIN code delivery estimator and interactive size guide operational."
     },
     {
       "id": "US-007",
@@ -129,8 +129,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 7,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Cart drawer and dedicated cart page with persistent storage and coupon calculation working."
     },
     {
       "id": "US-008",
@@ -148,8 +148,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 8,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Checkout flow supports Indian address format and validation."
     },
     {
       "id": "US-009",
@@ -167,8 +167,8 @@
         "CodeRabbit review passes"
       ],
       "priority": 9,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Both Razorpay verification and COD order placement working with atomic stock decrement."
     },
     {
       "id": "US-010",
@@ -186,8 +186,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 10,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Authentication with bcrypt and account portal operational."
     },
     {
       "id": "US-011",
@@ -205,8 +205,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 11,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Admin products page allows editing prices, stock, and publishing new products."
     },
     {
       "id": "US-012",
@@ -222,8 +222,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 12,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Admin order dispatch and tracking updates live."
     },
     {
       "id": "US-013",
@@ -239,8 +239,8 @@
         "Verify in browser using dev-browser skill"
       ],
       "priority": 13,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Coupon management and newsletter subscriber list working."
     },
     {
       "id": "US-014",
@@ -257,8 +257,8 @@
         "CodeRabbit review passes"
       ],
       "priority": 14,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Sitemap, robots, OpenGraph, and JSON-LD schemas generated."
     },
     {
       "id": "US-015",
@@ -275,8 +275,8 @@
         "CodeRabbit review passes"
       ],
       "priority": 15,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Server-side price verification and role-gated admin APIs enforced."
     }
   ]
 }

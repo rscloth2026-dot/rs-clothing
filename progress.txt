@@ -1,3 +1,28 @@
 # Ralph Progress Log
 Started: Tue Oct 13 00:33:30 IST 2026
+## Codebase Patterns
+- Editorial Streetwear UI: Onyx black (#0B0C10) background paired with high-contrast Acid Volt (#CCFF00) accents.
+- Currency Formatting: Indian Rupee (₹) formatted via Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).
+- Server-Side Price Verification: Client cart items only submit variant IDs and quantities. Prices, coupons, and discounts are strictly computed in server transactions.
+- Logistics Hierarchy: Indian 6-digit PIN code delivery estimator with BlueDart Express transit estimation.
+- Dual Checkout: Official Razorpay order signature verification + Cash on Delivery (COD) with atomic inventory decrement.
+- Role-Gated Admin: Server-enforced ADMIN role checks on /admin routes and /api/admin endpoints.
+
 ---
+
+### [2026-10-13] Completed All Stories US-001 through US-015
+- US-001: Next.js Foundation & Design System Setup (Passes: true)
+- US-002: Database Schema & ORM Setup (Passes: true)
+- US-003: Brand Navigation, Announcement Bar & Footer (Passes: true)
+- US-004: Editorial Homepage Experience (Passes: true)
+- US-005: Product Catalog & Dynamic Collection Filtering (Passes: true)
+- US-006: High-Fidelity Product Detail Page with Indian PIN code checker (Passes: true)
+- US-007: Cart Drawer & Full Cart Experience with Coupons (Passes: true)
+- US-008: Checkout & Address Handling with Indian state and phone validation (Passes: true)
+- US-009: Razorpay Payment Gateway & Order Placement (Passes: true)
+- US-010: Customer Authentication & Account Portal (Passes: true)
+- US-011: Admin Control Center - Products & Inventory (Passes: true)
+- US-012: Admin Control Center - Orders & Fulfillment (Passes: true)
+- US-013: Admin Control Center - Marketing, Coupons & Banners (Passes: true)
+- US-014: Technical SEO & Metadata Optimization (Passes: true)
+- US-015: Security Hardening & Rate Limiting (Passes: true)
