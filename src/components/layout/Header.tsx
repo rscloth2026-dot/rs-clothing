@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Search, ShoppingBag, Heart, User, Menu, X, ArrowRight, Sparkles } from "lucide-react";
 import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
+import { ProgressiveBlur, TextRoll } from "@/components/ui/skiper-ui";
 
 export function Header() {
   const router = useRouter();
@@ -80,7 +81,7 @@ export function Header() {
               </span>
             </Link>
 
-            {/* Desktop Navigation Links */}
+            {/* Desktop Navigation Links with Skiper-UI TextRoll */}
             <nav className="hidden lg:flex items-center space-x-7 text-xs font-semibold uppercase tracking-wider pl-2 font-sans">
               {navLinks.map((link) => (
                 <Link
@@ -88,7 +89,7 @@ export function Header() {
                   href={link.href}
                   className="text-[#57534E] hover:text-[#1C1917] transition-colors relative py-1 group"
                 >
-                  <span>{link.label}</span>
+                  <TextRoll className="py-0.5">{link.label}</TextRoll>
                   <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#C5A059] transition-all duration-300 group-hover:w-full" />
                 </Link>
               ))}
@@ -202,6 +203,17 @@ export function Header() {
           </div>
         )}
       </header>
+
+      {/* Skiper-UI 41: Optical Progressive Blur under sticky header */}
+      {isScrolled && (
+        <ProgressiveBlur
+          position="top"
+          backgroundColor="#FFFFFF"
+          height="16px"
+          blurAmount="4px"
+          className="sticky top-[61px] z-30 opacity-70"
+        />
+      )}
 
       {/* Mobile Drawer Navigation (No admin link) */}
       {isMobileMenuOpen && (

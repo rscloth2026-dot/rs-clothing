@@ -19,6 +19,7 @@ import {
   PinterestIcon,
 } from "@/components/ui/social-icons";
 import { Button } from "@/components/ui/button";
+import { CssUnderlineLink, CssArrowLink } from "@/components/ui/skiper-ui";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -243,29 +244,29 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-[#1C1917]">Collections</p>
             <ul className="space-y-2 text-xs text-[#78716C]">
               <li>
-                <Link href="/collections/oversized-tees" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/collections/oversized-tees" className="hover:text-[#8B1E1E]">
                   Oversized T-Shirts
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li>
-                <Link href="/collections/graphic-tees" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/collections/graphic-tees" className="hover:text-[#8B1E1E]">
                   Graphic Art Drops
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li>
-                <Link href="/collections/baggy-jeans" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/collections/baggy-jeans" className="hover:text-[#8B1E1E]">
                   Baggy Puddle Denim
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li>
-                <Link href="/collections/straight-fit-jeans" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/collections/straight-fit-jeans" className="hover:text-[#8B1E1E]">
                   Straight-Fit Selvedge
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li>
-                <Link href="/collections/all" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/collections/all" className="hover:text-[#8B1E1E]">
                   All Collections
-                </Link>
+                </CssUnderlineLink>
               </li>
             </ul>
           </div>
@@ -275,24 +276,24 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-[#1C1917]">Client Concierge</p>
             <ul className="space-y-2 text-xs text-[#78716C]">
               <li>
-                <Link href="/account" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/account" className="hover:text-[#8B1E1E]">
                   Track BlueDart Delivery
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li>
-                <Link href="/exchanges" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/exchanges" className="hover:text-[#8B1E1E]">
                   7-Day Doorstep Exchanges
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li>
-                <Link href="/size-guide" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/size-guide" className="hover:text-[#8B1E1E]">
                   Indian Size Guide
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/contact" className="hover:text-[#8B1E1E]">
                   Studio Concierge
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li className="pt-2">
                 <span className="block text-[10px] text-[#78716C] font-mono">WhatsApp Concierge:</span>
@@ -322,14 +323,14 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-[#1C1917]">Atelier Studio</p>
             <ul className="space-y-2 text-xs text-[#78716C]">
               <li>
-                <Link href="/about" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/about" className="hover:text-[#8B1E1E]">
                   Royal Heritage Manifesto
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#8B1E1E] transition-colors">
+                <CssUnderlineLink href="/contact" className="hover:text-[#8B1E1E]">
                   Jodhpur Headquarters (Marwar)
-                </Link>
+                </CssUnderlineLink>
               </li>
               <li>
                 <span className="block text-[11px] text-[#78716C] mt-3">Logistics Partners:</span>
