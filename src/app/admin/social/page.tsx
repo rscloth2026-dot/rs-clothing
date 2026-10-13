@@ -5,11 +5,19 @@ import { SocialSettingsClient } from "./SocialSettingsClient";
 export const dynamic = "force-dynamic";
 
 export default async function AdminSocialSettingsPage() {
-  const settings = await prisma.storeSetting.findMany();
   const settingsMap: Record<string, string> = {};
-  settings.forEach((s) => {
-    settingsMap[s.key] = s.value;
-  });
+  
+  try {
+    if (prisma && "storeSetting" in prisma && (prisma as any).storeSetting) {
+      const settings = await (prisma as any).storeSetting.findMany();
+      settings.forEach((s: any) => {
+        settingsMap[s.key] = s.value;
+      });
+    }
+  } catch (error) {
+    console.error("AdminSocialSettingsPage load error:", error);
+  }
 
   return <SocialSettingsClient initialSettings={settingsMap} />;
 }
+
