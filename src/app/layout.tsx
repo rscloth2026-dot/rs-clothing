@@ -6,7 +6,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
-import { RajasthanFortsBlueprintBackground } from "@/components/ui/RajasthanFortsBlueprintBackground";
 import { SITE_CONFIG, generateOrganizationSchema } from "@/lib/seo";
 
 const sans = Plus_Jakarta_Sans({
@@ -80,7 +79,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#060C18",
+  themeColor: "#FFFFFF",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -95,26 +94,20 @@ export default function RootLayout({
   const orgSchema = generateOrganizationSchema();
 
   return (
-    <html lang="en" className={`dark ${sans.variable} ${serif.variable}`}>
+    <html lang="en" className={`light ${sans.variable} ${serif.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#060C18] text-[#F1EFEA] font-sans antialiased selection:bg-[#C5A059] selection:text-white relative">
-        {/* Full-Site Rajasthan Forts CAD Blueprint Background */}
-        <RajasthanFortsBlueprintBackground />
-
-        {/* Foreground Content Stack */}
-        <div className="relative z-10 flex flex-col min-h-screen">
-          <AnnouncementBar />
-          <Header />
-          <main className="flex-1 pb-20 md:pb-0">{children}</main>
-          <CartDrawer />
-          <Footer />
-          <MobileBottomNav />
-        </div>
+      <body className="min-h-screen flex flex-col bg-[#FDFCF7] text-[#1C1917] font-sans antialiased selection:bg-[#C5A059] selection:text-white">
+        <AnnouncementBar />
+        <Header />
+        <main className="flex-1 pb-20 md:pb-0">{children}</main>
+        <CartDrawer />
+        <Footer />
+        <MobileBottomNav />
       </body>
     </html>
   );

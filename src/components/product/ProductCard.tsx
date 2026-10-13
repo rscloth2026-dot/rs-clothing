@@ -111,7 +111,7 @@ export function ProductCard({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Visual Badge & Wishlist Container */}
-      <div className="relative aspect-[3/4] w-full bg-[#060D1A] overflow-hidden select-none">
+      <div className="relative aspect-[3/4] w-full bg-[#FDFCF7] overflow-hidden select-none">
         <Link href={`/products/${slug}`} className="block w-full h-full">
           <Image
             src={isHovered ? hoverImage : primaryImage}
@@ -135,7 +135,7 @@ export function ProductCard({
             </span>
           )}
           {discountPercent > 0 && (
-            <span className="px-2 py-0.5 bg-[#0A162B] text-[#C5A059] border border-[#C5A059]/40 text-[9px] font-sans font-bold uppercase tracking-wider rounded-[2px]">
+            <span className="px-2 py-0.5 bg-[#FAF6EE] text-[#8B1E1E] border border-[#C5A059]/40 text-[9px] font-sans font-bold uppercase tracking-wider rounded-[2px]">
               {discountPercent}% OFF
             </span>
           )}
@@ -147,7 +147,7 @@ export function ProductCard({
           className={`absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-90 ${
             wishlisted
               ? "bg-[#8B1E1E] text-white shadow-sm"
-              : "bg-[#0A162B]/90 text-[#94A3B8] hover:text-[#C5A059] border border-[#1E3A5F] backdrop-blur-sm shadow-sm"
+              : "bg-white/90 text-[#78716C] hover:text-[#8B1E1E] border border-[#E7E2D9] backdrop-blur-sm shadow-sm"
           }`}
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
@@ -155,8 +155,8 @@ export function ProductCard({
         </button>
 
         {/* 1-Click Quick Add Size Tray (Desktop Hover Reveal) */}
-        <div className="hidden lg:flex absolute bottom-0 left-0 right-0 p-3 bg-[#0A162B]/95 backdrop-blur-md border-t border-[#1E3A5F] translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex-col gap-1.5 z-20">
-          <span className="text-[10px] font-sans uppercase font-bold text-[#94A3B8] tracking-wider text-center">
+        <div className="hidden lg:flex absolute bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur-md border-t border-[#E7E2D9] translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex-col gap-1.5 z-20">
+          <span className="text-[10px] font-sans uppercase font-bold text-[#78716C] tracking-wider text-center">
             {justAdded ? "Added to Atelier Bag!" : "Quick Add Size"}
           </span>
           <div className="flex items-center justify-center gap-1.5">
@@ -173,10 +173,10 @@ export function ProductCard({
                   onClick={(e) => handleQuickAdd(size, e)}
                   className={`h-7 px-2.5 text-[11px] font-sans font-bold rounded-[2px] tactile-pill flex items-center justify-center ${
                     !inStock
-                      ? "opacity-30 cursor-not-allowed bg-[#070D18] text-[#64748B] line-through"
+                      ? "opacity-30 cursor-not-allowed bg-[#F4EFE6] text-[#A8A29E] line-through"
                       : isSelected
                       ? "bg-[#8B1E1E] text-white shadow-sm"
-                      : "bg-[#0F1D36] border border-[#1E3A5F] text-[#F1EFEA] hover:border-[#C5A059] hover:bg-[#162744]"
+                      : "bg-white border border-[#E7E2D9] text-[#1C1917] hover:border-[#C5A059] hover:bg-[#FDFCF7]"
                   }`}
                   aria-label={`Quick add size ${size}`}
                 >
@@ -195,18 +195,18 @@ export function ProductCard({
               e.stopPropagation();
               setShowMobileSizes(!showMobileSizes);
             }}
-            className="w-8 h-8 rounded-full bg-[#0A162B] border border-[#1E3A5F] text-[#C5A059] flex items-center justify-center shadow-sm active:scale-95"
+            className="w-8 h-8 rounded-full bg-white border border-[#E7E2D9] text-[#1C1917] flex items-center justify-center shadow-sm active:scale-95"
             aria-label="Quick add size"
           >
-            <Plus className="w-4 h-4 text-[#C5A059]" />
+            <Plus className="w-4 h-4 text-[#8B1E1E]" />
           </button>
         </div>
 
         {/* Mobile Expandable Size Pill Sheet */}
         {showMobileSizes && (
-          <div className="lg:hidden absolute inset-x-0 bottom-0 bg-[#0A162B]/95 backdrop-blur-md p-3 border-t border-[#1E3A5F] z-20 animate-accordion-down">
+          <div className="lg:hidden absolute inset-x-0 bottom-0 bg-white/95 backdrop-blur-md p-3 border-t border-[#E7E2D9] z-20 animate-accordion-down">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-sans uppercase font-bold text-[#94A3B8]">
+              <span className="text-[10px] font-sans uppercase font-bold text-[#78716C]">
                 Select Size
               </span>
               <button
@@ -215,7 +215,7 @@ export function ProductCard({
                   e.stopPropagation();
                   setShowMobileSizes(false);
                 }}
-                className="text-[10px] text-[#94A3B8] hover:text-white uppercase font-bold"
+                className="text-[10px] text-[#78716C] uppercase font-bold"
               >
                 Close
               </button>
@@ -229,7 +229,7 @@ export function ProductCard({
                     key={size}
                     disabled={!inStock}
                     onClick={(e) => handleQuickAdd(size, e)}
-                    className="flex-1 min-w-[38px] h-8 bg-[#0F1D36] border border-[#1E3A5F] text-xs font-bold text-[#F1EFEA] hover:bg-[#8B1E1E] hover:text-white rounded-[2px] transition-colors"
+                    className="flex-1 min-w-[38px] h-8 bg-white border border-[#E7E2D9] text-xs font-bold text-[#1C1917] hover:bg-[#8B1E1E] hover:text-white rounded-[2px] transition-colors"
                   >
                     {size}
                   </button>
@@ -243,25 +243,25 @@ export function ProductCard({
       {/* Product Details Section */}
       <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1 space-y-2">
         <div>
-          <div className="flex items-center justify-between text-[10px] font-sans text-[#94A3B8] uppercase tracking-wider mb-1">
+          <div className="flex items-center justify-between text-[10px] font-sans text-[#78716C] uppercase tracking-wider mb-1">
             <span>{categoryName || "Royal Streetwear"}</span>
-            <span className="font-semibold text-[#38BDF8]">{fit} FIT</span>
+            <span className="font-semibold text-[#8B1E1E]">{fit} FIT</span>
           </div>
 
-          <Link href={`/products/${slug}`} className="block group-hover:text-[#C5A059] transition-colors">
-            <h3 className="font-serif font-bold text-sm sm:text-base text-[#F8FAFC] line-clamp-1 leading-snug">
+          <Link href={`/products/${slug}`} className="block group-hover:text-[#8B1E1E] transition-colors">
+            <h3 className="font-serif font-bold text-sm sm:text-base text-[#1C1917] line-clamp-1 leading-snug">
               {title}
             </h3>
           </Link>
         </div>
 
         {/* Price Tag with High-Contrast Typography */}
-        <div className="flex items-baseline space-x-2 pt-1 border-t border-[#1E3A5F]/70">
-          <span className="text-base sm:text-lg font-bold text-[#F8FAFC] font-sans tabular-nums">
+        <div className="flex items-baseline space-x-2 pt-1 border-t border-[#F4EFE6]">
+          <span className="text-base sm:text-lg font-bold text-[#1C1917] font-sans tabular-nums">
             {formatPrice(basePrice)}
           </span>
           {comparePrice && (
-            <span className="text-xs text-[#64748B] line-through font-sans tabular-nums">
+            <span className="text-xs text-[#A8A29E] line-through font-sans tabular-nums">
               {formatPrice(comparePrice)}
             </span>
           )}

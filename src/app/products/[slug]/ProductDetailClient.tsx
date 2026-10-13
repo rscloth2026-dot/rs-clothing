@@ -163,19 +163,19 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
   };
 
   return (
-    <div className="min-h-screen bg-transparent relative z-10 py-6 sm:py-8 lg:py-16 pb-28 lg:pb-16">
+    <div className="min-h-screen bg-[#FDFCF7] py-6 sm:py-8 lg:py-16 pb-28 lg:pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center space-x-2 text-[11px] font-sans uppercase font-medium text-[#94A3B8] mb-6 sm:mb-8">
-          <Link href="/" className="hover:text-[#C5A059] transition-colors">
+        <nav className="flex items-center space-x-2 text-[11px] font-sans uppercase font-medium text-[#78716C] mb-6 sm:mb-8">
+          <Link href="/" className="hover:text-[#1C1917] transition-colors">
             Home
           </Link>
           <span>/</span>
-          <Link href={`/collections/${product.category.slug}`} className="hover:text-[#C5A059] transition-colors">
+          <Link href={`/collections/${product.category.slug}`} className="hover:text-[#1C1917] transition-colors">
             {product.category.name}
           </Link>
           <span>/</span>
-          <span className="text-[#C5A059] font-bold">{product.title}</span>
+          <span className="text-[#8B1E1E] font-bold">{product.title}</span>
         </nav>
 
         {/* Product Grid: Left Photography Gallery & Right Console */}
@@ -189,10 +189,10 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                   <button
                     key={img.id}
                     onClick={() => setActiveImageIndex(idx)}
-                    className={`relative w-16 h-20 sm:w-20 sm:h-24 bg-[#060D1A] rounded-sm overflow-hidden border transition-all ${
+                    className={`relative w-16 h-20 sm:w-20 sm:h-24 bg-[#FFFFFF] rounded-sm overflow-hidden border transition-all ${
                       activeImageIndex === idx
-                        ? "border-[#C5A059] ring-1 ring-[#C5A059] scale-105 shadow-sm"
-                        : "border-[#1E3A5F] opacity-70 hover:opacity-100"
+                        ? "border-[#8B1E1E] ring-1 ring-[#8B1E1E] scale-105 shadow-sm"
+                        : "border-[#E7E2D9] opacity-70 hover:opacity-100"
                     }`}
                   >
                     <Image src={img.url} alt={img.altText || product.title} fill className="object-cover" sizes="80px" />
@@ -202,7 +202,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
             )}
 
             {/* Main Visual Display */}
-            <div className="relative aspect-[4/5] w-full bg-[#060D1A] border border-[#1E3A5F] overflow-hidden rounded-sm shadow-sm">
+            <div className="relative aspect-[4/5] w-full bg-[#FFFFFF] border border-[#E7E2D9] overflow-hidden rounded-sm shadow-sm">
               <Image
                 src={primaryImage}
                 alt={product.title}
@@ -234,8 +234,8 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                 }
                 className={`absolute top-3.5 right-3.5 p-3 rounded-full backdrop-blur-md transition-all z-10 shadow-xs ${
                   wishlisted
-                    ? "bg-[#8B1E1E] text-white shadow-sm border border-[#C5A059]/40"
-                    : "bg-[#0B172C]/90 text-[#94A3B8] hover:text-[#C5A059] hover:bg-[#0B172C] border border-[#1E3A5F]"
+                    ? "bg-[#8B1E1E] text-white shadow-sm"
+                    : "bg-[#FFFFFF]/90 text-[#78716C] hover:text-[#8B1E1E] hover:bg-[#FFFFFF] border border-[#E7E2D9]"
                 }`}
                 aria-label="Toggle wishlist"
               >
@@ -244,13 +244,13 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
 
               {/* Mobile Photo Dots Indicator */}
               {product.images.length > 1 && (
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 sm:hidden bg-[#060D1A]/80 px-2.5 py-1 rounded-full backdrop-blur-md border border-[#1E3A5F]">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 sm:hidden bg-[#1C1917]/70 px-2.5 py-1 rounded-full backdrop-blur-md border border-[#E7E2D9]/30">
                   {product.images.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveImageIndex(idx)}
                       className={`h-1.5 rounded-full transition-all ${
-                        activeImageIndex === idx ? "w-4 bg-[#C5A059]" : "w-1.5 bg-white/40"
+                        activeImageIndex === idx ? "w-4 bg-[#C5A059]" : "w-1.5 bg-white/50"
                       }`}
                       aria-label={`View look ${idx + 1}`}
                     />
@@ -264,18 +264,18 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
           <div className="lg:col-span-5 space-y-6">
             <div>
               {/* Category & Fit Badges */}
-              <div className="flex items-center space-x-2 text-xs font-sans uppercase font-semibold text-[#94A3B8] mb-2.5">
-                <span className="text-[#C5A059]">{product.category.name}</span>
+              <div className="flex items-center space-x-2 text-xs font-sans uppercase font-semibold text-[#78716C] mb-2.5">
+                <span className="text-[#8B1E1E]">{product.category.name}</span>
                 <span>•</span>
-                <span className="bg-[#0F1D36] border border-[#1E3A5F] px-2.5 py-0.5 text-[#C5A059] rounded-sm">
+                <span className="bg-[#FAF6EE] border border-[#E7E2D9] px-2.5 py-0.5 text-[#1C1917] rounded-sm">
                   {product.fit} FIT
                 </span>
                 <span>•</span>
-                <span className="text-[#94A3B8]">380 GSM</span>
+                <span className="text-[#78716C]">380 GSM</span>
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#F8FAFC] leading-[1.08] tracking-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#1C1917] leading-[1.08] tracking-tight">
                 {product.title}
               </h1>
 
@@ -286,29 +286,29 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                     <Star key={i} className="w-3.5 h-3.5 fill-[#C5A059] text-[#C5A059]" />
                   ))}
                 </div>
-                <span className="text-xs font-bold text-[#F8FAFC] font-sans">5.0</span>
-                <span className="text-xs text-[#94A3B8] font-sans">({product.reviews.length || 18} verified patron ratings)</span>
+                <span className="text-xs font-bold text-[#1C1917] font-sans">5.0</span>
+                <span className="text-xs text-[#78716C] font-sans">({product.reviews.length || 18} verified patron ratings)</span>
               </div>
             </div>
 
             {/* Pricing Section */}
-            <div className="p-4 sm:p-5 bg-[#0B172C]/85 backdrop-blur-md border border-[#1E3A5F] space-y-1.5 rounded-sm shadow-xs">
+            <div className="p-4 sm:p-5 bg-[#FFFFFF] border border-[#E7E2D9] space-y-1.5 rounded-sm shadow-xs">
               <div className="flex items-baseline space-x-3">
-                <span className="text-3xl sm:text-4xl font-serif font-bold text-[#C5A059] tabular-nums">
+                <span className="text-3xl sm:text-4xl font-serif font-bold text-[#8B1E1E] tabular-nums">
                   {formatPrice(product.basePrice)}
                 </span>
                 {product.comparePrice && product.comparePrice > product.basePrice && (
-                  <span className="text-base text-[#64748B] line-through tabular-nums font-sans">
+                  <span className="text-base text-[#A8A29E] line-through tabular-nums font-sans">
                     {formatPrice(product.comparePrice)}
                   </span>
                 )}
                 {discountPercent > 0 && (
-                  <span className="text-xs font-sans font-bold text-white bg-[#8B1E1E] px-2.5 py-0.5 rounded-xs border border-[#C5A059]/30">
+                  <span className="text-xs font-sans font-bold text-white bg-[#8B1E1E] px-2.5 py-0.5 rounded-xs">
                     SAVE {discountPercent}%
                   </span>
                 )}
               </div>
-              <p className="text-[11px] text-[#94A3B8] font-sans">
+              <p className="text-[11px] text-[#78716C] font-sans">
                 Inclusive of all Indian taxes. Free express air shipping on orders above ₹999.
               </p>
             </div>
@@ -317,8 +317,8 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
             {uniqueColors.length > 0 && (
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs font-sans uppercase">
-                  <span className="text-[#94A3B8] font-semibold">Color Shade:</span>
-                  <span className="text-[#F8FAFC] font-bold">{selectedColor || uniqueColors[0]?.name}</span>
+                  <span className="text-[#78716C] font-semibold">Color Shade:</span>
+                  <span className="text-[#1C1917] font-bold">{selectedColor || uniqueColors[0]?.name}</span>
                 </div>
                 <div className="flex items-center space-x-2.5">
                   {uniqueColors.map((c) => (
@@ -327,8 +327,8 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                       onClick={() => setSelectedColor(c.name)}
                       className={`w-9 h-9 rounded-full border-2 transition-all ${
                         selectedColor === c.name
-                          ? "border-[#C5A059] ring-2 ring-[#C5A059]/40 scale-110 shadow-xs"
-                          : "border-[#1E3A5F] hover:scale-105"
+                          ? "border-[#8B1E1E] ring-2 ring-[#8B1E1E]/20 scale-110 shadow-xs"
+                          : "border-[#E7E2D9] hover:scale-105"
                       }`}
                       style={{ backgroundColor: c.hex }}
                       title={c.name}
@@ -341,10 +341,10 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
             {/* Size Selector & Size Guide Trigger */}
             <div className="space-y-3">
               <div className="flex justify-between items-center text-xs font-sans uppercase">
-                <span className="text-[#94A3B8] font-semibold">Select Size:</span>
+                <span className="text-[#78716C] font-semibold">Select Size:</span>
                 <button
                   onClick={() => setIsSizeGuideOpen(true)}
-                  className="flex items-center space-x-1.5 text-[#C5A059] hover:underline underline-offset-4 font-bold"
+                  className="flex items-center space-x-1.5 text-[#8B1E1E] hover:underline underline-offset-4 font-bold"
                 >
                   <Ruler className="w-3.5 h-3.5" />
                   <span>Indian Size Guide</span>
@@ -362,10 +362,10 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                       onClick={() => setSelectedSize(size)}
                       className={`h-12 flex flex-col items-center justify-center border font-sans font-bold rounded-sm active:scale-95 transition-all ${
                         isStockOut
-                          ? "border-[#1E3A5F]/40 text-[#64748B] line-through cursor-not-allowed bg-[#060D1A]"
+                          ? "border-[#E7E2D9] text-[#A8A29E] line-through cursor-not-allowed bg-[#FAF6EE]"
                           : selectedSize === size
-                          ? "bg-[#8B1E1E] border-[#C5A059]/60 text-white shadow-xs scale-[1.02]"
-                          : "border-[#1E3A5F] bg-[#0B172C] text-[#F8FAFC] hover:border-[#C5A059]"
+                          ? "bg-[#8B1E1E] border-[#8B1E1E] text-white shadow-xs scale-[1.02]"
+                          : "border-[#E7E2D9] bg-[#FFFFFF] text-[#1C1917] hover:border-[#8B1E1E]"
                       }`}
                     >
                       <span className="text-sm">{size}</span>
@@ -376,7 +376,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
 
               {/* Stock Warning Banner */}
               {isLowStock && (
-                <div className="flex items-center space-x-2 text-xs text-[#C5A059] font-sans font-semibold pt-1">
+                <div className="flex items-center space-x-2 text-xs text-[#8B1E1E] font-sans font-semibold pt-1">
                   <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#C5A059]" />
                   <span>Only {activeVariant.stockQuantity} pieces left in size {selectedSize}!</span>
                 </div>
@@ -388,7 +388,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
               <Button
                 onClick={handleAddToCart}
                 disabled={isOutOfStock || isAdding}
-                className="w-full h-14 bg-[#8B1E1E] hover:bg-[#A12424] text-white border border-[#C5A059]/40 text-sm font-sans font-bold uppercase tracking-wider flex items-center justify-center space-x-2.5 shadow-sm rounded-sm"
+                className="w-full h-14 bg-[#8B1E1E] hover:bg-[#6B1414] text-white text-sm font-sans font-bold uppercase tracking-wider flex items-center justify-center space-x-2.5 shadow-sm rounded-sm"
               >
                 {isAdding ? (
                   <>
@@ -409,7 +409,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                 onClick={handleBuyNow}
                 disabled={isOutOfStock}
                 variant="outline"
-                className="w-full h-12 text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center space-x-2 border-[#C5A059] text-[#C5A059] hover:bg-[#0F1D36] rounded-sm bg-[#0B172C]"
+                className="w-full h-12 text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center space-x-2 border-[#8B1E1E] text-[#8B1E1E] hover:bg-[#FAF6EE] rounded-sm bg-white"
               >
                 <Zap className="w-4 h-4 text-[#C5A059]" />
                 <span>INSTANT 1-CLICK CHECKOUT (COD / UPI)</span>
@@ -417,9 +417,9 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
             </div>
 
             {/* Indian PIN Code Delivery Checker */}
-            <div className="p-4 bg-[#0B172C]/85 backdrop-blur-md border border-[#1E3A5F] space-y-3 rounded-sm shadow-xs">
-              <div className="flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-wider text-[#F8FAFC]">
-                <MapPin className="w-4 h-4 text-[#38BDF8]" />
+            <div className="p-4 bg-[#FFFFFF] border border-[#E7E2D9] space-y-3 rounded-sm shadow-xs">
+              <div className="flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-wider text-[#1C1917]">
+                <MapPin className="w-4 h-4 text-[#8B1E1E]" />
                 <span>BlueDart Delivery Estimator</span>
               </div>
 
@@ -436,25 +436,25 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                       setPincodeResult(checkIndianPincode(val));
                     }
                   }}
-                  className="flex-1 bg-[#060D1A] border border-[#1E3A5F] px-3.5 py-2 text-xs font-sans text-[#F8FAFC] placeholder:text-[#64748B] focus:outline-none focus:border-[#C5A059] rounded-sm"
+                  className="flex-1 bg-[#FDFCF7] border border-[#E7E2D9] px-3.5 py-2 text-xs font-sans text-[#1C1917] placeholder:text-[#A8A29E] focus:outline-none focus:border-[#C5A059] rounded-sm"
                 />
-                <Button type="submit" size="sm" className="bg-[#1E3A5F] hover:bg-[#254A78] text-[#F8FAFC] text-xs font-sans font-bold">
+                <Button type="submit" size="sm" className="bg-[#1C1917] hover:bg-black text-white text-xs font-sans font-bold">
                   Check
                 </Button>
               </form>
 
-              {pincodeError && <p className="text-[11px] text-red-400 font-sans">{pincodeError}</p>}
+              {pincodeError && <p className="text-[11px] text-red-600 font-sans">{pincodeError}</p>}
 
               {pincodeResult && (
-                <div className="text-xs space-y-1.5 bg-[#0F1D36] p-3.5 border border-[#1E3A5F] rounded-sm font-sans">
-                  <p className="text-[#F8FAFC] font-semibold flex items-center space-x-2">
-                    <Clock className="w-3.5 h-3.5 text-[#38BDF8]" />
-                    <span>Expected arrival by: <strong className="text-[#C5A059]">{pincodeResult.deliveryDateStr}</strong></span>
+                <div className="text-xs space-y-1.5 bg-[#FAF6EE] p-3.5 border border-[#E7E2D9] rounded-sm font-sans">
+                  <p className="text-[#1C1917] font-semibold flex items-center space-x-2">
+                    <Clock className="w-3.5 h-3.5 text-[#8B1E1E]" />
+                    <span>Expected arrival by: <strong className="text-[#8B1E1E]">{pincodeResult.deliveryDateStr}</strong></span>
                   </p>
-                  <p className="text-[#94A3B8] text-[11px]">
+                  <p className="text-[#78716C] text-[11px]">
                     Shipping to <strong>{pincodeResult.city}, {pincodeResult.state}</strong>
                   </p>
-                  <div className="flex items-center space-x-3 text-[10px] text-[#38BDF8] pt-1 font-semibold">
+                  <div className="flex items-center space-x-3 text-[10px] text-[#8B1E1E] pt-1 font-semibold">
                     <span>✓ BlueDart Air Transit</span>
                     <span>•</span>
                     <span>✓ COD Available</span>
@@ -464,22 +464,22 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
             </div>
 
             {/* Accordion Specifications Section */}
-            <div className="border-t border-[#1E3A5F] pt-4 space-y-3 font-sans">
+            <div className="border-t border-[#E7E2D9] pt-4 space-y-3 font-sans">
               {/* Accordion 1: Fabric & Craft */}
-              <div className="border border-[#1E3A5F] bg-[#0B172C]/85 backdrop-blur-md rounded-sm overflow-hidden">
+              <div className="border border-[#E7E2D9] bg-[#FFFFFF] rounded-sm overflow-hidden">
                 <button
                   type="button"
                   onClick={() => toggleAccordion("fabric")}
-                  className="w-full p-3.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#F8FAFC] text-left"
+                  className="w-full p-3.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#1C1917] text-left"
                 >
                   <span>Fabric & Craft Architecture</span>
-                  <ChevronDown className={`w-4 h-4 text-[#C5A059] transition-transform ${openAccordion === "fabric" ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`w-4 h-4 text-[#8B1E1E] transition-transform ${openAccordion === "fabric" ? "rotate-180" : ""}`} />
                 </button>
                 {openAccordion === "fabric" && (
-                  <div className="p-3.5 pt-0 text-xs text-[#94A3B8] leading-relaxed border-t border-[#1E3A5F] space-y-2">
+                  <div className="p-3.5 pt-0 text-xs text-[#57534E] leading-relaxed border-t border-[#F0ECE1] space-y-2">
                     <p>{product.description}</p>
                     {product.fabricDetails && (
-                      <p className="text-[#F8FAFC] font-semibold text-[11px] pt-1">
+                      <p className="text-[#1C1917] font-semibold text-[11px] pt-1">
                         Composition: {product.fabricDetails}
                       </p>
                     )}
@@ -488,34 +488,34 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
               </div>
 
               {/* Accordion 2: Care & Maintenance */}
-              <div className="border border-[#1E3A5F] bg-[#0B172C]/85 backdrop-blur-md rounded-sm overflow-hidden">
+              <div className="border border-[#E7E2D9] bg-[#FFFFFF] rounded-sm overflow-hidden">
                 <button
                   type="button"
                   onClick={() => toggleAccordion("care")}
-                  className="w-full p-3.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#F8FAFC] text-left"
+                  className="w-full p-3.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#1C1917] text-left"
                 >
                   <span>Wash & Longevity Instructions</span>
-                  <ChevronDown className={`w-4 h-4 text-[#C5A059] transition-transform ${openAccordion === "care" ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`w-4 h-4 text-[#8B1E1E] transition-transform ${openAccordion === "care" ? "rotate-180" : ""}`} />
                 </button>
                 {openAccordion === "care" && (
-                  <div className="p-3.5 pt-0 text-xs text-[#94A3B8] leading-relaxed border-t border-[#1E3A5F]">
+                  <div className="p-3.5 pt-0 text-xs text-[#57534E] leading-relaxed border-t border-[#F0ECE1]">
                     <p>{product.careInstructions || "Machine wash cold inside out with like colors. Do not bleach or tumble dry. Dry flat in shade. Iron low on reverse; avoid direct heat on silicone graphics."}</p>
                   </div>
                 )}
               </div>
 
               {/* Accordion 3: Shipping & Returns */}
-              <div className="border border-[#1E3A5F] bg-[#0B172C]/85 backdrop-blur-md rounded-sm overflow-hidden">
+              <div className="border border-[#E7E2D9] bg-[#FFFFFF] rounded-sm overflow-hidden">
                 <button
                   type="button"
                   onClick={() => toggleAccordion("shipping")}
-                  className="w-full p-3.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#F8FAFC] text-left"
+                  className="w-full p-3.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#1C1917] text-left"
                 >
                   <span>Express Logistics & 7-Day Exchange</span>
-                  <ChevronDown className={`w-4 h-4 text-[#C5A059] transition-transform ${openAccordion === "shipping" ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`w-4 h-4 text-[#8B1E1E] transition-transform ${openAccordion === "shipping" ? "rotate-180" : ""}`} />
                 </button>
                 {openAccordion === "shipping" && (
-                  <div className="p-3.5 pt-0 text-xs text-[#94A3B8] leading-relaxed border-t border-[#1E3A5F] space-y-1">
+                  <div className="p-3.5 pt-0 text-xs text-[#57534E] leading-relaxed border-t border-[#F0ECE1] space-y-1">
                     <p>• Free Express Air Shipping on prepaid and COD orders above ₹999 across all Indian PIN codes.</p>
                     <p>• 7-Day hassle-free doorstep size exchange. Instant courier reverse-pickup scheduled at your doorstep.</p>
                   </div>
