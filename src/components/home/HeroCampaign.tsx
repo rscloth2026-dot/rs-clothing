@@ -101,7 +101,7 @@ export function HeroCampaign() {
 
   return (
     <section
-      className="relative w-full bg-[#FDFCF7] overflow-hidden border-b border-[#E7E2D9]"
+      className="relative w-full bg-[#FAFAFA] overflow-hidden border-b border-[#E5E5E5]"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
@@ -125,27 +125,27 @@ export function HeroCampaign() {
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover object-top sm:object-center"
+                className="object-cover object-top sm:object-center grayscale-[15%] contrast-[1.05]"
               />
             </motion.div>
           </AnimatePresence>
 
-          {/* Sandstone gradients for impeccable typography contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FDFCF7] via-[#FDFCF7]/80 to-transparent" />
-          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#FDFCF7]/95 via-[#FDFCF7]/60 to-transparent w-3/4" />
+          {/* Editorial Atelier gradients for sharp typography contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] via-[#FAFAFA]/75 to-transparent" />
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#FAFAFA]/95 via-[#FAFAFA]/50 to-transparent w-3/4" />
         </div>
 
         {/* Skiper-UI 41: Progressive Blur Overlays for Depth and Polish */}
         <ProgressiveBlur
           position="top"
-          backgroundColor="#FDFCF7"
+          backgroundColor="#FAFAFA"
           height="110px"
           blurAmount="10px"
           className="z-[2]"
         />
         <ProgressiveBlur
           position="bottom"
-          backgroundColor="#FDFCF7"
+          backgroundColor="#FAFAFA"
           height="140px"
           blurAmount="12px"
           className="z-[2]"
@@ -154,12 +154,12 @@ export function HeroCampaign() {
         {/* Top Controls: Slide Switcher & Quick Navigation */}
         <div className="absolute top-6 right-4 sm:right-8 z-20 flex items-center space-x-2">
           {/* Mobile slide swipe helper indicator */}
-          <div className="flex items-center space-x-1 p-1 bg-white/95 backdrop-blur-md border border-[#E7E2D9] rounded-full shadow-sm">
+          <div className="flex items-center space-x-1 p-1 bg-white/95 backdrop-blur-md border border-[#E5E5E5] rounded-full shadow-sm">
             <button
               onClick={() =>
                 setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
               }
-              className="p-1 rounded-full text-[#78716C] hover:text-[#1C1917] transition-colors"
+              className="p-1 rounded-full text-[#71717A] hover:text-[#0A0A0A] transition-colors"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -171,8 +171,8 @@ export function HeroCampaign() {
                 onClick={() => setCurrentSlide(idx)}
                 className={`px-3 py-1 rounded-full text-[10px] font-sans font-bold transition-all ${
                   currentSlide === idx
-                    ? "bg-[#8B1E1E] text-white shadow-sm"
-                    : "text-[#78716C] hover:text-[#1C1917]"
+                    ? "bg-[#0A0A0A] text-white shadow-sm"
+                    : "text-[#71717A] hover:text-[#0A0A0A]"
                 }`}
                 aria-label={`Switch to slide ${s.id}`}
               >
@@ -182,7 +182,7 @@ export function HeroCampaign() {
 
             <button
               onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-              className="p-1 rounded-full text-[#78716C] hover:text-[#1C1917] transition-colors"
+              className="p-1 rounded-full text-[#71717A] hover:text-[#0A0A0A] transition-colors"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />
@@ -199,7 +199,7 @@ export function HeroCampaign() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center space-x-2 px-3 py-1.5 bg-white/95 border border-[#C5A059]/60 text-[#8B1E1E] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-sm backdrop-blur-md"
+              className="inline-flex items-center space-x-2 px-3 py-1.5 bg-white/95 border border-[#E5E5E5] text-[#0A0A0A] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-sm backdrop-blur-md"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#8B1E1E] animate-pulse" />
               <span>{slide.tag}</span>
@@ -211,7 +211,7 @@ export function HeroCampaign() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-[#1C1917] font-serif leading-[1.1] sm:leading-[1.05]"
+              className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-[#0A0A0A] font-serif leading-[1.1] sm:leading-[1.05]"
             >
               {slide.title}
               <br />
@@ -224,7 +224,7 @@ export function HeroCampaign() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xs sm:text-sm text-[#57534E] font-normal max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none font-sans"
+              className="text-xs sm:text-sm text-[#525252] font-normal max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none font-sans"
             >
               {slide.description}
             </motion.p>
@@ -234,7 +234,7 @@ export function HeroCampaign() {
               <Link href={slide.ctaLink} className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto h-12 min-h-[48px] bg-[#8B1E1E] text-white hover:bg-[#721818] font-bold uppercase tracking-wider text-xs px-8 rounded-[2px] shadow-sm transition-transform flex items-center justify-center space-x-2 rajasthan-btn-shimmer active:scale-[0.97]"
+                  className="w-full sm:w-auto h-12 min-h-[48px] bg-[#0A0A0A] text-white hover:bg-[#262626] font-bold uppercase tracking-wider text-xs px-8 rounded-none shadow-sm transition-transform flex items-center justify-center space-x-2 active:scale-[0.98]"
                 >
                   <span>{slide.ctaText}</span>
                   <ArrowRight className="w-4 h-4 ml-1" />
@@ -245,7 +245,7 @@ export function HeroCampaign() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-full sm:w-auto h-12 min-h-[48px] border-[#E7E2D9] bg-white/95 text-[#1C1917] hover:border-[#C5A059] font-bold uppercase tracking-wider text-xs px-6 rounded-[2px] shadow-sm active:scale-[0.97]"
+                  className="w-full sm:w-auto h-12 min-h-[48px] border-[#E5E5E5] bg-white text-[#0A0A0A] hover:border-[#0A0A0A] hover:bg-[#FAFAFA] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
                 >
                   <span>View All Royal Drops</span>
                 </Button>
@@ -253,12 +253,12 @@ export function HeroCampaign() {
             </div>
 
             {/* Quality Specs Grid with Skiper-UI Micro-Interactions */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-[#E7E2D9]/80 max-w-md">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-[#E5E5E5] max-w-md">
               <div>
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#1C1917] tabular-nums">
+                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#0A0A0A] tabular-nums">
                   {slide.metric1}
                 </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#78716C]">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-[#71717A]">
                   {slide.metric1Sub}
                 </span>
               </div>
@@ -266,15 +266,15 @@ export function HeroCampaign() {
                 <span className="block text-xl sm:text-2xl font-serif font-bold text-[#8B1E1E] tabular-nums">
                   {slide.metric2}
                 </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#78716C]">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-[#71717A]">
                   {slide.metric2Sub}
                 </span>
               </div>
               <div className="hidden sm:block">
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#C5A059]">
+                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#0A0A0A]">
                   JODHPUR
                 </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#78716C]">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-[#C5A059] font-bold">
                   Atelier Origin
                 </span>
               </div>

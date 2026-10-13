@@ -108,18 +108,18 @@ export default async function CollectionPage({ params, searchParams }: PageProps
   });
 
   return (
-    <div className="min-h-screen bg-[#FDFCF7] py-8 sm:py-12">
+    <div className="min-h-screen bg-[#FAFAFA] py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Collection Header */}
-        <div className="mb-8 sm:mb-10 pb-6 sm:pb-8 border-b border-[#E7E2D9]">
+        <div className="mb-8 sm:mb-10 pb-6 sm:pb-8 border-b border-[#E5E5E5]">
           <div className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E] mb-2 flex items-center space-x-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#8B1E1E]" />
             <span>ATELIER ARCHIVE // {slug.toUpperCase()}</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#1C1917] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#0A0A0A] tracking-tight">
             {categoryTitle}
           </h1>
-          <p className="text-xs sm:text-sm text-[#78716C] font-sans mt-2 max-w-xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#71717A] font-sans mt-2 max-w-xl leading-relaxed">
             {categoryDesc}
           </p>
         </div>

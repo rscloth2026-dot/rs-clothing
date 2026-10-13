@@ -46,7 +46,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
             <motion.div
               key={item.id || index}
               layout
-              className="relative cursor-pointer overflow-hidden rounded-xl border border-[#E7E2D9] bg-[#FDFCF7] shadow-sm transition-shadow hover:shadow-md"
+              className="relative cursor-pointer overflow-hidden rounded-xl border border-[#E5E5E5] bg-[#FFFFFF] shadow-sm transition-shadow hover:shadow-md"
               animate={{
                 flex: isActive ? 3.5 : 1,
               }}
@@ -82,7 +82,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
               {/* Collapsed State: Crisp Bottom Index Label (Horizontal, Never Rotated) */}
               {!isActive && (
                 <div className="absolute inset-x-0 bottom-0 p-3.5 z-10 flex flex-col items-center justify-end text-center pointer-events-none">
-                  <div className="w-full bg-[#1C1917]/85 backdrop-blur-md border border-white/20 py-2 px-1 rounded-[4px] shadow-sm">
+                  <div className="w-full bg-[#0A0A0A]/90 backdrop-blur-md border border-[#E5E5E5]/20 py-2 px-1 rounded-[4px] shadow-sm">
                     <span className="block text-[10px] font-sans font-bold tracking-widest text-[#C5A059] uppercase">
                       0{index + 1}
                     </span>
@@ -140,7 +140,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
           <Link
             key={item.id || index}
             href={`/collections/${item.slug}`}
-            className="flex-shrink-0 w-[78vw] max-w-[320px] snap-center relative aspect-[3/4] rounded-xl overflow-hidden border border-[#E7E2D9] shadow-md group"
+            className="flex-shrink-0 w-[78vw] max-w-[320px] snap-center relative aspect-[3/4] rounded-xl overflow-hidden border border-[#E5E5E5] shadow-md group"
           >
             <Image
               src={item.imageUrl}

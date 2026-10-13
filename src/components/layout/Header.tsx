@@ -56,8 +56,8 @@ export function Header() {
       <header
         className={`sticky top-0 z-40 transition-all duration-300 border-b ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md border-[#E7E2D9] py-3 shadow-[0_4px_20px_rgba(28,25,23,0.06)]"
-            : "bg-white/80 backdrop-blur-sm border-[#E7E2D9] py-4"
+            ? "bg-[#FAFAFA]/95 backdrop-blur-xl border-[#E5E5E5] py-3 shadow-[0_4px_24px_rgba(10,10,10,0.04)]"
+            : "bg-[#FAFAFA]/85 backdrop-blur-md border-[#E5E5E5] py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -65,7 +65,7 @@ export function Header() {
           <div className="flex items-center space-x-6 sm:space-x-8">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-[#78716C] hover:text-[#1C1917] transition-colors rounded-sm hover:bg-[#F4EFE6]"
+              className="lg:hidden p-2 text-[#71717A] hover:text-[#0A0A0A] transition-colors rounded-none hover:bg-[#F4F4F5]"
               aria-label="Open navigation menu"
             >
               <Menu className="w-5 h-5" />
@@ -73,10 +73,10 @@ export function Header() {
 
             {/* Brand Logo - Cormorant Garamond Royal Heritage */}
             <Link href="/" className="flex items-baseline space-x-2 group">
-              <span className="font-serif font-bold text-2xl sm:text-3xl tracking-tight text-[#1C1917] group-hover:text-[#8B1E1E] transition-colors">
+              <span className="font-serif font-bold text-2xl sm:text-3xl tracking-tight text-[#0A0A0A] group-hover:text-[#8B1E1E] transition-colors">
                 RS CLOTHING
               </span>
-              <span className="text-[9px] font-sans tracking-[0.25em] text-[#C5A059] font-bold uppercase border-l border-[#E7E2D9] pl-2">
+              <span className="text-[9px] font-sans tracking-[0.25em] text-[#C5A059] font-bold uppercase border-l border-[#E5E5E5] pl-2">
                 JODHPUR
               </span>
             </Link>
@@ -87,10 +87,10 @@ export function Header() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-[#57534E] hover:text-[#1C1917] transition-colors relative py-1 group"
+                  className="text-[#525252] hover:text-[#0A0A0A] transition-colors relative py-1 group"
                 >
                   <TextRoll className="py-0.5">{link.label}</TextRoll>
-                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#C5A059] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#0A0A0A] transition-all duration-300 group-hover:w-full" />
                 </Link>
               ))}
             </nav>
@@ -101,17 +101,17 @@ export function Header() {
             {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2.5 text-[#57534E] hover:text-[#1C1917] transition-colors rounded-sm hover:bg-[#F4EFE6] flex items-center space-x-2 text-xs font-sans"
+              className="p-2.5 text-[#525252] hover:text-[#0A0A0A] transition-colors rounded-none hover:bg-[#F4F4F5] flex items-center space-x-2 text-xs font-sans"
               aria-label="Search collection"
             >
               <Search className="w-4 h-4" />
-              <span className="hidden md:inline text-[11px] text-[#78716C]">Search</span>
+              <span className="hidden md:inline text-[11px] text-[#71717A]">Search</span>
             </button>
 
             {/* Wishlist Icon */}
             <Link
               href="/wishlist"
-              className="p-2.5 text-[#57534E] hover:text-[#1C1917] transition-colors relative hidden sm:flex items-center rounded-sm hover:bg-[#F4EFE6]"
+              className="p-2.5 text-[#525252] hover:text-[#0A0A0A] transition-colors relative hidden sm:flex items-center rounded-none hover:bg-[#F4F4F5]"
               aria-label="View wishlist"
             >
               <Heart className="w-4 h-4" />
@@ -125,23 +125,23 @@ export function Header() {
             {/* Customer Account Portal */}
             <Link
               href="/account"
-              className="p-2.5 text-[#57534E] hover:text-[#1C1917] transition-colors flex items-center rounded-sm hover:bg-[#F4EFE6]"
+              className="p-2.5 text-[#525252] hover:text-[#0A0A0A] transition-colors flex items-center rounded-none hover:bg-[#F4F4F5]"
               aria-label="Customer account"
             >
               <User className="w-4 h-4" />
             </Link>
 
-            {/* Shopping Bag Button (Tactile Sandstone Pill) */}
+            {/* Shopping Bag Button (Razor Hairline Atelier Pill) */}
             <button
               onClick={openCart}
-              className="tactile-btn inline-flex items-center space-x-2.5 bg-[#F4EFE6] text-[#1C1917] border border-[#E7E2D9] hover:border-[#C5A059] font-bold text-xs px-3.5 py-2 rounded-full shadow-sm ml-1"
+              className="tactile-btn inline-flex items-center space-x-2.5 bg-[#FFFFFF] text-[#0A0A0A] border border-[#E5E5E5] hover:border-[#0A0A0A] font-bold text-xs px-3.5 py-2 rounded-full shadow-sm ml-1 transition-all"
               aria-label="Open shopping bag"
             >
               <ShoppingBag className="w-3.5 h-3.5 text-[#8B1E1E]" />
-              <span className="text-[11px] font-sans tracking-wider text-[#78716C] hidden sm:inline uppercase">
+              <span className="text-[11px] font-sans tracking-wider text-[#71717A] hidden sm:inline uppercase">
                 BAG
               </span>
-              <span className="bg-[#8B1E1E] text-white font-mono font-bold text-[10px] w-5 h-5 flex items-center justify-center rounded-full shadow-sm">
+              <span className="bg-[#0A0A0A] text-white font-mono font-bold text-[10px] w-5 h-5 flex items-center justify-center rounded-full shadow-sm">
                 {mounted ? getItemCount() : 0}
               </span>
             </button>
@@ -150,9 +150,9 @@ export function Header() {
 
         {/* Collapsible Command-Search Overlay */}
         {isSearchOpen && (
-          <div className="border-t border-[#E7E2D9] bg-white px-4 py-4 shadow-xl">
+          <div className="border-t border-[#E5E5E5] bg-[#FFFFFF] px-4 py-4 shadow-xl">
             <div className="max-w-2xl mx-auto space-y-3">
-              <form onSubmit={handleSearchSubmit} className="flex items-center space-x-3 bg-[#FDFCF7] border border-[#E7E2D9] rounded-sm px-3.5 py-2.5 focus-within:border-[#C5A059] transition-colors">
+              <form onSubmit={handleSearchSubmit} className="flex items-center space-x-3 bg-[#FAFAFA] border border-[#E5E5E5] px-3.5 py-2.5 focus-within:border-[#0A0A0A] transition-colors">
                 <Search className="w-4 h-4 text-[#8B1E1E]" />
                 <input
                   type="text"
@@ -160,18 +160,18 @@ export function Header() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   autoFocus
-                  className="flex-1 bg-transparent text-sm text-[#1C1917] placeholder:text-[#A8A29E] focus:outline-none"
+                  className="flex-1 bg-transparent text-sm text-[#0A0A0A] placeholder:text-[#A1A1AA] focus:outline-none"
                 />
                 <button
                   type="submit"
-                  className="text-xs font-bold uppercase tracking-wider text-white bg-[#8B1E1E] hover:bg-[#721818] px-3.5 py-1.5 rounded-[2px] transition-colors shadow-sm"
+                  className="text-xs font-bold uppercase tracking-wider text-white bg-[#0A0A0A] hover:bg-[#262626] px-4 py-1.5 transition-colors shadow-sm"
                 >
                   Search
                 </button>
                 <button
                   type="button"
                   onClick={() => setIsSearchOpen(false)}
-                  className="p-1 text-[#78716C] hover:text-[#1C1917]"
+                  className="p-1 text-[#71717A] hover:text-[#0A0A0A]"
                   aria-label="Close search"
                 >
                   <X className="w-4 h-4" />
@@ -180,7 +180,7 @@ export function Header() {
 
               {/* Quick tags */}
               <div className="flex flex-wrap items-center gap-1.5 pt-1">
-                <span className="text-[10px] font-sans uppercase text-[#78716C] mr-1 flex items-center space-x-1">
+                <span className="text-[10px] font-sans uppercase text-[#71717A] mr-1 flex items-center space-x-1">
                   <Sparkles className="w-3 h-3 text-[#C5A059]" />
                   <span>Trending:</span>
                 </span>
@@ -193,7 +193,7 @@ export function Header() {
                       router.push(`/collections/all?search=${encodeURIComponent(tag)}`);
                       setIsSearchOpen(false);
                     }}
-                    className="text-[11px] font-sans px-2.5 py-1 bg-[#F4EFE6] border border-[#E7E2D9] text-[#57534E] hover:text-[#8B1E1E] hover:border-[#C5A059] rounded-full transition-colors"
+                    className="text-[11px] font-sans px-2.5 py-1 bg-[#FAFAFA] border border-[#E5E5E5] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A] transition-colors"
                   >
                     {tag}
                   </button>
@@ -208,7 +208,7 @@ export function Header() {
       {isScrolled && (
         <ProgressiveBlur
           position="top"
-          backgroundColor="#FFFFFF"
+          backgroundColor="#FAFAFA"
           height="16px"
           blurAmount="4px"
           className="sticky top-[61px] z-30 opacity-70"
@@ -222,11 +222,11 @@ export function Header() {
             className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-white border-r border-[#E7E2D9] p-6 flex flex-col justify-between shadow-2xl">
+          <div className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-[#FFFFFF] border-r border-[#E5E5E5] p-6 flex flex-col justify-between shadow-2xl">
             <div>
-              <div className="flex items-center justify-between pb-6 border-b border-[#E7E2D9]">
+              <div className="flex items-center justify-between pb-6 border-b border-[#E5E5E5]">
                 <div className="flex items-baseline space-x-2">
-                  <span className="font-serif font-bold text-2xl text-[#1C1917]">
+                  <span className="font-serif font-bold text-2xl text-[#0A0A0A]">
                     RS CLOTHING
                   </span>
                   <span className="text-[9px] font-sans tracking-widest text-[#C5A059] uppercase font-bold">
@@ -235,7 +235,7 @@ export function Header() {
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-2 text-[#78716C] hover:text-[#1C1917]"
+                  className="p-2 text-[#71717A] hover:text-[#0A0A0A]"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
@@ -243,7 +243,7 @@ export function Header() {
               </div>
 
               <div className="py-6 space-y-3.5">
-                <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#78716C]">
+                <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#71717A]">
                   Atelier Catalog
                 </p>
                 {navLinks.map((link) => (
@@ -251,7 +251,7 @@ export function Header() {
                     key={link.label}
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-sm font-semibold uppercase tracking-wider text-[#1C1917] hover:text-[#8B1E1E] transition-colors py-2 flex items-center justify-between border-b border-[#F4EFE6]"
+                    className="block text-sm font-semibold uppercase tracking-wider text-[#0A0A0A] hover:text-[#8B1E1E] transition-colors py-2 flex items-center justify-between border-b border-[#F4F4F5]"
                   >
                     <span>{link.label}</span>
                     <ArrowRight className="w-3.5 h-3.5 text-[#C5A059]" />
@@ -260,22 +260,22 @@ export function Header() {
               </div>
             </div>
 
-            <div className="border-t border-[#E7E2D9] pt-6 space-y-3">
+            <div className="border-t border-[#E5E5E5] pt-6 space-y-3">
               <Link
                 href="/account"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-xs font-semibold uppercase text-[#1C1917] hover:text-[#8B1E1E] transition-colors"
+                className="block text-xs font-semibold uppercase text-[#0A0A0A] hover:text-[#8B1E1E] transition-colors"
               >
                 Client Account & Orders
               </Link>
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-xs font-semibold uppercase text-[#78716C] hover:text-[#1C1917] transition-colors"
+                className="block text-xs font-semibold uppercase text-[#71717A] hover:text-[#0A0A0A] transition-colors"
               >
                 Atelier Concierge & Support
               </Link>
-              <p className="text-[11px] text-[#78716C] leading-relaxed pt-2">
+              <p className="text-[11px] text-[#71717A] leading-relaxed pt-2">
                 Handcrafted 380 GSM silhouettes engineered with royal Rajasthani heritage.
               </p>
             </div>

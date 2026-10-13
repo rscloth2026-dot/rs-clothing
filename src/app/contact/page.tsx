@@ -41,85 +41,85 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFCF7] py-12 sm:py-16 lg:py-24 text-[#1C1917] font-sans">
+    <div className="min-h-screen bg-[#FAFAFA] py-12 sm:py-16 lg:py-24 text-[#0A0A0A] font-sans">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
-        <div className="text-center space-y-3 pb-8 border-b border-[#E7E2D9]">
-          <div className="inline-flex items-center space-x-1.5 px-3 py-1 bg-[#FAF6EE] border border-[#C5A059]/30 rounded-full mx-auto">
+        <div className="text-center space-y-3 pb-8 border-b border-[#E5E5E5]">
+          <div className="inline-flex items-center space-x-1.5 px-3 py-1 bg-[#FFFFFF] border border-[#E5E5E5] rounded-none mx-auto">
             <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-            <span className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#8B1E1E]">
+            <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-[#71717A]">
               ROYAL ATELIER CONCIERGE
             </span>
           </div>
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold uppercase text-[#1C1917] tracking-tight mt-1">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold uppercase text-[#0A0A0A] tracking-tight mt-1">
             Get in Touch
           </h1>
-          <p className="text-xs sm:text-sm text-[#78716C] max-w-md mx-auto leading-relaxed font-sans">
+          <p className="text-xs sm:text-sm text-[#71717A] max-w-md mx-auto leading-relaxed font-sans">
             Our private atelier client care in Jodhpur, Rajasthan is available 7 days a week for sizing consultations, styling advice, and order tracking.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {/* Contact Details Card */}
-          <div className="p-6 sm:p-8 bg-[#FFFFFF] border border-[#E7E2D9] space-y-6 rounded-sm shadow-xs">
-            <h2 className="text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E]">
+          <div className="p-6 sm:p-8 bg-[#FFFFFF] border border-[#E5E5E5] space-y-6 rounded-none shadow-xs">
+            <h2 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A0A0A]">
               Direct Channels
             </h2>
 
             <div className="space-y-5 text-xs">
               <div className="flex items-start space-x-3.5">
-                <Mail className="w-4 h-4 text-[#8B1E1E] mt-0.5" />
+                <Mail className="w-4 h-4 text-[#0A0A0A] mt-0.5" />
                 <div>
-                  <span className="font-semibold text-[#78716C] uppercase text-[10px] block">Concierge Email</span>
-                  <a href="mailto:concierge@rsclothing.in" className="text-[#1C1917] font-semibold hover:text-[#8B1E1E] transition-colors">
+                  <span className="font-semibold text-[#71717A] uppercase text-[10px] block">Concierge Email</span>
+                  <a href="mailto:concierge@rsclothing.in" className="text-[#0A0A0A] font-semibold hover:underline transition-colors">
                     concierge@rsclothing.in
                   </a>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3.5">
-                <MessageSquare className="w-4 h-4 text-[#8B1E1E] mt-0.5" />
+                <MessageSquare className="w-4 h-4 text-[#0A0A0A] mt-0.5" />
                 <div>
-                  <span className="font-semibold text-[#78716C] uppercase text-[10px] block">WhatsApp Royal Concierge</span>
-                  <span className="text-[#1C1917] font-semibold">+91 98765 43210</span>
+                  <span className="font-semibold text-[#71717A] uppercase text-[10px] block">WhatsApp Royal Concierge</span>
+                  <span className="text-[#0A0A0A] font-semibold">+91 98765 43210</span>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3.5">
-                <MapPin className="w-4 h-4 text-[#8B1E1E] mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#0A0A0A] mt-0.5" />
                 <div>
-                  <span className="font-semibold text-[#78716C] uppercase text-[10px] block">Atelier Workshop & Dispatch Hub</span>
-                  <span className="text-[#57534E] leading-relaxed block mt-0.5">
+                  <span className="font-semibold text-[#71717A] uppercase text-[10px] block">Atelier Workshop & Dispatch Hub</span>
+                  <span className="text-[#525252] leading-relaxed block mt-0.5">
                     RS Clothing Atelier, Circuit House Road, Ratanada, Jodhpur 342001, Rajasthan, India
                   </span>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3.5">
-                <Clock className="w-4 h-4 text-[#8B1E1E] mt-0.5" />
+                <Clock className="w-4 h-4 text-[#0A0A0A] mt-0.5" />
                 <div>
-                  <span className="font-semibold text-[#78716C] uppercase text-[10px] block">Operational Hours</span>
-                  <span className="text-[#57534E] block mt-0.5">Monday - Saturday: 10:00 AM - 7:00 PM IST</span>
+                  <span className="font-semibold text-[#71717A] uppercase text-[10px] block">Operational Hours</span>
+                  <span className="text-[#525252] block mt-0.5">Monday - Saturday: 10:00 AM - 7:00 PM IST</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-[#F0ECE1] flex items-center space-x-2 text-[11px] text-[#78716C]">
+            <div className="pt-4 border-t border-[#F4F4F5] flex items-center space-x-2 text-[11px] text-[#71717A]">
               <ShieldCheck className="w-4 h-4 text-[#C5A059]" />
               <span>Priority Response Within 2 Business Hours</span>
             </div>
           </div>
 
           {/* Inquiry Form */}
-          <div className="p-6 sm:p-8 bg-[#FFFFFF] border border-[#E7E2D9] rounded-sm shadow-xs">
+          <div className="p-6 sm:p-8 bg-[#FFFFFF] border border-[#E5E5E5] rounded-none shadow-xs">
             {submitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-8">
-                <div className="w-12 h-12 rounded-full bg-[#FAF6EE] border border-[#C5A059]/40 text-[#8B1E1E] flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-[#FAFAFA] border border-[#E5E5E5] text-[#0A0A0A] flex items-center justify-center">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-serif font-bold uppercase text-[#1C1917]">
+                <h3 className="text-lg font-serif font-bold uppercase text-[#0A0A0A]">
                   Dispatch Inquiry Transmitted
                 </h3>
-                <p className="text-xs text-[#78716C] leading-relaxed max-w-xs">
+                <p className="text-xs text-[#71717A] leading-relaxed max-w-xs">
                   Your message has reached our head of concierge. An atelier representative will reply to your registered email shortly.
                 </p>
                 <button
@@ -127,25 +127,25 @@ export default function ContactPage() {
                     setSubmitted(false);
                     setFormData({ name: "", email: "", subject: "General Sizing & Atelier Sourcing", message: "" });
                   }}
-                  className="text-xs text-[#8B1E1E] font-bold hover:underline"
+                  className="text-xs text-[#0A0A0A] font-bold hover:underline"
                 >
                   Send another inquiry
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 text-xs">
-                <h2 className="text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E]">
+                <h2 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A0A0A]">
                   Inquiry Transmission
                 </h2>
 
                 {errorMessage && (
-                  <div className="p-3 bg-red-50 border border-red-200 text-[#8B1E1E] text-xs rounded-sm">
+                  <div className="p-3 bg-red-50 border border-red-200 text-[#991B1B] text-xs rounded-none">
                     {errorMessage}
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-[10px] font-semibold text-[#57534E] uppercase mb-1">
+                  <label className="block text-[10px] font-semibold text-[#525252] uppercase mb-1">
                     Your Name *
                   </label>
                   <input
@@ -154,12 +154,12 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Aarav Sharma"
-                    className="w-full bg-[#FDFCF7] border border-[#E7E2D9] rounded-sm px-3.5 py-2.5 text-xs text-[#1C1917] placeholder:text-[#A8A29E] focus:outline-none focus:border-[#C5A059]"
+                    className="w-full bg-[#FAFAFA] border border-[#E5E5E5] rounded-none px-3.5 py-2.5 text-xs text-[#0A0A0A] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#0A0A0A]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-semibold text-[#57534E] uppercase mb-1">
+                  <label className="block text-[10px] font-semibold text-[#525252] uppercase mb-1">
                     Email Address *
                   </label>
                   <input
@@ -168,18 +168,18 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="name@email.com"
-                    className="w-full bg-[#FDFCF7] border border-[#E7E2D9] rounded-sm px-3.5 py-2.5 text-xs text-[#1C1917] placeholder:text-[#A8A29E] focus:outline-none focus:border-[#C5A059]"
+                    className="w-full bg-[#FAFAFA] border border-[#E5E5E5] rounded-none px-3.5 py-2.5 text-xs text-[#0A0A0A] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#0A0A0A]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-semibold text-[#57534E] uppercase mb-1">
+                  <label className="block text-[10px] font-semibold text-[#525252] uppercase mb-1">
                     Inquiry Topic *
                   </label>
                   <select
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full bg-[#FDFCF7] border border-[#E7E2D9] rounded-sm px-3 py-2.5 text-xs text-[#1C1917] focus:outline-none focus:border-[#C5A059]"
+                    className="w-full bg-[#FAFAFA] border border-[#E5E5E5] rounded-none px-3 py-2.5 text-xs text-[#0A0A0A] focus:outline-none focus:border-[#0A0A0A]"
                   >
                     <option value="General Sizing & Atelier Sourcing">General Sizing & Atelier Sourcing</option>
                     <option value="BlueDart Air Order Tracking">BlueDart Air Order Tracking</option>
@@ -189,7 +189,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-semibold text-[#57534E] uppercase mb-1">
+                  <label className="block text-[10px] font-semibold text-[#525252] uppercase mb-1">
                     Message Details *
                   </label>
                   <textarea
@@ -198,14 +198,14 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="How can our atelier concierge assist you?"
-                    className="w-full bg-[#FDFCF7] border border-[#E7E2D9] rounded-sm p-3 text-xs text-[#1C1917] placeholder:text-[#A8A29E] focus:outline-none focus:border-[#C5A059]"
+                    className="w-full bg-[#FAFAFA] border border-[#E5E5E5] rounded-none p-3 text-xs text-[#0A0A0A] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#0A0A0A]"
                   />
                 </div>
 
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full h-11 bg-[#8B1E1E] hover:bg-[#6B1414] text-white text-xs font-bold uppercase tracking-wider rounded-sm shadow-sm flex items-center justify-center space-x-2"
+                  className="w-full h-11 bg-[#0A0A0A] hover:bg-[#262626] text-white text-xs font-bold uppercase tracking-widest rounded-none shadow-sm flex items-center justify-center space-x-2 transition-all"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>{loading ? "TRANSMITTING..." : "SUBMIT INQUIRY"}</span>

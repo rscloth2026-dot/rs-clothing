@@ -24,32 +24,32 @@ export function AnnouncementBar() {
   if (!isVisible) return null;
 
   return (
-    <div className="bg-[#F5F2EB] text-[#1C1917] text-[11px] font-medium tracking-wider px-4 py-2 border-b border-[#E7E2D9] flex items-center justify-between select-none relative z-40 transition-colors">
-      <div className="hidden md:flex items-center space-x-2 text-[10px] text-[#78716C] uppercase tracking-widest font-mono">
+    <div className="bg-[#0A0A0A] text-[#FAFAFA] text-[11px] font-medium tracking-wider px-4 py-2 border-b border-[#262626] flex items-center justify-between select-none relative z-40 transition-colors">
+      <div className="hidden md:flex items-center space-x-2 text-[10px] text-[#A3A3A3] uppercase tracking-widest font-mono">
         <span className="w-1.5 h-1.5 rounded-full bg-[#8B1E1E] shadow-sm inline-block" />
-        <span className="text-[#1C1917] font-semibold">ATELIER JODHPUR // MARWAR</span>
+        <span className="text-[#FAFAFA] font-semibold">ATELIER JODHPUR // MARWAR</span>
       </div>
 
       <div className="flex-1 flex items-center justify-center text-center px-2 overflow-hidden">
         <Link
           href={ANNOUNCEMENTS[index].link}
-          className="inline-flex items-center space-x-2 group hover:text-[#8B1E1E] transition-colors"
+          className="inline-flex items-center space-x-2 group hover:text-[#C5A059] transition-colors focus-visible:outline-[#FAFAFA] focus-visible:outline-2 focus-visible:outline-offset-2 rounded-xs"
         >
           <Sparkles className="w-3 h-3 text-[#C5A059] shrink-0" />
-          <span className="uppercase text-[11px] font-semibold tracking-wider text-[#1C1917] group-hover:text-[#8B1E1E] transition-colors">
+          <span className="uppercase text-[11px] font-semibold tracking-wider text-[#FAFAFA] group-hover:text-[#C5A059] transition-colors">
             {ANNOUNCEMENTS[index].text}
           </span>
           <ArrowRight className="w-3 h-3 text-[#C5A059] group-hover:translate-x-0.5 transition-transform hidden sm:inline-block" />
         </Link>
       </div>
 
-      <div className="flex items-center space-x-3 text-[10px] text-[#78716C]">
-        <span className="hidden lg:inline-flex items-center gap-1 font-mono text-[#78716C]">
-          <ShieldCheck className="w-3 h-3 text-[#C5A059]" /> 7-DAY ROYAL EXCHANGE
+      <div className="flex items-center space-x-3 text-[10px] text-[#A3A3A3]">
+        <span className="hidden lg:inline-flex items-center gap-1 font-mono text-[#A3A3A3]">
+          <ShieldCheck className="w-3 h-3 text-[#C5A059]" /> 7-DAY ATELIER EXCHANGE
         </span>
         <button
           onClick={() => setIsVisible(false)}
-          className="p-1 hover:text-[#1C1917] text-[#78716C] transition-colors ml-2"
+          className="p-1 hover:text-[#FAFAFA] text-[#737373] transition-colors ml-2 focus-visible:outline-[#FAFAFA] focus-visible:outline-2 focus-visible:outline-offset-2 rounded-xs"
           aria-label="Dismiss announcement"
         >
           <X className="w-3.5 h-3.5" />

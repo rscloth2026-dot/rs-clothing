@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 40 20% 99%;         /* #FDFCF7 Warm Haveli Sandstone White */
-    --foreground: 24 10% 10%;          /* #1C1917 Deep Heritage Ink Charcoal */
-    --card: 0 0% 100%;                 /* #FFFFFF Pure White */
-    --card-foreground: 24 10% 10%;     /* #1C1917 */
+    --background: 0 0% 98%;           /* #FAFAFA Editorial Off-White */
+    --foreground: 0 0% 4%;            /* #0A0A0A Deep Ink Charcoal */
+    --card: 0 0% 100%;                /* #FFFFFF Studio White */
+    --card-foreground: 0 0% 4%;       /* #0A0A0A */
     --popover: 0 0% 100%;
-    --popover-foreground: 24 10% 10%;
-    --primary: 0 65% 33%;              /* #8B1E1E Royal Crimson (Marwar Heritage) */
-    --primary-foreground: 0 0% 100%;   /* #FFFFFF */
-    --secondary: 40 25% 95%;           /* #F4EFE6 Sandstone Alabaster */
-    --secondary-foreground: 24 10% 10%;
-    --muted: 40 20% 96%;              /* #F9F7F2 Warm Cream */
-    --muted-foreground: 25 5% 45%;     /* #78716C Muted Heritage Stone */
-    --accent: 39 48% 56%;              /* #C5A059 Mughal Antique Gold */
+    --popover-foreground: 0 0% 4%;
+    --primary: 0 65% 33%;             /* #8B1E1E Royal Crimson (Heritage Accent) */
+    --primary-foreground: 0 0% 100%;  /* #FFFFFF */
+    --secondary: 240 5% 96%;          /* #F4F4F5 Atelier Neutral */
+    --secondary-foreground: 0 0% 4%;
+    --muted: 240 5% 96%;              /* #F4F4F5 */
+    --muted-foreground: 240 4% 46%;    /* #71717A Muted Slate Charcoal */
+    --accent: 39 48% 56%;             /* #C5A059 Mughal Antique Gold */
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 36 15% 88%;              /* #E7E2D9 Architectural Hairline Border */
-    --input: 36 15% 88%;
-    --ring: 39 48% 56%;                /* #C5A059 Antique Gold Focus Ring */
-    --radius: 0.25rem;
+    --border: 0 0% 90%;               /* #E5E5E5 Razor-Sharp Hairline Border */
+    --input: 0 0% 90%;
+    --ring: 0 0% 4%;                  /* #0A0A0A High-Contrast Focus Ring */
+    --radius: 0.125rem;
   }
 
   * {
@@ -31,13 +31,22 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-[#C5A059] selection:text-white;
+    @apply bg-background text-foreground antialiased selection:bg-[#0A0A0A] selection:text-white;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   /* Accessible high-contrast focus rings */
   :focus-visible {
-    outline: 2px solid #C5A059;
+    outline: 2px solid #0A0A0A;
+    outline-offset: 2px;
+  }
+
+  /* High-contrast focus outline for controls on dark surfaces */
+  .bg-\[\#0A0A0A\] :focus-visible,
+  .bg-\[\#1C1917\] :focus-visible,
+  .bg-black :focus-visible,
+  .dark :focus-visible {
+    outline: 2px solid #FAFAFA;
     outline-offset: 2px;
   }
 }
@@ -45,14 +54,14 @@
 /* Luxury Royal Rajasthani Card & Surface Utilities */
 .rajasthan-card {
   background: #FFFFFF;
-  border: 1px solid #E7E2D9;
-  box-shadow: 0 2px 12px 0 rgba(28, 25, 23, 0.04);
+  border: 1px solid #E5E5E5;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rajasthan-card:hover {
-  border-color: #D6C8AC;
-  box-shadow: 0 12px 32px 0 rgba(28, 25, 23, 0.08);
+  border-color: #0A0A0A;
+  box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
@@ -69,7 +78,7 @@
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #1C1917 20%, #8B1E1E 60%, #C5A059 100%);
+  background: linear-gradient(135deg, #0A0A0A 20%, #8B1E1E 60%, #C5A059 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -96,14 +105,14 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FDFCF7;
+  background: #FAFAFA;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E7E2D9;
+  background: #E5E5E5;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5A059;
+  background: #A3A3A3;
 }
 
 /* Tabular numbers for price accuracy */
@@ -248,17 +257,17 @@
 /* Luxury Wedges / Cards Enhanced Micro-Interactions */
 .rajasthan-wedge {
   background: #FFFFFF;
-  border: 1px solid #E7E2D9;
+  border: 1px solid #E5E5E5;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 2px 8px 0 rgba(28, 25, 23, 0.04);
+  box-shadow: 0 2px 8px 0 rgba(10, 10, 10, 0.04);
 }
 
 .rajasthan-wedge:hover {
-  border-color: #C5A059;
+  border-color: #0A0A0A;
   transform: translateY(-3px);
-  box-shadow: 0 16px 36px -4px rgba(28, 25, 23, 0.09), 0 0 0 1px rgba(197, 160, 89, 0.25);
+  box-shadow: 0 16px 36px -4px rgba(10, 10, 10, 0.09);
 }
 
 /* Tactile Pill Quick-Select */

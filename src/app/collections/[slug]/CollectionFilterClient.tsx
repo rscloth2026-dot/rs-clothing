@@ -95,31 +95,31 @@ export function CollectionFilterClient({
   return (
     <div>
       {/* Control Bar: Filter toggle & Sort */}
-      <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#E7E2D9] mb-8">
+      <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[#E5E5E5] mb-8">
         <div className="flex items-center space-x-3">
           <Button
             variant="outline"
             size="sm"
             onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-            className="flex items-center space-x-2 border-[#E7E2D9] text-[#1C1917] hover:border-[#8B1E1E] bg-[#FFFFFF]"
+            className="flex items-center space-x-2 border-[#E5E5E5] text-[#0A0A0A] hover:border-[#0A0A0A] bg-[#FFFFFF] rounded-none"
           >
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#8B1E1E]" />
+            <SlidersHorizontal className="w-3.5 h-3.5 text-[#0A0A0A]" />
             <span>Filters {hasActiveFilters ? "(Active)" : ""}</span>
           </Button>
 
-          <span className="text-xs font-sans text-[#78716C]">
-            Showing <strong className="text-[#1C1917]">{filteredProducts.length}</strong> of {initialProducts.length} silhouettes
+          <span className="text-xs font-sans text-[#71717A]">
+            Showing <strong className="text-[#0A0A0A]">{filteredProducts.length}</strong> of {initialProducts.length} silhouettes
           </span>
         </div>
 
         {/* Sort selector */}
         <div className="flex items-center space-x-2">
           <ArrowUpDown className="w-3.5 h-3.5 text-[#C5A059]" />
-          <span className="text-[11px] font-sans uppercase font-semibold text-[#78716C]">Sort:</span>
+          <span className="text-[11px] font-sans uppercase font-semibold text-[#71717A]">Sort:</span>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
-            className="bg-[#FFFFFF] border border-[#E7E2D9] text-[#1C1917] text-xs px-3 py-1.5 focus:outline-none focus:border-[#C5A059] rounded-sm font-sans"
+            className="bg-[#FFFFFF] border border-[#E5E5E5] text-[#0A0A0A] text-xs px-3 py-1.5 focus:outline-none focus:border-[#0A0A0A] rounded-none font-sans"
           >
             <option value="newest">Newest Drops</option>
             <option value="price-asc">Price: Low to High</option>
@@ -129,19 +129,19 @@ export function CollectionFilterClient({
       </div>
 
       {/* Filter Panels */}
-      <div className={`space-y-4 mb-8 p-5 bg-[#FFFFFF] border border-[#E7E2D9] rounded-sm shadow-xs ${mobileFilterOpen ? "block" : "hidden sm:block"}`}>
+      <div className={`space-y-4 mb-8 p-5 bg-[#FFFFFF] border border-[#E5E5E5] rounded-none shadow-xs ${mobileFilterOpen ? "block" : "hidden sm:block"}`}>
         <div className="flex flex-wrap items-center justify-between gap-4">
           {/* Fit Selector */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-sans font-semibold text-[#78716C] uppercase">Fit:</span>
+            <span className="text-[11px] font-sans font-semibold text-[#71717A] uppercase">Fit:</span>
             {availableFits.map((fit) => (
               <button
                 key={fit}
                 onClick={() => setSelectedFit(selectedFit === fit ? null : fit)}
-                className={`px-3 py-1 text-xs font-sans uppercase rounded-sm border transition-all ${
+                className={`px-3 py-1 text-xs font-sans uppercase rounded-none border transition-all ${
                   selectedFit === fit
-                    ? "bg-[#8B1E1E] border-[#8B1E1E] text-white font-bold shadow-xs"
-                    : "border-[#E7E2D9] bg-[#FDFCF7] text-[#57534E] hover:text-[#1C1917]"
+                    ? "bg-[#0A0A0A] border-[#0A0A0A] text-white font-bold shadow-xs"
+                    : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
                 }`}
               >
                 {fit}
@@ -151,15 +151,15 @@ export function CollectionFilterClient({
 
           {/* Size Selector */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] font-sans font-semibold text-[#78716C] uppercase">Size:</span>
+            <span className="text-[11px] font-sans font-semibold text-[#71717A] uppercase">Size:</span>
             {availableSizes.map((size) => (
               <button
                 key={size}
                 onClick={() => setSelectedSize(selectedSize === size ? null : size)}
-                className={`min-w-[32px] px-2.5 py-1 text-xs font-sans font-bold uppercase rounded-sm border transition-all ${
+                className={`min-w-[32px] px-2.5 py-1 text-xs font-sans font-bold uppercase rounded-none border transition-all ${
                   selectedSize === size
-                    ? "bg-[#8B1E1E] border-[#8B1E1E] text-white shadow-xs"
-                    : "border-[#E7E2D9] bg-[#FDFCF7] text-[#57534E] hover:text-[#1C1917]"
+                    ? "bg-[#0A0A0A] border-[#0A0A0A] text-white shadow-xs"
+                    : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
                 }`}
               >
                 {size}
@@ -169,33 +169,33 @@ export function CollectionFilterClient({
 
           {/* Price Range */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[11px] font-sans font-semibold text-[#78716C] uppercase">Price:</span>
+            <span className="text-[11px] font-sans font-semibold text-[#71717A] uppercase">Price:</span>
             <button
               onClick={() => setSelectedPriceRange(selectedPriceRange === "under-1500" ? null : "under-1500")}
-              className={`px-3 py-1 text-xs font-sans rounded-sm border transition-all ${
+              className={`px-3 py-1 text-xs font-sans rounded-none border transition-all ${
                 selectedPriceRange === "under-1500"
-                  ? "bg-[#8B1E1E] border-[#8B1E1E] text-white font-bold shadow-xs"
-                  : "border-[#E7E2D9] bg-[#FDFCF7] text-[#57534E] hover:text-[#1C1917]"
+                  ? "bg-[#0A0A0A] border-[#0A0A0A] text-white font-bold shadow-xs"
+                  : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
               }`}
             >
               &lt; ₹1,500
             </button>
             <button
               onClick={() => setSelectedPriceRange(selectedPriceRange === "1500-2500" ? null : "1500-2500")}
-              className={`px-3 py-1 text-xs font-sans rounded-sm border transition-all ${
+              className={`px-3 py-1 text-xs font-sans rounded-none border transition-all ${
                 selectedPriceRange === "1500-2500"
-                  ? "bg-[#8B1E1E] border-[#8B1E1E] text-white font-bold shadow-xs"
-                  : "border-[#E7E2D9] bg-[#FDFCF7] text-[#57534E] hover:text-[#1C1917]"
+                  ? "bg-[#0A0A0A] border-[#0A0A0A] text-white font-bold shadow-xs"
+                  : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
               }`}
             >
               ₹1,500 - ₹2,500
             </button>
             <button
               onClick={() => setSelectedPriceRange(selectedPriceRange === "above-2500" ? null : "above-2500")}
-              className={`px-3 py-1 text-xs font-sans rounded-sm border transition-all ${
+              className={`px-3 py-1 text-xs font-sans rounded-none border transition-all ${
                 selectedPriceRange === "above-2500"
-                  ? "bg-[#8B1E1E] border-[#8B1E1E] text-white font-bold shadow-xs"
-                  : "border-[#E7E2D9] bg-[#FDFCF7] text-[#57534E] hover:text-[#1C1917]"
+                  ? "bg-[#0A0A0A] border-[#0A0A0A] text-white font-bold shadow-xs"
+                  : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
               }`}
             >
               &gt; ₹2,500
@@ -217,12 +217,12 @@ export function CollectionFilterClient({
 
       {/* Product Grid */}
       {filteredProducts.length === 0 ? (
-        <div className="py-20 text-center bg-[#FFFFFF] border border-[#E7E2D9] rounded-sm p-8">
-          <p className="text-lg font-serif font-bold text-[#1C1917]">No silhouettes match your selected filters</p>
-          <p className="text-xs text-[#78716C] font-sans mt-2">
+        <div className="py-20 text-center bg-[#FFFFFF] border border-[#E5E5E5] rounded-none p-8">
+          <p className="text-lg font-serif font-bold text-[#0A0A0A]">No silhouettes match your selected filters</p>
+          <p className="text-xs text-[#71717A] font-sans mt-2">
             Try resetting your fit, size, or price filters to browse the collection.
           </p>
-          <Button onClick={clearAllFilters} className="mt-4 font-sans bg-[#8B1E1E] text-white hover:bg-[#6B1414] text-xs uppercase font-bold" size="sm">
+          <Button onClick={clearAllFilters} className="mt-4 font-sans bg-[#0A0A0A] text-white hover:bg-[#262626] text-xs uppercase font-bold rounded-none" size="sm">
             Clear Active Filters
           </Button>
         </div>

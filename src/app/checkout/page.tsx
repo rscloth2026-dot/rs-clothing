@@ -80,18 +80,18 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-[70vh] flex flex-col items-center justify-center bg-[#FDFCF7] p-6 text-center font-sans">
-        <div className="w-16 h-16 rounded-full bg-[#FFFFFF] border border-[#E7E2D9] flex items-center justify-center mb-5 shadow-sm">
-          <ShoppingBag className="w-7 h-7 text-[#8B1E1E] stroke-1" />
+      <div className="min-h-[70vh] flex flex-col items-center justify-center bg-[#FAFAFA] p-6 text-center font-sans">
+        <div className="w-16 h-16 rounded-full bg-[#FFFFFF] border border-[#E5E5E5] flex items-center justify-center mb-5 shadow-sm">
+          <ShoppingBag className="w-7 h-7 text-[#0A0A0A] stroke-1" />
         </div>
-        <h1 className="text-2xl sm:text-3xl font-serif font-bold uppercase text-[#1C1917] tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-serif font-bold uppercase text-[#0A0A0A] tracking-tight">
           Your Bag is Empty
         </h1>
-        <p className="text-xs text-[#78716C] mt-2 max-w-sm">
+        <p className="text-xs text-[#71717A] mt-2 max-w-sm">
           Add heavy-cotton silhouettes or signature drops before initiating checkout dispatch.
         </p>
         <Link href="/collections/all" className="mt-6">
-          <Button className="bg-[#8B1E1E] hover:bg-[#6B1414] text-white text-xs font-bold uppercase tracking-wider rounded-sm px-6 py-2.5">
+          <Button className="bg-[#0A0A0A] hover:bg-[#262626] text-white text-xs font-bold uppercase tracking-widest rounded-none px-6 py-2.5">
             Explore Collections
           </Button>
         </Link>
@@ -235,7 +235,7 @@ export default function CheckoutPage() {
             contact: formData.phone,
           },
           theme: {
-            color: "#8B1E1E",
+            color: "#0A0A0A",
           },
           handler: async function (response: any) {
             try {
@@ -285,15 +285,15 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FDFCF7] text-[#1C1917] py-8 sm:py-12 lg:py-20 font-sans">
+    <div className="min-h-screen bg-[#FAFAFA] text-[#0A0A0A] py-8 sm:py-12 lg:py-20 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Breadcrumb & Status */}
-        <div className="mb-8 sm:mb-10 pb-6 border-b border-[#E7E2D9]">
-          <div className="flex items-center space-x-2 text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#8B1E1E] mb-2">
+        <div className="mb-8 sm:mb-10 pb-6 border-b border-[#E5E5E5]">
+          <div className="flex items-center space-x-2 text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-[#71717A] mb-2">
             <Lock className="w-3.5 h-3.5 text-[#C5A059]" />
-            <span>256-BIT ENCRYPTED RAJASTHANI DISPATCH</span>
+            <span>256-BIT ENCRYPTED DISPATCH ARCHITECTURE</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-serif font-bold uppercase text-[#1C1917] tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-serif font-bold uppercase text-[#0A0A0A] tracking-tight">
             Checkout & Dispatch
           </h1>
         </div>
@@ -302,9 +302,9 @@ export default function CheckoutPage() {
           {/* Shipping Address & Details Form */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             {/* Step 1: Contact Information */}
-            <div className="p-6 sm:p-7 bg-[#FFFFFF] border border-[#E7E2D9] space-y-5 rounded-sm shadow-xs">
-              <h2 className="text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E] flex items-center space-x-2.5">
-                <span className="w-5 h-5 bg-[#8B1E1E] text-white flex items-center justify-center text-[10px] font-bold rounded-full">
+            <div className="p-6 sm:p-7 bg-[#FFFFFF] border border-[#E5E5E5] space-y-5 rounded-none shadow-xs">
+              <h2 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A0A0A] flex items-center space-x-2.5">
+                <span className="w-5 h-5 bg-[#0A0A0A] text-white flex items-center justify-center text-[10px] font-bold rounded-none">
                   1
                 </span>
                 <span>Patron Identification & Alerts</span>
@@ -312,7 +312,7 @@ export default function CheckoutPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[10px] font-sans font-semibold text-[#57534E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-sans font-semibold text-[#525252] uppercase tracking-wider mb-1.5">
                     Full Name *
                   </label>
                   <Input
@@ -321,12 +321,12 @@ export default function CheckoutPage() {
                     value={formData.fullName}
                     onChange={handleInputChange}
                     placeholder="e.g. Aarav Sharma"
-                    className="bg-[#FFFFFF] border-[#E7E2D9] text-[#1C1917] focus:border-[#C5A059] rounded-sm h-11 text-xs"
+                    className="bg-[#FAFAFA] border-[#E5E5E5] text-[#0A0A0A] focus:border-[#0A0A0A] rounded-none h-11 text-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-sans font-semibold text-[#57534E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-sans font-semibold text-[#525252] uppercase tracking-wider mb-1.5">
                     Mobile Phone (10 Digits) *
                   </label>
                   <Input
@@ -337,12 +337,12 @@ export default function CheckoutPage() {
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="9823456789"
-                    className="bg-[#FFFFFF] border-[#E7E2D9] text-[#1C1917] focus:border-[#C5A059] rounded-sm h-11 text-xs font-mono"
+                    className="bg-[#FAFAFA] border-[#E5E5E5] text-[#0A0A0A] focus:border-[#0A0A0A] rounded-none h-11 text-xs font-mono"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[10px] font-sans font-semibold text-[#57534E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-sans font-semibold text-[#525252] uppercase tracking-wider mb-1.5">
                     Email Address (For Tax Invoice & Air Waybill Tracking) *
                   </label>
                   <Input
@@ -352,16 +352,16 @@ export default function CheckoutPage() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="aarav@gmail.com"
-                    className="bg-[#FFFFFF] border-[#E7E2D9] text-[#1C1917] focus:border-[#C5A059] rounded-sm h-11 text-xs"
+                    className="bg-[#FAFAFA] border-[#E5E5E5] text-[#0A0A0A] focus:border-[#0A0A0A] rounded-none h-11 text-xs"
                   />
                 </div>
               </div>
             </div>
 
             {/* Step 2: Shipping Destination */}
-            <div className="p-6 sm:p-7 bg-[#FFFFFF] border border-[#E7E2D9] space-y-5 rounded-sm shadow-xs">
-              <h2 className="text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E] flex items-center space-x-2.5">
-                <span className="w-5 h-5 bg-[#8B1E1E] text-white flex items-center justify-center text-[10px] font-bold rounded-full">
+            <div className="p-6 sm:p-7 bg-[#FFFFFF] border border-[#E5E5E5] space-y-5 rounded-none shadow-xs">
+              <h2 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A0A0A] flex items-center space-x-2.5">
+                <span className="w-5 h-5 bg-[#0A0A0A] text-white flex items-center justify-center text-[10px] font-bold rounded-none">
                   2
                 </span>
                 <span>Delivery Address</span>
@@ -369,7 +369,7 @@ export default function CheckoutPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="sm:col-span-2">
-                  <label className="block text-[10px] font-sans font-semibold text-[#57534E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-sans font-semibold text-[#525252] uppercase tracking-wider mb-1.5">
                     Address Line 1 (Flat, House No, Haveli, Street) *
                   </label>
                   <Input
@@ -378,12 +378,12 @@ export default function CheckoutPage() {
                     value={formData.addressLine1}
                     onChange={handleInputChange}
                     placeholder="Flat 402, Skyline Residency, C-Scheme"
-                    className="bg-[#FFFFFF] border-[#E7E2D9] text-[#1C1917] focus:border-[#C5A059] rounded-sm h-11 text-xs"
+                    className="bg-[#FAFAFA] border-[#E5E5E5] text-[#0A0A0A] focus:border-[#0A0A0A] rounded-none h-11 text-xs"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[10px] font-sans font-semibold text-[#57534E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-sans font-semibold text-[#525252] uppercase tracking-wider mb-1.5">
                     Landmark (Optional)
                   </label>
                   <Input
@@ -391,12 +391,12 @@ export default function CheckoutPage() {
                     value={formData.landmark}
                     onChange={handleInputChange}
                     placeholder="Near Central Park / City Palace"
-                    className="bg-[#FFFFFF] border-[#E7E2D9] text-[#1C1917] focus:border-[#C5A059] rounded-sm h-11 text-xs"
+                    className="bg-[#FAFAFA] border-[#E5E5E5] text-[#0A0A0A] focus:border-[#0A0A0A] rounded-none h-11 text-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-sans font-semibold text-[#57534E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-sans font-semibold text-[#525252] uppercase tracking-wider mb-1.5">
                     Postal PIN Code (6 Digits) *
                   </label>
                   <Input
@@ -406,12 +406,12 @@ export default function CheckoutPage() {
                     value={formData.pincode}
                     onChange={handleInputChange}
                     placeholder="302001"
-                    className="bg-[#FFFFFF] border-[#E7E2D9] text-[#1C1917] focus:border-[#C5A059] rounded-sm h-11 text-xs font-mono"
+                    className="bg-[#FAFAFA] border-[#E5E5E5] text-[#0A0A0A] focus:border-[#0A0A0A] rounded-none h-11 text-xs font-mono"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[10px] font-sans font-semibold text-[#57534E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-sans font-semibold text-[#525252] uppercase tracking-wider mb-1.5">
                     City / District *
                   </label>
                   <Input
@@ -420,12 +420,12 @@ export default function CheckoutPage() {
                     value={formData.city}
                     onChange={handleInputChange}
                     placeholder="Jodhpur"
-                    className="bg-[#FFFFFF] border-[#E7E2D9] text-[#1C1917] focus:border-[#C5A059] rounded-sm h-11 text-xs"
+                    className="bg-[#FAFAFA] border-[#E5E5E5] text-[#0A0A0A] focus:border-[#0A0A0A] rounded-none h-11 text-xs"
                   />
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label className="block text-[10px] font-sans font-semibold text-[#57534E] uppercase tracking-wider mb-1.5">
+                  <label className="block text-[10px] font-sans font-semibold text-[#525252] uppercase tracking-wider mb-1.5">
                     State / Union Territory *
                   </label>
                   <select
@@ -433,7 +433,7 @@ export default function CheckoutPage() {
                     name="state"
                     value={formData.state}
                     onChange={handleInputChange}
-                    className="w-full h-11 bg-[#FFFFFF] border border-[#E7E2D9] rounded-sm px-3 text-xs text-[#1C1917] focus:outline-none focus:border-[#C5A059] transition-colors"
+                    className="w-full h-11 bg-[#FAFAFA] border border-[#E5E5E5] rounded-none px-3 text-xs text-[#0A0A0A] focus:outline-none focus:border-[#0A0A0A] transition-colors"
                   >
                     {INDIAN_STATES.map((s) => (
                       <option key={s} value={s}>
@@ -446,9 +446,9 @@ export default function CheckoutPage() {
             </div>
 
             {/* Step 3: Payment Method Selection */}
-            <div className="p-6 sm:p-7 bg-[#FFFFFF] border border-[#E7E2D9] space-y-5 rounded-sm shadow-xs">
-              <h2 className="text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E] flex items-center space-x-2.5">
-                <span className="w-5 h-5 bg-[#8B1E1E] text-white flex items-center justify-center text-[10px] font-bold rounded-full">
+            <div className="p-6 sm:p-7 bg-[#FFFFFF] border border-[#E5E5E5] space-y-5 rounded-none shadow-xs">
+              <h2 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A0A0A] flex items-center space-x-2.5">
+                <span className="w-5 h-5 bg-[#0A0A0A] text-white flex items-center justify-center text-[10px] font-bold rounded-none">
                   3
                 </span>
                 <span>Payment Settlement</span>
@@ -458,25 +458,25 @@ export default function CheckoutPage() {
                 {/* Razorpay Online */}
                 <div
                   onClick={() => setPaymentMethod("RAZORPAY")}
-                  className={`p-5 border cursor-pointer transition-all rounded-sm ${
+                  className={`p-5 border cursor-pointer transition-all rounded-none ${
                     paymentMethod === "RAZORPAY"
-                      ? "border-[#8B1E1E] bg-[#FAF6EE] shadow-xs"
-                      : "border-[#E7E2D9] bg-[#FFFFFF] hover:border-[#8B1E1E]/50"
+                      ? "border-[#0A0A0A] bg-[#FAFAFA] shadow-xs"
+                      : "border-[#E5E5E5] bg-[#FFFFFF] hover:border-[#0A0A0A]"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center space-x-2.5">
-                      <CreditCard className="w-4 h-4 text-[#8B1E1E]" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">Online Settlement</span>
+                      <CreditCard className="w-4 h-4 text-[#0A0A0A]" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#0A0A0A]">Online Settlement</span>
                     </div>
                     {paymentMethod === "RAZORPAY" && (
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#8B1E1E]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#0A0A0A]" />
                     )}
                   </div>
-                  <p className="text-[11px] text-[#57534E] leading-relaxed">
+                  <p className="text-[11px] text-[#525252] leading-relaxed">
                     Instant UPI (GPay, PhonePe, Paytm), Credit/Debit Cards, NetBanking via Razorpay.
                   </p>
-                  <div className="mt-3 flex items-center space-x-1.5 text-[10px] text-[#8B1E1E] font-semibold">
+                  <div className="mt-3 flex items-center space-x-1.5 text-[10px] text-[#0A0A0A] font-semibold">
                     <Zap className="w-3 h-3 text-[#C5A059]" />
                     <span>Priority Express Air Dispatch</span>
                   </div>
@@ -485,26 +485,26 @@ export default function CheckoutPage() {
                 {/* Cash on Delivery */}
                 <div
                   onClick={() => setPaymentMethod("COD")}
-                  className={`p-5 border cursor-pointer transition-all rounded-sm ${
+                  className={`p-5 border cursor-pointer transition-all rounded-none ${
                     paymentMethod === "COD"
-                      ? "border-[#8B1E1E] bg-[#FAF6EE] shadow-xs"
-                      : "border-[#E7E2D9] bg-[#FFFFFF] hover:border-[#8B1E1E]/50"
+                      ? "border-[#0A0A0A] bg-[#FAFAFA] shadow-xs"
+                      : "border-[#E5E5E5] bg-[#FFFFFF] hover:border-[#0A0A0A]"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center space-x-2.5">
-                      <Banknote className="w-4 h-4 text-[#8B1E1E]" />
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#1C1917]">Cash on Delivery</span>
+                      <Banknote className="w-4 h-4 text-[#0A0A0A]" />
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#0A0A0A]">Cash on Delivery</span>
                     </div>
                     {paymentMethod === "COD" && (
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#8B1E1E]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#0A0A0A]" />
                     )}
                   </div>
-                  <p className="text-[11px] text-[#57534E] leading-relaxed">
+                  <p className="text-[11px] text-[#525252] leading-relaxed">
                     Pay in cash or via courier UPI QR scan directly upon doorstep handover.
                   </p>
-                  <div className="mt-3 flex items-center space-x-1.5 text-[10px] text-[#8B1E1E] font-semibold">
-                    <CheckCircle2 className="w-3 h-3 text-[#8B1E1E]" />
+                  <div className="mt-3 flex items-center space-x-1.5 text-[10px] text-[#0A0A0A] font-semibold">
+                    <CheckCircle2 className="w-3 h-3 text-[#0A0A0A]" />
                     <span>Zero Surcharge Convenience</span>
                   </div>
                 </div>
@@ -514,24 +514,24 @@ export default function CheckoutPage() {
 
           {/* Right Column: Order Review */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 sm:p-7 bg-[#FFFFFF] border border-[#E7E2D9] space-y-5 lg:sticky lg:top-24 rounded-sm shadow-xs">
-              <h2 className="text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E] border-b border-[#F0ECE1] pb-3">
+            <div className="p-6 sm:p-7 bg-[#FFFFFF] border border-[#E5E5E5] space-y-5 lg:sticky lg:top-24 rounded-none shadow-xs">
+              <h2 className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A0A0A] border-b border-[#E5E5E5] pb-3">
                 Order Review ({items.length} {items.length === 1 ? "Item" : "Items"})
               </h2>
 
               {/* Items List */}
-              <div className="max-h-64 overflow-y-auto space-y-3.5 pr-1 divide-y divide-[#F0ECE1]">
+              <div className="max-h-64 overflow-y-auto space-y-3.5 pr-1 divide-y divide-[#F4F4F5]">
                 {items.map((item) => (
                   <div key={item.variantId} className="pt-3 first:pt-0 flex space-x-3.5 text-xs">
-                    <div className="relative w-12 h-16 bg-[#FAF6EE] flex-shrink-0 overflow-hidden border border-[#E7E2D9] rounded-xs">
+                    <div className="relative w-12 h-16 bg-[#F5F5F7] flex-shrink-0 overflow-hidden border border-[#E5E5E5] rounded-none">
                       <Image src={item.imageUrl} alt={item.title} fill className="object-cover" sizes="48px" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-bold text-[#1C1917] uppercase line-clamp-1 text-xs">{item.title}</p>
-                      <p className="text-[10px] text-[#78716C] font-sans uppercase tracking-wider mt-0.5">
+                      <p className="font-bold text-[#0A0A0A] uppercase line-clamp-1 text-xs">{item.title}</p>
+                      <p className="text-[10px] text-[#71717A] font-sans uppercase tracking-wider mt-0.5">
                         Size: {item.size} • Qty: {item.quantity}
                       </p>
-                      <p className="text-[#8B1E1E] font-bold tabular-nums font-serif mt-1 text-sm">
+                      <p className="text-[#0A0A0A] font-bold tabular-nums font-serif mt-1 text-sm">
                         {formatPrice(item.price * item.quantity)}
                       </p>
                     </div>
@@ -540,40 +540,40 @@ export default function CheckoutPage() {
               </div>
 
               {/* Price Calculation */}
-              <div className="border-t border-[#F0ECE1] pt-4 space-y-2 text-xs">
-                <div className="flex justify-between text-[#78716C]">
+              <div className="border-t border-[#E5E5E5] pt-4 space-y-2 text-xs">
+                <div className="flex justify-between text-[#71717A]">
                   <span className="uppercase text-[11px]">Bag Subtotal</span>
-                  <span className="tabular-nums text-[#1C1917] font-semibold">{formatPrice(subtotal)}</span>
+                  <span className="tabular-nums text-[#0A0A0A] font-semibold">{formatPrice(subtotal)}</span>
                 </div>
 
                 {discount > 0 && (
-                  <div className="flex justify-between text-[#8B1E1E]">
+                  <div className="flex justify-between text-[#0A0A0A]">
                     <span className="uppercase text-[11px]">Privilege Code ({appliedCoupon?.code})</span>
                     <span className="tabular-nums font-bold">-{formatPrice(discount)}</span>
                   </div>
                 )}
 
-                <div className="flex justify-between text-[#78716C]">
+                <div className="flex justify-between text-[#71717A]">
                   <span className="uppercase text-[11px]">Express Air Courier</span>
-                  <span className="tabular-nums text-[#1C1917]">
+                  <span className="tabular-nums text-[#0A0A0A]">
                     {shipping === 0 ? (
-                      <span className="text-[#8B1E1E] font-bold uppercase tracking-wider">Complimentary</span>
+                      <span className="text-[#0A0A0A] font-bold uppercase tracking-wider">Complimentary</span>
                     ) : (
                       formatPrice(shipping)
                     )}
                   </span>
                 </div>
 
-                <div className="pt-3 border-t border-[#F0ECE1] flex justify-between items-baseline text-[#1C1917]">
+                <div className="pt-3 border-t border-[#E5E5E5] flex justify-between items-baseline text-[#0A0A0A]">
                   <span className="uppercase text-sm font-bold tracking-wider">Settlement Total</span>
-                  <span className="text-[#8B1E1E] text-2xl font-serif font-bold tabular-nums">
+                  <span className="text-[#0A0A0A] text-2xl font-serif font-bold tabular-nums">
                     {formatPrice(total)}
                   </span>
                 </div>
               </div>
 
               {errorMessage && (
-                <div className="p-3.5 bg-red-50 border border-red-200 text-[#8B1E1E] text-xs rounded-sm">
+                <div className="p-3.5 bg-red-50 border border-red-200 text-[#991B1B] text-xs rounded-none">
                   {errorMessage}
                 </div>
               )}
@@ -582,7 +582,7 @@ export default function CheckoutPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full h-14 text-xs font-bold uppercase tracking-wider flex items-center justify-center space-x-2 rounded-sm bg-[#8B1E1E] text-white hover:bg-[#6B1414] shadow-sm transition-all"
+                className="w-full h-14 text-xs font-bold uppercase tracking-widest flex items-center justify-center space-x-2 rounded-none bg-[#0A0A0A] text-white hover:bg-[#262626] shadow-sm transition-all"
               >
                 {loading ? (
                   <span>DISPATCHING ORDER PROTOCOL...</span>
@@ -598,7 +598,7 @@ export default function CheckoutPage() {
                 )}
               </Button>
 
-              <div className="pt-3 border-t border-[#F0ECE1] text-[10px] text-[#78716C] space-y-1.5 text-center font-medium">
+              <div className="pt-3 border-t border-[#E5E5E5] text-[10px] text-[#71717A] space-y-1.5 text-center font-medium">
                 <div className="flex items-center justify-center space-x-2">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#C5A059]" />
                   <span>256-Bit SSL Encrypted Indian Gateway</span>
