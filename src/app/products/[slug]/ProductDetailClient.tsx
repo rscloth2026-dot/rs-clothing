@@ -14,11 +14,11 @@ import {
   Ruler,
   Star,
   Check,
-  ChevronDown,
-  ArrowRight,
-  Info,
   MapPin,
   Clock,
+  Zap,
+  ChevronDown,
+  X,
 } from "lucide-react";
 import { formatPrice, calculateDiscount } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -73,6 +73,10 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
   const [selectedSize, setSelectedSize] = useState<string>(product.variants[0]?.size || "M");
   const [selectedColor, setSelectedColor] = useState<string>(product.variants[0]?.color || "");
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
+  const [sizeUnit, setSizeUnit] = useState<"in" | "cm">("in");
+
+  // Accordion states
+  const [openAccordion, setOpenAccordion] = useState<string | null>("fabric");
 
   // Pincode Checker State
   const [pincodeInput, setPincodeInput] = useState("");
@@ -154,65 +158,65 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
     router.push("/checkout");
   };
 
+  const toggleAccordion = (name: string) => {
+    setOpenAccordion(openAccordion === name ? null : name);
+  };
+
   return (
-    <div className="min-h-screen bg-onyx-950 py-8 lg:py-16">
+    <div className="min-h-screen bg-[#FDFCF7] py-6 sm:py-8 lg:py-16 pb-28 lg:pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center space-x-2 text-xs font-mono uppercase text-muted-foreground mb-8">
-          <Link href="/" className="hover:text-white transition-colors">
-            HOME
+        <nav className="flex items-center space-x-2 text-[11px] font-sans uppercase font-medium text-[#78716C] mb-6 sm:mb-8">
+          <Link href="/" className="hover:text-[#1C1917] transition-colors">
+            Home
           </Link>
           <span>/</span>
-          <Link href={`/collections/${product.category.slug}`} className="hover:text-white transition-colors">
+          <Link href={`/collections/${product.category.slug}`} className="hover:text-[#1C1917] transition-colors">
             {product.category.name}
           </Link>
           <span>/</span>
-          <span className="text-volt line-clamp-1">{product.title}</span>
+          <span className="text-[#8B1E1E] font-bold">{product.title}</span>
         </nav>
 
-        {/* Main Product Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-          {/* Gallery Column */}
-          <div className="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-4">
-            {/* Thumbnails */}
+        {/* Product Grid: Left Photography Gallery & Right Console */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+          {/* Left: High-Fashion Photography Stack */}
+          <div className="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 sticky top-24">
+            {/* Vertical Thumbnail List */}
             {product.images.length > 1 && (
-              <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-visible pb-2 sm:pb-0">
+              <div className="flex sm:flex-col gap-2.5 sm:gap-3 overflow-x-auto sm:overflow-y-auto max-h-[640px] pb-2 sm:pb-0 shrink-0 select-none no-scrollbar">
                 {product.images.map((img, idx) => (
                   <button
                     key={img.id}
                     onClick={() => setActiveImageIndex(idx)}
-                    className={`relative w-16 h-20 sm:w-20 sm:h-24 bg-onyx-900 border transition-all flex-shrink-0 overflow-hidden ${
-                      activeImageIndex === idx ? "border-volt ring-1 ring-volt" : "border-border hover:border-white/50"
+                    className={`relative w-16 h-20 sm:w-20 sm:h-24 bg-[#FFFFFF] rounded-sm overflow-hidden border transition-all ${
+                      activeImageIndex === idx
+                        ? "border-[#8B1E1E] ring-1 ring-[#8B1E1E] scale-105 shadow-sm"
+                        : "border-[#E7E2D9] opacity-70 hover:opacity-100"
                     }`}
                   >
-                    <Image
-                      src={img.url}
-                      alt={img.altText || product.title}
-                      fill
-                      className="object-cover"
-                      sizes="80px"
-                    />
+                    <Image src={img.url} alt={img.altText || product.title} fill className="object-cover" sizes="80px" />
                   </button>
                 ))}
               </div>
             )}
 
-            {/* Main Stage Image */}
-            <div className="relative aspect-[3/4] flex-1 bg-onyx-900 border border-border overflow-hidden">
+            {/* Main Visual Display */}
+            <div className="relative aspect-[4/5] w-full bg-[#FFFFFF] border border-[#E7E2D9] overflow-hidden rounded-sm shadow-sm">
               <Image
                 src={primaryImage}
                 alt={product.title}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover object-center"
+                className="object-cover object-center transition-transform duration-700 hover:scale-105"
               />
 
               {/* Badges Overlay */}
-              <div className="absolute top-4 left-4 flex flex-col gap-1.5 z-10">
-                {product.isNewDrop && <Badge variant="drop">NEW DROP</Badge>}
-                {product.isBestseller && <Badge variant="default">BESTSELLER</Badge>}
-                {discountPercent > 0 && <Badge variant="dark">-{discountPercent}% OFF</Badge>}
+              <div className="absolute top-3.5 left-3.5 flex flex-col gap-1.5 z-10">
+                {product.isNewDrop && <Badge variant="crimson">NEW DROP</Badge>}
+                {product.isBestseller && <Badge variant="gold">BESTSELLER</Badge>}
+                {discountPercent > 0 && <Badge variant="default">-{discountPercent}% OFF</Badge>}
               </div>
 
               {/* Wishlist Button */}
@@ -228,83 +232,103 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                     category: product.category.name,
                   })
                 }
-                className={`absolute top-4 right-4 p-3 rounded-full backdrop-blur-md transition-all z-10 ${
+                className={`absolute top-3.5 right-3.5 p-3 rounded-full backdrop-blur-md transition-all z-10 shadow-xs ${
                   wishlisted
-                    ? "bg-volt text-black"
-                    : "bg-black/60 text-white hover:text-volt hover:bg-black/80"
+                    ? "bg-[#8B1E1E] text-white shadow-sm"
+                    : "bg-[#FFFFFF]/90 text-[#78716C] hover:text-[#8B1E1E] hover:bg-[#FFFFFF] border border-[#E7E2D9]"
                 }`}
                 aria-label="Toggle wishlist"
               >
-                <Heart className={`w-5 h-5 ${wishlisted ? "fill-black" : ""}`} />
+                <Heart className={`w-5 h-5 ${wishlisted ? "fill-white" : ""}`} />
               </button>
+
+              {/* Mobile Photo Dots Indicator */}
+              {product.images.length > 1 && (
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 sm:hidden bg-[#1C1917]/70 px-2.5 py-1 rounded-full backdrop-blur-md border border-[#E7E2D9]/30">
+                  {product.images.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImageIndex(idx)}
+                      className={`h-1.5 rounded-full transition-all ${
+                        activeImageIndex === idx ? "w-4 bg-[#C5A059]" : "w-1.5 bg-white/50"
+                      }`}
+                      aria-label={`View look ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Product Buying Details Column */}
+          {/* Right: Purchasing Console */}
           <div className="lg:col-span-5 space-y-6">
             <div>
               {/* Category & Fit Badges */}
-              <div className="flex items-center space-x-2 text-xs font-mono uppercase text-muted-foreground mb-2">
-                <span className="text-volt">{product.category.name}</span>
+              <div className="flex items-center space-x-2 text-xs font-sans uppercase font-semibold text-[#78716C] mb-2.5">
+                <span className="text-[#8B1E1E]">{product.category.name}</span>
                 <span>•</span>
-                <span className="bg-onyx-800 border border-border px-2 py-0.5 text-white">
+                <span className="bg-[#FAF6EE] border border-[#E7E2D9] px-2.5 py-0.5 text-[#1C1917] rounded-sm">
                   {product.fit} FIT
                 </span>
+                <span>•</span>
+                <span className="text-[#78716C]">380 GSM</span>
               </div>
 
               {/* Title */}
-              <h1 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white font-editorial">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#1C1917] leading-[1.08] tracking-tight">
                 {product.title}
               </h1>
 
               {/* Reviews Rating summary */}
-              <div className="flex items-center space-x-2 mt-2">
-                <div className="flex items-center text-volt">
+              <div className="flex items-center space-x-2 mt-3">
+                <div className="flex items-center text-[#C5A059]">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-volt" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#C5A059] text-[#C5A059]" />
                   ))}
                 </div>
-                <span className="text-xs font-bold text-white">5.0</span>
-                <span className="text-xs text-muted-foreground">({product.reviews.length || 18} verified ratings)</span>
+                <span className="text-xs font-bold text-[#1C1917] font-sans">5.0</span>
+                <span className="text-xs text-[#78716C] font-sans">({product.reviews.length || 18} verified patron ratings)</span>
               </div>
             </div>
 
             {/* Pricing Section */}
-            <div className="p-4 bg-onyx-900 border border-border/80 space-y-1">
+            <div className="p-4 sm:p-5 bg-[#FFFFFF] border border-[#E7E2D9] space-y-1.5 rounded-sm shadow-xs">
               <div className="flex items-baseline space-x-3">
-                <span className="text-3xl font-black text-volt tabular-nums">
+                <span className="text-3xl sm:text-4xl font-serif font-bold text-[#8B1E1E] tabular-nums">
                   {formatPrice(product.basePrice)}
                 </span>
                 {product.comparePrice && product.comparePrice > product.basePrice && (
-                  <span className="text-base text-muted-foreground line-through tabular-nums">
+                  <span className="text-base text-[#A8A29E] line-through tabular-nums font-sans">
                     {formatPrice(product.comparePrice)}
                   </span>
                 )}
                 {discountPercent > 0 && (
-                  <span className="text-xs font-mono font-bold text-green-400 bg-green-500/10 px-2 py-0.5 border border-green-500/20">
+                  <span className="text-xs font-sans font-bold text-white bg-[#8B1E1E] px-2.5 py-0.5 rounded-xs">
                     SAVE {discountPercent}%
                   </span>
                 )}
               </div>
-              <p className="text-[11px] text-muted-foreground">
-                Inclusive of all taxes across India. Free shipping on orders above ₹999.
+              <p className="text-[11px] text-[#78716C] font-sans">
+                Inclusive of all Indian taxes. Free express air shipping on orders above ₹999.
               </p>
             </div>
 
             {/* Color Swatches */}
             {uniqueColors.length > 0 && (
               <div className="space-y-2">
-                <div className="flex justify-between items-center text-xs font-mono uppercase">
-                  <span className="text-muted-foreground">Color:</span>
-                  <span className="text-white font-bold">{selectedColor || uniqueColors[0]?.name}</span>
+                <div className="flex justify-between items-center text-xs font-sans uppercase">
+                  <span className="text-[#78716C] font-semibold">Color Shade:</span>
+                  <span className="text-[#1C1917] font-bold">{selectedColor || uniqueColors[0]?.name}</span>
                 </div>
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2.5">
                   {uniqueColors.map((c) => (
                     <button
                       key={c.name}
                       onClick={() => setSelectedColor(c.name)}
-                      className={`w-8 h-8 rounded-full border-2 transition-transform ${
-                        selectedColor === c.name ? "border-volt scale-110" : "border-border hover:scale-105"
+                      className={`w-9 h-9 rounded-full border-2 transition-all ${
+                        selectedColor === c.name
+                          ? "border-[#8B1E1E] ring-2 ring-[#8B1E1E]/20 scale-110 shadow-xs"
+                          : "border-[#E7E2D9] hover:scale-105"
                       }`}
                       style={{ backgroundColor: c.hex }}
                       title={c.name}
@@ -315,19 +339,19 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
             )}
 
             {/* Size Selector & Size Guide Trigger */}
-            <div className="space-y-2.5">
-              <div className="flex justify-between items-center text-xs font-mono uppercase">
-                <span className="text-muted-foreground">Select Size:</span>
+            <div className="space-y-3">
+              <div className="flex justify-between items-center text-xs font-sans uppercase">
+                <span className="text-[#78716C] font-semibold">Select Size:</span>
                 <button
                   onClick={() => setIsSizeGuideOpen(true)}
-                  className="flex items-center space-x-1 text-volt hover:underline"
+                  className="flex items-center space-x-1.5 text-[#8B1E1E] hover:underline underline-offset-4 font-bold"
                 >
                   <Ruler className="w-3.5 h-3.5" />
                   <span>Indian Size Guide</span>
                 </button>
               </div>
 
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-5 gap-2.5">
                 {availableSizes.map((size) => {
                   const variant = product.variants.find((v) => v.size === size);
                   const isStockOut = !variant || variant.stockQuantity <= 0;
@@ -336,12 +360,12 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                       key={size}
                       disabled={isStockOut}
                       onClick={() => setSelectedSize(size)}
-                      className={`h-12 flex flex-col items-center justify-center border font-mono font-bold transition-all ${
+                      className={`h-12 flex flex-col items-center justify-center border font-sans font-bold rounded-sm active:scale-95 transition-all ${
                         isStockOut
-                          ? "border-border/40 text-muted-foreground/30 line-through cursor-not-allowed bg-onyx-900"
+                          ? "border-[#E7E2D9] text-[#A8A29E] line-through cursor-not-allowed bg-[#FAF6EE]"
                           : selectedSize === size
-                          ? "bg-volt border-volt text-black shadow-[0_0_15px_rgba(204,255,0,0.3)]"
-                          : "border-border bg-onyx-800 text-white hover:border-volt hover:text-volt"
+                          ? "bg-[#8B1E1E] border-[#8B1E1E] text-white shadow-xs scale-[1.02]"
+                          : "border-[#E7E2D9] bg-[#FFFFFF] text-[#1C1917] hover:border-[#8B1E1E]"
                       }`}
                     >
                       <span className="text-sm">{size}</span>
@@ -352,9 +376,9 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
 
               {/* Stock Warning Banner */}
               {isLowStock && (
-                <div className="flex items-center space-x-1.5 text-xs text-amber-400 font-mono pt-1">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>⚡ Only {activeVariant.stockQuantity} pieces left in size {selectedSize}!</span>
+                <div className="flex items-center space-x-2 text-xs text-[#8B1E1E] font-sans font-semibold pt-1">
+                  <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#C5A059]" />
+                  <span>Only {activeVariant.stockQuantity} pieces left in size {selectedSize}!</span>
                 </div>
               )}
             </div>
@@ -364,18 +388,18 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
               <Button
                 onClick={handleAddToCart}
                 disabled={isOutOfStock || isAdding}
-                className="w-full h-14 text-sm font-black uppercase tracking-wider flex items-center justify-center space-x-2"
+                className="w-full h-14 bg-[#8B1E1E] hover:bg-[#6B1414] text-white text-sm font-sans font-bold uppercase tracking-wider flex items-center justify-center space-x-2.5 shadow-sm rounded-sm"
               >
                 {isAdding ? (
                   <>
-                    <Check className="w-5 h-5 text-black" />
+                    <Check className="w-5 h-5 text-white stroke-[3]" />
                     <span>ADDING TO BAG...</span>
                   </>
                 ) : isOutOfStock ? (
                   <span>OUT OF STOCK</span>
                 ) : (
                   <>
-                    <ShoppingBag className="w-5 h-5 text-black" />
+                    <ShoppingBag className="w-5 h-5 text-white stroke-[2.5]" />
                     <span>ADD TO BAG • {formatPrice(product.basePrice)}</span>
                   </>
                 )}
@@ -384,25 +408,26 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
               <Button
                 onClick={handleBuyNow}
                 disabled={isOutOfStock}
-                variant="secondary"
-                className="w-full h-12 text-xs font-black uppercase tracking-wider"
+                variant="outline"
+                className="w-full h-12 text-xs font-sans font-bold uppercase tracking-wider flex items-center justify-center space-x-2 border-[#8B1E1E] text-[#8B1E1E] hover:bg-[#FAF6EE] rounded-sm bg-white"
               >
-                ⚡ INSTANT BUY NOW (COD / UPI)
+                <Zap className="w-4 h-4 text-[#C5A059]" />
+                <span>INSTANT 1-CLICK CHECKOUT (COD / UPI)</span>
               </Button>
             </div>
 
             {/* Indian PIN Code Delivery Checker */}
-            <div className="p-4 bg-onyx-900 border border-border space-y-3">
-              <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-white">
-                <MapPin className="w-4 h-4 text-volt" />
-                <span>Delivery Estimator (Pan-India)</span>
+            <div className="p-4 bg-[#FFFFFF] border border-[#E7E2D9] space-y-3 rounded-sm shadow-xs">
+              <div className="flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-wider text-[#1C1917]">
+                <MapPin className="w-4 h-4 text-[#8B1E1E]" />
+                <span>BlueDart Delivery Estimator</span>
               </div>
 
               <form onSubmit={handlePincodeCheck} className="flex space-x-2">
                 <input
                   type="text"
                   maxLength={6}
-                  placeholder="Enter 6-digit PIN code (e.g. 560038)"
+                  placeholder="Enter 6-digit PIN (e.g. 302001)"
                   value={pincodeInput}
                   onChange={(e) => {
                     const val = e.target.value.replace(/\D/g, "");
@@ -411,113 +436,147 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                       setPincodeResult(checkIndianPincode(val));
                     }
                   }}
-                  className="flex-1 bg-onyx-800 border border-border px-3 py-2 text-xs font-mono text-white placeholder:text-muted-foreground focus:outline-none focus:border-volt"
+                  className="flex-1 bg-[#FDFCF7] border border-[#E7E2D9] px-3.5 py-2 text-xs font-sans text-[#1C1917] placeholder:text-[#A8A29E] focus:outline-none focus:border-[#C5A059] rounded-sm"
                 />
-                <Button type="submit" size="sm" variant="outline">
+                <Button type="submit" size="sm" className="bg-[#1C1917] hover:bg-black text-white text-xs font-sans font-bold">
                   Check
                 </Button>
               </form>
 
-              {pincodeError && <p className="text-[11px] text-destructive">{pincodeError}</p>}
+              {pincodeError && <p className="text-[11px] text-red-600 font-sans">{pincodeError}</p>}
 
               {pincodeResult && (
-                <div className="text-xs space-y-1 bg-onyx-800/80 p-3 border border-border/60">
-                  <p className="text-white font-bold flex items-center space-x-1.5">
-                    <Clock className="w-3.5 h-3.5 text-volt" />
-                    <span>Expected delivery by: <strong className="text-volt">{pincodeResult.deliveryDateStr}</strong></span>
+                <div className="text-xs space-y-1.5 bg-[#FAF6EE] p-3.5 border border-[#E7E2D9] rounded-sm font-sans">
+                  <p className="text-[#1C1917] font-semibold flex items-center space-x-2">
+                    <Clock className="w-3.5 h-3.5 text-[#8B1E1E]" />
+                    <span>Expected arrival by: <strong className="text-[#8B1E1E]">{pincodeResult.deliveryDateStr}</strong></span>
                   </p>
-                  <p className="text-muted-foreground text-[11px]">
-                    Delivering to <strong>{pincodeResult.city}, {pincodeResult.state}</strong>
+                  <p className="text-[#78716C] text-[11px]">
+                    Shipping to <strong>{pincodeResult.city}, {pincodeResult.state}</strong>
                   </p>
-                  <div className="flex items-center space-x-2 text-[10px] text-volt pt-1 font-mono">
+                  <div className="flex items-center space-x-3 text-[10px] text-[#8B1E1E] pt-1 font-semibold">
                     <span>✓ BlueDart Air Transit</span>
                     <span>•</span>
-                    <span>✓ Cash on Delivery Available</span>
+                    <span>✓ COD Available</span>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Product Narrative & Fabric Specs */}
-            <div className="border-t border-border pt-6 space-y-4">
-              <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-white mb-2">
-                  Garment Architecture
-                </h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {product.description}
-                </p>
+            {/* Accordion Specifications Section */}
+            <div className="border-t border-[#E7E2D9] pt-4 space-y-3 font-sans">
+              {/* Accordion 1: Fabric & Craft */}
+              <div className="border border-[#E7E2D9] bg-[#FFFFFF] rounded-sm overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => toggleAccordion("fabric")}
+                  className="w-full p-3.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#1C1917] text-left"
+                >
+                  <span>Fabric & Craft Architecture</span>
+                  <ChevronDown className={`w-4 h-4 text-[#8B1E1E] transition-transform ${openAccordion === "fabric" ? "rotate-180" : ""}`} />
+                </button>
+                {openAccordion === "fabric" && (
+                  <div className="p-3.5 pt-0 text-xs text-[#57534E] leading-relaxed border-t border-[#F0ECE1] space-y-2">
+                    <p>{product.description}</p>
+                    {product.fabricDetails && (
+                      <p className="text-[#1C1917] font-semibold text-[11px] pt-1">
+                        Composition: {product.fabricDetails}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
 
-              {product.fabricDetails && (
-                <div className="p-3 bg-onyx-900 border border-border space-y-1">
-                  <span className="text-[10px] font-mono text-volt uppercase">Textile Composition:</span>
-                  <p className="text-xs text-white font-medium">{product.fabricDetails}</p>
-                </div>
-              )}
+              {/* Accordion 2: Care & Maintenance */}
+              <div className="border border-[#E7E2D9] bg-[#FFFFFF] rounded-sm overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => toggleAccordion("care")}
+                  className="w-full p-3.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#1C1917] text-left"
+                >
+                  <span>Wash & Longevity Instructions</span>
+                  <ChevronDown className={`w-4 h-4 text-[#8B1E1E] transition-transform ${openAccordion === "care" ? "rotate-180" : ""}`} />
+                </button>
+                {openAccordion === "care" && (
+                  <div className="p-3.5 pt-0 text-xs text-[#57534E] leading-relaxed border-t border-[#F0ECE1]">
+                    <p>{product.careInstructions || "Machine wash cold inside out with like colors. Do not bleach or tumble dry. Dry flat in shade. Iron low on reverse; avoid direct heat on silicone graphics."}</p>
+                  </div>
+                )}
+              </div>
 
-              {product.careInstructions && (
-                <div className="p-3 bg-onyx-900 border border-border space-y-1">
-                  <span className="text-[10px] font-mono text-muted-foreground uppercase">Wash & Care:</span>
-                  <p className="text-xs text-muted-foreground">{product.careInstructions}</p>
-                </div>
-              )}
+              {/* Accordion 3: Shipping & Returns */}
+              <div className="border border-[#E7E2D9] bg-[#FFFFFF] rounded-sm overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => toggleAccordion("shipping")}
+                  className="w-full p-3.5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#1C1917] text-left"
+                >
+                  <span>Express Logistics & 7-Day Exchange</span>
+                  <ChevronDown className={`w-4 h-4 text-[#8B1E1E] transition-transform ${openAccordion === "shipping" ? "rotate-180" : ""}`} />
+                </button>
+                {openAccordion === "shipping" && (
+                  <div className="p-3.5 pt-0 text-xs text-[#57534E] leading-relaxed border-t border-[#F0ECE1] space-y-1">
+                    <p>• Free Express Air Shipping on prepaid and COD orders above ₹999 across all Indian PIN codes.</p>
+                    <p>• 7-Day hassle-free doorstep size exchange. Instant courier reverse-pickup scheduled at your doorstep.</p>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Brand Perks Strip */}
-            <div className="grid grid-cols-2 gap-3 pt-4 border-t border-border text-[11px] text-muted-foreground">
+            <div className="grid grid-cols-2 gap-3 pt-2 text-[11px] text-[#78716C] font-sans">
               <div className="flex items-center space-x-2">
-                <Truck className="w-4 h-4 text-volt" />
-                <span>Free Express Shipping &gt; ₹999</span>
+                <Truck className="w-4 h-4 text-[#8B1E1E]" />
+                <span>Free Express Air &gt; ₹999</span>
               </div>
               <div className="flex items-center space-x-2">
-                <RefreshCw className="w-4 h-4 text-volt" />
+                <RefreshCw className="w-4 h-4 text-[#8B1E1E]" />
                 <span>7-Day Doorstep Exchange</span>
               </div>
               <div className="flex items-center space-x-2">
-                <ShieldCheck className="w-4 h-4 text-volt" />
-                <span>100% Pre-Shrunk Fabric</span>
+                <ShieldCheck className="w-4 h-4 text-[#8B1E1E]" />
+                <span>100% Pre-Shrunk Cotton</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Sparkles className="w-4 h-4 text-volt" />
-                <span>Anti-Sag Collar Ribbing</span>
+                <Sparkles className="w-4 h-4 text-[#C5A059]" />
+                <span>Reinforced Anti-Sag Collar</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Verified Reviews Section */}
-        <div className="mt-24 pt-16 border-t border-border">
+        <div className="mt-20 pt-16 border-t border-[#E7E2D9]">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
             <div>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-volt">
-                CUSTOMER FEEDBACK
+              <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#8B1E1E] font-bold">
+                COMMUNITY FEEDBACK
               </span>
-              <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white font-editorial">
-                VERIFIED FIT REVIEWS
+              <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
+                Verified Fit Reviews
               </h2>
             </div>
-            <span className="text-xs text-muted-foreground mt-2 sm:mt-0 font-mono">
-              Overall Fit Rating: 4.9 / 5 (100% True To Oversized Silhouette)
+            <span className="text-xs text-[#78716C] mt-2 sm:mt-0 font-sans">
+              Overall Fit Rating: 5.0 / 5 (True To Heavyweight Drape)
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {product.reviews.map((rev) => (
-              <div key={rev.id} className="p-5 bg-onyx-900 border border-border space-y-2">
+              <div key={rev.id} className="p-6 bg-[#FFFFFF] border border-[#E7E2D9] space-y-2 rounded-sm shadow-xs">
                 <div className="flex items-center justify-between">
-                  <div className="flex text-volt">
+                  <div className="flex text-[#C5A059]">
                     {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-volt" />
+                      <Star key={i} className="w-3.5 h-3.5 fill-[#C5A059] text-[#C5A059]" />
                     ))}
                   </div>
-                  <span className="text-[10px] font-mono text-muted-foreground">
+                  <span className="text-[10px] font-sans text-[#A8A29E]">
                     {new Date(rev.createdAt).toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" })}
                   </span>
                 </div>
-                <h4 className="text-sm font-bold uppercase text-white">{rev.title}</h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">{rev.comment}</p>
-                <div className="pt-2 text-[11px] text-volt font-mono">
+                <h4 className="text-sm font-semibold uppercase text-[#1C1917] font-sans">{rev.title}</h4>
+                <p className="text-xs text-[#57534E] leading-relaxed font-sans">{rev.comment}</p>
+                <div className="pt-2 text-[11px] text-[#8B1E1E] font-sans font-semibold">
                   {rev.customerName} • Verified Purchase
                 </div>
               </div>
@@ -527,17 +586,17 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
 
         {/* Related Products Section */}
         {relatedProducts.length > 0 && (
-          <div className="mt-24 pt-16 border-t border-border">
+          <div className="mt-20 pt-16 border-t border-[#E7E2D9]">
             <div className="mb-10">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-volt">
+              <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#8B1E1E] font-bold">
                 COMPLETE THE COLLECTION
               </span>
-              <h2 className="text-2xl sm:text-4xl font-black uppercase tracking-tight text-white font-editorial">
-                YOU MIGHT ALSO LIKE
+              <h2 className="text-2xl sm:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
+                You Might Also Like
               </h2>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
               {relatedProducts.map((p) => (
                 <ProductCard
                   key={p.id}
@@ -559,64 +618,172 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
         )}
       </div>
 
-      {/* Sticky Mobile Add To Bag Bar */}
-      <div className="fixed bottom-0 inset-x-0 bg-onyx-950/95 backdrop-blur-md p-3 border-t border-border z-30 lg:hidden flex items-center justify-between space-x-3">
-        <div>
-          <span className="text-[10px] font-mono uppercase text-muted-foreground block">
-            SIZE: {selectedSize}
-          </span>
-          <span className="text-base font-extrabold text-volt tabular-nums">
-            {formatPrice(product.basePrice)}
-          </span>
+      {/* Mobile Dedicated Purchasing Action Dock */}
+      <div className="fixed bottom-0 inset-x-0 bg-[#FFFFFF]/95 backdrop-blur-2xl border-t border-[#E7E2D9] px-4 pt-2.5 pb-[max(env(safe-area-inset-bottom,12px),12px)] z-40 lg:hidden shadow-lg">
+        <div className="flex items-center gap-2.5">
+          {/* Wishlist Button */}
+          <button
+            onClick={() =>
+              toggleWishlist({
+                productId: product.id,
+                title: product.title,
+                slug: product.slug,
+                price: product.basePrice,
+                comparePrice: product.comparePrice,
+                imageUrl: primaryImage,
+                category: product.category.name,
+              })
+            }
+            className={`w-12 h-12 rounded-sm border flex items-center justify-center shrink-0 active:scale-95 transition-all ${
+              wishlisted
+                ? "bg-[#8B1E1E] border-[#8B1E1E] text-white shadow-xs"
+                : "bg-[#FFFFFF] border-[#E7E2D9] text-[#78716C] hover:text-[#1C1917]"
+            }`}
+            aria-label="Wishlist"
+          >
+            <Heart className={`w-5 h-5 ${wishlisted ? "fill-white" : ""}`} />
+          </button>
+
+          {/* Quick Size Pill */}
+          <button
+            onClick={() => setIsSizeGuideOpen(true)}
+            className="h-12 px-3 bg-[#FAF6EE] border border-[#E7E2D9] rounded-sm flex flex-col justify-center items-start shrink-0 active:scale-95 transition-transform"
+            aria-label="Select size or view size guide"
+          >
+            <span className="text-[9px] font-sans font-bold text-[#78716C] uppercase leading-none">SIZE</span>
+            <span className="text-xs font-sans font-bold text-[#8B1E1E] flex items-center gap-1 mt-0.5">
+              {selectedSize} <ChevronDown className="w-3 h-3 text-[#8B1E1E]" />
+            </span>
+          </button>
+
+          {/* Full-width High-Impact ADD TO BAG Button */}
+          <Button
+            onClick={handleAddToCart}
+            disabled={isOutOfStock || isAdding}
+            className="flex-1 h-12 bg-[#8B1E1E] hover:bg-[#6B1414] text-white text-xs font-sans font-bold uppercase tracking-wider rounded-sm flex items-center justify-center space-x-2"
+          >
+            {isAdding ? (
+              <>
+                <Check className="w-4 h-4 text-white stroke-[3]" />
+                <span>ADDING...</span>
+              </>
+            ) : isOutOfStock ? (
+              <span>OUT OF STOCK</span>
+            ) : (
+              <>
+                <ShoppingBag className="w-4 h-4 text-white stroke-[2.5]" />
+                <span>ADD TO BAG • {formatPrice(product.basePrice)}</span>
+              </>
+            )}
+          </Button>
         </div>
-        <Button onClick={handleAddToCart} disabled={isOutOfStock} className="flex-1 h-12 text-xs font-bold">
-          {isOutOfStock ? "OUT OF STOCK" : "ADD TO BAG"}
-        </Button>
       </div>
 
-      {/* Size Guide Modal */}
+      {/* Indian Size Guide Modal */}
       {isSizeGuideOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="bg-onyx-900 border border-border max-w-lg w-full p-6 space-y-5 shadow-2xl">
-            <div className="flex justify-between items-center border-b border-border pb-3">
-              <h3 className="text-lg font-black uppercase text-white font-editorial">
-                INDIAN STREETWEAR SIZE GUIDE
-              </h3>
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-[#FFFFFF] border-t sm:border border-[#E7E2D9] max-w-lg w-full p-6 space-y-4 shadow-2xl rounded-t-2xl sm:rounded-sm max-h-[85vh] overflow-y-auto">
+            {/* Mobile drag handle */}
+            <div className="w-12 h-1 bg-[#E7E2D9] rounded-full mx-auto sm:hidden mb-2" />
+
+            <div className="flex justify-between items-center border-b border-[#F0ECE1] pb-3">
+              <div className="flex items-center space-x-2">
+                <Ruler className="w-4 h-4 text-[#8B1E1E]" />
+                <h3 className="text-base font-serif font-bold uppercase text-[#1C1917]">
+                  Indian Streetwear Size Guide
+                </h3>
+              </div>
               <button
                 onClick={() => setIsSizeGuideOpen(false)}
-                className="text-muted-foreground hover:text-white p-1"
+                className="text-[#78716C] hover:text-[#1C1917] p-1.5 rounded-full hover:bg-[#FAF6EE]"
+                aria-label="Close size guide"
               >
-                ✕
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            <p className="text-xs text-muted-foreground">
-              Our tees are cut with an intentional <strong>oversized drop-shoulder silhouette</strong>. If you want a regular fit, consider sizing down one size.
-            </p>
+            {/* Unit Switcher */}
+            <div className="flex justify-between items-center text-xs font-sans">
+              <p className="text-[#78716C]">
+                Intentionally engineered for <strong>dropped-shoulder boxy drape</strong>.
+              </p>
+              <div className="flex border border-[#E7E2D9] bg-[#FAF6EE] p-0.5 rounded-sm text-[10px]">
+                <button
+                  onClick={() => setSizeUnit("in")}
+                  className={`px-2.5 py-0.5 rounded-sm font-bold transition-colors ${
+                    sizeUnit === "in" ? "bg-[#8B1E1E] text-white" : "text-[#78716C]"
+                  }`}
+                >
+                  IN
+                </button>
+                <button
+                  onClick={() => setSizeUnit("cm")}
+                  className={`px-2.5 py-0.5 rounded-sm font-bold transition-colors ${
+                    sizeUnit === "cm" ? "bg-[#8B1E1E] text-white" : "text-[#78716C]"
+                  }`}
+                >
+                  CM
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Pick Size Direct In Sheet */}
+            <div className="space-y-1.5 font-sans">
+              <span className="text-[10px] uppercase font-semibold text-[#78716C]">Pick your size:</span>
+              <div className="grid grid-cols-5 gap-2">
+                {availableSizes.map((size) => (
+                  <button
+                    key={size}
+                    onClick={() => {
+                      setSelectedSize(size);
+                    }}
+                    className={`py-2 text-xs font-bold rounded-sm border transition-all ${
+                      selectedSize === size
+                        ? "bg-[#8B1E1E] border-[#8B1E1E] text-white shadow-xs"
+                        : "bg-[#FAF6EE] border-[#E7E2D9] text-[#1C1917]"
+                    }`}
+                  >
+                    {size}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             {/* Table */}
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs text-left border-collapse font-mono">
+            <div className="overflow-x-auto border border-[#E7E2D9] rounded-sm font-sans">
+              <table className="w-full text-xs text-left border-collapse">
                 <thead>
-                  <tr className="bg-onyx-800 text-volt border-b border-border">
-                    <th className="p-2">SIZE</th>
-                    <th className="p-2">CHEST (IN)</th>
-                    <th className="p-2">LENGTH (IN)</th>
-                    <th className="p-2">SHOULDER (IN)</th>
+                  <tr className="bg-[#FAF6EE] text-[#8B1E1E] border-b border-[#E7E2D9] font-bold">
+                    <th className="p-2.5">SIZE</th>
+                    <th className="p-2.5">CHEST ({sizeUnit.toUpperCase()})</th>
+                    <th className="p-2.5">LENGTH ({sizeUnit.toUpperCase()})</th>
+                    <th className="p-2.5">SHOULDER ({sizeUnit.toUpperCase()})</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-border/60 text-white">
-                  <tr><td className="p-2 font-bold text-volt">S</td><td className="p-2">42</td><td className="p-2">28.5</td><td className="p-2">21</td></tr>
-                  <tr><td className="p-2 font-bold text-volt">M</td><td className="p-2">44</td><td className="p-2">29.5</td><td className="p-2">22</td></tr>
-                  <tr><td className="p-2 font-bold text-volt">L</td><td className="p-2">46</td><td className="p-2">30.5</td><td className="p-2">23</td></tr>
-                  <tr><td className="p-2 font-bold text-volt">XL</td><td className="p-2">48</td><td className="p-2">31.5</td><td className="p-2">24</td></tr>
-                  <tr><td className="p-2 font-bold text-volt">XXL</td><td className="p-2">50</td><td className="p-2">32.5</td><td className="p-2">25</td></tr>
+                <tbody className="divide-y divide-[#F0ECE1] text-[#1C1917]">
+                  {sizeUnit === "in" ? (
+                    <>
+                      <tr className={selectedSize === "S" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">S</td><td className="p-2.5">42</td><td className="p-2.5">28.5</td><td className="p-2.5">21</td></tr>
+                      <tr className={selectedSize === "M" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">M</td><td className="p-2.5">44</td><td className="p-2.5">29.5</td><td className="p-2.5">22</td></tr>
+                      <tr className={selectedSize === "L" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">L</td><td className="p-2.5">46</td><td className="p-2.5">30.5</td><td className="p-2.5">23</td></tr>
+                      <tr className={selectedSize === "XL" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">XL</td><td className="p-2.5">48</td><td className="p-2.5">31.5</td><td className="p-2.5">24</td></tr>
+                      <tr className={selectedSize === "XXL" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">XXL</td><td className="p-2.5">50</td><td className="p-2.5">32.5</td><td className="p-2.5">25</td></tr>
+                    </>
+                  ) : (
+                    <>
+                      <tr className={selectedSize === "S" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">S</td><td className="p-2.5">107</td><td className="p-2.5">72</td><td className="p-2.5">53</td></tr>
+                      <tr className={selectedSize === "M" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">M</td><td className="p-2.5">112</td><td className="p-2.5">75</td><td className="p-2.5">56</td></tr>
+                      <tr className={selectedSize === "L" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">L</td><td className="p-2.5">117</td><td className="p-2.5">77</td><td className="p-2.5">58</td></tr>
+                      <tr className={selectedSize === "XL" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">XL</td><td className="p-2.5">122</td><td className="p-2.5">80</td><td className="p-2.5">61</td></tr>
+                      <tr className={selectedSize === "XXL" ? "bg-[#FAF6EE]" : ""}><td className="p-2.5 font-bold text-[#8B1E1E]">XXL</td><td className="p-2.5">127</td><td className="p-2.5">83</td><td className="p-2.5">63.5</td></tr>
+                    </>
+                  )}
                 </tbody>
               </table>
             </div>
 
-            <Button onClick={() => setIsSizeGuideOpen(false)} className="w-full">
-              GOT IT, CLOSE GUIDE
+            <Button onClick={() => setIsSizeGuideOpen(false)} className="w-full font-bold h-12 bg-[#8B1E1E] text-white hover:bg-[#6B1414] font-sans text-xs uppercase tracking-wider">
+              CONFIRM SIZE {selectedSize} • RETURN TO PIECE
             </Button>
           </div>
         </div>

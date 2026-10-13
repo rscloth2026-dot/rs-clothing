@@ -1,14 +1,52 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
-import { ProductCard } from "@/components/product/ProductCard";
 import { CollectionFilterClient } from "./CollectionFilterClient";
+
+import type { Metadata } from "next";
+import { SITE_CONFIG } from "@/lib/seo";
 
 export const revalidate = 60;
 
 interface PageProps {
   params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = params;
+  let title = "All Garments";
+  let description = "Engineered heavyweight Rajasthani streetwear silhouettes.";
+
+  if (slug === "new-drops") {
+    title = "New Drops & Archival Releases";
+    description = "The latest heavyweight drops straight from our Jodhpur atelier workshop.";
+  } else if (slug === "bestsellers") {
+    title = "Bestsellers & Signature Silhouettes";
+    description = "India's most coveted oversized tees, hoodies, and puddle denim.";
+  } else if (slug !== "all") {
+    const category = await prisma.category.findUnique({ where: { slug } });
+    if (category) {
+      title = category.name;
+      description = category.description || description;
+    }
+  }
+
+  const canonicalUrl = `${SITE_CONFIG.url}/collections/${slug}`;
+
+  return {
+    title: `${title} | RS Clothing Atelier Jodhpur`,
+    description: `${description} Free express shipping across India on orders above ₹999.`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: `${title} | RS Clothing Atelier Jodhpur`,
+      description,
+      url: canonicalUrl,
+      images: [{ url: SITE_CONFIG.ogImage }],
+    },
+  };
 }
 
 export default async function CollectionPage({ params, searchParams }: PageProps) {
@@ -26,9 +64,9 @@ export default async function CollectionPage({ params, searchParams }: PageProps
       // Check if it's a virtual collection like 'new-drops' or 'bestsellers'
       if (slug === "new-drops") {
         categoryTitle = "New Drops";
-        categoryDesc = "The latest heavyweight drops straight from the workshop.";
+        categoryDesc = "The latest heavyweight drops straight from the Jodhpur workshop.";
       } else if (slug === "bestsellers") {
-        categoryTitle = "Bestsellers";
+        categoryTitle = "Imperial Bestsellers";
         categoryDesc = "The most wanted oversized tees and puddle denim in India.";
       } else {
         notFound();
@@ -70,17 +108,18 @@ export default async function CollectionPage({ params, searchParams }: PageProps
   });
 
   return (
-    <div className="min-h-screen bg-onyx-950 py-12">
+    <div className="min-h-screen bg-[#FDFCF7] py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Collection Header */}
-        <div className="mb-10 pb-8 border-b border-border">
-          <div className="text-[11px] font-mono font-bold uppercase tracking-widest text-volt mb-2">
-            COLLECTION // {slug.toUpperCase()}
+        <div className="mb-8 sm:mb-10 pb-6 sm:pb-8 border-b border-[#E7E2D9]">
+          <div className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E] mb-2 flex items-center space-x-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8B1E1E]" />
+            <span>ATELIER ARCHIVE // {slug.toUpperCase()}</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-black uppercase tracking-tight text-white font-editorial">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#1C1917] tracking-tight">
             {categoryTitle}
           </h1>
-          <p className="text-xs sm:text-sm text-muted-foreground mt-2 max-w-xl">
+          <p className="text-xs sm:text-sm text-[#78716C] font-sans mt-2 max-w-xl leading-relaxed">
             {categoryDesc}
           </p>
         </div>

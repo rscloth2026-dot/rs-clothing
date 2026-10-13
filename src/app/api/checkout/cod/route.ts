@@ -4,10 +4,31 @@ import { prisma } from "@/lib/db";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { customerName, customerEmail, customerPhone, address, items, couponCode } = body;
+    const customer = body.customer || {};
+    const customerName = body.customerName || customer.fullName;
+    const customerEmail = body.customerEmail || customer.email;
+    const customerPhone = body.customerPhone || customer.phone;
+    const address = body.address || {
+      fullName: customerName,
+      phone: customerPhone,
+      addressLine1: customer.addressLine1 || "",
+      landmark: customer.landmark || "",
+      city: customer.city || "",
+      state: customer.state || "",
+      pincode: customer.pincode || "",
+    };
+    const items = body.items;
+    const couponCode = body.couponCode;
 
-    if (!customerName || !customerEmail || !customerPhone || !address || !items || items.length === 0) {
+    if (!customerName || !customerEmail || !customerPhone || !items || items.length === 0) {
       return NextResponse.json({ error: "Missing required order information" }, { status: 400 });
+    }
+
+    if (!address.addressLine1?.trim() || !address.city?.trim() || !address.state?.trim() || !address.pincode?.trim()) {
+      return NextResponse.json(
+        { error: "Complete shipping destination (address, city, state, and 6-digit PIN code) is required" },
+        { status: 400 }
+      );
     }
 
     // Verify variants and calculate total server-side
@@ -73,7 +94,7 @@ export async function POST(req: Request) {
     const totalAmount = Math.max(0, calculatedSubtotal - discount + shippingFee);
 
     // Generate unique order number
-    const orderNumber = `KULT-COD-${Date.now().toString().slice(-6)}`;
+    const orderNumber = `RS-COD-${Date.now().toString().slice(-6)}`;
 
     // Execute atomic order creation and stock decrement
     const createdOrder = await prisma.$transaction(async (tx) => {

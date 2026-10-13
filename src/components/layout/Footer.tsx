@@ -1,14 +1,54 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ShieldCheck, RefreshCw, Truck, Zap } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  ShieldCheck,
+  RefreshCw,
+  Truck,
+  Lock,
+} from "lucide-react";
+import {
+  InstagramIcon,
+  WhatsAppIcon,
+  YoutubeIcon,
+  TwitterIcon,
+  FacebookIcon,
+  PinterestIcon,
+} from "@/components/ui/social-icons";
 import { Button } from "@/components/ui/button";
 
 export function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [settings, setSettings] = useState({
+    site_name: "RS Clothing",
+    brand_tagline: "Marwar Atelier // Jodhpur",
+    instagram: "https://instagram.com/rsclothing.jodhpur",
+    whatsapp: "+91 98765 43210",
+    youtube: "https://youtube.com/@rsclothing",
+    twitter: "https://x.com/rsclothing",
+    facebook: "https://facebook.com/rsclothing.jodhpur",
+    pinterest: "https://pinterest.com/rsclothing",
+    support_email: "concierge@rsclothing.in",
+    phone: "+91 98765 43210",
+  });
+
+  useEffect(() => {
+    fetch("/api/settings")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.settings) {
+          setSettings((prev) => ({ ...prev, ...data.settings }));
+        }
+      })
+      .catch(() => {
+        // Fallback to initial state gracefully
+      });
+  }, []);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,48 +69,50 @@ export function Footer() {
     }
   };
 
+  const whatsappClean = settings.whatsapp.replace(/[^0-9]/g, "");
+
   return (
-    <footer className="bg-onyx-950 border-t border-border text-foreground pt-16 pb-12">
-      {/* Brand Guarantees Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 mb-12 border-b border-border/60">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-onyx-800 border border-border text-volt rounded-sm">
-              <Truck className="w-5 h-5" />
+    <footer className="bg-[#F9F7F2] border-t border-[#E7E2D9] text-[#78716C] pt-16 pb-12">
+      {/* Brand Guarantees Bar (Sandstone White Cards) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 mb-12 border-b border-[#E7E2D9]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div className="p-4 bg-white border border-[#E7E2D9] rounded-[2px] flex items-center space-x-3.5 shadow-sm hover:border-[#C5A059]/60 hover:shadow-md transition-all duration-300">
+            <div className="p-2.5 bg-[#F4EFE6] border border-[#E7E2D9] text-[#8B1E1E] rounded-sm shrink-0">
+              <Truck className="w-4 h-4" />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-white">Free Express Shipping</p>
-              <p className="text-[11px] text-muted-foreground">On all orders above ₹999 across India</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#1C1917]">Free Express Air</p>
+              <p className="text-[11px] text-[#78716C]">Orders &gt; ₹999 via BlueDart</p>
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-onyx-800 border border-border text-volt rounded-sm">
-              <RefreshCw className="w-5 h-5" />
+          <div className="p-4 bg-white border border-[#E7E2D9] rounded-[2px] flex items-center space-x-3.5 shadow-sm hover:border-[#C5A059]/60 hover:shadow-md transition-all duration-300">
+            <div className="p-2.5 bg-[#F4EFE6] border border-[#E7E2D9] text-[#8B1E1E] rounded-sm shrink-0">
+              <RefreshCw className="w-4 h-4" />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-white">7-Day Doorstep Exchange</p>
-              <p className="text-[11px] text-muted-foreground">Hassle-free size swaps & easy pickups</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#1C1917]">7-Day Doorstep Swap</p>
+              <p className="text-[11px] text-[#78716C]">Effortless size exchange</p>
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-onyx-800 border border-border text-volt rounded-sm">
-              <ShieldCheck className="w-5 h-5" />
+          <div className="p-4 bg-white border border-[#E7E2D9] rounded-[2px] flex items-center space-x-3.5 shadow-sm hover:border-[#C5A059]/60 hover:shadow-md transition-all duration-300">
+            <div className="p-2.5 bg-[#F4EFE6] border border-[#E7E2D9] text-[#8B1E1E] rounded-sm shrink-0">
+              <ShieldCheck className="w-4 h-4" />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-white">100% Genuine Heavyweight</p>
-              <p className="text-[11px] text-muted-foreground">240+ GSM French Terry & 14oz Denim</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#1C1917]">380 GSM Heavyweight</p>
+              <p className="text-[11px] text-[#78716C]">100% Combed French Terry</p>
             </div>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <div className="p-2.5 bg-onyx-800 border border-border text-volt rounded-sm">
-              <Zap className="w-5 h-5" />
+          <div className="p-4 bg-white border border-[#E7E2D9] rounded-[2px] flex items-center space-x-3.5 shadow-sm hover:border-[#C5A059]/60 hover:shadow-md transition-all duration-300">
+            <div className="p-2.5 bg-[#F4EFE6] border border-[#E7E2D9] text-[#8B1E1E] rounded-sm shrink-0">
+              <Lock className="w-4 h-4" />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-white">Verified Razorpay Payments</p>
-              <p className="text-[11px] text-muted-foreground">UPI, Cards, NetBanking & COD supported</p>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#1C1917]">Secure Indian Pay</p>
+              <p className="text-[11px] text-[#78716C]">UPI, COD & All Cards</p>
             </div>
           </div>
         </div>
@@ -80,23 +122,102 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Manifesto & Newsletter */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="inline-block">
-              <span className="font-extrabold text-3xl font-editorial tracking-tighter text-white">
-                KULT<span className="text-volt">.</span>
+            <Link href="/" className="flex items-baseline space-x-2 group">
+              <span className="font-serif font-bold text-2xl tracking-tight text-[#1C1917] group-hover:text-[#8B1E1E] transition-colors">
+                RS CLOTHING
+              </span>
+              <span className="text-[9px] font-sans tracking-[0.25em] text-[#C5A059] uppercase font-bold border-l border-[#E7E2D9] pl-2">
+                JODHPUR
               </span>
             </Link>
-            <p className="text-xs text-muted-foreground leading-relaxed max-w-sm">
-              Engineered for the Indian youth subculture. Heavyweight boxy silhouettes, skate-drape puddling denim, and uncompromised architectural streetwear tailoring.
+            <p className="text-xs text-[#78716C] leading-relaxed max-w-sm">
+              Architectural oversized silhouettes, heavyweight drops, and artisanal selvedge denim engineered with Royal Marwar craftsmanship from Jodhpur, Rajasthan.
             </p>
 
+            {/* Dynamic Social Media Handles (Admin Controlled) */}
             <div className="pt-2">
-              <p className="text-xs font-bold uppercase tracking-wider text-white mb-2">
-                Join The Kult // Get 10% Off First Drop
+              <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#1C1917] font-semibold mb-2.5">
+                Official Channels & Handles
+              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                {settings.instagram && (
+                  <a
+                    href={settings.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center bg-white border border-[#E7E2D9] rounded-sm text-[#57534E] hover:text-[#8B1E1E] hover:border-[#C5A059] hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
+                    aria-label="RS Clothing on Instagram"
+                  >
+                    <InstagramIcon className="w-4 h-4" />
+                  </a>
+                )}
+                {settings.whatsapp && (
+                  <a
+                    href={`https://wa.me/${whatsappClean}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center bg-white border border-[#E7E2D9] rounded-sm text-[#57534E] hover:text-[#15803D] hover:border-[#15803D] hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
+                    aria-label="Chat with RS Clothing Concierge on WhatsApp"
+                  >
+                    <WhatsAppIcon className="w-4 h-4" />
+                  </a>
+                )}
+                {settings.youtube && (
+                  <a
+                    href={settings.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center bg-white border border-[#E7E2D9] rounded-sm text-[#57534E] hover:text-[#DC2626] hover:border-[#DC2626] hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
+                    aria-label="RS Clothing on YouTube"
+                  >
+                    <YoutubeIcon className="w-4 h-4" />
+                  </a>
+                )}
+                {settings.twitter && (
+                  <a
+                    href={settings.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center bg-white border border-[#E7E2D9] rounded-sm text-[#57534E] hover:text-[#1C1917] hover:border-[#1C1917] hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
+                    aria-label="RS Clothing on X"
+                  >
+                    <TwitterIcon className="w-4 h-4" />
+                  </a>
+                )}
+                {settings.facebook && (
+                  <a
+                    href={settings.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center bg-white border border-[#E7E2D9] rounded-sm text-[#57534E] hover:text-[#1D3557] hover:border-[#1D3557] hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
+                    aria-label="RS Clothing on Facebook"
+                  >
+                    <FacebookIcon className="w-4 h-4" />
+                  </a>
+                )}
+                {settings.pinterest && (
+                  <a
+                    href={settings.pinterest}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-9 h-9 flex items-center justify-center bg-white border border-[#E7E2D9] rounded-sm text-[#57534E] hover:text-[#8B1E1E] hover:border-[#8B1E1E] hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
+                    aria-label="RS Clothing on Pinterest"
+                  >
+                    <PinterestIcon className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#1C1917] mb-2 flex items-center space-x-2">
+                <span>Join The Private Royal Atelier List</span>
+                <span className="text-[10px] font-sans text-[#8B1E1E] font-bold">// 10% Off</span>
               </p>
               {subscribed ? (
-                <div className="flex items-center space-x-2 text-volt text-xs font-bold bg-volt/10 p-3 border border-volt/30">
-                  <CheckCircle2 className="w-4 h-4" />
-                  <span>You are on the secret drop VIP list. Welcome to KULT.</span>
+                <div className="flex items-center space-x-2 text-[#1C1917] text-xs font-medium bg-white p-3 border border-[#C5A059]/50 rounded-[2px]">
+                  <CheckCircle2 className="w-4 h-4 text-[#8B1E1E]" />
+                  <span>You have been added to the royal guest list. Welcome.</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="flex max-w-md">
@@ -106,11 +227,11 @@ export function Footer() {
                     placeholder="Enter your email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 bg-onyx-800 border border-border px-3.5 py-2.5 text-xs text-white placeholder:text-muted-foreground focus:outline-none focus:border-volt"
+                    className="flex-1 bg-white border border-[#E7E2D9] px-3.5 py-2.5 text-xs text-[#1C1917] placeholder:text-[#A8A29E] focus:outline-none focus:border-[#C5A059] rounded-l-[2px]"
                   />
-                  <Button type="submit" size="default" disabled={loading} className="rounded-none">
+                  <Button type="submit" variant="default" size="default" disabled={loading} className="rounded-l-none rounded-r-[2px] font-bold rajasthan-btn-shimmer">
                     <span>{loading ? "..." : "Join"}</span>
-                    <ArrowRight className="w-4 h-4 ml-1.5" />
+                    <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                   </Button>
                 </form>
               )}
@@ -119,36 +240,31 @@ export function Footer() {
 
           {/* Shop Links */}
           <div className="space-y-3">
-            <p className="text-xs font-bold uppercase tracking-widest text-white">Collections</p>
-            <ul className="space-y-2 text-xs text-muted-foreground">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#1C1917]">Collections</p>
+            <ul className="space-y-2 text-xs text-[#78716C]">
               <li>
-                <Link href="/collections/oversized-tees" className="hover:text-volt transition-colors">
+                <Link href="/collections/oversized-tees" className="hover:text-[#8B1E1E] transition-colors">
                   Oversized T-Shirts
                 </Link>
               </li>
               <li>
-                <Link href="/collections/graphic-tees" className="hover:text-volt transition-colors">
-                  High-Density Graphic Tees
+                <Link href="/collections/graphic-tees" className="hover:text-[#8B1E1E] transition-colors">
+                  Graphic Art Drops
                 </Link>
               </li>
               <li>
-                <Link href="/collections/essential-tees" className="hover:text-volt transition-colors">
-                  Minimalist Essentials
+                <Link href="/collections/baggy-jeans" className="hover:text-[#8B1E1E] transition-colors">
+                  Baggy Puddle Denim
                 </Link>
               </li>
               <li>
-                <Link href="/collections/baggy-jeans" className="hover:text-volt transition-colors">
-                  Baggy Puddle Jeans
+                <Link href="/collections/straight-fit-jeans" className="hover:text-[#8B1E1E] transition-colors">
+                  Straight-Fit Selvedge
                 </Link>
               </li>
               <li>
-                <Link href="/collections/straight-fit-jeans" className="hover:text-volt transition-colors">
-                  Straight-Fit Vintage Denim
-                </Link>
-              </li>
-              <li>
-                <Link href="/#shop-the-look" className="hover:text-volt transition-colors">
-                  Shop The Look (Outfits)
+                <Link href="/collections/all" className="hover:text-[#8B1E1E] transition-colors">
+                  All Collections
                 </Link>
               </li>
             </ul>
@@ -156,72 +272,89 @@ export function Footer() {
 
           {/* Customer Care */}
           <div className="space-y-3">
-            <p className="text-xs font-bold uppercase tracking-widest text-white">Customer Support</p>
-            <ul className="space-y-2 text-xs text-muted-foreground">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#1C1917]">Client Concierge</p>
+            <ul className="space-y-2 text-xs text-[#78716C]">
               <li>
-                <Link href="/account" className="hover:text-volt transition-colors">
-                  Track Your Order
+                <Link href="/account" className="hover:text-[#8B1E1E] transition-colors">
+                  Track BlueDart Delivery
                 </Link>
               </li>
               <li>
-                <Link href="/exchanges" className="hover:text-volt transition-colors">
-                  Exchanges & Returns
+                <Link href="/exchanges" className="hover:text-[#8B1E1E] transition-colors">
+                  7-Day Doorstep Exchanges
                 </Link>
               </li>
               <li>
-                <Link href="/size-guide" className="hover:text-volt transition-colors">
+                <Link href="/size-guide" className="hover:text-[#8B1E1E] transition-colors">
                   Indian Size Guide
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-volt transition-colors">
-                  Contact Concierge
+                <Link href="/contact" className="hover:text-[#8B1E1E] transition-colors">
+                  Studio Concierge
                 </Link>
               </li>
               <li className="pt-2">
-                <span className="block text-[11px] text-white font-mono">WhatsApp Support:</span>
-                <span className="text-volt font-mono font-bold">+91 98765 43210</span>
+                <span className="block text-[10px] text-[#78716C] font-mono">WhatsApp Concierge:</span>
+                <a
+                  href={`https://wa.me/${whatsappClean}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#1C1917] font-mono font-semibold hover:text-[#15803D] transition-colors"
+                >
+                  {settings.whatsapp}
+                </a>
+              </li>
+              <li className="pt-1">
+                <span className="block text-[10px] text-[#78716C] font-mono">Direct Email:</span>
+                <a
+                  href={`mailto:${settings.support_email}`}
+                  className="text-[#1C1917] font-mono text-[11px] hover:text-[#8B1E1E] transition-colors"
+                >
+                  {settings.support_email}
+                </a>
               </li>
             </ul>
           </div>
 
           {/* Trust & Company */}
           <div className="space-y-3">
-            <p className="text-xs font-bold uppercase tracking-widest text-white">Company</p>
-            <ul className="space-y-2 text-xs text-muted-foreground">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#1C1917]">Atelier Studio</p>
+            <ul className="space-y-2 text-xs text-[#78716C]">
               <li>
-                <Link href="/about" className="hover:text-volt transition-colors">
-                  Brand Manifesto
+                <Link href="/about" className="hover:text-[#8B1E1E] transition-colors">
+                  Royal Heritage Manifesto
                 </Link>
               </li>
               <li>
-                <Link href="/admin" className="hover:text-volt transition-colors text-volt">
-                  Admin Control Center ⚡
+                <Link href="/contact" className="hover:text-[#8B1E1E] transition-colors">
+                  Jodhpur Headquarters (Marwar)
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-volt transition-colors">
-                  Terms & Conditions
-                </Link>
+                <span className="block text-[11px] text-[#78716C] mt-3">Logistics Partners:</span>
+                <div className="flex items-center space-x-2 text-[10px] font-mono text-[#1C1917] mt-1">
+                  <span className="px-2 py-0.5 bg-white border border-[#E7E2D9] rounded-[2px]">BlueDart Air</span>
+                  <span className="px-2 py-0.5 bg-white border border-[#E7E2D9] rounded-[2px]">Delhivery</span>
+                </div>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-volt transition-colors">
-                  Privacy Policy
-                </Link>
+                <span className="block text-[11px] text-[#78716C] mt-2">Atelier Hub:</span>
+                <span className="text-[11px] text-[#1C1917] font-medium">Jodhpur, Rajasthan 342001</span>
               </li>
             </ul>
           </div>
         </div>
 
         {/* Bottom bar with copyright and Indian payment badges */}
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between text-xs text-muted-foreground space-y-4 md:space-y-0">
-          <p>© {new Date().getFullYear()} KULT STREETWEAR INDIA. All rights reserved.</p>
-          <div className="flex items-center space-x-3 font-mono text-[11px] text-white">
-            <span className="px-2 py-1 bg-onyx-800 border border-border">UPI</span>
-            <span className="px-2 py-1 bg-onyx-800 border border-border">RAZORPAY</span>
-            <span className="px-2 py-1 bg-onyx-800 border border-border">VISA / MC</span>
-            <span className="px-2 py-1 bg-onyx-800 border border-border">RUPAY</span>
-            <span className="px-2 py-1 bg-onyx-800 border border-border">COD</span>
+        <div className="mt-12 pt-8 border-t border-[#E7E2D9] flex flex-col md:flex-row items-center justify-between text-xs text-[#78716C] space-y-4 md:space-y-0">
+          <p>© {new Date().getFullYear()} RS CLOTHING RAJASTHAN ATELIER INDIA. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-1.5 font-mono text-[10px] text-[#78716C]">
+            <span className="px-2 py-0.5 bg-white border border-[#E7E2D9] rounded-[2px] text-[#1C1917]">UPI 2.0</span>
+            <span className="px-2 py-0.5 bg-white border border-[#E7E2D9] rounded-[2px] text-[#1C1917]">RAZORPAY SECURE</span>
+            <span className="px-2 py-0.5 bg-white border border-[#E7E2D9] rounded-[2px] text-[#1C1917]">VISA / MASTERCARD</span>
+            <span className="px-2 py-0.5 bg-white border border-[#E7E2D9] rounded-[2px] text-[#1C1917]">RUPAY</span>
+            <span className="px-2 py-0.5 bg-[#F4EFE6] border border-[#E7E2D9] rounded-[2px] text-[#8B1E1E] font-bold">COD AVAILABLE</span>
           </div>
         </div>
       </div>

@@ -21,7 +21,8 @@ const METRO_PIN_PREFIXES: Record<string, { city: string; state: string; days: nu
   "60": { city: "Chennai", state: "Tamil Nadu", days: 3 },
   "70": { city: "Kolkata", state: "West Bengal", days: 3 },
   "38": { city: "Ahmedabad", state: "Gujarat", days: 3 },
-  "30": { city: "Jaipur", state: "Rajasthan", days: 3 },
+  "34": { city: "Jodhpur (Atelier Origin)", state: "Rajasthan", days: 1 },
+  "30": { city: "Jaipur", state: "Rajasthan", days: 2 },
   "16": { city: "Chandigarh", state: "Punjab", days: 3 },
   "68": { city: "Kochi", state: "Kerala", days: 4 },
 };

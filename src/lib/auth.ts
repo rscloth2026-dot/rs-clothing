@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { prisma } from "./db";
 
-const AUTH_COOKIE_NAME = "kult_session";
-const SESSION_SECRET = process.env.SESSION_SECRET || "kult_streetwear_secret_key_2026_jwt_token_auth";
+export const AUTH_COOKIE_NAME = "rs_session";
+const SESSION_SECRET = process.env.SESSION_SECRET || "rs_clothing_secret_key_2026_jwt_token_auth";
 
 export interface SessionUser {
   id: string;

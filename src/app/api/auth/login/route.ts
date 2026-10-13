@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import * as bcrypt from "bcryptjs";
 import { prisma } from "@/lib/db";
-import { createSessionToken } from "@/lib/auth";
+import { createSessionToken, AUTH_COOKIE_NAME } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     });
 
     // Set secure HTTP-only cookie
-    cookies().set("kult_session", token, {
+    cookies().set(AUTH_COOKIE_NAME, token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",

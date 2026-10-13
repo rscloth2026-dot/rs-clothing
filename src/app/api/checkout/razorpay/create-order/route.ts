@@ -20,6 +20,12 @@ export async function POST(req: Request) {
       if (!variant) {
         return NextResponse.json({ error: "Item not found" }, { status: 400 });
       }
+      if (variant.stockQuantity < item.quantity) {
+        return NextResponse.json(
+          { error: `Insufficient stock for ${variant.product.title} (Size: ${variant.size}). Only ${variant.stockQuantity} units remaining.` },
+          { status: 400 }
+        );
+      }
       calculatedSubtotal += (variant.product.basePrice + variant.additionalPrice) * item.quantity;
     }
 
@@ -80,7 +86,7 @@ export async function POST(req: Request) {
       orderId: razorpayOrderId,
       amount: finalAmount * 100, // paise
       currency: "INR",
-      keyId: razorpayKeyId || "rzp_test_mock_kult_2026",
+      keyId: razorpayKeyId || "rzp_test_mock_rs_2026",
       isMock: !razorpayKeyId,
       finalAmount,
     });

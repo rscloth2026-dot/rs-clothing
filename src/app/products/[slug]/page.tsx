@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/db";
 import { ProductDetailClient } from "./ProductDetailClient";
+import { generateProductSchema, generateBreadcrumbSchema, SITE_CONFIG } from "@/lib/seo";
 
 export const revalidate = 60;
 
@@ -17,18 +18,36 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 
   if (!product) {
-    return { title: "Product Not Found | KULT" };
+    return { title: "Product Not Found | RS Clothing" };
   }
 
-  const primaryImage = product.images[0]?.url || "/placeholder.jpg";
+  const primaryImage = product.images[0]?.url || SITE_CONFIG.ogImage;
+  const canonicalUrl = `${SITE_CONFIG.url}/products/${product.slug}`;
 
   return {
-    title: `${product.title} | KULT Streetwear India`,
-    description: `${product.description} Available in ${product.fit} fit with 100% combed cotton. Free express shipping in India above ₹999.`,
+    title: product.title,
+    description: `${product.description} Hand-crafted in ${product.fit} fit with 100% long-staple cotton. Complimentary Express BlueDart Air Shipping across India above ₹999.`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title: `${product.title} - KULT`,
+      title: `${product.title} | RS Clothing Atelier Jodhpur`,
       description: product.description,
-      images: [{ url: primaryImage }],
+      url: canonicalUrl,
+      images: [
+        {
+          url: primaryImage,
+          width: 1200,
+          height: 1500,
+          alt: product.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.title,
+      description: product.description,
+      images: [primaryImage],
     },
   };
 }
@@ -66,35 +85,23 @@ export default async function ProductDetailPage({ params }: PageProps) {
     take: 4,
   });
 
-  // JSON-LD Structured Data for Google Rich Snippets
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: product.title,
-    image: product.images.map((img) => img.url),
-    description: product.description,
-    sku: product.variants[0]?.sku || product.slug,
-    brand: {
-      "@type": "Brand",
-      name: "KULT",
-    },
-    offers: {
-      "@type": "Offer",
-      url: `https://kult.in/products/${product.slug}`,
-      priceCurrency: "INR",
-      price: product.basePrice,
-      availability: product.variants.some((v) => v.stockQuantity > 0)
-        ? "https://schema.org/InStock"
-        : "https://schema.org/OutOfStock",
-      itemCondition: "https://schema.org/NewCondition",
-    },
-  };
+  // Comprehensive JSON-LD Structured Data
+  const productSchema = generateProductSchema(product);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: product.category?.name || "Collections", url: `/collections/${product.category?.slug || "all"}` },
+    { name: product.title, url: `/products/${product.slug}` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <ProductDetailClient product={product} relatedProducts={relatedProducts} />
     </>

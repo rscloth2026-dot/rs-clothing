@@ -62,9 +62,9 @@ export async function POST(req: Request) {
         },
         variants: {
           create: variants && variants.length > 0 ? variants : [
-            { sku: `KULT-${Date.now()}-M`, size: "M", color: "Onyx Black", colorHex: "#111111", stockQuantity: 20 },
-            { sku: `KULT-${Date.now()}-L`, size: "L", color: "Onyx Black", colorHex: "#111111", stockQuantity: 25 },
-            { sku: `KULT-${Date.now()}-XL`, size: "XL", color: "Onyx Black", colorHex: "#111111", stockQuantity: 15 },
+            { sku: `RS-${Date.now()}-M`, size: "M", color: "Onyx Black", colorHex: "#111111", stockQuantity: 20 },
+            { sku: `RS-${Date.now()}-L`, size: "L", color: "Onyx Black", colorHex: "#111111", stockQuantity: 25 },
+            { sku: `RS-${Date.now()}-XL`, size: "XL", color: "Onyx Black", colorHex: "#111111", stockQuantity: 15 },
           ],
         },
       },

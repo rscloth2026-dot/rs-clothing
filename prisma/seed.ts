@@ -115,7 +115,7 @@ async function main() {
       name: "Relaxed-Fit Jeans",
       slug: "relaxed-fit-jeans",
       description: "Roomy thigh fit tapering down to sneaker-friendly leg openings.",
-      imageUrl: "https://images.unsplash.com/photo-1542272604-780c96856592?q=80&w=1000&auto=format&fit=crop",
+      imageUrl: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1000&auto=format&fit=crop",
       displayOrder: 6,
     },
   });
@@ -243,7 +243,7 @@ async function main() {
       categoryId: catStraight.id,
       images: [
         { url: "https://images.unsplash.com/photo-1582552938357-32b906df40cb?q=80&w=1000&auto=format&fit=crop", isPrimary: true, altText: "Straight Fit Vintage Denim" },
-        { url: "https://images.unsplash.com/photo-1542272604-780c96856592?q=80&w=1000&auto=format&fit=crop", isPrimary: false, altText: "Straight Denim Back Pocket" },
+        { url: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1000&auto=format&fit=crop", isPrimary: false, altText: "Straight Denim Back Pocket" },
       ],
       variants: [
         { size: "30", color: "Deep Raw Indigo", colorHex: "#1B273D", stock: 14, sku: "KULT-STR-30-IND" },
@@ -289,7 +289,7 @@ async function main() {
       isBestseller: false,
       categoryId: catRelaxed.id,
       images: [
-        { url: "https://images.unsplash.com/photo-1542272604-780c96856592?q=80&w=1000&auto=format&fit=crop", isPrimary: true, altText: "Carpenter Workwear Jeans" },
+        { url: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1000&auto=format&fit=crop", isPrimary: true, altText: "Carpenter Workwear Jeans" },
         { url: "https://images.unsplash.com/photo-1582552938357-32b906df40cb?q=80&w=1000&auto=format&fit=crop", isPrimary: false, altText: "Carpenter Utility Detail" },
       ],
       variants: [

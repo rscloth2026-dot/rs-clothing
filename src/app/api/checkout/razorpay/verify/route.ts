@@ -5,17 +5,36 @@ import { prisma } from "@/lib/db";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const {
-      razorpay_order_id,
-      razorpay_payment_id,
-      razorpay_signature,
-      customerName,
-      customerEmail,
-      customerPhone,
-      address,
-      items,
-      couponCode,
-    } = body;
+    const razorpay_order_id = body.razorpay_order_id || body.razorpayOrderId || body.orderId;
+    const razorpay_payment_id = body.razorpay_payment_id || body.razorpayPaymentId;
+    const razorpay_signature = body.razorpay_signature || body.razorpaySignature;
+
+    const customer = body.customer || {};
+    const customerName = body.customerName || customer.fullName || "Valued Client";
+    const customerEmail = body.customerEmail || customer.email || "client@rsclothing.in";
+    const customerPhone = body.customerPhone || customer.phone || "9999999999";
+    const address = body.address || {
+      fullName: customerName,
+      phone: customerPhone,
+      addressLine1: customer.addressLine1 || "",
+      landmark: customer.landmark || "",
+      city: customer.city || "",
+      state: customer.state || "",
+      pincode: customer.pincode || "",
+    };
+    const items = body.items || [];
+    const couponCode = body.couponCode;
+
+    if (!items || items.length === 0) {
+      return NextResponse.json({ error: "Missing required order items" }, { status: 400 });
+    }
+
+    if (!address.addressLine1?.trim() || !address.city?.trim() || !address.state?.trim() || !address.pincode?.trim()) {
+      return NextResponse.json(
+        { error: "Complete shipping destination (address, city, state, and 6-digit PIN code) is required" },
+        { status: 400 }
+      );
+    }
 
     const secret = process.env.RAZORPAY_KEY_SECRET;
 
@@ -92,7 +111,7 @@ export async function POST(req: Request) {
     const shippingFee = calculatedSubtotal >= 999 ? 0 : 99;
     const totalAmount = Math.max(0, calculatedSubtotal - discount + shippingFee);
 
-    const orderNumber = `KULT-RZP-${Date.now().toString().slice(-6)}`;
+    const orderNumber = `RS-RZP-${Date.now().toString().slice(-6)}`;
 
     // Atomic transaction for order creation and stock decrement
     const createdOrder = await prisma.$transaction(async (tx) => {

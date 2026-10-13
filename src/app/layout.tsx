@@ -1,55 +1,89 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
+import { SITE_CONFIG, generateOrganizationSchema } from "@/lib/seo";
 
-const inter = Inter({
+const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+const serif = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-serif",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "KULT | Premium Gen-Z Men's Streetwear India",
-  description:
-    "Engineered heavyweight oversized T-shirts, graphic tees, and baggy puddle jeans for the Indian streetwear culture. Free express shipping on orders above ₹999.",
+  metadataBase: new URL(SITE_CONFIG.url),
+  title: {
+    default: "RS CLOTHING | Royal Jodhpur Luxury Streetwear Atelier",
+    template: "%s | RS Clothing Atelier Jodhpur",
+  },
+  description: "Luxury oversized streetwear engineered with Rajputana royal heritage from Jodhpur. 380 GSM heavyweight French Terry, handcrafted brass hardware, and architectural selvedge denim.",
   keywords: [
-    "oversized t-shirts India",
+    "RS Clothing",
+    "RS Clothing Jodhpur",
+    "Rajasthani streetwear brand",
+    "royal oversized t-shirts India",
+    "Jodhpur luxury fashion atelier",
+    "Marwar luxury streetwear",
+    "heavyweight cotton t-shirt India",
     "baggy jeans men",
-    "streetwear brand India",
-    "graphic tees",
-    "heavyweight cotton t-shirt",
-    "skate jeans",
-    "Gen-Z fashion India",
+    "quiet luxury Indian streetwear",
+    "380 GSM cotton",
   ],
-  authors: [{ name: "KULT Streetwear" }],
+  authors: [{ name: "RS Clothing" }],
+  creator: "RS Clothing",
+  publisher: "RS Clothing Atelier Pvt Ltd",
   openGraph: {
-    title: "KULT | Premium Gen-Z Men's Streetwear",
-    description: "Heavyweight drop-shoulder tees and skate-drape baggy denim. YOUR FIT. YOUR RULES.",
-    url: "https://kult.in",
-    siteName: "KULT Streetwear",
+    title: "RS CLOTHING | Royal Jodhpur Luxury Streetwear Atelier",
+    description: "Luxury oversized streetwear engineered with Rajputana royal heritage from Jodhpur.",
+    url: SITE_CONFIG.url,
+    siteName: "RS Clothing",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop",
+        url: SITE_CONFIG.ogImage,
         width: 1200,
         height: 630,
-        alt: "KULT Streetwear Campaign",
+        alt: "RS Clothing Royal Streetwear Campaign Jodhpur",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "KULT | Premium Gen-Z Men's Streetwear",
-    description: "Heavyweight drop-shoulder tees and skate-drape baggy denim. YOUR FIT. YOUR RULES.",
+    title: "RS CLOTHING | Royal Jodhpur Luxury Streetwear Atelier",
+    description: "Luxury oversized streetwear engineered with Rajputana royal heritage from Jodhpur.",
+    images: [SITE_CONFIG.ogImage],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+};
+
+export const viewport = {
+  themeColor: "#FFFFFF",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -57,14 +91,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const orgSchema = generateOrganizationSchema();
+
   return (
-    <html lang="en" className={`dark ${inter.variable}`}>
-      <body className="min-h-screen flex flex-col bg-onyx-950 text-foreground font-sans selection:bg-volt selection:text-black">
+    <html lang="en" className={`light ${sans.variable} ${serif.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+      </head>
+      <body className="min-h-screen flex flex-col bg-[#FDFCF7] text-[#1C1917] font-sans antialiased selection:bg-[#C5A059] selection:text-white">
         <AnnouncementBar />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pb-20 md:pb-0">{children}</main>
         <CartDrawer />
         <Footer />
+        <MobileBottomNav />
       </body>
     </html>
   );

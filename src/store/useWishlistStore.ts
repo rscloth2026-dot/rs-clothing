@@ -40,7 +40,7 @@ export const useWishlistStore = create<WishlistStore>()(
       },
     }),
     {
-      name: "kult_wishlist_storage",
+      name: "rs_clothing_wishlist_storage",
       storage: createJSONStorage(() => localStorage),
     }
   )

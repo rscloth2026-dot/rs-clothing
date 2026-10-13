@@ -144,7 +144,7 @@ export const useCartStore = create<CartStore>()(
       },
     }),
     {
-      name: "kult_cart_storage",
+      name: "rs_clothing_cart_storage",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         items: state.items,
