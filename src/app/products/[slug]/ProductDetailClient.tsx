@@ -215,8 +215,8 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
               {/* Badges Overlay */}
               <div className="absolute top-3.5 left-3.5 flex flex-col gap-1.5 z-10">
                 {product.isNewDrop && <Badge variant="crimson">NEW DROP</Badge>}
-                {product.isBestseller && <Badge variant="gold">BESTSELLER</Badge>}
-                {discountPercent > 0 && <Badge variant="default">-{discountPercent}% OFF</Badge>}
+                {product.isBestseller && <Badge variant="jodhpur">BESTSELLER</Badge>}
+                {discountPercent > 0 && <Badge variant="goldFoil">-{discountPercent}% OFF</Badge>}
               </div>
 
               {/* Wishlist Button */}
@@ -234,8 +234,8 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                 }
                 className={`absolute top-3.5 right-3.5 p-3 rounded-full backdrop-blur-md transition-all z-10 shadow-xs ${
                   wishlisted
-                    ? "bg-[#0A0A0A] text-white shadow-sm border border-[#0A0A0A]"
-                    : "bg-[#FFFFFF]/90 text-[#71717A] hover:text-[#0A0A0A] hover:bg-[#FFFFFF] border border-[#E5E5E5]"
+                    ? "bg-[#991B1B] text-white shadow-sm border border-[#991B1B]"
+                    : "bg-[#FFFFFF]/90 text-[#71717A] hover:text-[#1E40AF] hover:bg-[#FFFFFF] border border-[#E5E5E5]"
                 }`}
                 aria-label="Toggle wishlist"
               >
@@ -267,7 +267,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
               <div className="flex items-center space-x-2 text-xs font-sans uppercase font-semibold text-[#71717A] mb-2.5">
                 <span className="text-[#0A0A0A]">{product.category.name}</span>
                 <span>•</span>
-                <span className="bg-[#FFFFFF] border border-[#E5E5E5] px-2.5 py-0.5 text-[#0A0A0A] rounded-none">
+                <span className="bg-[#FFFFFF] border border-[#E5E5E5] px-2.5 py-0.5 text-[#1E40AF] font-bold rounded-none">
                   {product.fit} FIT
                 </span>
                 <span>•</span>
@@ -281,9 +281,9 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
 
               {/* Reviews Rating summary */}
               <div className="flex items-center space-x-2 mt-3">
-                <div className="flex items-center text-[#C5A059]">
+                <div className="flex items-center text-[#F59E0B]">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-[#C5A059] text-[#C5A059]" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
                   ))}
                 </div>
                 <span className="text-xs font-bold text-[#0A0A0A] font-sans">5.0</span>
@@ -303,7 +303,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                   </span>
                 )}
                 {discountPercent > 0 && (
-                  <span className="text-xs font-mono font-bold text-white bg-[#0A0A0A] px-2.5 py-0.5 rounded-none tracking-wider">
+                  <span className="text-xs font-mono font-bold text-white bg-[#991B1B] px-2.5 py-0.5 rounded-none tracking-wider shadow-xs">
                     SAVE {discountPercent}%
                   </span>
                 )}
@@ -327,7 +327,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                       onClick={() => setSelectedColor(c.name)}
                       className={`w-9 h-9 rounded-full border-2 transition-all ${
                         selectedColor === c.name
-                          ? "border-[#0A0A0A] ring-2 ring-[#0A0A0A]/20 scale-110 shadow-xs"
+                          ? "border-[#1E40AF] ring-2 ring-[#1E40AF]/30 scale-110 shadow-xs"
                           : "border-[#E5E5E5] hover:scale-105"
                       }`}
                       style={{ backgroundColor: c.hex }}
@@ -344,7 +344,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                 <span className="text-[#71717A] font-semibold">Select Size:</span>
                 <button
                   onClick={() => setIsSizeGuideOpen(true)}
-                  className="flex items-center space-x-1.5 text-[#0A0A0A] hover:underline underline-offset-4 font-bold"
+                  className="flex items-center space-x-1.5 text-[#1E40AF] hover:underline underline-offset-4 font-bold"
                 >
                   <Ruler className="w-3.5 h-3.5" />
                   <span>Indian Size Guide</span>
@@ -364,8 +364,8 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                         isStockOut
                           ? "border-[#E5E5E5] text-[#A1A1AA] line-through cursor-not-allowed bg-[#F4F4F5]"
                           : selectedSize === size
-                          ? "bg-[#0A0A0A] border-[#0A0A0A] text-white shadow-xs scale-[1.02]"
-                          : "border-[#E5E5E5] bg-[#FFFFFF] text-[#0A0A0A] hover:border-[#0A0A0A]"
+                          ? "bg-[#1E40AF] border-[#1E40AF] text-white shadow-xs scale-[1.02]"
+                          : "border-[#E5E5E5] bg-[#FFFFFF] text-[#0A0A0A] hover:border-[#1E40AF] hover:text-[#1E40AF]"
                       }`}
                     >
                       <span className="text-sm">{size}</span>
@@ -377,7 +377,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
               {/* Stock Warning Banner */}
               {isLowStock && (
                 <div className="flex items-center space-x-2 text-xs text-[#991B1B] font-sans font-semibold pt-1">
-                  <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#C5A059]" />
+                  <Sparkles className="w-3.5 h-3.5 shrink-0 text-[#F59E0B]" />
                   <span>Only {activeVariant.stockQuantity} pieces left in size {selectedSize}!</span>
                 </div>
               )}
@@ -388,7 +388,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
               <Button
                 onClick={handleAddToCart}
                 disabled={isOutOfStock || isAdding}
-                className="w-full h-14 bg-[#0A0A0A] hover:bg-[#262626] text-white text-sm font-sans font-bold uppercase tracking-widest flex items-center justify-center space-x-2.5 shadow-sm rounded-none transition-all duration-200"
+                className="w-full h-14 bg-[#0A0A0A] hover:bg-[#1E3A8A] text-white text-sm font-sans font-bold uppercase tracking-widest flex items-center justify-center space-x-2.5 shadow-sm rounded-none transition-all duration-200 border border-transparent hover:border-[#1E40AF]"
               >
                 {isAdding ? (
                   <>
@@ -409,9 +409,9 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                 onClick={handleBuyNow}
                 disabled={isOutOfStock}
                 variant="outline"
-                className="w-full h-12 text-xs font-sans font-bold uppercase tracking-widest flex items-center justify-center space-x-2 border-[#0A0A0A] text-[#0A0A0A] hover:bg-[#FAFAFA] rounded-none bg-white transition-all duration-200"
+                className="w-full h-12 text-xs font-sans font-bold uppercase tracking-widest flex items-center justify-center space-x-2 border-[#1E40AF] text-[#1E40AF] hover:bg-[#1E40AF] hover:text-white rounded-none bg-white transition-all duration-200 shadow-xs"
               >
-                <Zap className="w-4 h-4 text-[#C5A059]" />
+                <Zap className="w-4 h-4 text-[#F59E0B] fill-[#F59E0B]" />
                 <span>INSTANT 1-CLICK CHECKOUT (COD / UPI)</span>
               </Button>
             </div>
@@ -419,7 +419,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
             {/* Indian PIN Code Delivery Checker */}
             <div className="p-4 bg-[#FFFFFF] border border-[#E5E5E5] space-y-3 rounded-none shadow-xs">
               <div className="flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-wider text-[#0A0A0A]">
-                <MapPin className="w-4 h-4 text-[#0A0A0A]" />
+                <MapPin className="w-4 h-4 text-[#1E40AF]" />
                 <span>BlueDart Delivery Estimator</span>
               </div>
 
@@ -436,9 +436,9 @@ export function ProductDetailClient({ product, relatedProducts }: ProductProps) 
                       setPincodeResult(checkIndianPincode(val));
                     }
                   }}
-                  className="flex-1 bg-[#FAFAFA] border border-[#E5E5E5] px-3.5 py-2 text-xs font-sans text-[#0A0A0A] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#0A0A0A] rounded-none"
+                  className="flex-1 bg-[#FAFAFA] border border-[#E5E5E5] px-3.5 py-2 text-xs font-sans text-[#0A0A0A] placeholder:text-[#A1A1AA] focus:outline-none focus:border-[#1E40AF] rounded-none"
                 />
-                <Button type="submit" size="sm" className="bg-[#0A0A0A] hover:bg-[#262626] text-white text-xs font-sans font-bold rounded-none">
+                <Button type="submit" size="sm" className="bg-[#0A0A0A] hover:bg-[#1E40AF] text-white text-xs font-sans font-bold rounded-none">
                   Check
                 </Button>
               </form>

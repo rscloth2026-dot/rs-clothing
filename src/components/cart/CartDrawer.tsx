@@ -81,14 +81,14 @@ export function CartDrawer() {
           {/* Header */}
           <div className="p-5 border-b border-[#E5E5E5] flex items-center justify-between bg-[#FAFAFA]">
             <div className="flex items-center space-x-2.5">
-              <ShoppingBag className="w-4 h-4 text-[#8B1E1E]" />
+              <ShoppingBag className="w-4 h-4 text-[#1E40AF]" />
               <h2 className="text-sm font-bold uppercase tracking-wider text-[#0A0A0A]">
                 Royal Shopping Bag ({itemCount})
               </h2>
             </div>
             <button
               onClick={closeCart}
-              className="p-1.5 text-[#71717A] hover:text-[#0A0A0A] hover:bg-[#F4F4F5] rounded-none transition-colors"
+              className="p-1.5 text-[#71717A] hover:text-[#1E40AF] hover:bg-[#F4F4F5] rounded-none transition-colors"
               aria-label="Close cart"
             >
               <X className="w-5 h-5" />
@@ -98,22 +98,22 @@ export function CartDrawer() {
           {/* Free Shipping Progress Indicator */}
           <div className="bg-[#F4F4F5] p-4 border-b border-[#E5E5E5]">
             <div className="flex items-center space-x-2 text-xs font-medium mb-2 text-[#525252]">
-              <Truck className="w-4 h-4 text-[#8B1E1E] shrink-0" />
+              <Truck className="w-4 h-4 text-[#1E40AF] shrink-0" />
               {remainingForFreeShipping > 0 ? (
                 <span>
                   Add <strong className="text-[#0A0A0A]">{formatPrice(remainingForFreeShipping)}</strong> more for{" "}
-                  <strong className="text-[#8B1E1E]">FREE Express BlueDart Shipping</strong>
+                  <strong className="text-[#1E40AF]">FREE Express BlueDart Shipping</strong>
                 </span>
               ) : (
-                <span className="text-[#8B1E1E] font-bold flex items-center space-x-1.5">
-                  <Check className="w-3.5 h-3.5" />
+                <span className="text-[#1E40AF] font-bold flex items-center space-x-1.5">
+                  <Check className="w-3.5 h-3.5 text-[#1E40AF]" />
                   <span>You have unlocked FREE Pan-India Express Delivery!</span>
                 </span>
               )}
             </div>
             <div className="w-full bg-[#E5E5E5] h-1.5 rounded-full overflow-hidden">
               <div
-                className="bg-[#0A0A0A] h-full transition-all duration-500 rounded-full"
+                className="bg-[#1E40AF] h-full transition-all duration-500 rounded-full"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -282,14 +282,14 @@ export function CartDrawer() {
               {/* Direct Checkout CTA */}
               <div className="space-y-2 pt-1">
                 <Link href="/checkout" onClick={closeCart} className="block w-full">
-                  <Button className="w-full bg-[#0A0A0A] hover:bg-[#262626] text-white text-xs tracking-wider font-bold uppercase flex items-center justify-center space-x-2 h-12 shadow-sm rounded-none">
+                  <Button className="w-full bg-[#0A0A0A] hover:bg-[#1E3A8A] text-white text-xs tracking-wider font-bold uppercase flex items-center justify-center space-x-2 h-12 shadow-sm rounded-none border border-transparent hover:border-[#1E40AF] transition-colors">
                     <span>Proceed to Indian Checkout</span>
-                    <ArrowRight className="w-4 h-4 ml-1" />
+                    <ArrowRight className="w-4 h-4 ml-1 text-[#FBBF24]" />
                   </Button>
                 </Link>
                 <div className="flex items-center justify-center space-x-3 text-[10px] text-[#71717A] pt-1 font-medium">
                   <span className="flex items-center space-x-1">
-                    <ShieldCheck className="w-3 h-3 text-[#C5A059]" />
+                    <ShieldCheck className="w-3 h-3 text-[#F59E0B]" />
                     <span>256-Bit Encrypted</span>
                   </span>
                   <span>•</span>

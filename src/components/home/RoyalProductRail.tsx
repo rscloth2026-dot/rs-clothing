@@ -39,9 +39,9 @@ export function RoyalProductRail({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-[#E5E5E5]">
           <div>
             {badgeTitle && (
-              <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 bg-white border border-[#E5E5E5] rounded-full mb-2 shadow-sm">
-                <Sparkles className="w-3 h-3 text-[#C5A059]" />
-                <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#0A0A0A]">
+              <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 bg-white border border-[#1E40AF]/25 rounded-full mb-2 shadow-xs">
+                <Sparkles className="w-3 h-3 text-[#1E40AF]" />
+                <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#1E40AF]">
                   {badgeTitle}
                 </span>
               </div>
@@ -58,10 +58,10 @@ export function RoyalProductRail({
 
           <Link
             href={viewAllLink}
-            className="inline-flex items-center space-x-1.5 text-xs font-sans font-bold uppercase tracking-widest text-[#0A0A0A] hover:text-[#8B1E1E] transition-colors group"
+            className="inline-flex items-center space-x-1.5 text-xs font-sans font-bold uppercase tracking-widest text-[#0A0A0A] hover:text-[#1E40AF] transition-colors group"
           >
             <span>{viewAllText}</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#C5A059] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#1E40AF] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

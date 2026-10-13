@@ -72,11 +72,14 @@ export function Header() {
             </button>
 
             {/* Brand Logo - Cormorant Garamond Royal Heritage */}
-            <Link href="/" className="flex items-baseline space-x-2 group">
-              <span className="font-serif font-bold text-2xl sm:text-3xl tracking-tight text-[#0A0A0A] group-hover:text-[#8B1E1E] transition-colors">
+            <Link href="/" className="flex items-center space-x-2.5 group">
+              <div className="w-7 h-7 bg-[#1E40AF] text-[#FBBF24] rounded-[2px] flex items-center justify-center font-serif font-black text-xs shadow-xs group-hover:bg-[#1E3A8A] transition-colors">
+                RS
+              </div>
+              <span className="font-serif font-bold text-2xl sm:text-3xl tracking-tight text-[#0A0A0A] group-hover:text-[#1E40AF] transition-colors">
                 RS CLOTHING
               </span>
-              <span className="text-[9px] font-sans tracking-[0.25em] text-[#C5A059] font-bold uppercase border-l border-[#E5E5E5] pl-2">
+              <span className="text-[9px] font-sans tracking-[0.2em] bg-[#1E40AF]/10 text-[#1E40AF] border border-[#1E40AF]/25 px-1.5 py-0.5 font-bold uppercase rounded-[2px] hidden xs:inline-block">
                 JODHPUR
               </span>
             </Link>
@@ -87,10 +90,10 @@ export function Header() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-[#525252] hover:text-[#0A0A0A] transition-colors relative py-1 group"
+                  className="text-[#525252] hover:text-[#1E40AF] transition-colors relative py-1 group"
                 >
                   <TextRoll className="py-0.5">{link.label}</TextRoll>
-                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#0A0A0A] transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#1E40AF] transition-all duration-300 group-hover:w-full" />
                 </Link>
               ))}
             </nav>
@@ -101,22 +104,22 @@ export function Header() {
             {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="p-2.5 text-[#525252] hover:text-[#0A0A0A] transition-colors rounded-none hover:bg-[#F4F4F5] flex items-center space-x-2 text-xs font-sans"
+              className="p-2.5 text-[#525252] hover:text-[#1E40AF] transition-colors rounded-none hover:bg-[#F4F4F5] flex items-center space-x-2 text-xs font-sans"
               aria-label="Search collection"
             >
-              <Search className="w-4 h-4" />
+              <Search className="w-4 h-4 text-[#1E40AF]" />
               <span className="hidden md:inline text-[11px] text-[#71717A]">Search</span>
             </button>
 
             {/* Wishlist Icon */}
             <Link
               href="/wishlist"
-              className="p-2.5 text-[#525252] hover:text-[#0A0A0A] transition-colors relative hidden sm:flex items-center rounded-none hover:bg-[#F4F4F5]"
+              className="p-2.5 text-[#525252] hover:text-[#1E40AF] transition-colors relative hidden sm:flex items-center rounded-none hover:bg-[#F4F4F5]"
               aria-label="View wishlist"
             >
               <Heart className="w-4 h-4" />
               {mounted && wishlistItems.length > 0 && (
-                <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-[#8B1E1E] text-white text-[9px] font-bold flex items-center justify-center rounded-full shadow-sm">
+                <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-[#991B1B] text-white text-[9px] font-bold flex items-center justify-center rounded-full shadow-sm">
                   {wishlistItems.length}
                 </span>
               )}
@@ -125,7 +128,7 @@ export function Header() {
             {/* Customer Account Portal */}
             <Link
               href="/account"
-              className="p-2.5 text-[#525252] hover:text-[#0A0A0A] transition-colors flex items-center rounded-none hover:bg-[#F4F4F5]"
+              className="p-2.5 text-[#525252] hover:text-[#1E40AF] transition-colors flex items-center rounded-none hover:bg-[#F4F4F5]"
               aria-label="Customer account"
             >
               <User className="w-4 h-4" />
@@ -134,14 +137,14 @@ export function Header() {
             {/* Shopping Bag Button (Razor Hairline Atelier Pill) */}
             <button
               onClick={openCart}
-              className="tactile-btn inline-flex items-center space-x-2.5 bg-[#FFFFFF] text-[#0A0A0A] border border-[#E5E5E5] hover:border-[#0A0A0A] font-bold text-xs px-3.5 py-2 rounded-full shadow-sm ml-1 transition-all"
+              className="tactile-btn inline-flex items-center space-x-2.5 bg-[#FFFFFF] text-[#0A0A0A] border border-[#E5E5E5] hover:border-[#1E40AF] hover:shadow-[0_4px_16px_rgba(30,64,175,0.12)] font-bold text-xs px-3.5 py-2 rounded-full shadow-sm ml-1 transition-all"
               aria-label="Open shopping bag"
             >
-              <ShoppingBag className="w-3.5 h-3.5 text-[#8B1E1E]" />
+              <ShoppingBag className="w-3.5 h-3.5 text-[#1E40AF]" />
               <span className="text-[11px] font-sans tracking-wider text-[#71717A] hidden sm:inline uppercase">
                 BAG
               </span>
-              <span className="bg-[#0A0A0A] text-white font-mono font-bold text-[10px] w-5 h-5 flex items-center justify-center rounded-full shadow-sm">
+              <span className="bg-[#991B1B] text-white font-mono font-bold text-[10px] w-5 h-5 flex items-center justify-center rounded-full shadow-sm">
                 {mounted ? getItemCount() : 0}
               </span>
             </button>

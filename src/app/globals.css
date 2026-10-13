@@ -60,9 +60,41 @@
 }
 
 .rajasthan-card:hover {
-  border-color: #0A0A0A;
-  box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.08);
+  border-color: #1E40AF;
+  box-shadow: 0 12px 32px 0 rgba(30, 64, 175, 0.12);
   transform: translateY(-2px);
+}
+
+/* Jodhpur Blue Heritage Color Tokens & Accents */
+.bg-jodhpur-indigo {
+  background-color: #1E3A8A;
+}
+
+.bg-jodhpur-blue {
+  background-color: #1E40AF;
+}
+
+.text-jodhpur-blue {
+  color: #1E40AF;
+}
+
+.border-jodhpur-blue {
+  border-color: #1E40AF;
+}
+
+/* Jodhpur Announcement Bar Ambient Gradient */
+.jodhpur-gradient-bar {
+  background: linear-gradient(90deg, #0B1528 0%, #102A45 50%, #0B1528 100%);
+  border-bottom: 1px solid rgba(30, 64, 175, 0.35);
+}
+
+/* Luxury Royal Gold Foil Touch */
+.gold-foil-touch {
+  color: #C5A059;
+}
+
+.border-gold-trim {
+  border-color: rgba(197, 160, 89, 0.4);
 }
 
 .rajasthan-badge {
@@ -78,7 +110,7 @@
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #0A0A0A 20%, #8B1E1E 60%, #C5A059 100%);
+  background: linear-gradient(135deg, #0A0A0A 20%, #1E40AF 60%, #C5A059 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

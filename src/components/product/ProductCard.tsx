@@ -106,7 +106,7 @@ export function ProductCard({
 
   return (
     <div
-      className="group relative flex flex-col bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#0A0A0A] transition-all rounded-none overflow-hidden shadow-sm"
+      className="group relative flex flex-col bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#1E40AF] hover:shadow-[0_12px_28px_rgba(30,64,175,0.12)] transition-all rounded-none overflow-hidden shadow-xs"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -125,17 +125,17 @@ export function ProductCard({
         {/* Badges */}
         <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10">
           {isNewDrop && (
-            <span className="px-2 py-0.5 bg-[#8B1E1E] text-white text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-sm">
+            <span className="px-2 py-0.5 bg-[#991B1B] text-white text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
               ROYAL DROP
             </span>
           )}
           {isBestseller && (
-            <span className="px-2 py-0.5 bg-[#0A0A0A] text-white text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-sm">
+            <span className="px-2 py-0.5 bg-[#1E40AF] text-white text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
               BESTSELLER
             </span>
           )}
           {discountPercent > 0 && (
-            <span className="px-2 py-0.5 bg-[#FAFAFA] text-[#8B1E1E] border border-[#E5E5E5] text-[9px] font-sans font-bold uppercase tracking-wider rounded-none">
+            <span className="px-2 py-0.5 bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A] text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
               {discountPercent}% OFF
             </span>
           )}
@@ -146,8 +146,8 @@ export function ProductCard({
           onClick={handleWishlistToggle}
           className={`absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-90 ${
             wishlisted
-              ? "bg-[#8B1E1E] text-white shadow-sm"
-              : "bg-white/90 text-[#71717A] hover:text-[#0A0A0A] border border-[#E5E5E5] backdrop-blur-sm shadow-sm"
+              ? "bg-[#991B1B] text-white shadow-xs"
+              : "bg-white/95 text-[#71717A] hover:text-[#1E40AF] hover:border-[#1E40AF]/40 border border-[#E5E5E5] backdrop-blur-sm shadow-xs"
           }`}
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
@@ -156,7 +156,7 @@ export function ProductCard({
 
         {/* 1-Click Quick Add Size Tray (Desktop Hover Reveal) */}
         <div className="hidden lg:flex absolute bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur-md border-t border-[#E5E5E5] translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex-col gap-1.5 z-20">
-          <span className="text-[10px] font-sans uppercase font-bold text-[#71717A] tracking-wider text-center">
+          <span className="text-[10px] font-sans uppercase font-bold text-[#1E40AF] tracking-wider text-center">
             {justAdded ? "Added to Atelier Bag!" : "Quick Add Size"}
           </span>
           <div className="flex items-center justify-center gap-1.5">
@@ -175,8 +175,8 @@ export function ProductCard({
                     !inStock
                       ? "opacity-30 cursor-not-allowed bg-[#F4F4F5] text-[#A1A1AA] line-through"
                       : isSelected
-                      ? "bg-[#0A0A0A] text-white shadow-sm"
-                      : "bg-white border border-[#E5E5E5] text-[#0A0A0A] hover:border-[#0A0A0A] hover:bg-[#FAFAFA]"
+                      ? "bg-[#1E40AF] text-white shadow-xs"
+                      : "bg-white border border-[#E5E5E5] text-[#0A0A0A] hover:border-[#1E40AF] hover:text-[#1E40AF] hover:bg-[#EFF6FF]"
                   }`}
                   aria-label={`Quick add size ${size}`}
                 >
@@ -195,10 +195,10 @@ export function ProductCard({
               e.stopPropagation();
               setShowMobileSizes(!showMobileSizes);
             }}
-            className="w-8 h-8 rounded-full bg-white border border-[#E5E5E5] text-[#0A0A0A] flex items-center justify-center shadow-sm active:scale-95"
+            className="w-8 h-8 rounded-full bg-white border border-[#E5E5E5] text-[#0A0A0A] hover:border-[#1E40AF] hover:text-[#1E40AF] flex items-center justify-center shadow-xs active:scale-95"
             aria-label="Quick add size"
           >
-            <Plus className="w-4 h-4 text-[#8B1E1E]" />
+            <Plus className="w-4 h-4 text-[#1E40AF]" />
           </button>
         </div>
 
@@ -206,7 +206,7 @@ export function ProductCard({
         {showMobileSizes && (
           <div className="lg:hidden absolute inset-x-0 bottom-0 bg-white/95 backdrop-blur-md p-3 border-t border-[#E5E5E5] z-20 animate-accordion-down">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-sans uppercase font-bold text-[#71717A]">
+              <span className="text-[10px] font-sans uppercase font-bold text-[#1E40AF]">
                 Select Size
               </span>
               <button
@@ -215,7 +215,7 @@ export function ProductCard({
                   e.stopPropagation();
                   setShowMobileSizes(false);
                 }}
-                className="text-[10px] text-[#71717A] uppercase font-bold"
+                className="text-[10px] text-[#71717A] uppercase font-bold hover:text-[#1E40AF]"
               >
                 Close
               </button>
@@ -229,7 +229,7 @@ export function ProductCard({
                     key={size}
                     disabled={!inStock}
                     onClick={(e) => handleQuickAdd(size, e)}
-                    className="flex-1 min-w-[38px] h-8 bg-white border border-[#E5E5E5] text-xs font-bold text-[#0A0A0A] hover:bg-[#0A0A0A] hover:text-white rounded-none transition-colors"
+                    className="flex-1 min-w-[38px] h-8 bg-white border border-[#E5E5E5] text-xs font-bold text-[#0A0A0A] hover:bg-[#1E40AF] hover:text-white hover:border-[#1E40AF] rounded-none transition-colors"
                   >
                     {size}
                   </button>
@@ -245,10 +245,10 @@ export function ProductCard({
         <div>
           <div className="flex items-center justify-between text-[10px] font-sans text-[#71717A] uppercase tracking-wider mb-1">
             <span>{categoryName || "Royal Streetwear"}</span>
-            <span className="font-semibold text-[#0A0A0A]">{fit} FIT</span>
+            <span className="font-semibold text-[#1E40AF]">{fit} FIT</span>
           </div>
 
-          <Link href={`/products/${slug}`} className="block group-hover:text-[#8B1E1E] transition-colors">
+          <Link href={`/products/${slug}`} className="block group-hover:text-[#1E40AF] transition-colors">
             <h3 className="font-serif font-bold text-sm sm:text-base text-[#0A0A0A] line-clamp-1 leading-snug">
               {title}
             </h3>

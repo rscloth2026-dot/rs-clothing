@@ -33,15 +33,15 @@ export function BrandStory() {
   return (
     <section className="py-20 sm:py-28 bg-[#FAFAFA] border-y border-[#E5E5E5] relative overflow-hidden">
       {/* Decorative ambient subtle glow */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-[#F4F4F5] rounded-full blur-3xl opacity-60 pointer-events-none" />
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-[#1E40AF]/6 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Text */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-white border border-[#E5E5E5] rounded-full shadow-sm">
-              <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#0A0A0A]">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-white border border-[#1E40AF]/25 rounded-full shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-[#1E40AF]" />
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#1E40AF]">
                 RAJASTHANI TEXTILE LEGACY
               </span>
             </div>
@@ -57,32 +57,32 @@ export function BrandStory() {
             {/* Feature Checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
               <div className="flex items-center space-x-2.5 text-xs font-semibold text-[#0A0A0A]">
-                <CheckCircle2 className="w-4 h-4 text-[#8B1E1E] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#1E40AF] shrink-0" />
                 <span>Custom Boxy Drop-Shoulder Patterns</span>
               </div>
               <div className="flex items-center space-x-2.5 text-xs font-semibold text-[#0A0A0A]">
-                <CheckCircle2 className="w-4 h-4 text-[#8B1E1E] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#1E40AF] shrink-0" />
                 <span>Heavyweight Antique Brass Hardware</span>
               </div>
               <div className="flex items-center space-x-2.5 text-xs font-semibold text-[#0A0A0A]">
-                <CheckCircle2 className="w-4 h-4 text-[#8B1E1E] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#1E40AF] shrink-0" />
                 <span>Organic Enzyme Bio-Washed Fabrics</span>
               </div>
               <div className="flex items-center space-x-2.5 text-xs font-semibold text-[#0A0A0A]">
-                <CheckCircle2 className="w-4 h-4 text-[#8B1E1E] shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#1E40AF] shrink-0" />
                 <span>Insured Express Delivery Across India</span>
               </div>
             </div>
 
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <Link href="/about">
-                <Button className="bg-[#0A0A0A] hover:bg-[#262626] text-white font-sans text-xs uppercase tracking-widest px-6 py-6 font-semibold flex items-center space-x-2 shadow-sm rounded-none">
+                <Button className="bg-[#0A0A0A] hover:bg-[#1E3A8A] text-white font-sans text-xs uppercase tracking-widest px-6 py-6 font-semibold flex items-center space-x-2 shadow-sm rounded-none transition-colors border border-transparent hover:border-[#1E40AF]">
                   <span>Explore The Marwar Manifesto</span>
-                  <ArrowRight className="w-4 h-4 text-[#C5A059]" />
+                  <ArrowRight className="w-4 h-4 text-[#FBBF24]" />
                 </Button>
               </Link>
               <div className="flex items-center space-x-2 text-xs text-[#71717A]">
-                <ShieldCheck className="w-4 h-4 text-[#C5A059]" />
+                <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />
                 <span>7-Day Hassle-Free Royal Exchanges</span>
               </div>
             </div>
@@ -94,9 +94,9 @@ export function BrandStory() {
               {pillars.map((p) => (
                 <div
                   key={p.title}
-                  className="p-5 bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#0A0A0A] transition-all rounded-none shadow-sm group"
+                  className="p-5 bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#1E40AF] hover:shadow-[0_8px_24px_rgba(30,64,175,0.1)] transition-all rounded-none shadow-xs group"
                 >
-                  <span className="text-2xl sm:text-3xl font-serif font-bold text-[#0A0A0A] tabular-nums block group-hover:text-[#8B1E1E] transition-colors">
+                  <span className="text-2xl sm:text-3xl font-serif font-bold text-[#0A0A0A] tabular-nums block group-hover:text-[#1E40AF] transition-colors">
                     {p.stat}
                   </span>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-[#0A0A0A] mt-1 font-sans">

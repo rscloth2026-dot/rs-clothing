@@ -86,7 +86,7 @@ export function CompactProductCard({
 
   return (
     <div
-      className="group relative flex-none w-[185px] sm:w-[210px] md:w-[225px] flex flex-col bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#0A0A0A] transition-all rounded-none overflow-hidden select-none shadow-sm"
+      className="group relative flex-none w-[185px] sm:w-[210px] md:w-[225px] flex flex-col bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#1E40AF] hover:shadow-[0_8px_24px_rgba(30,64,175,0.12)] transition-all rounded-none overflow-hidden select-none shadow-xs"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
         setIsHovered(false);
@@ -108,17 +108,17 @@ export function CompactProductCard({
         {/* Discreet Heritage Badges */}
         <div className="absolute top-2 left-2 flex flex-col gap-1 z-10 pointer-events-none">
           {isNewDrop && (
-            <span className="px-1.5 py-0.5 bg-[#8B1E1E] text-white text-[8px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
+            <span className="px-1.5 py-0.5 bg-[#991B1B] text-white text-[8px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
               DROP
             </span>
           )}
           {isBestseller && (
-            <span className="px-1.5 py-0.5 bg-[#0A0A0A] text-white text-[8px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
+            <span className="px-1.5 py-0.5 bg-[#1E40AF] text-white text-[8px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
               BESTSELLER
             </span>
           )}
           {discountPercent > 0 && (
-            <span className="px-1.5 py-0.5 bg-[#FAFAFA] text-[#8B1E1E] border border-[#E5E5E5] text-[8px] font-sans font-bold uppercase tracking-wider rounded-none">
+            <span className="px-1.5 py-0.5 bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A] text-[8px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
               -{discountPercent}%
             </span>
           )}
@@ -129,8 +129,8 @@ export function CompactProductCard({
           onClick={handleWishlistToggle}
           className={`absolute top-2 right-2 z-10 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-90 ${
             wishlisted
-              ? "bg-[#8B1E1E] text-white shadow-xs"
-              : "bg-white/95 text-[#71717A] hover:text-[#0A0A0A] border border-[#E5E5E5] backdrop-blur-xs shadow-xs"
+              ? "bg-[#991B1B] text-white shadow-xs"
+              : "bg-white/95 text-[#71717A] hover:text-[#1E40AF] hover:border-[#1E40AF]/40 border border-[#E5E5E5] backdrop-blur-xs shadow-xs"
           }`}
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
@@ -144,10 +144,10 @@ export function CompactProductCard({
           }`}
         >
           <div className="flex items-center justify-between">
-            <span className="text-[9px] font-sans uppercase font-bold text-[#71717A] tracking-wider">
-              {justAdded ? "Added to Bag" : "Quick Add"}
+            <span className="text-[9px] font-sans uppercase font-bold text-[#1E40AF] tracking-wider">
+              {justAdded ? "Added to Bag" : "Quick Add Size"}
             </span>
-            {justAdded && <Check className="w-3 h-3 text-[#0A0A0A]" />}
+            {justAdded && <Check className="w-3 h-3 text-[#1E40AF]" />}
           </div>
           <div className="flex items-center gap-1">
             {availableSizes.map((size) => {
@@ -165,8 +165,8 @@ export function CompactProductCard({
                     !inStock
                       ? "opacity-30 cursor-not-allowed bg-[#F4F4F5] text-[#A1A1AA] line-through"
                       : isSelected
-                      ? "bg-[#0A0A0A] text-white shadow-xs"
-                      : "bg-white border border-[#E5E5E5] text-[#0A0A0A] hover:border-[#0A0A0A] hover:bg-[#FAFAFA]"
+                      ? "bg-[#1E40AF] text-white shadow-xs"
+                      : "bg-white border border-[#E5E5E5] text-[#0A0A0A] hover:border-[#1E40AF] hover:text-[#1E40AF] hover:bg-[#EFF6FF]"
                   }`}
                   aria-label={`Quick add size ${size}`}
                 >
@@ -185,10 +185,10 @@ export function CompactProductCard({
               e.stopPropagation();
               setShowSizes(!showSizes);
             }}
-            className="w-6 h-6 rounded-full bg-white border border-[#E5E5E5] text-[#0A0A0A] flex items-center justify-center shadow-xs"
+            className="w-6 h-6 rounded-full bg-white border border-[#E5E5E5] text-[#0A0A0A] hover:border-[#1E40AF] hover:text-[#1E40AF] flex items-center justify-center shadow-xs"
             aria-label="Toggle size options"
           >
-            <Plus className="w-3 h-3" />
+            <Plus className="w-3 h-3 text-[#1E40AF]" />
           </button>
         </div>
       </div>
@@ -198,10 +198,10 @@ export function CompactProductCard({
         <div>
           <div className="flex items-center justify-between text-[9px] font-sans text-[#71717A] uppercase tracking-wider mb-0.5">
             <span className="truncate max-w-[110px]">{categoryName || "Atelier"}</span>
-            <span className="font-semibold text-[#0A0A0A]">{fit}</span>
+            <span className="font-semibold text-[#1E40AF]">{fit}</span>
           </div>
 
-          <Link href={`/products/${slug}`} className="block group-hover:text-[#8B1E1E] transition-colors">
+          <Link href={`/products/${slug}`} className="block group-hover:text-[#1E40AF] transition-colors">
             <h3 className="font-serif font-bold text-xs sm:text-sm text-[#0A0A0A] line-clamp-1 leading-snug">
               {title}
             </h3>

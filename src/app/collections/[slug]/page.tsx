@@ -112,8 +112,8 @@ export default async function CollectionPage({ params, searchParams }: PageProps
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Collection Header */}
         <div className="mb-8 sm:mb-10 pb-6 sm:pb-8 border-b border-[#E5E5E5]">
-          <div className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E] mb-2 flex items-center space-x-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#8B1E1E]" />
+          <div className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#1E40AF] mb-2 flex items-center space-x-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1E40AF] shadow-[0_0_6px_#1E40AF] animate-pulse" />
             <span>ATELIER ARCHIVE // {slug.toUpperCase()}</span>
           </div>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-[#0A0A0A] tracking-tight">

@@ -140,8 +140,8 @@ export function CollectionFilterClient({
                 onClick={() => setSelectedFit(selectedFit === fit ? null : fit)}
                 className={`px-3 py-1 text-xs font-sans uppercase rounded-none border transition-all ${
                   selectedFit === fit
-                    ? "bg-[#0A0A0A] border-[#0A0A0A] text-white font-bold shadow-xs"
-                    : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
+                    ? "bg-[#1E40AF] border-[#1E40AF] text-white font-bold shadow-xs"
+                    : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#1E40AF] hover:border-[#1E40AF]"
                 }`}
               >
                 {fit}
@@ -158,8 +158,8 @@ export function CollectionFilterClient({
                 onClick={() => setSelectedSize(selectedSize === size ? null : size)}
                 className={`min-w-[32px] px-2.5 py-1 text-xs font-sans font-bold uppercase rounded-none border transition-all ${
                   selectedSize === size
-                    ? "bg-[#0A0A0A] border-[#0A0A0A] text-white shadow-xs"
-                    : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
+                    ? "bg-[#1E40AF] border-[#1E40AF] text-white shadow-xs"
+                    : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#1E40AF] hover:border-[#1E40AF]"
                 }`}
               >
                 {size}
@@ -174,8 +174,8 @@ export function CollectionFilterClient({
               onClick={() => setSelectedPriceRange(selectedPriceRange === "under-1500" ? null : "under-1500")}
               className={`px-3 py-1 text-xs font-sans rounded-none border transition-all ${
                 selectedPriceRange === "under-1500"
-                  ? "bg-[#0A0A0A] border-[#0A0A0A] text-white font-bold shadow-xs"
-                  : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
+                  ? "bg-[#1E40AF] border-[#1E40AF] text-white font-bold shadow-xs"
+                  : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#1E40AF] hover:border-[#1E40AF]"
               }`}
             >
               &lt; ₹1,500
@@ -184,8 +184,8 @@ export function CollectionFilterClient({
               onClick={() => setSelectedPriceRange(selectedPriceRange === "1500-2500" ? null : "1500-2500")}
               className={`px-3 py-1 text-xs font-sans rounded-none border transition-all ${
                 selectedPriceRange === "1500-2500"
-                  ? "bg-[#0A0A0A] border-[#0A0A0A] text-white font-bold shadow-xs"
-                  : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
+                  ? "bg-[#1E40AF] border-[#1E40AF] text-white font-bold shadow-xs"
+                  : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#1E40AF] hover:border-[#1E40AF]"
               }`}
             >
               ₹1,500 - ₹2,500
@@ -194,8 +194,8 @@ export function CollectionFilterClient({
               onClick={() => setSelectedPriceRange(selectedPriceRange === "above-2500" ? null : "above-2500")}
               className={`px-3 py-1 text-xs font-sans rounded-none border transition-all ${
                 selectedPriceRange === "above-2500"
-                  ? "bg-[#0A0A0A] border-[#0A0A0A] text-white font-bold shadow-xs"
-                  : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#0A0A0A] hover:border-[#0A0A0A]"
+                  ? "bg-[#1E40AF] border-[#1E40AF] text-white font-bold shadow-xs"
+                  : "border-[#E5E5E5] bg-[#FAFAFA] text-[#525252] hover:text-[#1E40AF] hover:border-[#1E40AF]"
               }`}
             >
               &gt; ₹2,500
@@ -206,7 +206,7 @@ export function CollectionFilterClient({
           {hasActiveFilters && (
             <button
               onClick={clearAllFilters}
-              className="text-xs text-[#8B1E1E] hover:underline flex items-center space-x-1 font-sans font-bold"
+              className="text-xs text-[#991B1B] hover:underline flex items-center space-x-1 font-sans font-bold"
             >
               <X className="w-3.5 h-3.5" />
               <span>Reset Filters</span>

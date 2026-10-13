@@ -133,6 +133,10 @@ export function HeroCampaign() {
           {/* Editorial Atelier gradients for sharp typography contrast */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] via-[#FAFAFA]/75 to-transparent" />
           <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#FAFAFA]/95 via-[#FAFAFA]/50 to-transparent w-3/4" />
+          
+          {/* Subtle Ambient Royal Lighting Accents */}
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#1E40AF]/8 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/3 -right-24 w-80 h-80 bg-[#C5A059]/8 rounded-full blur-3xl pointer-events-none" />
         </div>
 
         {/* Skiper-UI 41: Progressive Blur Overlays for Depth and Polish */}
@@ -159,7 +163,7 @@ export function HeroCampaign() {
               onClick={() =>
                 setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
               }
-              className="p-1 rounded-full text-[#71717A] hover:text-[#0A0A0A] transition-colors"
+              className="p-1 rounded-full text-[#71717A] hover:text-[#1E40AF] transition-colors"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -171,8 +175,8 @@ export function HeroCampaign() {
                 onClick={() => setCurrentSlide(idx)}
                 className={`px-3 py-1 rounded-full text-[10px] font-sans font-bold transition-all ${
                   currentSlide === idx
-                    ? "bg-[#0A0A0A] text-white shadow-sm"
-                    : "text-[#71717A] hover:text-[#0A0A0A]"
+                    ? "bg-[#1E40AF] text-white shadow-xs"
+                    : "text-[#71717A] hover:text-[#1E40AF]"
                 }`}
                 aria-label={`Switch to slide ${s.id}`}
               >
@@ -182,7 +186,7 @@ export function HeroCampaign() {
 
             <button
               onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-              className="p-1 rounded-full text-[#71717A] hover:text-[#0A0A0A] transition-colors"
+              className="p-1 rounded-full text-[#71717A] hover:text-[#1E40AF] transition-colors"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />
@@ -199,10 +203,12 @@ export function HeroCampaign() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center space-x-2 px-3 py-1.5 bg-white/95 border border-[#E5E5E5] text-[#0A0A0A] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-sm backdrop-blur-md"
+              className="inline-flex items-center space-x-2 px-3 py-1.5 bg-white/95 border border-[#1E40AF]/25 text-[#0A0A0A] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-xs backdrop-blur-md"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#8B1E1E] animate-pulse" />
-              <span>{slide.tag}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#1E40AF] animate-pulse shadow-[0_0_6px_#1E40AF]" />
+              <span className="text-[#1E40AF] font-bold">ROYAL ATELIER</span>
+              <span className="text-[#CBD5E1]">•</span>
+              <span className="text-[#0A0A0A]">{slide.tag.replace("ROYAL DROP 01 // ", "").replace("ROYAL DROP 02 // ", "").replace("ROYAL DROP 03 // ", "")}</span>
             </motion.div>
 
             {/* Regal Cormorant Garamond Headline */}
@@ -215,7 +221,7 @@ export function HeroCampaign() {
             >
               {slide.title}
               <br />
-              <span className="text-[#8B1E1E] italic font-normal">{slide.subtitle}</span>
+              <span className="text-[#1E40AF] italic font-normal">{slide.subtitle}</span>
             </motion.h1>
 
             {/* Subtext */}
@@ -234,10 +240,10 @@ export function HeroCampaign() {
               <Link href={slide.ctaLink} className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto h-12 min-h-[48px] bg-[#0A0A0A] text-white hover:bg-[#262626] font-bold uppercase tracking-wider text-xs px-8 rounded-none shadow-sm transition-transform flex items-center justify-center space-x-2 active:scale-[0.98]"
+                  className="w-full sm:w-auto h-12 min-h-[48px] bg-[#0A0A0A] hover:bg-[#1E3A8A] text-white font-bold uppercase tracking-wider text-xs px-8 rounded-none shadow-sm transition-all flex items-center justify-center space-x-2 active:scale-[0.98] border border-transparent hover:border-[#1E40AF]"
                 >
                   <span>{slide.ctaText}</span>
-                  <ArrowRight className="w-4 h-4 ml-1" />
+                  <ArrowRight className="w-4 h-4 ml-1 text-[#FBBF24]" />
                 </Button>
               </Link>
 
@@ -245,17 +251,17 @@ export function HeroCampaign() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-full sm:w-auto h-12 min-h-[48px] border-[#E5E5E5] bg-white text-[#0A0A0A] hover:border-[#0A0A0A] hover:bg-[#FAFAFA] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
+                  className="w-full sm:w-auto h-12 min-h-[48px] border-[#E5E5E5] bg-white text-[#0A0A0A] hover:border-[#1E40AF] hover:text-[#1E40AF] hover:bg-[#FAFAFA] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
                 >
                   <span>View All Royal Drops</span>
                 </Button>
               </Link>
             </div>
 
-            {/* Quality Specs Grid with Skiper-UI Micro-Interactions */}
+            {/* Quality Specs Grid with Color-Coded Accents */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-[#E5E5E5] max-w-md">
               <div>
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#0A0A0A] tabular-nums">
+                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#1E40AF] tabular-nums">
                   {slide.metric1}
                 </span>
                 <span className="text-[10px] font-sans uppercase tracking-widest text-[#71717A]">
@@ -263,7 +269,7 @@ export function HeroCampaign() {
                 </span>
               </div>
               <div>
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#8B1E1E] tabular-nums">
+                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#991B1B] tabular-nums">
                   {slide.metric2}
                 </span>
                 <span className="text-[10px] font-sans uppercase tracking-widest text-[#71717A]">

@@ -31,9 +31,9 @@ export function CategoryGrid({ categories }: { categories: CategoryItem[] }) {
         {/* Section Header with Royal Aesthetics & Generous Spacing */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-5 border-b border-[#E5E5E5]">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-white border border-[#E5E5E5] rounded-full shadow-sm">
-              <Sparkles className="w-3 h-3 text-[#C5A059]" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#0A0A0A]">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-white border border-[#1E40AF]/25 rounded-full shadow-xs">
+              <Sparkles className="w-3 h-3 text-[#1E40AF]" />
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#1E40AF]">
                 COLLECTION DIRECTORY
               </span>
             </div>
@@ -47,10 +47,10 @@ export function CategoryGrid({ categories }: { categories: CategoryItem[] }) {
 
           <Link
             href="/collections/all"
-            className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-[#0A0A0A] hover:text-[#8B1E1E] transition-colors group py-1"
+            className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-[#0A0A0A] hover:text-[#1E40AF] transition-colors group py-1"
           >
             <span>All Silhouettes</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#C5A059] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#1E40AF] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

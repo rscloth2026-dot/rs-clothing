@@ -116,9 +116,9 @@ export default async function HomePage() {
       <section className="py-16 sm:py-24 bg-[#FAFAFA] border-b border-[#E5E5E5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-white border border-[#E5E5E5] rounded-full mb-3 shadow-xs">
-              <Star className="w-3.5 h-3.5 fill-[#C5A059] text-[#C5A059]" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#0A0A0A]">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-white border border-[#1E40AF]/25 rounded-full mb-3 shadow-xs">
+              <Star className="w-3.5 h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#1E40AF]">
                 ROYAL COMMENDATIONS // 4.9 RATING
               </span>
             </div>
@@ -159,12 +159,12 @@ export default async function HomePage() {
             ]).map((rev, idx) => (
               <div
                 key={rev.id || idx}
-                className="p-6 bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#0A0A0A] transition-all rounded-none shadow-sm flex flex-col justify-between"
+                className="p-6 bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#1E40AF] hover:shadow-[0_12px_28px_rgba(30,64,175,0.1)] transition-all rounded-none shadow-xs flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center space-x-1 text-[#C5A059] mb-3">
+                  <div className="flex items-center space-x-1 text-[#F59E0B] mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#C5A059] text-[#C5A059]" />
+                      <Star key={i} className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />
                     ))}
                   </div>
                   <p className="text-sm text-[#262626] font-sans leading-relaxed italic mb-4">
@@ -175,13 +175,13 @@ export default async function HomePage() {
                   <div>
                     <div className="text-xs font-bold font-sans text-[#0A0A0A] flex items-center space-x-1.5">
                       <span>{rev.customerName}</span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#8B1E1E]" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#1E40AF]" />
                     </div>
                     <div className="text-[11px] text-[#71717A] font-sans">
                       {("city" in rev && rev.city) ? rev.city : "Verified Buyer"}
                     </div>
                   </div>
-                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#0A0A0A] bg-[#FAFAFA] px-2 py-0.5 rounded-none border border-[#E5E5E5]">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#1E40AF] bg-[#1E40AF]/5 px-2 py-0.5 rounded-none border border-[#1E40AF]/20">
                     {("product" in rev && rev.product?.title) ? rev.product.title : (rev as any).productTitle || "Verified"}
                   </span>
                 </div>
