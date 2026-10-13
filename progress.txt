@@ -41,3 +41,9 @@ Started: Tue Oct 13 00:33:30 IST 2026
   - Imperial Rajput Crimson (`#991B1B`): Drop indicators, urgency tags, and shopping bag quantity pill.
 - Quality Gates: Passed `npm run typecheck`, Next.js production build (32/32 routes), CodeRabbit agent review (0 findings across 17 files), and live server HTTP 200 OK responses on Home, Collection, and Product pages. Committed and pushed to GitHub main branch.
 
+### [2026-10-14] Cache & Unwanted Files Purge
+- Build & Runtime Purge: Removed 191MB `.next` stale cache and Webpack build artifacts, `tsconfig.tsbuildinfo`, and temporary files.
+- Package Cache Garbage Collection: Executed `npm cache verify` reclaiming 1.23 GB of orphaned cached packages.
+- OS & Workspace Hygiene: Purged `.DS_Store`, `._*` AppleDouble metadata, and stray log files.
+- Prevention: Expanded `.gitignore` with comprehensive patterns covering `.cache/`, `.turbo/`, editor artifacts, OS metadata, deployment directories, and debug logs.
+
