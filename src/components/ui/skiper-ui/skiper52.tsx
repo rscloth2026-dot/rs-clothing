@@ -46,7 +46,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
             <motion.div
               key={item.id || index}
               layout
-              className="relative cursor-pointer overflow-hidden rounded-xl border border-[#E7E2D9] bg-[#FDFCF7] shadow-sm transition-shadow hover:shadow-md"
+              className="relative cursor-pointer overflow-hidden rounded-xl border border-[#1E3A5F] bg-[#0B172C] shadow-sm transition-shadow hover:shadow-md"
               animate={{
                 flex: isActive ? 3.5 : 1,
               }}
@@ -140,7 +140,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
           <Link
             key={item.id || index}
             href={`/collections/${item.slug}`}
-            className="flex-shrink-0 w-[78vw] max-w-[320px] snap-center relative aspect-[3/4] rounded-xl overflow-hidden border border-[#E7E2D9] shadow-md group"
+            className="flex-shrink-0 w-[78vw] max-w-[320px] snap-center relative aspect-[3/4] rounded-xl overflow-hidden border border-[#1E3A5F] shadow-md group"
           >
             <Image
               src={item.imageUrl}

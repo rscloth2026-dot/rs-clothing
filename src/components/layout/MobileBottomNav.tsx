@@ -61,7 +61,7 @@ export function MobileBottomNav() {
       {/* Skiper-UI 41: Optical Progressive Blur above bottom dock */}
       <ProgressiveBlur
         position="bottom"
-        backgroundColor="#FFFFFF"
+        backgroundColor="#060C18"
         height="22px"
         blurAmount="6px"
         className="md:hidden fixed bottom-[62px] left-0 right-0 z-30 opacity-70 pointer-events-none"
@@ -69,7 +69,7 @@ export function MobileBottomNav() {
 
       <nav
         aria-label="Mobile Navigation"
-        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-2xl border-t border-[#E7E2D9] px-2 pt-1.5 pb-[max(env(safe-area-inset-bottom,8px),8px)] shadow-[0_-4px_25px_rgba(28,25,23,0.06)]"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#060D1A]/95 backdrop-blur-2xl border-t border-[#1E3A5F] px-2 pt-1.5 pb-[max(env(safe-area-inset-bottom,8px),8px)] shadow-[0_-4px_25px_rgba(0,0,0,0.5)]"
       >
         <div className="grid grid-cols-5 items-center justify-around h-14">
           {navItems.slice(0, 2).map((item) => {
@@ -79,20 +79,20 @@ export function MobileBottomNav() {
                 key={item.label}
                 href={item.href}
                 className={`relative flex flex-col items-center justify-center h-full active:scale-90 transition-transform ${
-                  item.isActive ? "text-[#8B1E1E]" : "text-[#78716C] hover:text-[#1C1917]"
+                  item.isActive ? "text-[#C5A059]" : "text-[#94A3B8] hover:text-[#F8FAFC]"
                 }`}
               >
                 <motion.div whileTap={{ scale: 0.85 }} className="relative">
                   <Icon className={`w-5 h-5 ${item.isActive ? "stroke-[2.5]" : "stroke-[1.75]"}`} />
                   {item.badge && (
-                    <span className="absolute -top-1.5 -right-3 px-1 py-0.2 bg-[#8B1E1E] text-white text-[8px] font-bold font-sans leading-tight rounded-[2px]">
+                    <span className="absolute -top-1.5 -right-3 px-1 py-0.2 bg-[#8B1E1E] text-white text-[8px] font-bold font-sans leading-tight rounded-[2px] border border-[#C5A059]/40">
                       {item.badge}
                     </span>
                   )}
                 </motion.div>
                 <span
                   className={`text-[10px] font-medium tracking-tight mt-1 ${
-                    item.isActive ? "font-bold text-[#8B1E1E]" : "text-[#78716C]"
+                    item.isActive ? "font-bold text-[#C5A059]" : "text-[#94A3B8]"
                   }`}
                 >
                   {item.label}
@@ -100,7 +100,7 @@ export function MobileBottomNav() {
                 {item.isActive && (
                   <motion.span
                     layoutId="mobileNavActiveIndicator"
-                    className="absolute bottom-0 w-3 h-0.5 rounded-full bg-[#8B1E1E]"
+                    className="absolute bottom-0 w-3 h-0.5 rounded-full bg-[#C5A059]"
                   />
                 )}
               </Link>
@@ -114,15 +114,15 @@ export function MobileBottomNav() {
             className="relative flex flex-col items-center justify-center h-full"
             aria-label="Open Shopping Bag"
           >
-            <div className="relative w-11 h-11 rounded-full bg-[#8B1E1E] border border-[#C5A059]/40 flex items-center justify-center shadow-md group hover:bg-[#721818] transition-colors">
+            <div className="relative w-11 h-11 rounded-full bg-[#8B1E1E] border border-[#C5A059]/60 flex items-center justify-center shadow-lg group hover:bg-[#A12424] transition-colors">
               <ShoppingBag className="w-5 h-5 text-white stroke-[2.2]" />
               {totalCartCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#C5A059] text-white text-[10px] font-bold font-mono flex items-center justify-center shadow-sm">
+                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#C5A059] text-[#060C18] text-[10px] font-bold font-mono flex items-center justify-center shadow-sm">
                   {totalCartCount}
                 </span>
               )}
             </div>
-            <span className="text-[9px] font-bold tracking-wider text-[#8B1E1E] uppercase mt-0.5">
+            <span className="text-[9px] font-bold tracking-wider text-[#C5A059] uppercase mt-0.5">
               Bag
             </span>
           </motion.button>
@@ -134,20 +134,20 @@ export function MobileBottomNav() {
                 key={item.label}
                 href={item.href}
                 className={`relative flex flex-col items-center justify-center h-full active:scale-90 transition-transform ${
-                  item.isActive ? "text-[#8B1E1E]" : "text-[#78716C] hover:text-[#1C1917]"
+                  item.isActive ? "text-[#C5A059]" : "text-[#94A3B8] hover:text-[#F8FAFC]"
                 }`}
               >
                 <motion.div whileTap={{ scale: 0.85 }} className="relative">
                   <Icon className={`w-5 h-5 ${item.isActive ? "stroke-[2.5]" : "stroke-[1.75]"}`} />
                   {item.count !== undefined && item.count > 0 && (
-                    <span className="absolute -top-1.5 -right-2.5 min-w-4 h-4 px-1 rounded-full bg-[#F4EFE6] border border-[#E7E2D9] text-[#1C1917] text-[9px] font-bold font-mono flex items-center justify-center">
+                    <span className="absolute -top-1.5 -right-2.5 min-w-4 h-4 px-1 rounded-full bg-[#0F1D36] border border-[#1E3A5F] text-[#C5A059] text-[9px] font-bold font-mono flex items-center justify-center">
                       {item.count}
                     </span>
                   )}
                 </motion.div>
                 <span
                   className={`text-[10px] font-medium tracking-tight mt-1 ${
-                    item.isActive ? "font-bold text-[#8B1E1E]" : "text-[#78716C]"
+                    item.isActive ? "font-bold text-[#C5A059]" : "text-[#94A3B8]"
                   }`}
                 >
                   {item.label}
@@ -155,7 +155,7 @@ export function MobileBottomNav() {
                 {item.isActive && (
                   <motion.span
                     layoutId="mobileNavActiveIndicator"
-                    className="absolute bottom-0 w-3 h-0.5 rounded-full bg-[#8B1E1E]"
+                    className="absolute bottom-0 w-3 h-0.5 rounded-full bg-[#C5A059]"
                   />
                 )}
               </Link>

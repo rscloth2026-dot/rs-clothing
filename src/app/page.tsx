@@ -70,7 +70,7 @@ export default async function HomePage() {
   }));
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#FDFCF7]">
+    <div className="flex flex-col min-h-screen bg-transparent relative z-10">
       {/* 1. Hero Campaign Section (Palace courtyard editorial lookbook) */}
       <HeroCampaign />
 
@@ -113,19 +113,19 @@ export default async function HomePage() {
       <BrandStory />
 
       {/* 6. Verified Patronage & Customer Reviews - Static 3-Card Regal Grid */}
-      <section className="py-16 sm:py-24 bg-[#FDFCF7] border-b border-[#E7E2D9]">
+      <section className="py-16 sm:py-24 bg-transparent border-b border-[#1E3A5F]/70 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#FFFFFF] border border-[#C5A059]/30 rounded-full mb-3 shadow-xs">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#0B172C]/90 border border-[#C5A059]/40 rounded-full mb-3 shadow-xs">
               <Star className="w-3.5 h-3.5 fill-[#C5A059] text-[#C5A059]" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E]">
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#C5A059]">
                 ROYAL COMMENDATIONS // 4.9 RATING
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#F8FAFC] tracking-tight">
               Words From Our Patrons
             </h2>
-            <p className="text-xs sm:text-sm text-[#78716C] font-sans mt-2">
+            <p className="text-xs sm:text-sm text-[#94A3B8] font-sans mt-2">
               4.9/5 Rating across 1,800+ authenticated orders. Verified fabric weight and zero sagging collars.
             </p>
           </div>
@@ -159,7 +159,7 @@ export default async function HomePage() {
             ]).map((rev, idx) => (
               <div
                 key={rev.id || idx}
-                className="rajasthan-card p-6 rounded-sm flex flex-col justify-between"
+                className="rajasthan-card p-6 rounded-sm flex flex-col justify-between bg-[#0B172C]/85 backdrop-blur-md border border-[#1E3A5F] hover:border-[#C5A059]/60 transition-all duration-300"
               >
                 <div>
                   <div className="flex items-center space-x-1 text-[#C5A059] mb-3">
@@ -167,21 +167,21 @@ export default async function HomePage() {
                       <Star key={i} className="w-4 h-4 fill-[#C5A059] text-[#C5A059]" />
                     ))}
                   </div>
-                  <p className="text-sm text-[#44403C] font-sans leading-relaxed italic mb-4">
+                  <p className="text-sm text-[#E2E8F0] font-sans leading-relaxed italic mb-4">
                     &ldquo;{rev.comment}&rdquo;
                   </p>
                 </div>
-                <div className="pt-4 border-t border-[#F0ECE1] flex items-center justify-between">
+                <div className="pt-4 border-t border-[#1E3A5F]/80 flex items-center justify-between">
                   <div>
-                    <div className="text-xs font-bold font-sans text-[#1C1917] flex items-center space-x-1.5">
+                    <div className="text-xs font-bold font-sans text-[#F8FAFC] flex items-center space-x-1.5">
                       <span>{rev.customerName}</span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#8B1E1E]" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#38BDF8]" />
                     </div>
-                    <div className="text-[11px] text-[#A8A29E] font-sans">
+                    <div className="text-[11px] text-[#94A3B8] font-sans">
                       {("city" in rev && rev.city) ? rev.city : "Verified Buyer"}
                     </div>
                   </div>
-                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#8B1E1E] bg-[#FAF6EE] px-2 py-0.5 rounded-xs border border-[#C5A059]/20">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#C5A059] bg-[#0F1D36] px-2 py-0.5 rounded-xs border border-[#1E3A5F]">
                     {("product" in rev && rev.product?.title) ? rev.product.title : (rev as any).productTitle || "Verified"}
                   </span>
                 </div>
