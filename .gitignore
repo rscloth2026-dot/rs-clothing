@@ -3,8 +3,36 @@ node_modules/
 out/
 build/
 dist/
+.cache/
+.turbo/
+
+# OS and Editor junk
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Logs and debug
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment and secrets
 .env*.local
+
+# Database journals
 prisma/dev.db-journal
+
+# TypeScript cache
 *.tsbuildinfo
+
+# Vercel & deployments
+.vercel
