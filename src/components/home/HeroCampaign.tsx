@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Sparkles, Shield, Compass, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CrowdCanvas } from "@/components/ui/skiper-ui/skiper39";
 
 const HERO_SLIDES = [
   {
@@ -83,22 +84,41 @@ export function HeroCampaign() {
           <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#FDFCF7]/90 via-[#FDFCF7]/50 to-transparent w-3/4" />
         </div>
 
-        {/* Floating Slide Switcher (Top Right) */}
-        <div className="absolute top-6 right-6 z-20 flex items-center space-x-1.5 p-1 bg-white/90 backdrop-blur-md border border-[#E7E2D9] rounded-full shadow-sm">
-          {HERO_SLIDES.map((s, idx) => (
-            <button
-              key={s.id}
-              onClick={() => setCurrentSlide(idx)}
-              className={`px-3 py-1 rounded-full text-[10px] font-sans font-bold transition-all ${
-                currentSlide === idx
-                  ? "bg-[#8B1E1E] text-white shadow-sm"
-                  : "text-[#78716C] hover:text-[#1C1917]"
-              }`}
-              aria-label={`Switch to slide ${s.id}`}
-            >
-              {s.id}
-            </button>
-          ))}
+        {/* Skiper39 Animated Canvas Crowd — Urban Streetwear Runway */}
+        <div className="absolute inset-x-0 bottom-0 z-[5] pointer-events-none overflow-hidden h-[45vh] sm:h-[55vh] md:h-[62vh] opacity-80 sm:opacity-90">
+          <CrowdCanvas
+            src="/images/peeps/all-peeps.png"
+            rows={15}
+            cols={7}
+            className="w-full h-full"
+          />
+          {/* Subtle bottom fade to blend with courtyard floor */}
+          <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#FDFCF7] via-[#FDFCF7]/80 to-transparent pointer-events-none" />
+        </div>
+
+        {/* Floating Slide Switcher & Runway Indicator (Top Right) */}
+        <div className="absolute top-6 right-6 z-20 flex items-center space-x-2">
+          <div className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1 bg-white/90 backdrop-blur-md border border-[#C5A059]/40 rounded-full shadow-sm text-[10px] font-sans font-semibold tracking-wider text-[#8B1E1E]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#8B1E1E] animate-ping" />
+            <span className="uppercase tracking-widest text-[9px]">Live Street Runway</span>
+          </div>
+
+          <div className="flex items-center space-x-1.5 p-1 bg-white/90 backdrop-blur-md border border-[#E7E2D9] rounded-full shadow-sm">
+            {HERO_SLIDES.map((s, idx) => (
+              <button
+                key={s.id}
+                onClick={() => setCurrentSlide(idx)}
+                className={`px-3 py-1 rounded-full text-[10px] font-sans font-bold transition-all ${
+                  currentSlide === idx
+                    ? "bg-[#8B1E1E] text-white shadow-sm"
+                    : "text-[#78716C] hover:text-[#1C1917]"
+                }`}
+                aria-label={`Switch to slide ${s.id}`}
+              >
+                {s.id}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Content Container */}
