@@ -99,7 +99,7 @@ export default async function HomePage() {
 
       {/* 4. Imperial Bestsellers (Small royal product widgets) */}
       <RoyalProductRail
-        badgeTitle="MOST COVETED SILHOUETTES"
+        badgeTitle="SIGNATURE CUTS // 380 GSM HEAVYWEIGHT"
         title="Imperial Bestsellers"
         subtitle="The most celebrated cuts tested across 10,000+ patrons nationwide."
         viewAllLink="/collections/bestsellers"
@@ -119,7 +119,7 @@ export default async function HomePage() {
             <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#FFFFFF] border border-[#C5A059]/30 rounded-full mb-3 shadow-xs">
               <Star className="w-3.5 h-3.5 fill-[#C5A059] text-[#C5A059]" />
               <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E]">
-                VERIFIED ROYAL PATRONS
+                ROYAL COMMENDATIONS // 4.9 RATING
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">

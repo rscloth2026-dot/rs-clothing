@@ -46,11 +46,11 @@ export function RoyalProductRail({
                 </span>
               </div>
             )}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1C1917] tracking-tight leading-snug">
               {title}
             </h2>
             {subtitle && (
-              <p className="text-xs sm:text-sm text-[#78716C] font-sans mt-0.5">
+              <p className="text-xs sm:text-sm text-[#78716C] font-sans mt-1">
                 {subtitle}
               </p>
             )}

@@ -2,8 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight, Sparkles } from "lucide-react";
-import { HoverExpandSilhouettes, ProgressiveBlur, TextRoll, CssArrowLink } from "@/components/ui/skiper-ui";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { HoverExpandSilhouettes } from "@/components/ui/skiper-ui";
 
 interface CategoryItem {
   id: string;
@@ -26,31 +26,32 @@ export function CategoryGrid({ categories }: { categories: CategoryItem[] }) {
   }));
 
   return (
-    <section className="relative py-12 sm:py-16 bg-[#FDFCF7] border-b border-[#E7E2D9] overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8">
-        {/* Section Header with Royal Aesthetics */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-[#E7E2D9]">
-          <div>
-            <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 bg-[#FAF6EE] border border-[#C5A059]/30 rounded-full mb-2">
+    <section className="relative py-14 sm:py-20 bg-[#FDFCF7] border-b border-[#E7E2D9] overflow-hidden select-none">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
+        {/* Section Header with Royal Aesthetics & Generous Spacing */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-5 border-b border-[#E7E2D9]">
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#FAF6EE] border border-[#C5A059]/40 rounded-full">
               <Sparkles className="w-3 h-3 text-[#C5A059]" />
-              <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E]">
-                RAJPUTANA SILHOUETTES
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#8B1E1E]">
+                COLLECTION DIRECTORY
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1C1917] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#1C1917] tracking-tight leading-snug">
               Shop by Silhouette
             </h2>
-            <p className="text-xs sm:text-sm text-[#78716C] font-sans mt-0.5">
-              Architectural cuts structured by drape, cotton density, and heritage dyeing.
+            <p className="text-xs sm:text-sm text-[#78716C] font-sans leading-relaxed">
+              Architectural boxy cuts structured by cotton density, drape, and heritage dyes.
             </p>
           </div>
 
-          <CssArrowLink
+          <Link
             href="/collections/all"
-            className="text-xs font-sans font-bold uppercase tracking-widest text-[#8B1E1E] hover:text-[#6B1414]"
+            className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-[#8B1E1E] hover:text-[#6B1414] transition-colors group py-1"
           >
-            <TextRoll>All Silhouettes</TextRoll>
-          </CssArrowLink>
+            <span>All Silhouettes</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#C5A059] group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
 

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -25,7 +25,7 @@ interface HoverExpandSilhouettesProps {
 /**
  * Skiper-UI 52: HoverExpand Silhouettes
  * Source: https://skiper-ui.com/registry/skiper52.json
- * High-fashion horizontal accordion expanding cards with smooth spring transitions.
+ * High-fashion expanding accordion cards with clean horizontal typography and zero overlap.
  */
 export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
   items,
@@ -36,9 +36,9 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
   if (!items || items.length === 0) return null;
 
   return (
-    <div className={cn("w-full overflow-hidden py-4 select-none", className)}>
-      {/* Desktop & Tablet: Smooth Expanding Accordion */}
-      <div className="hidden md:flex w-full items-stretch justify-center gap-3 min-h-[380px] lg:min-h-[440px]">
+    <div className={cn("w-full overflow-hidden py-2 select-none", className)}>
+      {/* Desktop & Tablet: Smooth Expanding Accordion with Clean Typography */}
+      <div className="hidden md:flex w-full items-stretch justify-center gap-3 min-h-[420px] lg:min-h-[480px]">
         {items.map((item, index) => {
           const isActive = activeIndex === index;
 
@@ -51,13 +51,13 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
                 flex: isActive ? 3.5 : 1,
               }}
               transition={{
-                duration: 0.45,
+                duration: 0.4,
                 ease: [0.33, 1, 0.68, 1],
               }}
               onClick={() => setActiveIndex(index)}
               onHoverStart={() => setActiveIndex(index)}
             >
-              {/* Image */}
+              {/* Background Image */}
               <div className="absolute inset-0">
                 <Image
                   src={item.imageUrl}
@@ -66,74 +66,69 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className={cn(
                     "object-cover transition-transform duration-700 ease-out",
-                    isActive ? "scale-105" : "scale-100 grayscale-[0.25]"
+                    isActive ? "scale-105" : "scale-100 grayscale-[0.2]"
                   )}
                 />
                 <div
                   className={cn(
-                    "absolute inset-0 transition-opacity duration-500",
+                    "absolute inset-0 transition-opacity duration-300",
                     isActive
-                      ? "bg-gradient-to-t from-black/85 via-black/30 to-transparent"
-                      : "bg-black/55 hover:bg-black/45"
+                      ? "bg-gradient-to-t from-black/90 via-black/35 to-transparent"
+                      : "bg-black/50 hover:bg-black/40"
                   )}
                 />
               </div>
 
-              {/* Collapsed Vertical Label */}
-              <AnimatePresence>
-                {!isActive && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none"
-                  >
-                    <span className="rotate-180 [writing-mode:vertical-rl] text-xs font-serif font-bold uppercase tracking-[0.25em] text-white/90">
-                      {item.name}
+              {/* Collapsed State: Crisp Bottom Index Label (Horizontal, Never Rotated) */}
+              {!isActive && (
+                <div className="absolute inset-x-0 bottom-0 p-3.5 z-10 flex flex-col items-center justify-end text-center pointer-events-none">
+                  <div className="w-full bg-[#1C1917]/85 backdrop-blur-md border border-white/20 py-2 px-1 rounded-[4px] shadow-sm">
+                    <span className="block text-[10px] font-sans font-bold tracking-widest text-[#C5A059] uppercase">
+                      0{index + 1}
                     </span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    <span className="block text-[11px] font-serif font-bold text-white uppercase tracking-wider truncate mt-0.5 px-1">
+                      {item.name.split(" ")[0]}
+                    </span>
+                  </div>
+                </div>
+              )}
 
-              {/* Expanded Card Details */}
-              <AnimatePresence>
-                {isActive && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 text-white z-10"
-                  >
-                    <div className="space-y-2 max-w-md">
-                      <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#8B1E1E]/90 text-white text-[9px] font-sans font-bold uppercase tracking-widest rounded-full backdrop-blur-md">
-                        <Sparkles className="w-2.5 h-2.5 text-[#C5A059]" />
-                        <span>{item.code || `SILHOUETTE // 0${index + 1}`}</span>
-                      </div>
-
-                      <h3 className="text-2xl lg:text-3xl font-serif font-bold tracking-wide text-white">
-                        {item.name}
-                      </h3>
-
-                      {item.description && (
-                        <p className="text-xs text-white/80 line-clamp-2 font-sans font-light leading-relaxed">
-                          {item.description}
-                        </p>
-                      )}
-
-                      <div className="pt-2">
-                        <Link
-                          href={`/collections/${item.slug}`}
-                          className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-[#C5A059] hover:text-white transition-colors group"
-                        >
-                          <span>Explore Silhouette</span>
-                          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                      </div>
+              {/* Expanded State: Full Rich Lookbook Details */}
+              {isActive && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25, delay: 0.05 }}
+                  className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 text-white z-10"
+                >
+                  <div className="space-y-2.5 max-w-md">
+                    <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#8B1E1E] text-white text-[9px] font-sans font-bold uppercase tracking-widest rounded-full shadow-sm backdrop-blur-md">
+                      <Sparkles className="w-2.5 h-2.5 text-[#C5A059]" />
+                      <span>{item.code || `SILHOUETTE 0${index + 1}`}</span>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+
+                    <h3 className="text-2xl lg:text-3xl font-serif font-bold tracking-wide text-white leading-tight">
+                      {item.name}
+                    </h3>
+
+                    {item.description && (
+                      <p className="text-xs text-white/85 line-clamp-2 font-sans font-light leading-relaxed">
+                        {item.description}
+                      </p>
+                    )}
+
+                    <div className="pt-2">
+                      <Link
+                        href={`/collections/${item.slug}`}
+                        className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-[#C5A059] hover:text-white transition-colors group"
+                      >
+                        <span>Explore Silhouette</span>
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </motion.div>
           );
         })}
@@ -145,7 +140,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
           <Link
             key={item.id || index}
             href={`/collections/${item.slug}`}
-            className="flex-shrink-0 w-[78vw] max-w-[320px] snap-center relative aspect-[3/4] rounded-2xl overflow-hidden border border-[#E7E2D9] shadow-md group"
+            className="flex-shrink-0 w-[78vw] max-w-[320px] snap-center relative aspect-[3/4] rounded-xl overflow-hidden border border-[#E7E2D9] shadow-md group"
           >
             <Image
               src={item.imageUrl}
@@ -160,7 +155,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
               <span className="inline-block px-2.5 py-0.5 bg-[#8B1E1E] text-white text-[9px] font-sans font-bold uppercase tracking-widest rounded-full">
                 {item.code || `0${index + 1} // JODHPUR`}
               </span>
-              <h3 className="text-xl font-serif font-bold text-white tracking-wide">
+              <h3 className="text-xl font-serif font-bold text-white tracking-wide leading-tight">
                 {item.name}
               </h3>
               {item.description && (

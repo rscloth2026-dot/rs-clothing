@@ -176,7 +176,7 @@ export function HeroCampaign() {
                 }`}
                 aria-label={`Switch to slide ${s.id}`}
               >
-                <TextRoll active={currentSlide === idx}>{s.id}</TextRoll>
+                <span>{s.id}</span>
               </button>
             ))}
 
@@ -211,7 +211,7 @@ export function HeroCampaign() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-[#1C1917] font-serif leading-[0.95]"
+              className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-[#1C1917] font-serif leading-[1.1] sm:leading-[1.05]"
             >
               {slide.title}
               <br />
@@ -247,7 +247,7 @@ export function HeroCampaign() {
                   variant="outline"
                   className="w-full sm:w-auto h-12 min-h-[48px] border-[#E7E2D9] bg-white/95 text-[#1C1917] hover:border-[#C5A059] font-bold uppercase tracking-wider text-xs px-6 rounded-[2px] shadow-sm active:scale-[0.97]"
                 >
-                  <TextRoll>View All Royal Drops</TextRoll>
+                  <span>View All Royal Drops</span>
                 </Button>
               </Link>
             </div>
