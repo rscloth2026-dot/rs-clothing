@@ -277,6 +277,25 @@
       "priority": 15,
       "passes": true,
       "notes": "Server-side price verification and role-gated admin APIs enforced."
+    },
+    {
+      "id": "US-016",
+      "title": "RS Floating Clothes Hero Animation & Admin Studio",
+      "description": "As a brand and shopper, I want an organic, non-circular floating clothes animation in the homepage hero section with transparent PNGs of T-shirts, hoodies, jeans, jackets, sneakers, and caps, full click-to-quick-view interactivity with live bag add, safe peripheral placement preserving headline/RS logo visibility, and an admin management interface (/admin/hero) to upload and tune garments live.",
+      "acceptanceCriteria": [
+        "Organic non-circular multi-axis floating clothes animation using transparent PNGs (T-shirts, hoodies, jeans, jackets, sneakers, caps)",
+        "Zero circular or orbiting trajectories; independent Lissajous drift curves with prime-period timing",
+        "Safe peripheral layout ensuring brand headline and RS logo remain completely visible and unobstructed on mobile and desktop",
+        "Interactive garment click/tap opening high-performance QuickViewModal with real database prices, sizes, stock, and Add to Bag",
+        "Dedicated Admin Studio at /admin/hero with image upload, product linking, position/size/speed sliders, and live canvas preview",
+        "Touch-friendly 48x48px hit areas, zero horizontal overflow, and prefers-reduced-motion accessibility support",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes"
+      ],
+      "priority": 16,
+      "passes": true,
+      "notes": "Full feature built, verified via typecheck, build (35/35 routes), CodeRabbit (0 findings), and live dev server HTTP 200 checks."
     }
   ]
 }

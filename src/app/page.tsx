@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Sparkles, Star, CheckCircle2 } from "lucide-react";
 import { prisma } from "@/lib/db";
 import { HeroCampaign } from "@/components/home/HeroCampaign";
+import { type FloatingGarmentItem } from "@/components/home/FloatingGarment";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
 import { RoyalProductRail } from "@/components/home/RoyalProductRail";
 import { BrandStory } from "@/components/home/BrandStory";
@@ -11,7 +12,7 @@ export const revalidate = 60; // ISR cache revalidation every minute
 
 export default async function HomePage() {
   // Fetch real database records for categories, drops, bestsellers and reviews
-  const [categories, newDrops, bestsellers, reviews] = await Promise.all([
+  const [categories, newDrops, bestsellers, reviews, heroSetting] = await Promise.all([
     prisma.category.findMany({
       orderBy: { displayOrder: "asc" },
     }),
@@ -38,7 +39,36 @@ export default async function HomePage() {
       include: { product: true },
       take: 3,
     }),
+    prisma.storeSetting.findUnique({
+      where: { key: "hero_floating_garments_v1" },
+    }),
   ]);
+
+  let heroGarments: FloatingGarmentItem[] | null = null;
+  if (heroSetting?.value) {
+    try {
+      const parsed = JSON.parse(heroSetting.value);
+      if (
+        Array.isArray(parsed) &&
+        parsed.every(
+          (g) =>
+            g &&
+            typeof g === "object" &&
+            typeof g.id === "string" &&
+            typeof g.imageUrl === "string" &&
+            typeof g.initialX === "number" &&
+            typeof g.initialY === "number" &&
+            typeof g.sizeDesktop === "number"
+        )
+      ) {
+        heroGarments = parsed as FloatingGarmentItem[];
+      }
+    } catch (e) {
+      // fallback to null (defaults in component)
+    }
+  }
+
+
 
   // Format products for royal compact product widgets
   const formattedNewDrops = newDrops.map((p) => ({
@@ -71,8 +101,9 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#FAFAFA]">
-      {/* 1. Hero Campaign Section (Palace courtyard editorial lookbook) */}
-      <HeroCampaign />
+      {/* 1. Hero Campaign Section with Floating Interactive Clothes */}
+      <HeroCampaign initialGarments={heroGarments} />
+
 
       {/* 2. Shop by Category / Royal Silhouettes (Compact silhouette runway) */}
       <CategoryGrid

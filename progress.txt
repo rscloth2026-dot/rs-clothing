@@ -7,6 +7,8 @@ Started: Tue Oct 13 00:33:30 IST 2026
 - Logistics Hierarchy: Indian 6-digit PIN code delivery estimator with BlueDart Express transit estimation.
 - Dual Checkout: Official Razorpay order signature verification + Cash on Delivery (COD) with atomic inventory decrement.
 - Role-Gated Admin: Server-enforced ADMIN role checks on /admin routes and /api/admin endpoints.
+- Organic Floating Clothes Animation Physics: Lissajous non-circular drift with asymmetric multi-axis keyframes, prime-fractional cycle durations (6.4s to 9.1s), and safe peripheral bounds ensuring 100% headline and RS logo visibility on all viewports.
+- Hero Config Store & Race Resilience: Dynamic floating garment records persisted in StoreSetting with AuditLog logging, hydrated server-side into page.tsx for zero CLS, and protected against out-of-order quick-view fetches using latestSelectionRef.
 
 ---
 
@@ -46,4 +48,13 @@ Started: Tue Oct 13 00:33:30 IST 2026
 - Package Cache Garbage Collection: Executed `npm cache verify` reclaiming 1.23 GB of orphaned cached packages.
 - OS & Workspace Hygiene: Purged `.DS_Store`, `._*` AppleDouble metadata, and stray log files.
 - Prevention: Expanded `.gitignore` with comprehensive patterns covering `.cache/`, `.turbo/`, editor artifacts, OS metadata, deployment directories, and debug logs.
+
+### [2026-10-15] RS Floating Clothes Hero Animation & Admin Studio (US-016)
+- Organic Non-Circular Motion Physics: Developed `FloatingGarment.tsx` using Framer Motion with independent multi-axis Lissajous drift keyframes (`x: [0, dx, -dx*0.75, dx*0.35, 0]`, `y: [0, -dy, dy*0.85, -dy*0.45, 0]`) and prime-fractional cycle durations (6.4s to 9.1s) plus subtle tilt oscillation ($-6^\circ$ to $+5^\circ$), completely eliminating artificial circular/orbit motion.
+- Verified RGBA Asset Library: Sourced, formatted, and locally saved 6 transparent PNG garments in `public/images/hero/` (`tshirt-oversized.png`, `hoodie-heavyweight.png`, `jeans-baggy-puddle.png`, `jacket-cyber-bomber.png`, `sneakers-chunky-runner.png`, `cap-royal-rajputana.png`).
+- Database Alignment: Seeded matching published products in `prisma/dev.db` for all 6 garment types with accurate INR pricing, size variants, fabric specifications, and stock counts.
+- Brand Protection & Safe Peripheral Bounds: Engineered peripheral safe zones (`top: 8%..76%`, `left: 4%..82%`) with responsive viewport scaling and depth-of-field z-indices, leaving the RS brand monogram (`RsLogo.tsx`) and hero headline 100% visible and unobstructed across mobile and desktop.
+- Interactive Quick-View Modal: Built `QuickViewModal.tsx` allowing shoppers to click/tap any floating garment to inspect images, pricing, size selector, real-time stock badges, and add directly to the shopping bag via `useCartStore`, with race-condition prevention (`latestSelectionRef`).
+- Admin Hero Studio (`/admin/hero`): Created full administrative management suite with multipart image uploader (`/api/admin/upload`), garment toggles, product associations, coordinate/scale/speed sliders, live canvas preview, and persistent storage via `StoreSetting` (`/api/admin/hero`) with audit logging.
+- Quality Gates & Standards: 100% passed `npm run typecheck` (`tsc --noEmit`), Next.js production build (`35/35 routes compiled`), CodeRabbit review (0 findings across all touched files), and live dev server HTTP 200 OK responses.
 

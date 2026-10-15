@@ -7,6 +7,7 @@ import { Search, ShoppingBag, Heart, User, Menu, X, ArrowRight, Sparkles } from 
 import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
 import { ProgressiveBlur, TextRoll } from "@/components/ui/skiper-ui";
+import { RsLogo } from "@/components/brand/RsLogo";
 
 export function Header() {
   const router = useRouter();
@@ -71,18 +72,11 @@ export function Header() {
               <Menu className="w-5 h-5" />
             </button>
 
-            {/* Brand Logo - Cormorant Garamond Royal Heritage */}
-            <Link href="/" className="flex items-center space-x-2.5 group">
-              <div className="w-7 h-7 bg-[#1E40AF] text-[#FBBF24] rounded-[2px] flex items-center justify-center font-serif font-black text-xs shadow-xs group-hover:bg-[#1E3A8A] transition-colors">
-                RS
-              </div>
-              <span className="font-serif font-bold text-2xl sm:text-3xl tracking-tight text-[#0A0A0A] group-hover:text-[#1E40AF] transition-colors">
-                RS CLOTHING
-              </span>
-              <span className="text-[9px] font-sans tracking-[0.2em] bg-[#1E40AF]/10 text-[#1E40AF] border border-[#1E40AF]/25 px-1.5 py-0.5 font-bold uppercase rounded-[2px] hidden xs:inline-block">
-                JODHPUR
-              </span>
+            {/* Brand Logo - Custom RS Royal Atelier Monogram */}
+            <Link href="/" className="flex items-center group">
+              <RsLogo size="sm" showWordmark={true} />
             </Link>
+
 
             {/* Desktop Navigation Links with Skiper-UI TextRoll */}
             <nav className="hidden lg:flex items-center space-x-7 text-xs font-semibold uppercase tracking-wider pl-2 font-sans">
@@ -228,14 +222,8 @@ export function Header() {
           <div className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-[#FFFFFF] border-r border-[#E5E5E5] p-6 flex flex-col justify-between shadow-2xl">
             <div>
               <div className="flex items-center justify-between pb-6 border-b border-[#E5E5E5]">
-                <div className="flex items-baseline space-x-2">
-                  <span className="font-serif font-bold text-2xl text-[#0A0A0A]">
-                    RS CLOTHING
-                  </span>
-                  <span className="text-[9px] font-sans tracking-widest text-[#C5A059] uppercase font-bold">
-                    JODHPUR
-                  </span>
-                </div>
+                <RsLogo size="sm" showWordmark={true} />
+
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-2 text-[#71717A] hover:text-[#0A0A0A]"

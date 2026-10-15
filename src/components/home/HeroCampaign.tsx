@@ -1,12 +1,151 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Sparkles, SlidersHorizontal, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ProgressiveBlur, TextRoll, CssArrowLink } from "@/components/ui/skiper-ui";
+import { ProgressiveBlur, TextRoll } from "@/components/ui/skiper-ui";
+import { RsLogo } from "@/components/brand/RsLogo";
+import { FloatingGarment, FloatingGarmentItem } from "@/components/home/FloatingGarment";
+import { QuickViewModal, QuickViewProduct } from "@/components/product/QuickViewModal";
+
+// Default curated floating clothes configuration mapped to real store products
+const DEFAULT_FLOATING_GARMENTS: FloatingGarmentItem[] = [
+  {
+    id: "float-hoodie",
+    name: "Marwar Heavyweight Zip Hoodie",
+    imageUrl: "/images/hero/hoodie-heavyweight.png",
+    price: 3499,
+    comparePrice: 4999,
+    category: "Hoodies & Outerwear",
+    productId: "marwar-heavyweight-zip-hoodie",
+    initialX: 74,
+    initialY: 10,
+    mobileX: 68,
+    mobileY: 8,
+    sizeDesktop: 195,
+    sizeMobile: 90,
+    speedSeconds: 7.2,
+    maxRotationDeg: 4,
+    driftX: 20,
+    driftY: 26,
+    delaySeconds: 0,
+    zIndex: 15,
+    isEnabled: true,
+  },
+  {
+    id: "float-jacket",
+    name: "Rajputana Cyber Bomber Jacket",
+    imageUrl: "/images/hero/jacket-cyber-bomber.png",
+    price: 4999,
+    comparePrice: 6999,
+    category: "Hoodies & Outerwear",
+    productId: "rajputana-cyber-bomber-jacket",
+    initialX: 50,
+    initialY: 12,
+    mobileX: 38,
+    mobileY: 6,
+    sizeDesktop: 190,
+    sizeMobile: 80,
+    speedSeconds: 9.1,
+    maxRotationDeg: -3,
+    driftX: 18,
+    driftY: 22,
+    delaySeconds: 0.4,
+    zIndex: 14,
+    isEnabled: true,
+  },
+  {
+    id: "float-sneakers",
+    name: "Jodhpur Chunky Runner Sneakers",
+    imageUrl: "/images/hero/sneakers-chunky-runner.png",
+    price: 5499,
+    comparePrice: 7999,
+    category: "Footwear & Accessories",
+    productId: "jodhpur-chunky-runner-sneakers",
+    initialX: 82,
+    initialY: 40,
+    mobileX: 74,
+    mobileY: 36,
+    sizeDesktop: 175,
+    sizeMobile: 85,
+    speedSeconds: 8.4,
+    maxRotationDeg: -5,
+    driftX: 22,
+    driftY: 28,
+    delaySeconds: 0.8,
+    zIndex: 16,
+    isEnabled: true,
+  },
+  {
+    id: "float-tee",
+    name: "Acid Cyber Heavyweight Tee",
+    imageUrl: "/images/hero/tshirt-oversized.png",
+    price: 1499,
+    comparePrice: 2199,
+    category: "Oversized Tees",
+    productId: "acid-cyber-oversized-heavyweight-tee",
+    initialX: 68,
+    initialY: 66,
+    mobileX: 64,
+    mobileY: 72,
+    sizeDesktop: 165,
+    sizeMobile: 80,
+    speedSeconds: 6.8,
+    maxRotationDeg: -4,
+    driftX: 16,
+    driftY: 20,
+    delaySeconds: 1.2,
+    zIndex: 17,
+    isEnabled: true,
+  },
+  {
+    id: "float-jeans",
+    name: "Tokyo Skate Baggy Puddle Jeans",
+    imageUrl: "/images/hero/jeans-baggy-puddle.png",
+    price: 2799,
+    comparePrice: 3899,
+    category: "Baggy Jeans",
+    productId: "tokyo-skate-90s-baggy-puddle-jeans",
+    initialX: 8,
+    initialY: 8,
+    mobileX: 4,
+    mobileY: 6,
+    sizeDesktop: 155,
+    sizeMobile: 75,
+    speedSeconds: 7.9,
+    maxRotationDeg: 5,
+    driftX: 19,
+    driftY: 24,
+    delaySeconds: 0.6,
+    zIndex: 12,
+    isEnabled: true,
+  },
+  {
+    id: "float-cap",
+    name: "Royal RS Monogram Cap",
+    imageUrl: "/images/hero/cap-royal-rajputana.png",
+    price: 1299,
+    comparePrice: 1999,
+    category: "Footwear & Accessories",
+    productId: "royal-rs-monogram-streetwear-cap",
+    initialX: 36,
+    initialY: 30,
+    mobileX: 8,
+    mobileY: 34,
+    sizeDesktop: 140,
+    sizeMobile: 70,
+    speedSeconds: 6.4,
+    maxRotationDeg: -6,
+    driftX: 15,
+    driftY: 18,
+    delaySeconds: 1.5,
+    zIndex: 13,
+    isEnabled: true,
+  },
+];
 
 const HERO_SLIDES = [
   {
@@ -59,10 +198,29 @@ const HERO_SLIDES = [
   },
 ];
 
-export function HeroCampaign() {
+export function HeroCampaign({
+  initialGarments,
+}: {
+  initialGarments?: FloatingGarmentItem[] | null;
+} = {}) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [floatingGarments, setFloatingGarments] = useState<FloatingGarmentItem[]>(
+    Array.isArray(initialGarments) ? initialGarments : DEFAULT_FLOATING_GARMENTS
+  );
+  const [isMobile, setIsMobile] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState<QuickViewProduct | null>(null);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
+  const latestSelectionRef = useRef<string | null>(null);
+
+  // Responsive mobile screen detection
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Auto slide timer
   useEffect(() => {
@@ -74,40 +232,79 @@ export function HeroCampaign() {
 
   const slide = HERO_SLIDES[currentSlide];
 
-  // Mobile Swipe Gesture Handlers
-  const minSwipeDistance = 50;
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
+  // Garment click handler: opens QuickViewModal with full product details
+  const handleSelectGarment = async (garment: any) => {
+    const productSlug = garment.productId || garment.slug || garment.id;
+    const currentSelectionId = `${productSlug}-${Date.now()}`;
+    latestSelectionRef.current = currentSelectionId;
 
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
+    const garmentName =
+      typeof garment.name === "string" ? garment.name.trim().toLowerCase() : "";
 
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
+    try {
+      // Fetch full product record with variants and gallery
+      const res = await fetch(`/api/admin/products`);
+      if (res.ok) {
+        const data = await res.json();
+        // Ignore stale async response if another garment was clicked in the meantime
+        if (latestSelectionRef.current !== currentSelectionId) return;
 
-    if (isLeftSwipe) {
-      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+        const found = data.products?.find(
+          (p: any) =>
+            p.slug === productSlug ||
+            p.id === productSlug ||
+            (garmentName !== "" && p.title?.toLowerCase().includes(garmentName))
+        );
+
+        if (found) {
+          setQuickViewProduct({
+            id: found.id,
+            title: found.title,
+            slug: found.slug,
+            description: found.description,
+            fabricDetails: found.fabricDetails,
+            fit: found.fit,
+            basePrice: found.basePrice,
+            comparePrice: found.comparePrice,
+            categoryName: found.category?.name,
+            images: found.images || [{ url: garment.imageUrl }],
+            variants: found.variants || [],
+          });
+          setIsQuickViewOpen(true);
+          return;
+        }
+      }
+    } catch (e) {
+      console.error("QuickView fetch error", e);
     }
-    if (isRightSwipe) {
-      setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
-    }
+
+    // Ignore stale fallback if a newer selection occurred
+    if (latestSelectionRef.current !== currentSelectionId) return;
+
+    // Non-purchasable preview when product variants could not be resolved from DB
+    setQuickViewProduct({
+      id: garment.id || "preview-id",
+      title: garment.name,
+      slug: garment.productId || "collections/all",
+      description: "Authentic luxury streetwear garment handcrafted in Jodhpur with 380+ GSM combed cotton.",
+      fit: "Oversized Boxy",
+      basePrice: garment.price,
+      comparePrice: garment.comparePrice,
+      categoryName: garment.category || "ROYAL ATELIER",
+      images: [{ url: garment.imageUrl, altText: garment.name }],
+      variants: [], // Empty variants: view full details on product page
+    });
+    setIsQuickViewOpen(true);
   };
+
+
+  // Filter enabled garments
+  const activeGarments = floatingGarments.filter((g) => g.isEnabled !== false);
 
   return (
-    <section
-      className="relative w-full bg-[#FAFAFA] overflow-hidden border-b border-[#E5E5E5]"
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-    >
+    <section className="relative w-full bg-[#FAFAFA] overflow-hidden border-b border-[#E5E5E5]">
       {/* Hero Card Container */}
-      <div className="relative w-full min-h-[84vh] sm:min-h-[88vh] lg:min-h-[92vh] flex flex-col justify-end">
+      <div className="relative w-full min-h-[86vh] sm:min-h-[90vh] lg:min-h-[94vh] flex flex-col justify-end">
         {/* Editorial Background Image with Smooth Crossfade */}
         <div className="absolute inset-0 z-0 select-none">
           <AnimatePresence mode="wait">
@@ -125,7 +322,7 @@ export function HeroCampaign() {
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover object-top sm:object-center grayscale-[15%] contrast-[1.05]"
+                className="object-cover object-top sm:object-center grayscale-[20%] contrast-[1.05]"
               />
             </motion.div>
           </AnimatePresence>
@@ -133,13 +330,13 @@ export function HeroCampaign() {
           {/* Editorial Atelier gradients for sharp typography contrast */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] via-[#FAFAFA]/75 to-transparent" />
           <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#FAFAFA]/95 via-[#FAFAFA]/50 to-transparent w-3/4" />
-          
+
           {/* Subtle Ambient Royal Lighting Accents */}
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#1E40AF]/8 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute top-1/3 -right-24 w-80 h-80 bg-[#C5A059]/8 rounded-full blur-3xl pointer-events-none" />
         </div>
 
-        {/* Skiper-UI 41: Progressive Blur Overlays for Depth and Polish */}
+        {/* Skiper-UI: Progressive Blur Overlays for Depth and Polish */}
         <ProgressiveBlur
           position="top"
           backgroundColor="#FAFAFA"
@@ -155,9 +352,30 @@ export function HeroCampaign() {
           className="z-[2]"
         />
 
-        {/* Top Controls: Slide Switcher & Quick Navigation */}
+        {/* ========================================================================= */}
+        {/* INTERACTIVE FLOATING CLOTHES CANVAS (Non-Circular, Organic Floating Motion) */}
+        {/* ========================================================================= */}
+        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+          <div className="relative w-full h-full pointer-events-auto">
+            {activeGarments.map((garment) => (
+              <FloatingGarment
+                key={garment.id}
+                garment={garment}
+                isMobile={isMobile}
+                onSelect={handleSelectGarment}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Interactive Floating Hint Pill */}
+        <div className="absolute top-24 left-4 sm:left-8 z-20 hidden sm:flex items-center space-x-2 px-3 py-1 bg-white/90 backdrop-blur-md border border-[#E5E5E5] text-[10px] font-sans text-[#71717A] uppercase tracking-widest shadow-xs">
+          <Sparkles className="w-3 h-3 text-[#FBBF24]" />
+          <span>Tap any floating garment to Quick-View & Shop</span>
+        </div>
+
+        {/* Top Controls: Slide Switcher */}
         <div className="absolute top-6 right-4 sm:right-8 z-20 flex items-center space-x-2">
-          {/* Mobile slide swipe helper indicator */}
           <div className="flex items-center space-x-1 p-1 bg-white/95 backdrop-blur-md border border-[#E5E5E5] rounded-full shadow-sm">
             <button
               onClick={() =>
@@ -194,9 +412,21 @@ export function HeroCampaign() {
           </div>
         </div>
 
-        {/* Content Container */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 pt-28 sm:pt-36 w-full">
+        {/* ========================================================================= */}
+        {/* HERO EDITORIAL CONTENT & HEADLINE (Safe Zone — Unobstructed Center & Left) */}
+        {/* ========================================================================= */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 pt-28 sm:pt-36 w-full pointer-events-auto">
           <div className="max-w-2xl space-y-4 sm:space-y-6">
+            {/* Bespoke Royal RS Monogram Emblem in Hero */}
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="mb-1"
+            >
+              <RsLogo size="md" variant="full" />
+            </motion.div>
+
             {/* Live Drop Pill */}
             <motion.div
               key={`tag-${slide.id}`}
@@ -208,7 +438,12 @@ export function HeroCampaign() {
               <span className="w-1.5 h-1.5 rounded-full bg-[#1E40AF] animate-pulse shadow-[0_0_6px_#1E40AF]" />
               <span className="text-[#1E40AF] font-bold">ROYAL ATELIER</span>
               <span className="text-[#CBD5E1]">•</span>
-              <span className="text-[#0A0A0A]">{slide.tag.replace("ROYAL DROP 01 // ", "").replace("ROYAL DROP 02 // ", "").replace("ROYAL DROP 03 // ", "")}</span>
+              <span className="text-[#0A0A0A]">
+                {slide.tag
+                  .replace("ROYAL DROP 01 // ", "")
+                  .replace("ROYAL DROP 02 // ", "")
+                  .replace("ROYAL DROP 03 // ", "")}
+              </span>
             </motion.div>
 
             {/* Regal Cormorant Garamond Headline */}
@@ -288,6 +523,13 @@ export function HeroCampaign() {
           </div>
         </div>
       </div>
+
+      {/* Quick View Modal for Selected Floating Garment */}
+      <QuickViewModal
+        product={quickViewProduct}
+        isOpen={isQuickViewOpen}
+        onClose={() => setIsQuickViewOpen(false)}
+      />
     </section>
   );
 }

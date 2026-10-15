@@ -55,6 +55,7 @@ export default async function AdminLayout({
   const navItems = [
     { label: "Overview & Analytics", href: "/admin", icon: LayoutDashboard },
     { label: "Products & Inventory", href: "/admin/products", icon: Shirt },
+    { label: "Floating Hero Clothes", href: "/admin/hero", icon: Sparkles },
     { label: "Orders & Dispatch", href: "/admin/orders", icon: ShoppingBag },
     { label: "Coupons & Marketing", href: "/admin/marketing", icon: Tag },
     { label: "Social Media & Handles", href: "/admin/social", icon: Share2 },
