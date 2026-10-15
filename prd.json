@@ -296,6 +296,24 @@
       "priority": 16,
       "passes": true,
       "notes": "Full feature built, verified via typecheck, build (35/35 routes), CodeRabbit (0 findings), and live dev server HTTP 200 checks."
+    },
+    {
+      "id": "US-017",
+      "title": "Circular Orbital Motion, Instant Buy Section & Obsidian Cyber Theme",
+      "description": "As a shopper, I want clothing items in the hero section to float roundly in a continuous 3D elliptical orbit around the hero center, and clicking any cloth opens a dedicated slide-over buy section with instant size selection, live stock, Indian PIN delivery estimator, Buy Now, and Add to Bag, while the entire site is elevated to an Obsidian Cyber Atelier luxury streetwear color theme.",
+      "acceptanceCriteria": [
+        "Continuous 3D elliptical orbital revolving animation in the hero section with true foreground/background depth scaling and z-index layering",
+        "Clicking or tapping any revolving cloth opens a dedicated slide-over ClothBuyDrawer with real product data, sizes, PIN estimator, and instant Buy Now / Add to Bag",
+        "Complete Obsidian Cyber Atelier color palette transformation across Canvas (#090A0F), Cards (#12141D), Hairlines (#1E2230), and Accents (#D4FF00 Acid Cyber Volt, #FBBF24 Rajput Gold)",
+        "Consistent re-theming across Header, AnnouncementBar, HeroCampaign, CategoryGrid, RoyalProductRail, ProductCard, CompactProductCard, BrandStory, CustomerReviews, and Footer",
+        "Accessibility: WCAG AAA contrast, hover pause, reduced-motion bypass, and dual-context focus rings",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes"
+      ],
+      "priority": 17,
+      "passes": true,
+      "notes": "Passed tsc --noEmit, npm run build (35/35 routes), CodeRabbit review with focus ring autofix, and live server verification."
     }
   ]
 }

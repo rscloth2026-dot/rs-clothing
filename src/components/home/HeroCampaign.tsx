@@ -8,8 +8,9 @@ import { ArrowRight, ChevronLeft, ChevronRight, Sparkles, SlidersHorizontal, Shi
 import { Button } from "@/components/ui/button";
 import { ProgressiveBlur, TextRoll } from "@/components/ui/skiper-ui";
 import { RsLogo } from "@/components/brand/RsLogo";
-import { FloatingGarment, FloatingGarmentItem } from "@/components/home/FloatingGarment";
-import { QuickViewModal, QuickViewProduct } from "@/components/product/QuickViewModal";
+import { FloatingGarmentItem } from "@/components/home/FloatingGarment";
+import { CircularFloatingCanvas } from "@/components/home/CircularFloatingCanvas";
+import { ClothBuyDrawer, ClothBuyProduct } from "@/components/product/ClothBuyDrawer";
 
 // Default curated floating clothes configuration mapped to real store products
 const DEFAULT_FLOATING_GARMENTS: FloatingGarmentItem[] = [
@@ -208,7 +209,7 @@ export function HeroCampaign({
     Array.isArray(initialGarments) ? initialGarments : DEFAULT_FLOATING_GARMENTS
   );
   const [isMobile, setIsMobile] = useState(false);
-  const [quickViewProduct, setQuickViewProduct] = useState<QuickViewProduct | null>(null);
+  const [quickViewProduct, setQuickViewProduct] = useState<ClothBuyProduct | null>(null);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
   const latestSelectionRef = useRef<string | null>(null);
 
@@ -302,7 +303,7 @@ export function HeroCampaign({
   const activeGarments = floatingGarments.filter((g) => g.isEnabled !== false);
 
   return (
-    <section className="relative w-full bg-[#FAFAFA] overflow-hidden border-b border-[#E5E5E5]">
+    <section className="relative w-full bg-[#090A0F] overflow-hidden border-b border-[#1E2230]">
       {/* Hero Card Container */}
       <div className="relative w-full min-h-[86vh] sm:min-h-[90vh] lg:min-h-[94vh] flex flex-col justify-end">
         {/* Editorial Background Image with Smooth Crossfade */}
@@ -322,66 +323,59 @@ export function HeroCampaign({
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover object-top sm:object-center grayscale-[20%] contrast-[1.05]"
+                className="object-cover object-top sm:object-center grayscale-[30%] contrast-[1.10] opacity-40"
               />
             </motion.div>
           </AnimatePresence>
 
           {/* Editorial Atelier gradients for sharp typography contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] via-[#FAFAFA]/75 to-transparent" />
-          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#FAFAFA]/95 via-[#FAFAFA]/50 to-transparent w-3/4" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#090A0F] via-[#090A0F]/85 to-transparent" />
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#090A0F]/95 via-[#090A0F]/60 to-transparent w-3/4" />
 
-          {/* Subtle Ambient Royal Lighting Accents */}
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#1E40AF]/8 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute top-1/3 -right-24 w-80 h-80 bg-[#C5A059]/8 rounded-full blur-3xl pointer-events-none" />
+          {/* Subtle Ambient Cyber Volt & Gold Lighting Accents */}
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#D4FF00]/8 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/3 -right-24 w-80 h-80 bg-[#FBBF24]/8 rounded-full blur-3xl pointer-events-none" />
         </div>
 
         {/* Skiper-UI: Progressive Blur Overlays for Depth and Polish */}
         <ProgressiveBlur
           position="top"
-          backgroundColor="#FAFAFA"
+          backgroundColor="#090A0F"
           height="110px"
           blurAmount="10px"
           className="z-[2]"
         />
         <ProgressiveBlur
           position="bottom"
-          backgroundColor="#FAFAFA"
+          backgroundColor="#090A0F"
           height="140px"
           blurAmount="12px"
           className="z-[2]"
         />
 
         {/* ========================================================================= */}
-        {/* INTERACTIVE FLOATING CLOTHES CANVAS (Non-Circular, Organic Floating Motion) */}
+        {/* 3D CIRCULAR / ORBITAL REVOLVING CLOTHES CANVAS */}
         {/* ========================================================================= */}
-        <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-          <div className="relative w-full h-full pointer-events-auto">
-            {activeGarments.map((garment) => (
-              <FloatingGarment
-                key={garment.id}
-                garment={garment}
-                isMobile={isMobile}
-                onSelect={handleSelectGarment}
-              />
-            ))}
-          </div>
-        </div>
+        <CircularFloatingCanvas
+          garments={activeGarments}
+          onSelect={handleSelectGarment}
+          isMobile={isMobile}
+        />
 
         {/* Interactive Floating Hint Pill */}
-        <div className="absolute top-24 left-4 sm:left-8 z-20 hidden sm:flex items-center space-x-2 px-3 py-1 bg-white/90 backdrop-blur-md border border-[#E5E5E5] text-[10px] font-sans text-[#71717A] uppercase tracking-widest shadow-xs">
-          <Sparkles className="w-3 h-3 text-[#FBBF24]" />
-          <span>Tap any floating garment to Quick-View & Shop</span>
+        <div className="absolute top-24 left-4 sm:left-8 z-20 hidden sm:flex items-center space-x-2 px-3 py-1 bg-[#12141D]/90 backdrop-blur-md border border-[#1E2230] text-[10px] font-sans text-[#94A3B8] uppercase tracking-widest shadow-xs">
+          <Sparkles className="w-3 h-3 text-[#D4FF00]" />
+          <span>Click any revolving cloth to open Buy Section</span>
         </div>
 
         {/* Top Controls: Slide Switcher */}
         <div className="absolute top-6 right-4 sm:right-8 z-20 flex items-center space-x-2">
-          <div className="flex items-center space-x-1 p-1 bg-white/95 backdrop-blur-md border border-[#E5E5E5] rounded-full shadow-sm">
+          <div className="flex items-center space-x-1 p-1 bg-[#12141D]/90 backdrop-blur-md border border-[#1E2230] rounded-full shadow-sm">
             <button
               onClick={() =>
                 setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
               }
-              className="p-1 rounded-full text-[#71717A] hover:text-[#1E40AF] transition-colors"
+              className="p-1 rounded-full text-[#94A3B8] hover:text-[#D4FF00] transition-colors"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -393,8 +387,8 @@ export function HeroCampaign({
                 onClick={() => setCurrentSlide(idx)}
                 className={`px-3 py-1 rounded-full text-[10px] font-sans font-bold transition-all ${
                   currentSlide === idx
-                    ? "bg-[#1E40AF] text-white shadow-xs"
-                    : "text-[#71717A] hover:text-[#1E40AF]"
+                    ? "bg-[#D4FF00] text-black shadow-xs font-black"
+                    : "text-[#94A3B8] hover:text-[#D4FF00]"
                 }`}
                 aria-label={`Switch to slide ${s.id}`}
               >
@@ -404,7 +398,7 @@ export function HeroCampaign({
 
             <button
               onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-              className="p-1 rounded-full text-[#71717A] hover:text-[#1E40AF] transition-colors"
+              className="p-1 rounded-full text-[#94A3B8] hover:text-[#D4FF00] transition-colors"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />
@@ -433,12 +427,12 @@ export function HeroCampaign({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center space-x-2 px-3 py-1.5 bg-white/95 border border-[#1E40AF]/25 text-[#0A0A0A] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-xs backdrop-blur-md"
+              className="inline-flex items-center space-x-2 px-3 py-1.5 bg-[#12141D]/90 border border-[#D4FF00]/40 text-[#F8FAFC] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-xs backdrop-blur-md"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#1E40AF] animate-pulse shadow-[0_0_6px_#1E40AF]" />
-              <span className="text-[#1E40AF] font-bold">ROYAL ATELIER</span>
-              <span className="text-[#CBD5E1]">•</span>
-              <span className="text-[#0A0A0A]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse shadow-[0_0_8px_#D4FF00]" />
+              <span className="text-[#D4FF00] font-bold">ROYAL ATELIER</span>
+              <span className="text-[#475569]">•</span>
+              <span className="text-[#F8FAFC]">
                 {slide.tag
                   .replace("ROYAL DROP 01 // ", "")
                   .replace("ROYAL DROP 02 // ", "")
@@ -452,11 +446,11 @@ export function HeroCampaign({
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-[#0A0A0A] font-serif leading-[1.1] sm:leading-[1.05]"
+              className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-white font-serif leading-[1.1] sm:leading-[1.05]"
             >
               {slide.title}
               <br />
-              <span className="text-[#1E40AF] italic font-normal">{slide.subtitle}</span>
+              <span className="text-[#D4FF00] italic font-normal">{slide.subtitle}</span>
             </motion.h1>
 
             {/* Subtext */}
@@ -465,7 +459,7 @@ export function HeroCampaign({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xs sm:text-sm text-[#525252] font-normal max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none font-sans"
+              className="text-xs sm:text-sm text-[#94A3B8] font-normal max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none font-sans"
             >
               {slide.description}
             </motion.p>
@@ -475,10 +469,10 @@ export function HeroCampaign({
               <Link href={slide.ctaLink} className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto h-12 min-h-[48px] bg-[#0A0A0A] hover:bg-[#1E3A8A] text-white font-bold uppercase tracking-wider text-xs px-8 rounded-none shadow-sm transition-all flex items-center justify-center space-x-2 active:scale-[0.98] border border-transparent hover:border-[#1E40AF]"
+                  className="w-full sm:w-auto h-12 min-h-[48px] bg-[#D4FF00] hover:bg-[#BCE600] text-black font-black uppercase tracking-wider text-xs px-8 rounded-none shadow-lg shadow-[#D4FF00]/15 transition-all flex items-center justify-center space-x-2 active:scale-[0.98] border border-transparent"
                 >
                   <span>{slide.ctaText}</span>
-                  <ArrowRight className="w-4 h-4 ml-1 text-[#FBBF24]" />
+                  <ArrowRight className="w-4 h-4 ml-1 text-black" />
                 </Button>
               </Link>
 
@@ -486,7 +480,7 @@ export function HeroCampaign({
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-full sm:w-auto h-12 min-h-[48px] border-[#E5E5E5] bg-white text-[#0A0A0A] hover:border-[#1E40AF] hover:text-[#1E40AF] hover:bg-[#FAFAFA] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
+                  className="w-full sm:w-auto h-12 min-h-[48px] border-[#1E2230] bg-[#12141D] text-white hover:border-[#D4FF00] hover:text-[#D4FF00] hover:bg-[#161824] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
                 >
                   <span>View All Royal Drops</span>
                 </Button>
@@ -494,28 +488,28 @@ export function HeroCampaign({
             </div>
 
             {/* Quality Specs Grid with Color-Coded Accents */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-[#E5E5E5] max-w-md">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-[#1E2230] max-w-md">
               <div>
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#1E40AF] tabular-nums">
+                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#D4FF00] tabular-nums">
                   {slide.metric1}
                 </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#71717A]">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-[#94A3B8]">
                   {slide.metric1Sub}
                 </span>
               </div>
               <div>
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#991B1B] tabular-nums">
+                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#FBBF24] tabular-nums">
                   {slide.metric2}
                 </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#71717A]">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-[#94A3B8]">
                   {slide.metric2Sub}
                 </span>
               </div>
               <div className="hidden sm:block">
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#0A0A0A]">
+                <span className="block text-xl sm:text-2xl font-serif font-bold text-white">
                   JODHPUR
                 </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#C5A059] font-bold">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-[#D4FF00] font-bold">
                   Atelier Origin
                 </span>
               </div>
@@ -524,8 +518,8 @@ export function HeroCampaign({
         </div>
       </div>
 
-      {/* Quick View Modal for Selected Floating Garment */}
-      <QuickViewModal
+      {/* High-Conversion Cloth Buy Drawer */}
+      <ClothBuyDrawer
         product={quickViewProduct}
         isOpen={isQuickViewOpen}
         onClose={() => setIsQuickViewOpen(false)}

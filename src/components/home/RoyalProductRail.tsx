@@ -34,23 +34,23 @@ export function RoyalProductRail({
   const activeAnimation = direction === "reverse" ? "animate-marquee-reverse" : speedClass;
 
   return (
-    <section className="py-12 sm:py-16 bg-[#FAFAFA] border-b border-[#E5E5E5] overflow-hidden select-none">
+    <section className="py-12 sm:py-16 bg-[#090A0F] border-b border-[#1E2230] overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-[#E5E5E5]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-[#1E2230]">
           <div>
             {badgeTitle && (
-              <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 bg-white border border-[#1E40AF]/25 rounded-full mb-2 shadow-xs">
-                <Sparkles className="w-3 h-3 text-[#1E40AF]" />
-                <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#1E40AF]">
+              <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 bg-[#12141D] border border-[#1E2230] rounded-full mb-2 shadow-xs">
+                <Sparkles className="w-3 h-3 text-[#D4FF00]" />
+                <span className="text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#D4FF00]">
                   {badgeTitle}
                 </span>
               </div>
             )}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#0A0A0A] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#F8FAFC] tracking-tight leading-snug">
               {title}
             </h2>
             {subtitle && (
-              <p className="text-xs sm:text-sm text-[#71717A] font-sans mt-1">
+              <p className="text-xs sm:text-sm text-[#94A3B8] font-sans mt-1">
                 {subtitle}
               </p>
             )}
@@ -58,10 +58,10 @@ export function RoyalProductRail({
 
           <Link
             href={viewAllLink}
-            className="inline-flex items-center space-x-1.5 text-xs font-sans font-bold uppercase tracking-widest text-[#0A0A0A] hover:text-[#1E40AF] transition-colors group"
+            className="inline-flex items-center space-x-1.5 text-xs font-sans font-bold uppercase tracking-widest text-[#F8FAFC] hover:text-[#D4FF00] transition-colors group"
           >
             <span>{viewAllText}</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#1E40AF] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#D4FF00] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>
@@ -69,8 +69,8 @@ export function RoyalProductRail({
       {/* Runway Track with Small Compact Widgets */}
       <div className="relative w-full overflow-hidden pause-on-hover py-2">
         {/* Left & Right Subtle Fade Overlays for Elegant Editorial Runway Edge */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-[#FAFAFA] via-[#FAFAFA]/80 to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-[#FAFAFA] via-[#FAFAFA]/80 to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-[#090A0F] via-[#090A0F]/80 to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-[#090A0F] via-[#090A0F]/80 to-transparent z-10" />
 
         {/* Gliding Infinite Row */}
         <div

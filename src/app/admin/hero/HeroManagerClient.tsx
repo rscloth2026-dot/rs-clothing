@@ -712,22 +712,22 @@ export function HeroManagerClient({
 
             {/* Simulated Hero Stage */}
             <div
-              className={`relative bg-[#FAFAFA] border border-[#E5E5E5] overflow-hidden mx-auto transition-all ${
+              className={`relative bg-[#090A0F] border border-[#1E2230] overflow-hidden mx-auto transition-all ${
                 previewMode === "desktop"
                   ? "w-full h-80 sm:h-96"
-                  : "w-72 h-[380px] border-2 border-[#0A0A0A]"
+                  : "w-72 h-[380px] border-2 border-[#1E2230]"
               }`}
             >
               {/* Center Watermark & Headline Representation */}
               <div className="absolute inset-0 flex flex-col justify-end p-6 z-0 select-none opacity-40">
-                <span className="text-[9px] font-mono text-[#1E40AF] uppercase tracking-widest">
+                <span className="text-[9px] font-mono text-[#D4FF00] uppercase tracking-widest">
                   ROYAL ATELIER // RUNWAY
                 </span>
-                <span className="font-serif font-bold text-2xl uppercase tracking-tight text-[#0A0A0A]">
+                <span className="font-serif font-bold text-2xl uppercase tracking-tight text-[#F8FAFC]">
                   RAJPUTANA STREETWEAR
                 </span>
-                <span className="text-[10px] font-sans text-[#71717A] mt-1">
-                  Safe headline zone — verify no floating garment overlaps text
+                <span className="text-[10px] font-sans text-[#94A3B8] mt-1">
+                  Circular orbital zone — revolving clothes orbit center emblem
                 </span>
               </div>
 

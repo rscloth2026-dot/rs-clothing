@@ -24,32 +24,32 @@ export function AnnouncementBar() {
   if (!isVisible) return null;
 
   return (
-    <div className="jodhpur-gradient-bar text-[#FAFAFA] text-[11px] font-medium tracking-wider px-4 py-2.5 flex items-center justify-between select-none relative z-40 transition-colors shadow-sm">
-      <div className="hidden md:flex items-center space-x-2 text-[10px] text-[#93C5FD] uppercase tracking-widest font-mono">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#EAB308] shadow-[0_0_8px_#EAB308] inline-block animate-pulse" />
-        <span className="text-[#FAFAFA] font-bold tracking-wider">ATELIER JODHPUR // MARWAR</span>
+    <div className="jodhpur-gradient-bar text-[#F8FAFC] text-[11px] font-medium tracking-wider px-4 py-2.5 flex items-center justify-between select-none relative z-40 transition-colors shadow-sm">
+      <div className="hidden md:flex items-center space-x-2 text-[10px] text-[#94A3B8] uppercase tracking-widest font-mono">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#D4FF00] shadow-[0_0_8px_#D4FF00] inline-block animate-pulse" />
+        <span className="text-[#D4FF00] font-bold tracking-wider">RS CYBER ATELIER</span>
       </div>
 
       <div className="flex-1 flex items-center justify-center text-center px-2 overflow-hidden">
         <Link
           href={ANNOUNCEMENTS[index].link}
-          className="inline-flex items-center space-x-2 group hover:text-[#FDE047] transition-colors focus-visible:outline-[#FAFAFA] focus-visible:outline-2 focus-visible:outline-offset-2 rounded-xs"
+          className="inline-flex items-center space-x-2 group hover:text-[#D4FF00] transition-colors focus-visible:outline-[#D4FF00] focus-visible:outline-2 focus-visible:outline-offset-2 rounded-xs"
         >
-          <Sparkles className="w-3.5 h-3.5 text-[#FBBF24] shrink-0 animate-pulse" />
-          <span className="uppercase text-[11px] font-bold tracking-wider text-[#FFFFFF] group-hover:text-[#FDE047] transition-colors drop-shadow-xs">
+          <Sparkles className="w-3.5 h-3.5 text-[#D4FF00] shrink-0 animate-pulse" />
+          <span className="uppercase text-[11px] font-bold tracking-wider text-[#F8FAFC] group-hover:text-[#D4FF00] transition-colors drop-shadow-xs">
             {ANNOUNCEMENTS[index].text}
           </span>
-          <ArrowRight className="w-3.5 h-3.5 text-[#FBBF24] group-hover:translate-x-1 transition-transform hidden sm:inline-block" />
+          <ArrowRight className="w-3.5 h-3.5 text-[#D4FF00] group-hover:translate-x-1 transition-transform hidden sm:inline-block" />
         </Link>
       </div>
 
-      <div className="flex items-center space-x-3 text-[10px] text-[#BFDBFE]">
-        <span className="hidden lg:inline-flex items-center gap-1.5 font-mono text-[#BFDBFE]">
-          <ShieldCheck className="w-3.5 h-3.5 text-[#FBBF24]" /> 7-DAY ATELIER EXCHANGE
+      <div className="flex items-center space-x-3 text-[10px] text-[#94A3B8]">
+        <span className="hidden lg:inline-flex items-center gap-1.5 font-mono text-[#94A3B8]">
+          <ShieldCheck className="w-3.5 h-3.5 text-[#D4FF00]" /> 7-DAY ATELIER EXCHANGE
         </span>
         <button
           onClick={() => setIsVisible(false)}
-          className="p-1 hover:text-[#FFFFFF] text-[#93C5FD] transition-colors ml-2 focus-visible:outline-[#FAFAFA] focus-visible:outline-2 focus-visible:outline-offset-2 rounded-xs"
+          className="p-1 hover:text-white text-[#94A3B8] transition-colors ml-2 focus-visible:outline-[#D4FF00] focus-visible:outline-2 focus-visible:outline-offset-2 rounded-xs"
           aria-label="Dismiss announcement"
         >
           <X className="w-3.5 h-3.5" />

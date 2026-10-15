@@ -58,3 +58,25 @@ Started: Tue Oct 13 00:33:30 IST 2026
 - Admin Hero Studio (`/admin/hero`): Created full administrative management suite with multipart image uploader (`/api/admin/upload`), garment toggles, product associations, coordinate/scale/speed sliders, live canvas preview, and persistent storage via `StoreSetting` (`/api/admin/hero`) with audit logging.
 - Quality Gates & Standards: 100% passed `npm run typecheck` (`tsc --noEmit`), Next.js production build (`35/35 routes compiled`), CodeRabbit review (0 findings across all touched files), and live dev server HTTP 200 OK responses.
 
+### [2026-10-15] Circular Orbital Motion, Instant Buy Section & Obsidian Cyber Theme (US-017)
+- 3D Continuous Elliptical Orbit Engine (`CircularFloatingCanvas.tsx`):
+  - Engineered continuous smooth circular revolving motion around the hero center headline and RS insignia.
+  - Parametric 3D trajectory: $x = R_x \cdot \cos\theta, y = R_y \cdot \sin\theta$ ($R_x \approx 38vw, R_y \approx 140px$ desktop; $R_x \approx 40vw, R_y \approx 85px$ mobile).
+  - True 3D depth-of-field perspective: scale scales from $0.78\times$ in the back to $1.18\times$ in the foreground with z-index stacking ($30$ foreground vs $10$ background), ensuring clothes pass smoothly in front of the background and behind the central headline.
+  - Tactile interaction: hover pause/slowdown, glowing Acid Cyber Volt halo rings, click/tap trigger to open dedicated buy section, and accessible fallback respecting `prefers-reduced-motion`.
+- Dedicated Slide-Over Cloth Buy Section (`ClothBuyDrawer.tsx`):
+  - Accessible, smooth-sliding right drawer displaying high-resolution garment imagery, category and fit tags, real-time INR pricing, and discount savings pills.
+  - Interactive Size Selector (S, M, L, XL, XXL) with live variant stock counters.
+  - 6-digit Indian PIN code delivery estimator with BlueDart Express logistics calculation.
+  - Dual purchase actions: **"⚡ BUY NOW"** (instant single-click redirect to `/checkout` with cart sync) and **"🛍️ ADD TO BAG"** (adds item and automatically triggers cart drawer).
+- Complete Obsidian Cyber Atelier Theme Transformation (UI/UX Pro Max, Taste, 21st.dev):
+  - Re-engineered color scheme across the entire site to dark luxury streetwear: Canvas (`#090A0F`), Card surfaces (`#12141D`), Hairline borders (`#1E2230`), Signature Streetwear Accent (`#D4FF00` Acid Cyber Volt), Royal Accent (`#FBBF24` Rajput Gold), and High-Contrast Typography (`#F8FAFC` titanium text, `#94A3B8` muted text).
+  - Re-themed all components: Announcement bar, Header, Mobile bottom dock, Hero Campaign, Category Grid (Skiper-UI 52 silhouettes), Royal Product Rails, ProductCard, CompactProductCard, Brand Story, Customer Reviews, and Admin Hero preview stage.
+  - Accessibility: WCAG AAA compliance, dual-context focus outlines (dark surfaces use `#D4FF00`, light panels use `#090A0F` per CodeRabbit review feedback).
+- Quality Gates Passed:
+  - TypeScript typecheck (`tsc --noEmit`): 0 errors.
+  - Next.js production build (`npm run build`): All 35 routes compiled cleanly.
+  - CodeRabbit automated agent review: 0 remaining findings after autofocus outline enhancement.
+  - HTTP 200 OK verified on live development server.
+
+

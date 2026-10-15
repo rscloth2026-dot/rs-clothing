@@ -106,12 +106,12 @@ export function ProductCard({
 
   return (
     <div
-      className="group relative flex flex-col bg-[#FFFFFF] border border-[#E5E5E5] hover:border-[#1E40AF] hover:shadow-[0_12px_28px_rgba(30,64,175,0.12)] transition-all rounded-none overflow-hidden shadow-xs"
+      className="group relative flex flex-col bg-[#12141D] border border-[#1E2230] hover:border-[#D4FF00]/60 hover:shadow-[0_12px_32px_rgba(212,255,0,0.08)] transition-all rounded-none overflow-hidden shadow-sm"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Visual Badge & Wishlist Container */}
-      <div className="relative aspect-[3/4] w-full bg-[#F5F5F7] overflow-hidden select-none">
+      <div className="relative aspect-[3/4] w-full bg-[#0D0F16] overflow-hidden select-none">
         <Link href={`/products/${slug}`} className="block w-full h-full">
           <Image
             src={isHovered ? hoverImage : primaryImage}
@@ -123,19 +123,19 @@ export function ProductCard({
         </Link>
 
         {/* Badges */}
-        <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10">
+        <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10 pointer-events-none">
           {isNewDrop && (
-            <span className="px-2 py-0.5 bg-[#991B1B] text-white text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
+            <span className="px-2 py-0.5 bg-[#D4FF00] text-[#090A0F] text-[9px] font-sans font-black uppercase tracking-wider rounded-none shadow-sm">
               ROYAL DROP
             </span>
           )}
           {isBestseller && (
-            <span className="px-2 py-0.5 bg-[#1E40AF] text-white text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
+            <span className="px-2 py-0.5 bg-[#FBBF24] text-[#090A0F] text-[9px] font-sans font-black uppercase tracking-wider rounded-none shadow-sm">
               BESTSELLER
             </span>
           )}
           {discountPercent > 0 && (
-            <span className="px-2 py-0.5 bg-[#FEF3C7] text-[#92400E] border border-[#FDE68A] text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-xs">
+            <span className="px-2 py-0.5 bg-[#181B26] text-[#D4FF00] border border-[#D4FF00]/30 text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-sm">
               {discountPercent}% OFF
             </span>
           )}
@@ -146,17 +146,17 @@ export function ProductCard({
           onClick={handleWishlistToggle}
           className={`absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-90 ${
             wishlisted
-              ? "bg-[#991B1B] text-white shadow-xs"
-              : "bg-white/95 text-[#71717A] hover:text-[#1E40AF] hover:border-[#1E40AF]/40 border border-[#E5E5E5] backdrop-blur-sm shadow-xs"
+              ? "bg-[#D4FF00] text-[#090A0F] shadow-sm"
+              : "bg-[#0E1017]/90 text-[#94A3B8] hover:text-[#D4FF00] hover:border-[#D4FF00]/40 border border-[#1E2230] backdrop-blur-md shadow-sm"
           }`}
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
-          <Heart className={`w-4 h-4 ${wishlisted ? "fill-white" : ""}`} />
+          <Heart className={`w-4 h-4 ${wishlisted ? "fill-[#090A0F]" : ""}`} />
         </button>
 
         {/* 1-Click Quick Add Size Tray (Desktop Hover Reveal) */}
-        <div className="hidden lg:flex absolute bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur-md border-t border-[#E5E5E5] translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex-col gap-1.5 z-20">
-          <span className="text-[10px] font-sans uppercase font-bold text-[#1E40AF] tracking-wider text-center">
+        <div className="hidden lg:flex absolute bottom-0 left-0 right-0 p-3 bg-[#0E1017]/95 backdrop-blur-md border-t border-[#1E2230] translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex-col gap-1.5 z-20">
+          <span className="text-[10px] font-sans uppercase font-bold text-[#D4FF00] tracking-wider text-center">
             {justAdded ? "Added to Atelier Bag!" : "Quick Add Size"}
           </span>
           <div className="flex items-center justify-center gap-1.5">
@@ -173,14 +173,14 @@ export function ProductCard({
                   onClick={(e) => handleQuickAdd(size, e)}
                   className={`h-7 px-2.5 text-[11px] font-sans font-bold rounded-none flex items-center justify-center transition-colors ${
                     !inStock
-                      ? "opacity-30 cursor-not-allowed bg-[#F4F4F5] text-[#A1A1AA] line-through"
+                      ? "opacity-30 cursor-not-allowed bg-[#0B0D13] text-[#475569] line-through"
                       : isSelected
-                      ? "bg-[#1E40AF] text-white shadow-xs"
-                      : "bg-white border border-[#E5E5E5] text-[#0A0A0A] hover:border-[#1E40AF] hover:text-[#1E40AF] hover:bg-[#EFF6FF]"
+                      ? "bg-[#D4FF00] text-[#090A0F] shadow-xs"
+                      : "bg-[#141722] border border-[#222738] text-[#F8FAFC] hover:border-[#D4FF00] hover:text-[#D4FF00] hover:bg-[#1A1E2D]"
                   }`}
                   aria-label={`Quick add size ${size}`}
                 >
-                  {isSelected ? <Check className="w-3 h-3 text-white" /> : size}
+                  {isSelected ? <Check className="w-3 h-3 text-[#090A0F]" /> : size}
                 </button>
               );
             })}
@@ -195,18 +195,18 @@ export function ProductCard({
               e.stopPropagation();
               setShowMobileSizes(!showMobileSizes);
             }}
-            className="w-8 h-8 rounded-full bg-white border border-[#E5E5E5] text-[#0A0A0A] hover:border-[#1E40AF] hover:text-[#1E40AF] flex items-center justify-center shadow-xs active:scale-95"
+            className="w-8 h-8 rounded-full bg-[#12141D] border border-[#1E2230] text-[#F8FAFC] hover:border-[#D4FF00] hover:text-[#D4FF00] flex items-center justify-center shadow-xs active:scale-95"
             aria-label="Quick add size"
           >
-            <Plus className="w-4 h-4 text-[#1E40AF]" />
+            <Plus className="w-4 h-4 text-[#D4FF00]" />
           </button>
         </div>
 
         {/* Mobile Expandable Size Pill Sheet */}
         {showMobileSizes && (
-          <div className="lg:hidden absolute inset-x-0 bottom-0 bg-white/95 backdrop-blur-md p-3 border-t border-[#E5E5E5] z-20 animate-accordion-down">
+          <div className="lg:hidden absolute inset-x-0 bottom-0 bg-[#0E1017]/95 backdrop-blur-md p-3 border-t border-[#1E2230] z-20 animate-accordion-down">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-sans uppercase font-bold text-[#1E40AF]">
+              <span className="text-[10px] font-sans uppercase font-bold text-[#D4FF00]">
                 Select Size
               </span>
               <button
@@ -215,7 +215,7 @@ export function ProductCard({
                   e.stopPropagation();
                   setShowMobileSizes(false);
                 }}
-                className="text-[10px] text-[#71717A] uppercase font-bold hover:text-[#1E40AF]"
+                className="text-[10px] text-[#94A3B8] uppercase font-bold hover:text-[#D4FF00]"
               >
                 Close
               </button>
@@ -229,7 +229,7 @@ export function ProductCard({
                     key={size}
                     disabled={!inStock}
                     onClick={(e) => handleQuickAdd(size, e)}
-                    className="flex-1 min-w-[38px] h-8 bg-white border border-[#E5E5E5] text-xs font-bold text-[#0A0A0A] hover:bg-[#1E40AF] hover:text-white hover:border-[#1E40AF] rounded-none transition-colors"
+                    className="flex-1 min-w-[38px] h-8 bg-[#141722] border border-[#222738] text-xs font-bold text-[#F8FAFC] hover:bg-[#D4FF00] hover:text-[#090A0F] hover:border-[#D4FF00] rounded-none transition-colors"
                   >
                     {size}
                   </button>
@@ -241,27 +241,27 @@ export function ProductCard({
       </div>
 
       {/* Product Details Section */}
-      <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1 space-y-2 bg-[#FFFFFF]">
+      <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1 space-y-2 bg-[#12141D]">
         <div>
-          <div className="flex items-center justify-between text-[10px] font-sans text-[#71717A] uppercase tracking-wider mb-1">
+          <div className="flex items-center justify-between text-[10px] font-sans text-[#94A3B8] uppercase tracking-wider mb-1">
             <span>{categoryName || "Royal Streetwear"}</span>
-            <span className="font-semibold text-[#1E40AF]">{fit} FIT</span>
+            <span className="font-semibold text-[#D4FF00]">{fit} FIT</span>
           </div>
 
-          <Link href={`/products/${slug}`} className="block group-hover:text-[#1E40AF] transition-colors">
-            <h3 className="font-serif font-bold text-sm sm:text-base text-[#0A0A0A] line-clamp-1 leading-snug">
+          <Link href={`/products/${slug}`} className="block group-hover:text-[#D4FF00] transition-colors">
+            <h3 className="font-serif font-bold text-sm sm:text-base text-[#F8FAFC] line-clamp-1 leading-snug">
               {title}
             </h3>
           </Link>
         </div>
 
         {/* Price Tag with High-Contrast Typography */}
-        <div className="flex items-baseline space-x-2 pt-1 border-t border-[#F4F4F5]">
-          <span className="text-base sm:text-lg font-bold text-[#0A0A0A] font-sans tabular-nums">
+        <div className="flex items-baseline space-x-2 pt-1 border-t border-[#1E2230]">
+          <span className="text-base sm:text-lg font-bold text-[#F8FAFC] font-sans tabular-nums">
             {formatPrice(basePrice)}
           </span>
           {comparePrice && (
-            <span className="text-xs text-[#A1A1AA] line-through font-sans tabular-nums">
+            <span className="text-xs text-[#64748B] line-through font-sans tabular-nums">
               {formatPrice(comparePrice)}
             </span>
           )}

@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 0 0% 98%;           /* #FAFAFA Editorial Off-White */
-    --foreground: 0 0% 4%;            /* #0A0A0A Deep Ink Charcoal */
-    --card: 0 0% 100%;                /* #FFFFFF Studio White */
-    --card-foreground: 0 0% 4%;       /* #0A0A0A */
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 4%;
-    --primary: 0 65% 33%;             /* #8B1E1E Royal Crimson (Heritage Accent) */
-    --primary-foreground: 0 0% 100%;  /* #FFFFFF */
-    --secondary: 240 5% 96%;          /* #F4F4F5 Atelier Neutral */
-    --secondary-foreground: 0 0% 4%;
-    --muted: 240 5% 96%;              /* #F4F4F5 */
-    --muted-foreground: 240 4% 46%;    /* #71717A Muted Slate Charcoal */
-    --accent: 39 48% 56%;             /* #C5A059 Mughal Antique Gold */
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
+    --background: 230 25% 5%;          /* #090A0F Obsidian Cyber Carbon */
+    --foreground: 210 40% 98%;         /* #F8FAFC Titanium Crisp White */
+    --card: 228 22% 9%;                /* #12141D Carbon Matte Glass */
+    --card-foreground: 210 40% 98%;    /* #F8FAFC */
+    --popover: 228 22% 9%;             /* #12141D */
+    --popover-foreground: 210 40% 98%;
+    --primary: 70 100% 50%;            /* #D4FF00 Acid Cyber Volt */
+    --primary-foreground: 0 0% 0%;     /* #000000 Deep Ink */
+    --secondary: 230 24% 14%;          /* #1C1F2E Titanium Secondary */
+    --secondary-foreground: 210 40% 98%;
+    --muted: 228 20% 12%;              /* #161824 */
+    --muted-foreground: 215 16% 65%;   /* #94A3B8 Cool Slate Smoke */
+    --accent: 45 96% 56%;              /* #FBBF24 Rajput Antique Gold */
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;          /* #EF4444 */
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 90%;               /* #E5E5E5 Razor-Sharp Hairline Border */
-    --input: 0 0% 90%;
-    --ring: 0 0% 4%;                  /* #0A0A0A High-Contrast Focus Ring */
+    --border: 225 20% 16%;             /* #1E2230 Hairline Titanium */
+    --input: 225 20% 16%;
+    --ring: 70 100% 50%;               /* #D4FF00 High-Contrast Volt Ring */
     --radius: 0.125rem;
   }
 
@@ -31,37 +31,48 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-[#0A0A0A] selection:text-white;
+    @apply bg-background text-foreground antialiased selection:bg-[#D4FF00] selection:text-black;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   /* Accessible high-contrast focus rings */
   :focus-visible {
-    outline: 2px solid #0A0A0A;
+    outline: 2px solid #D4FF00;
+    outline-offset: 2px;
+  }
+
+  /* Accessible high-contrast focus outline for light surfaces and admin panels */
+  .bg-white :focus-visible,
+  .bg-\[\#FAFAFA\] :focus-visible,
+  .bg-\[\#FFFFFF\] :focus-visible,
+  .bg-\[\#F4F4F5\] :focus-visible {
+    outline: 2px solid #090A0F;
     outline-offset: 2px;
   }
 
   /* High-contrast focus outline for controls on dark surfaces */
   .bg-\[\#0A0A0A\] :focus-visible,
+  .bg-\[\#12141D\] :focus-visible,
+  .bg-\[\#090A0F\] :focus-visible,
   .bg-\[\#1C1917\] :focus-visible,
   .bg-black :focus-visible,
   .dark :focus-visible {
-    outline: 2px solid #FAFAFA;
+    outline: 2px solid #D4FF00;
     outline-offset: 2px;
   }
 }
 
-/* Luxury Royal Rajasthani Card & Surface Utilities */
+/* Luxury Royal Streetwear Card & Surface Utilities */
 .rajasthan-card {
-  background: #FFFFFF;
-  border: 1px solid #E5E5E5;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+  background: #12141D;
+  border: 1px solid #1E2230;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.4);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rajasthan-card:hover {
-  border-color: #1E40AF;
-  box-shadow: 0 12px 32px 0 rgba(30, 64, 175, 0.12);
+  border-color: #D4FF00;
+  box-shadow: 0 12px 32px 0 rgba(212, 255, 0, 0.12);
   transform: translateY(-2px);
 }
 
@@ -75,26 +86,39 @@
 }
 
 .text-jodhpur-blue {
-  color: #1E40AF;
+  color: #38BDF8;
 }
 
 .border-jodhpur-blue {
   border-color: #1E40AF;
 }
 
+/* Cyber Volt Utilities */
+.bg-cyber-volt {
+  background-color: #D4FF00;
+}
+
+.text-cyber-volt {
+  color: #D4FF00;
+}
+
+.border-cyber-volt {
+  border-color: #D4FF00;
+}
+
 /* Jodhpur Announcement Bar Ambient Gradient */
 .jodhpur-gradient-bar {
-  background: linear-gradient(90deg, #0B1528 0%, #102A45 50%, #0B1528 100%);
-  border-bottom: 1px solid rgba(30, 64, 175, 0.35);
+  background: linear-gradient(90deg, #090A0F 0%, #12141D 50%, #090A0F 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Luxury Royal Gold Foil Touch */
 .gold-foil-touch {
-  color: #C5A059;
+  color: #FBBF24;
 }
 
 .border-gold-trim {
-  border-color: rgba(197, 160, 89, 0.4);
+  border-color: rgba(251, 191, 36, 0.4);
 }
 
 .rajasthan-badge {
@@ -110,7 +134,7 @@
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #0A0A0A 20%, #1E40AF 60%, #C5A059 100%);
+  background: linear-gradient(135deg, #FFFFFF 20%, #D4FF00 60%, #FBBF24 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -137,14 +161,14 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAFAFA;
+  background: #090A0F;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E5E5E5;
+  background: #1E2230;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A3A3A3;
+  background: #333A4E;
 }
 
 /* Tabular numbers for price accuracy */
