@@ -60,7 +60,7 @@ Create a `.env` file in the root directory:
 ```env
 DATABASE_URL="file:./dev.db"
 SESSION_SECRET="your-secure-secret-key-at-least-32-chars-long"
-ADMIN_PASSWORD="radhasolanki"
+ADMIN_PASSWORD="your-strong-admin-password"
 
 # Optional Payment Gateway
 RAZORPAY_KEY_ID="rzp_test_..."
@@ -87,8 +87,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 The admin management suite is located at `/admin`:
 
 - **Admin Login Route**: `/account`
-- **Identifier**: `sujal@rscloth`
-- **Password**: `radhasolanki`
+- **Default Identifier**: `sujal@rscloth`
+- **Password**: Configured via `ADMIN_PASSWORD` in your `.env` (seeded during initial database setup). Always set a unique high-entropy password for production deployments.
 
 *Note: All admin paths (`/admin/*` and `/api/admin/*`) are strictly enforced via Next.js Edge Middleware (`src/middleware.ts`).*
 

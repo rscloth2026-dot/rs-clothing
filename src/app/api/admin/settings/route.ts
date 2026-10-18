@@ -9,10 +9,41 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized: Admin access required" }, { status: 403 });
     }
 
+    const DEFAULT_SETTINGS: Record<string, string> = {
+      site_name: "OnlyCollection",
+      brand_tagline: "Haute Streetwear Atelier",
+      instagram: "https://instagram.com/onlycollection",
+      whatsapp: "+91 98765 43210",
+      youtube: "https://youtube.com/@onlycollection",
+      twitter: "https://x.com/onlycollection",
+      facebook: "https://facebook.com/onlycollection",
+      pinterest: "https://pinterest.com/onlycollection",
+      support_email: "concierge@onlycollection.in",
+      phone: "+91 98765 43210",
+      address: "OnlyCollection Atelier, Circuit House Road, Ratanada, Jodhpur 342001, Rajasthan, India",
+    };
+
+    const LEGACY_BRAND_VALUES = new Set([
+      "RS Clothing",
+      "https://instagram.com/rsclothing",
+      "https://youtube.com/@rsclothing",
+      "https://x.com/rsclothing",
+      "https://facebook.com/rsclothing",
+      "https://pinterest.com/rsclothing",
+      "concierge@rsclothing.in",
+      "support@rsclothing.in",
+    ]);
+
     const settings = await prisma.storeSetting.findMany();
-    const settingsMap: Record<string, string> = {};
+    const settingsMap: Record<string, string> = { ...DEFAULT_SETTINGS };
     settings.forEach((s) => {
-      settingsMap[s.key] = s.value;
+      if (LEGACY_BRAND_VALUES.has(s.value)) {
+        if (DEFAULT_SETTINGS[s.key]) {
+          settingsMap[s.key] = DEFAULT_SETTINGS[s.key];
+        }
+      } else {
+        settingsMap[s.key] = s.value;
+      }
     });
 
     return NextResponse.json({ settings: settingsMap });

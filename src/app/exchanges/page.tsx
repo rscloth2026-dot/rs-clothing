@@ -30,7 +30,7 @@ export default function ExchangesPage() {
             </h3>
             <ol className="list-decimal list-inside space-y-2.5 pl-2 text-[#525252]">
               <li>Message our WhatsApp concierge at <strong className="text-[#0A0A0A]">+91 98765 43210</strong> or email <strong className="text-[#0A0A0A]">concierge@onlycollection.in</strong> within 7 days of delivery.</li>
-              <li>Share your Order ID (e.g. OC-ORD-1001) and your desired replacement size.</li>
+              <li>Share your Order ID (e.g. OC-COD-1001 or OC-RZP-1001) and your desired replacement size.</li>
               <li>Our BlueDart courier partner arrives at your address for doorstep verification and pickup.</li>
               <li>Your replacement garment is dispatched immediately with live Air express tracking.</li>
             </ol>
