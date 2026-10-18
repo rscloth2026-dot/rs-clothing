@@ -17,17 +17,16 @@ const DEFAULT_SETTINGS: Record<string, string> = {
   address: "OnlyCollection Atelier, Circuit House Road, Ratanada, Jodhpur 342001, Rajasthan, India",
 };
 
-// Known legacy default values from prior "RS Clothing" iteration
-const LEGACY_BRAND_VALUES = new Set([
-  "RS Clothing",
-  "https://instagram.com/rsclothing",
-  "https://youtube.com/@rsclothing",
-  "https://x.com/rsclothing",
-  "https://facebook.com/rsclothing",
-  "https://pinterest.com/rsclothing",
-  "concierge@rsclothing.in",
-  "support@rsclothing.in",
-]);
+function isLegacyBrandValue(val: string): boolean {
+  if (!val) return false;
+  const lower = val.toLowerCase();
+  return (
+    lower.includes("rsclothing") ||
+    lower.includes("rs clothing") ||
+    lower.startsWith("rs atelier") ||
+    val === "Marwar Atelier // Jodhpur"
+  );
+}
 
 export async function GET() {
   try {
@@ -36,7 +35,7 @@ export async function GET() {
 
     for (const s of settings) {
       // If the stored value is an old brand default, upgrade it to the new OnlyCollection default
-      if (LEGACY_BRAND_VALUES.has(s.value)) {
+      if (isLegacyBrandValue(s.value)) {
         if (DEFAULT_SETTINGS[s.key]) {
           settingsMap[s.key] = DEFAULT_SETTINGS[s.key];
           // Proactively migrate DB entry in background
