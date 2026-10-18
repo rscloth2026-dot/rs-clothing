@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 
   if (!product) {
-    return { title: "Product Not Found | RS Clothing" };
+    return { title: "Product Not Found | OnlyCollection" };
   }
 
   const primaryImage = product.images[0]?.url || SITE_CONFIG.ogImage;
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${product.title} | RS Clothing Atelier Jodhpur`,
+      title: `${product.title} | OnlyCollection Atelier`,
       description: product.description,
       url: canonicalUrl,
       images: [

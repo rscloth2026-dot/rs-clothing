@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles, SlidersHorizontal, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProgressiveBlur, TextRoll } from "@/components/ui/skiper-ui";
-import { RsLogo } from "@/components/brand/RsLogo";
+import { OnlyCollectionLogo } from "@/components/brand/RsLogo";
 import { FloatingGarmentItem } from "@/components/home/FloatingGarment";
 import { CircularFloatingCanvas } from "@/components/home/CircularFloatingCanvas";
 import { ClothBuyDrawer, ClothBuyProduct } from "@/components/product/ClothBuyDrawer";
@@ -126,12 +126,12 @@ const DEFAULT_FLOATING_GARMENTS: FloatingGarmentItem[] = [
   },
   {
     id: "float-cap",
-    name: "Royal RS Monogram Cap",
+    name: "OnlyCollection Monogram Cap",
     imageUrl: "/images/hero/cap-royal-rajputana.png",
     price: 1299,
     comparePrice: 1999,
     category: "Footwear & Accessories",
-    productId: "royal-rs-monogram-streetwear-cap",
+    productId: "onlycollection-monogram-streetwear-cap",
     initialX: 36,
     initialY: 30,
     mobileX: 8,
@@ -401,14 +401,14 @@ export function HeroCampaign({
             
             {/* LEFT COLUMN: Brand Name, Insignia, Headline, CTAs, Specs (lg:col-span-7) */}
             <div className="lg:col-span-7 space-y-4 sm:space-y-5">
-              {/* Bespoke Royal RS Monogram Emblem */}
+              {/* Bespoke OnlyCollection Monogram Emblem */}
               <motion.div
                 initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
                 className="mb-1"
               >
-                <RsLogo size="md" variant="full" />
+                <OnlyCollectionLogo size="md" variant="full" />
               </motion.div>
 
               {/* Live Drop Pill */}

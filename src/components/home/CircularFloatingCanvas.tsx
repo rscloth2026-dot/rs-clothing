@@ -131,7 +131,7 @@ export function CircularFloatingCanvas({
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none z-[12]">
         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-zinc-900/90 border border-zinc-700/80 backdrop-blur-md flex items-center justify-center shadow-lg shadow-black/80">
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center">
-            <span className="font-serif font-black text-xs sm:text-sm tracking-widest text-white">RS</span>
+            <span className="font-serif font-black text-xs sm:text-sm tracking-widest text-white">OC</span>
           </div>
         </div>
         <span className="mt-1.5 text-[8px] sm:text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-zinc-400 bg-zinc-950/90 px-2 py-0.5 border border-zinc-800 rounded-full shadow-xs">

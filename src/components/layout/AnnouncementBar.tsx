@@ -7,7 +7,7 @@ import Link from "next/link";
 const ANNOUNCEMENTS = [
   { text: "MARWAR ATELIER • COMPLIMENTARY BLUEDART AIR SHIPPING OVER ₹999 FROM JODHPUR", link: "/collections/all" },
   { text: "LIMITED JODHPUR DROP // 380 GSM HEAVYWEIGHT FRENCH TERRY NOW LIVE", link: "/collections/oversized-tees" },
-  { text: "SPECIAL ATELIER PRIVILEGE: FLAT 10% OFF ON FIRST ORDER WITH CODE: ROYAL10", link: "/collections/all" },
+  { text: "SPECIAL ATELIER PRIVILEGE: FLAT 10% OFF ON FIRST ORDER WITH CODE: ONLY10", link: "/collections/all" },
 ];
 
 export function AnnouncementBar() {
@@ -27,7 +27,7 @@ export function AnnouncementBar() {
     <div className="jodhpur-gradient-bar text-zinc-200 text-[11px] font-medium tracking-wider px-4 py-2.5 flex items-center justify-between select-none relative z-40 transition-colors shadow-sm">
       <div className="hidden md:flex items-center space-x-2 text-[10px] text-zinc-400 uppercase tracking-widest font-mono">
         <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)] inline-block animate-pulse" />
-        <span className="text-zinc-300 font-bold tracking-wider">RS ROYAL ATELIER</span>
+        <span className="text-zinc-300 font-bold tracking-wider">ONLYCOLLECTION ATELIER</span>
       </div>
 
       <div className="flex-1 flex items-center justify-center text-center px-2 overflow-hidden">

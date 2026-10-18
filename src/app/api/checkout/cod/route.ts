@@ -94,7 +94,7 @@ export async function POST(req: Request) {
     const totalAmount = Math.max(0, calculatedSubtotal - discount + shippingFee);
 
     // Generate unique order number
-    const orderNumber = `RS-COD-${Date.now().toString().slice(-6)}`;
+    const orderNumber = `OC-COD-${Date.now().toString().slice(-6)}`;
 
     // Execute atomic order creation and stock decrement
     const createdOrder = await prisma.$transaction(async (tx) => {

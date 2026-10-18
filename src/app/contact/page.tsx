@@ -70,8 +70,8 @@ export default function ContactPage() {
                 <Mail className="w-4 h-4 text-[#0A0A0A] mt-0.5" />
                 <div>
                   <span className="font-semibold text-[#71717A] uppercase text-[10px] block">Concierge Email</span>
-                  <a href="mailto:concierge@rsclothing.in" className="text-[#0A0A0A] font-semibold hover:underline transition-colors">
-                    concierge@rsclothing.in
+                  <a href="mailto:concierge@onlycollection.in" className="text-[#0A0A0A] font-semibold hover:underline transition-colors">
+                    concierge@onlycollection.in
                   </a>
                 </div>
               </div>
@@ -89,7 +89,7 @@ export default function ContactPage() {
                 <div>
                   <span className="font-semibold text-[#71717A] uppercase text-[10px] block">Atelier Workshop & Dispatch Hub</span>
                   <span className="text-[#525252] leading-relaxed block mt-0.5">
-                    RS Clothing Atelier, Circuit House Road, Ratanada, Jodhpur 342001, Rajasthan, India
+                    OnlyCollection Atelier, Circuit House Road, Ratanada, Jodhpur 342001, Rajasthan, India
                   </span>
                 </div>
               </div>

@@ -35,7 +35,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Inquiry received by RS Clothing Concierge team. We will respond within 24 hours.",
+      message: "Inquiry received by OnlyCollection Concierge team. We will respond within 24 hours.",
     });
   } catch (error) {
     console.error("Contact inquiry submission error:", error);

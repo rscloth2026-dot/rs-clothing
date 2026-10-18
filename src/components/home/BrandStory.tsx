@@ -51,7 +51,7 @@ export function BrandStory() {
             </h2>
 
             <p className="text-sm sm:text-base text-zinc-400 font-sans leading-relaxed">
-              Mainstream commercial fast fashion cuts corners with flimsy 160 GSM synthetic blends that collapse after one wash. RS Clothing Atelier revives the regal dignity of Marwar court craftsmanship: 380 GSM loopback cotton, hand-finished silhouettes, and antique brass details built to last generations.
+              Mainstream commercial fast fashion cuts corners with flimsy 160 GSM synthetic blends that collapse after one wash. OnlyCollection Atelier revives the regal dignity of Marwar court craftsmanship: 380 GSM loopback cotton, hand-finished silhouettes, and antique brass details built to last generations.
             </p>
 
             {/* Feature Checklist */}

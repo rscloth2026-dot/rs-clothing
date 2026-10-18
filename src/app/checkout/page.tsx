@@ -225,8 +225,8 @@ export default function CheckoutPage() {
           key: orderData.keyId,
           amount: orderData.amount,
           currency: "INR",
-          name: "RS CLOTHING JODHPUR",
-          description: "Royal Streetwear Order Dispatch",
+          name: "ONLYCOLLECTION ATELIER",
+          description: "Luxury Streetwear Order Dispatch",
           image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=200",
           order_id: orderData.orderId,
           prefill: {

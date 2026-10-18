@@ -60,15 +60,15 @@ function FacebookIcon({ className = "w-4 h-4" }: { className?: string }) {
 
 export function SocialSettingsClient({ initialSettings }: SocialSettingsClientProps) {
   const [formData, setFormData] = useState({
-    instagram: initialSettings.instagram || "https://instagram.com/rsclothing.jodhpur",
+    instagram: initialSettings.instagram || "https://instagram.com/onlycollection",
     whatsapp: initialSettings.whatsapp || "+91 98765 43210",
-    youtube: initialSettings.youtube || "https://youtube.com/@rsclothing",
-    twitter: initialSettings.twitter || "https://x.com/rsclothing",
-    facebook: initialSettings.facebook || "https://facebook.com/rsclothing.jodhpur",
-    pinterest: initialSettings.pinterest || "https://pinterest.com/rsclothing",
-    support_email: initialSettings.support_email || "concierge@rsclothing.in",
-    site_name: initialSettings.site_name || "RS Clothing",
-    brand_tagline: initialSettings.brand_tagline || "Marwar Atelier // Jodhpur",
+    youtube: initialSettings.youtube || "https://youtube.com/@onlycollection",
+    twitter: initialSettings.twitter || "https://x.com/onlycollection",
+    facebook: initialSettings.facebook || "https://facebook.com/onlycollection",
+    pinterest: initialSettings.pinterest || "https://pinterest.com/onlycollection",
+    support_email: initialSettings.support_email || "concierge@onlycollection.in",
+    site_name: initialSettings.site_name || "OnlyCollection",
+    brand_tagline: initialSettings.brand_tagline || "Haute Streetwear Atelier",
     phone: initialSettings.phone || "+91 98765 43210",
   });
 
@@ -123,7 +123,7 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
             Social Media & Brand Handles
           </h1>
           <p className="text-xs sm:text-sm text-[#71717A] mt-1">
-            Manage your official RS Clothing social handles, concierge WhatsApp line, and storefront identity.
+            Manage your official OnlyCollection social handles, concierge WhatsApp line, and storefront identity.
           </p>
         </div>
 
@@ -179,7 +179,7 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
                 name="instagram"
                 value={formData.instagram}
                 onChange={handleChange}
-                placeholder="https://instagram.com/rsclothing.jodhpur"
+                placeholder="https://instagram.com/onlycollection"
                 className="text-xs h-10 border-[#E5E5E5] focus:border-[#0A0A0A] bg-[#FAFAFA] rounded-none"
               />
               {formData.instagram && (
@@ -224,7 +224,7 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
               name="youtube"
               value={formData.youtube}
               onChange={handleChange}
-              placeholder="https://youtube.com/@rsclothing"
+              placeholder="https://youtube.com/@onlycollection"
               className="text-xs h-10 border-[#E5E5E5] focus:border-[#0A0A0A] bg-[#FAFAFA] rounded-none"
             />
           </div>
@@ -239,7 +239,7 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
               name="twitter"
               value={formData.twitter}
               onChange={handleChange}
-              placeholder="https://x.com/rsclothing"
+              placeholder="https://x.com/onlycollection"
               className="text-xs h-10 border-[#E5E5E5] focus:border-[#0A0A0A] bg-[#FAFAFA] rounded-none"
             />
           </div>
@@ -254,7 +254,7 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
               name="facebook"
               value={formData.facebook}
               onChange={handleChange}
-              placeholder="https://facebook.com/rsclothing.jodhpur"
+              placeholder="https://facebook.com/onlycollection"
               className="text-xs h-10 border-[#E5E5E5] focus:border-[#0A0A0A] bg-[#FAFAFA] rounded-none"
             />
           </div>
@@ -269,7 +269,7 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
               name="pinterest"
               value={formData.pinterest}
               onChange={handleChange}
-              placeholder="https://pinterest.com/rsclothing"
+              placeholder="https://pinterest.com/onlycollection"
               className="text-xs h-10 border-[#E5E5E5] focus:border-[#0A0A0A] bg-[#FAFAFA] rounded-none"
             />
           </div>
@@ -294,7 +294,7 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
                 name="site_name"
                 value={formData.site_name}
                 onChange={handleChange}
-                placeholder="RS Clothing"
+                placeholder="OnlyCollection"
                 className="text-xs h-10 border-[#E5E5E5] focus:border-[#0A0A0A] bg-[#FAFAFA] rounded-none"
               />
             </div>
@@ -308,7 +308,7 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
                 name="brand_tagline"
                 value={formData.brand_tagline}
                 onChange={handleChange}
-                placeholder="Marwar Atelier // Jodhpur"
+                placeholder="Haute Streetwear Atelier"
                 className="text-xs h-10 border-[#E5E5E5] focus:border-[#0A0A0A] bg-[#FAFAFA] rounded-none"
               />
             </div>
@@ -323,7 +323,7 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
                 name="support_email"
                 value={formData.support_email}
                 onChange={handleChange}
-                placeholder="concierge@rsclothing.in"
+                placeholder="concierge@onlycollection.in"
                 className="text-xs h-10 border-[#E5E5E5] focus:border-[#0A0A0A] bg-[#FAFAFA] rounded-none"
               />
             </div>
@@ -351,10 +351,10 @@ export function SocialSettingsClient({ initialSettings }: SocialSettingsClientPr
             <div className="bg-white p-4 rounded-none border border-[#E5E5E5] flex flex-wrap items-center justify-between gap-3">
               <div>
                 <span className="font-serif font-bold text-base text-[#0A0A0A] block">
-                  {formData.site_name || "RS Clothing"}
+                  {formData.site_name || "OnlyCollection"}
                 </span>
                 <span className="text-[10px] font-sans text-[#71717A]">
-                  {formData.brand_tagline || "Marwar Atelier // Jodhpur"}
+                  {formData.brand_tagline || "Haute Streetwear Atelier"}
                 </span>
               </div>
               <div className="flex items-center space-x-3 text-[#0A0A0A]">

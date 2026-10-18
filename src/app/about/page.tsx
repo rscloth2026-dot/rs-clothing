@@ -26,7 +26,7 @@ export default function AboutPage() {
         <div className="relative aspect-[16/9] w-full bg-[#FFFFFF] border border-[#E5E5E5] rounded-none overflow-hidden shadow-sm">
           <Image
             src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1600&auto=format&fit=crop"
-            alt="RS Clothing Jodhpur Rajasthan Streetwear Philosophy"
+            alt="OnlyCollection Luxury Streetwear Philosophy"
             fill
             className="object-cover"
           />
@@ -38,7 +38,7 @@ export default function AboutPage() {
               1. Why 380 GSM Heavyweight French Terry
             </h2>
             <p className="mt-2 text-[#525252] leading-relaxed">
-              Standard commercial retail brands in India utilize 140 to 180 GSM cotton because it&apos;s inexpensive to knit and easy to ship. But lightweight fabric clings, loses shape, and collapses after a few washes. At RS Clothing Atelier, our benchmark standard is 380 GSM combed long-staple French Terry cotton. The substantial weight creates an unapologetic architectural boxy drape that hangs cleanly off the shoulders without sagging.
+              Standard commercial retail brands in India utilize 140 to 180 GSM cotton because it&apos;s inexpensive to knit and easy to ship. But lightweight fabric clings, loses shape, and collapses after a few washes. At OnlyCollection Atelier, our benchmark standard is 380 GSM combed long-staple French Terry cotton. The substantial weight creates an unapologetic architectural boxy drape that hangs cleanly off the shoulders without sagging.
             </p>
           </div>
 

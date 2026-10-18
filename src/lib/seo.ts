@@ -1,16 +1,16 @@
 export const SITE_CONFIG = {
-  name: "RS Clothing",
-  legalName: "RS Clothing Atelier India Pvt. Ltd.",
+  name: "OnlyCollection",
+  legalName: "OnlyCollection Atelier India Pvt. Ltd.",
   description:
     "Engineered heavyweight oversized T-shirts, graphic tees, and baggy puddle jeans with royal Rajputana craftsmanship from Jodhpur, Rajasthan. 380 GSM combed cotton.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://rsclothing.in",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://onlycollection.in",
   ogImage: "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1200&auto=format&fit=crop",
   telephone: "+91 98765 43210",
-  contactEmail: "concierge@rsclothing.in",
+  contactEmail: "concierge@onlycollection.in",
   sameAs: [
-    "https://instagram.com/rsclothing.jodhpur",
-    "https://x.com/rsclothing",
-    "https://youtube.com/@rsclothing",
+    "https://instagram.com/onlycollection",
+    "https://x.com/onlycollection",
+    "https://youtube.com/@onlycollection",
   ],
   currency: "INR",
   country: "IN",
@@ -72,7 +72,7 @@ export function generateProductSchema(product: {
     category: product.category?.name || "Streetwear",
     brand: {
       "@type": "Brand",
-      name: "RS Clothing",
+      name: "OnlyCollection",
     },
     offers: {
       "@type": "Offer",

@@ -35,13 +35,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const canonicalUrl = `${SITE_CONFIG.url}/collections/${slug}`;
 
   return {
-    title: `${title} | RS Clothing Atelier Jodhpur`,
+    title: `${title} | OnlyCollection Atelier`,
     description: `${description} Free express shipping across India on orders above ₹999.`,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: `${title} | RS Clothing Atelier Jodhpur`,
+      title: `${title} | OnlyCollection Atelier`,
       description,
       url: canonicalUrl,
       images: [{ url: SITE_CONFIG.ogImage }],

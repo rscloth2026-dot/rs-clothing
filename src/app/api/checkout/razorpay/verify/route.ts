@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
     const customer = body.customer || {};
     const customerName = body.customerName || customer.fullName || "Valued Client";
-    const customerEmail = body.customerEmail || customer.email || "client@rsclothing.in";
+    const customerEmail = body.customerEmail || customer.email || "client@onlycollection.in";
     const customerPhone = body.customerPhone || customer.phone || "9999999999";
     const address = body.address || {
       fullName: customerName,
@@ -111,7 +111,7 @@ export async function POST(req: Request) {
     const shippingFee = calculatedSubtotal >= 999 ? 0 : 99;
     const totalAmount = Math.max(0, calculatedSubtotal - discount + shippingFee);
 
-    const orderNumber = `RS-RZP-${Date.now().toString().slice(-6)}`;
+    const orderNumber = `OC-RZP-${Date.now().toString().slice(-6)}`;
 
     // Atomic transaction for order creation and stock decrement
     const createdOrder = await prisma.$transaction(async (tx) => {

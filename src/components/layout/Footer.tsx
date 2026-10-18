@@ -26,15 +26,15 @@ export function Footer() {
   const [subscribed, setSubscribed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [settings, setSettings] = useState({
-    site_name: "RS Clothing",
-    brand_tagline: "Marwar Atelier // Jodhpur",
-    instagram: "https://instagram.com/rsclothing.jodhpur",
+    site_name: "OnlyCollection",
+    brand_tagline: "Haute Streetwear Atelier",
+    instagram: "https://instagram.com/onlycollection",
     whatsapp: "+91 98765 43210",
-    youtube: "https://youtube.com/@rsclothing",
-    twitter: "https://x.com/rsclothing",
-    facebook: "https://facebook.com/rsclothing.jodhpur",
-    pinterest: "https://pinterest.com/rsclothing",
-    support_email: "concierge@rsclothing.in",
+    youtube: "https://youtube.com/@onlycollection",
+    twitter: "https://x.com/onlycollection",
+    facebook: "https://facebook.com/onlycollection",
+    pinterest: "https://pinterest.com/onlycollection",
+    support_email: "concierge@onlycollection.in",
     phone: "+91 98765 43210",
   });
 
@@ -125,10 +125,10 @@ export function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-baseline space-x-2 group">
               <span className="font-serif font-bold text-2xl tracking-tight text-white group-hover:text-zinc-200 transition-colors">
-                RS CLOTHING
+                ONLYCOLLECTION
               </span>
               <span className="text-[9px] font-sans tracking-[0.25em] text-zinc-400 uppercase font-bold border-l border-zinc-800 pl-2">
-                ROYAL ATELIER
+                HAUTE ATELIER
               </span>
             </Link>
             <p className="text-xs text-zinc-400 leading-relaxed max-w-sm">
@@ -147,7 +147,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 flex items-center justify-center bg-zinc-900 border border-zinc-800 rounded-none text-zinc-400 hover:text-white hover:border-zinc-600 hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
-                    aria-label="RS Clothing on Instagram"
+                    aria-label="OnlyCollection on Instagram"
                   >
                     <InstagramIcon className="w-4 h-4" />
                   </a>
@@ -158,7 +158,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 flex items-center justify-center bg-zinc-900 border border-zinc-800 rounded-none text-zinc-400 hover:text-white hover:border-zinc-600 hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
-                    aria-label="Chat with RS Clothing Concierge on WhatsApp"
+                    aria-label="Chat with OnlyCollection Concierge on WhatsApp"
                   >
                     <WhatsAppIcon className="w-4 h-4" />
                   </a>
@@ -169,7 +169,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 flex items-center justify-center bg-zinc-900 border border-zinc-800 rounded-none text-zinc-400 hover:text-white hover:border-zinc-600 hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
-                    aria-label="RS Clothing on YouTube"
+                    aria-label="OnlyCollection on YouTube"
                   >
                     <YoutubeIcon className="w-4 h-4" />
                   </a>
@@ -180,7 +180,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 flex items-center justify-center bg-zinc-900 border border-zinc-800 rounded-none text-zinc-400 hover:text-white hover:border-zinc-600 hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
-                    aria-label="RS Clothing on X"
+                    aria-label="OnlyCollection on X"
                   >
                     <TwitterIcon className="w-4 h-4" />
                   </a>
@@ -191,7 +191,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 flex items-center justify-center bg-zinc-900 border border-zinc-800 rounded-none text-zinc-400 hover:text-white hover:border-zinc-600 hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
-                    aria-label="RS Clothing on Facebook"
+                    aria-label="OnlyCollection on Facebook"
                   >
                     <FacebookIcon className="w-4 h-4" />
                   </a>
@@ -202,7 +202,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-9 h-9 flex items-center justify-center bg-zinc-900 border border-zinc-800 rounded-none text-zinc-400 hover:text-white hover:border-zinc-600 hover:-translate-y-0.5 shadow-sm active:scale-95 transition-all duration-200"
-                    aria-label="RS Clothing on Pinterest"
+                    aria-label="OnlyCollection on Pinterest"
                   >
                     <PinterestIcon className="w-4 h-4" />
                   </a>
@@ -349,7 +349,7 @@ export function Footer() {
 
         {/* Bottom bar with copyright and Indian payment badges */}
         <div className="mt-12 pt-8 border-t border-zinc-800/80 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-400 space-y-4 md:space-y-0">
-          <p>© {new Date().getFullYear()} RS CLOTHING RAJASTHAN ATELIER INDIA. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ONLYCOLLECTION ATELIER INDIA. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-1.5 font-mono text-[10px] text-zinc-400">
             <span className="px-2 py-0.5 bg-zinc-900 border border-zinc-800 rounded-none text-zinc-200">UPI 2.0</span>
             <span className="px-2 py-0.5 bg-zinc-900 border border-zinc-800 rounded-none text-zinc-200">RAZORPAY SECURE</span>

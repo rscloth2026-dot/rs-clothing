@@ -7,7 +7,7 @@ import { Search, ShoppingBag, Heart, User, Menu, X, ArrowRight, Sparkles } from 
 import { useCartStore } from "@/store/useCartStore";
 import { useWishlistStore } from "@/store/useWishlistStore";
 import { ProgressiveBlur, TextRoll } from "@/components/ui/skiper-ui";
-import { RsLogo } from "@/components/brand/RsLogo";
+import { OnlyCollectionLogo } from "@/components/brand/RsLogo";
 
 export function Header() {
   const router = useRouter();
@@ -72,9 +72,9 @@ export function Header() {
               <Menu className="w-5 h-5" />
             </button>
 
-            {/* Brand Logo - Custom RS Royal Atelier Monogram */}
+            {/* Brand Logo - Custom OnlyCollection Monogram & Wordmark */}
             <Link href="/" className="flex items-center group">
-              <RsLogo size="sm" showWordmark={true} />
+              <OnlyCollectionLogo size="sm" showWordmark={true} />
             </Link>
 
 
@@ -222,7 +222,7 @@ export function Header() {
           <div className="fixed inset-y-0 left-0 w-4/5 max-w-sm bg-[#09090B] border-r border-zinc-800 p-6 flex flex-col justify-between shadow-2xl">
             <div>
               <div className="flex items-center justify-between pb-6 border-b border-zinc-800">
-                <RsLogo size="sm" showWordmark={true} />
+                <OnlyCollectionLogo size="sm" showWordmark={true} />
 
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}

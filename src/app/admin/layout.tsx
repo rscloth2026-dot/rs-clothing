@@ -74,7 +74,7 @@ export default async function AdminLayout({
               </span>
             </div>
             <span className="text-xl font-serif font-bold uppercase text-[#0A0A0A] tracking-tight">
-              RS CLOTHING
+              ONLYCOLLECTION
             </span>
           </div>
 
