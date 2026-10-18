@@ -283,7 +283,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                       key={v.id}
                       onClick={() => !isOutOfStock && setSelectedVariantId(v.id)}
                       disabled={isOutOfStock}
-                      className={`py-3 px-2 border text-center text-xs font-black tracking-wider transition-all relative ${
+                      className={`min-h-[44px] py-2.5 px-2 border text-center text-xs font-black tracking-wider transition-all relative flex items-center justify-center active:scale-95 ${
                         isSelected
                           ? "border-[#00FF87] bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] shadow-md shadow-[#00FF87]/20 font-black"
                           : isOutOfStock
@@ -299,7 +299,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
             </div>
 
             {/* Quantity Selector */}
-            <div className="flex items-center justify-between border-y border-[#1F294D] py-4">
+            <div className="flex items-center justify-between border-y border-[#1F294D] py-3.5">
               <span className="text-xs font-black uppercase tracking-wider text-white">
                 Quantity
               </span>
@@ -307,11 +307,12 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                 <button
                   type="button"
                   onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                  className="px-3 py-1.5 text-sm text-[#94A3B8] hover:text-[#00FF87] transition-colors"
+                  className="w-11 h-11 text-base text-[#94A3B8] hover:text-[#00FF87] transition-colors flex items-center justify-center active:scale-90"
+                  aria-label="Decrease quantity"
                 >
                   -
                 </button>
-                <span className="px-4 py-1.5 text-sm font-bold text-white tabular-nums border-x border-[#1F294D]">
+                <span className="px-4 py-2 text-sm font-bold text-white tabular-nums border-x border-[#1F294D] min-w-[40px] text-center">
                   {quantity}
                 </span>
                 <button
@@ -321,7 +322,8 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                       Math.min(currentVariant?.stockQuantity || 10, prev + 1)
                     )
                   }
-                  className="px-3 py-1.5 text-sm text-[#94A3B8] hover:text-[#00FF87] transition-colors"
+                  className="w-11 h-11 text-base text-[#94A3B8] hover:text-[#00FF87] transition-colors flex items-center justify-center active:scale-90"
+                  aria-label="Increase quantity"
                 >
                   +
                 </button>
@@ -368,12 +370,12 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
             )}
           </div>
 
-          {/* Action CTAs Footer */}
-          <div className="p-5 sm:p-6 border-t border-[#1F294D] bg-[#16213E]/95 backdrop-blur-md space-y-3">
+          {/* Action CTAs Footer with iOS Home Bar Safe Area Insets */}
+          <div className="p-4 sm:p-6 border-t border-[#1F294D] bg-[#16213E]/95 backdrop-blur-md space-y-2.5 pb-[max(env(safe-area-inset-bottom,16px),16px)] sm:pb-[max(env(safe-area-inset-bottom,24px),24px)]">
             {/* Primary Action 1: Instant BUY NOW */}
             <Button
               onClick={handleBuyNow}
-              className="w-full bg-gradient-to-r from-[#00FF87] to-[#60EFFF] hover:opacity-95 text-[#0A0A1A] font-black uppercase tracking-wider py-6 rounded-none text-sm shadow-lg shadow-[#00FF87]/20 flex items-center justify-center space-x-2 group transition-all border-none"
+              className="w-full min-h-[48px] bg-gradient-to-r from-[#00FF87] to-[#60EFFF] hover:opacity-95 text-[#0A0A1A] font-black uppercase tracking-wider py-4 rounded-none text-xs sm:text-sm shadow-lg shadow-[#00FF87]/20 flex items-center justify-center space-x-2 group transition-all border-none active:scale-[0.98]"
             >
               <Zap className="w-4 h-4 fill-[#0A0A1A] text-[#0A0A1A]" />
               <span>Buy Now — Instant Checkout</span>
@@ -385,7 +387,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
               onClick={handleAddToCart}
               variant="outline"
               disabled={added}
-              className="w-full bg-[#0A0A1A] hover:bg-[#1B284D] text-white border-[#1F294D] hover:border-[#60EFFF] font-bold uppercase tracking-wider py-5 rounded-none text-xs flex items-center justify-center space-x-2 transition-all"
+              className="w-full min-h-[44px] bg-[#0A0A1A] hover:bg-[#1B284D] text-white border-[#1F294D] hover:border-[#60EFFF] font-bold uppercase tracking-wider py-3.5 rounded-none text-xs flex items-center justify-center space-x-2 transition-all active:scale-[0.98]"
             >
               {added ? (
                 <>
@@ -401,7 +403,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
             </Button>
 
             {/* View Full Product Specifications */}
-            <div className="text-center pt-1">
+            <div className="text-center pt-0.5">
               <Link
                 href={`/products/${product.slug}`}
                 onClick={onClose}

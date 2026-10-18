@@ -79,7 +79,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#FAFAFA",
+  themeColor: "#0A0A1A",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -94,14 +94,14 @@ export default function RootLayout({
   const orgSchema = generateOrganizationSchema();
 
   return (
-    <html lang="en" className={`light ${sans.variable} ${serif.variable}`}>
+    <html lang="en" className={`dark ${sans.variable} ${serif.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FAFAFA] text-[#0A0A0A] font-sans antialiased selection:bg-[#0A0A0A] selection:text-white">
+      <body className="min-h-screen flex flex-col bg-[#0A0A1A] text-[#F8FAFC] font-sans antialiased overflow-x-hidden selection:bg-[#00FF87] selection:text-[#0A0A1A]">
         <AnnouncementBar />
         <Header />
         <main className="flex-1 pb-20 md:pb-0">{children}</main>

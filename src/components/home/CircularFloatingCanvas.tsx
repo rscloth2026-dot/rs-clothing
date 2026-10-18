@@ -21,7 +21,11 @@ export function CircularFloatingCanvas({
   const shouldReduceMotion = useReducedMotion();
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [isCanvasHovered, setIsCanvasHovered] = useState(false);
-  const [dimensions, setDimensions] = useState({ width: 1200, height: 600 });
+  // Initialize dimensions matching the exact container constraints to prevent first-frame jump
+  const [dimensions, setDimensions] = useState({
+    width: isMobile ? 340 : 440,
+    height: isMobile ? 260 : 440,
+  });
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Rotation angle state in radians
@@ -30,8 +34,11 @@ export function CircularFloatingCanvas({
   const reqIdRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number>(0);
 
-  // Measure container dimensions
-  useEffect(() => {
+  // Measure container dimensions before initial paint
+  const useIsomorphicLayoutEffect =
+    typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect;
+
+  useIsomorphicLayoutEffect(() => {
     const updateDimensions = () => {
       if (containerRef.current) {
         setDimensions({
@@ -79,14 +86,22 @@ export function CircularFloatingCanvas({
     };
   }, [animate]);
 
-  // Orbit radius calculation
-  // Desktop: Rx around 38% of container (max 520px), Ry around 140px
-  // Mobile: Rx around 40% of container (max 180px), Ry around 85px
-  const rx = isMobile
-    ? Math.min(180, dimensions.width * 0.40)
-    : Math.min(520, dimensions.width * 0.38);
+  // Orbit radius calculation for contained right-side stage and mobile turntable
+  // Derive maxGarmentHalf from the largest active garment including 1.25x hover magnification
+  const maxGarmentHalf = activeGarments.reduce((max, g) => {
+    const scale = isMobile
+      ? (g.sizeMobile && g.sizeMobile > 0 ? g.sizeMobile / 85 : 1)
+      : (g.sizeDesktop && g.sizeDesktop > 0 ? g.sizeDesktop / 170 : 1);
+    const size = (isMobile ? 68 : 118) * scale * 1.25;
+    return Math.max(max, Math.round(size / 2));
+  }, isMobile ? 45 : 75);
 
-  const ry = isMobile ? 85 : 140;
+  const availableHalfWidth = Math.max(20, Math.floor(dimensions.width / 2 - maxGarmentHalf - 8));
+  const rx = isMobile
+    ? Math.min(115, availableHalfWidth)
+    : Math.min(165, availableHalfWidth);
+
+  const ry = isMobile ? 55 : 92;
 
   return (
     <div
@@ -96,18 +111,39 @@ export function CircularFloatingCanvas({
         setIsCanvasHovered(false);
         setHoveredId(null);
       }}
-      className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden select-none"
+      className="relative w-full h-full pointer-events-auto overflow-hidden select-none"
       aria-label="Interactive 3D revolving streetwear collection"
     >
-      {/* Visual Orbital Track Guide - Subtle cyberpunk ring */}
+      {/* Ambient Radial Spotlight inside Orbit Stage */}
+      <div className="absolute inset-0 bg-radial from-[#16213E]/60 via-transparent to-transparent pointer-events-none" />
+
+      {/* Visual Orbital Track Guide - Subtle Cyber Aurora Ring */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5 pointer-events-none transition-opacity duration-500"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#00FF87]/20 pointer-events-none transition-all duration-500"
         style={{
           width: `${rx * 2}px`,
           height: `${ry * 2}px`,
-          boxShadow: "0 0 50px rgba(0, 255, 135, 0.08)",
+          boxShadow: "0 0 35px rgba(0, 255, 135, 0.12), inset 0 0 20px rgba(96, 239, 255, 0.08)",
         }}
       />
+
+      {/* Hologram Turntable Center Pedestal */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none z-[12]">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#16213E]/85 border border-[#00FF87]/40 backdrop-blur-md flex items-center justify-center shadow-[0_0_28px_rgba(0,255,135,0.2)]">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0A0A1A] border border-[#1F294D] flex items-center justify-center">
+            <span className="font-serif font-black text-xs sm:text-sm tracking-widest text-[#00FF87]">RS</span>
+          </div>
+        </div>
+        <span className="mt-1.5 text-[8px] sm:text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#60EFFF] bg-[#0A0A1A]/90 px-2 py-0.5 border border-[#1F294D] rounded-full shadow-xs">
+          3D ORBIT
+        </span>
+      </div>
+
+      {/* Interactive Mobile Tap / Desktop Hover Micro-Badge */}
+      <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#0A0A1A]/90 backdrop-blur-md border border-[#1F294D] text-[9px] font-sans text-[#94A3B8] uppercase tracking-wider rounded-full shadow-xs">
+        <Sparkles className="w-2.5 h-2.5 text-[#00FF87]" />
+        <span>{isMobile ? "Tap cloth to buy" : "Hover to pause • Click to buy"}</span>
+      </div>
 
       {/* Orbiting Garments */}
       {activeGarments.map((garment, idx) => {
@@ -116,29 +152,31 @@ export function CircularFloatingCanvas({
         const currentAngle = (rotationAngle + baseAngle) % (2 * Math.PI);
 
         // 3D Elliptical coordinates relative to center
-        // X follows cos(angle), Y follows sin(angle) with slight tilt
+        // X follows cos(angle), Y follows sin(angle)
         const xPos = rx * Math.cos(currentAngle);
         const yPos = ry * Math.sin(currentAngle);
 
         // Depth perspective: sin(angle)
-        // front half: sin > 0 -> scale up to 1.15, zIndex 30
-        // back half: sin <= 0 -> scale down to 0.80, zIndex 10 (behind center text)
+        // front half: sin > 0 -> scale up to 1.12, zIndex 30
+        // back half: sin <= 0 -> scale down to 0.82, zIndex 10 (passes behind center pedestal)
         const depth = Math.sin(currentAngle);
         const isForeground = depth > 0;
 
         const baseScale = isForeground
-          ? 0.95 + 0.20 * depth
-          : 0.78 + 0.17 * (depth + 1);
+          ? 0.96 + 0.16 * depth
+          : 0.82 + 0.14 * (depth + 1);
 
         const baseOpacity = isForeground
           ? 1.0
-          : 0.60 + 0.35 * (depth + 1);
+          : 0.70 + 0.28 * (depth + 1);
 
         const zIndex = hoveredId === garment.id ? 50 : isForeground ? 30 : 10;
         const isHovered = hoveredId === garment.id;
 
-        // Individual garment dimensions
-        const garmentSize = isMobile ? garment.sizeMobile || 85 : garment.sizeDesktop || 165;
+        // Individual garment dimensions (scaled relative to admin-configured sizing, normalized to compact stage)
+        const desktopScale = (garment.sizeDesktop && garment.sizeDesktop > 0) ? garment.sizeDesktop / 170 : 1;
+        const mobileScale = (garment.sizeMobile && garment.sizeMobile > 0) ? garment.sizeMobile / 85 : 1;
+        const garmentSize = Math.round(isMobile ? 68 * mobileScale : 118 * desktopScale);
 
         return (
           <motion.div
@@ -211,15 +249,23 @@ export function CircularFloatingCanvas({
 
             {/* Interactive Tooltip Pill on Hover / Foreground */}
             <div
-              className={`absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap transition-all duration-200 pointer-events-none flex flex-col items-center ${
+              className={`absolute whitespace-nowrap transition-all duration-200 pointer-events-none flex flex-col items-center z-50 ${
+                xPos < -rx * 0.45
+                  ? "left-0 translate-x-0 items-start"
+                  : xPos > rx * 0.45
+                  ? "right-0 translate-x-0 items-end"
+                  : "left-1/2 -translate-x-1/2 items-center"
+              } ${
+                yPos > 0 ? "-top-11" : "-bottom-8"
+              } ${
                 isHovered
                   ? "opacity-100 translate-y-0 scale-100"
                   : "opacity-0 translate-y-1 scale-95"
               }`}
             >
-              <div className="bg-[#0A0A1A] border border-[#00FF87] px-3 py-1 text-center shadow-xl shadow-black/80 flex items-center space-x-1.5">
-                <Zap className="w-3 h-3 text-[#00FF87] fill-[#00FF87]" />
-                <span className="text-[10px] font-black uppercase tracking-wider text-white">
+              <div className="bg-[#0A0A1A] border border-[#00FF87] px-3 py-1 text-center shadow-xl shadow-black/80 flex items-center space-x-1.5 max-w-[240px]">
+                <Zap className="w-3 h-3 text-[#00FF87] fill-[#00FF87] shrink-0" />
+                <span className="text-[10px] font-black uppercase tracking-wider text-white truncate max-w-[120px] sm:max-w-[150px]">
                   {garment.name}
                 </span>
                 <span className="text-[10px] font-black text-[#60EFFF] tabular-nums pl-1 border-l border-white/20">

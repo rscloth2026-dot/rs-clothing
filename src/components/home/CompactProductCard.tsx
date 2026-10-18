@@ -137,19 +137,34 @@ export function CompactProductCard({
           <Heart className={`w-3.5 h-3.5 ${wishlisted ? "fill-[#0A0A1A]" : ""}`} />
         </button>
 
-        {/* 1-Click Quick Add Size Pill Overlay on Hover */}
+        {/* 1-Click Quick Add Size Pill Overlay on Hover (Desktop) or Toggle (Mobile) */}
         <div
-          className={`absolute inset-x-0 bottom-0 p-2 bg-[#0A0A1A]/95 backdrop-blur-xs border-t border-[#1F294D] transition-transform duration-250 flex flex-col gap-1 z-20 ${
-            showSizes || isHovered ? "translate-y-0" : "translate-y-full"
+          className={`absolute inset-x-0 bottom-0 max-h-full overflow-y-auto p-2 bg-[#0A0A1A]/95 backdrop-blur-md border-t border-[#1F294D] transition-transform duration-250 flex flex-col gap-1.5 z-20 ${
+            showSizes ? "translate-y-0" : isHovered ? "translate-y-full sm:translate-y-0" : "translate-y-full"
           }`}
         >
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between shrink-0">
             <span className="text-[9px] font-sans uppercase font-bold text-[#00FF87] tracking-wider">
               {justAdded ? "Added to Bag" : "Quick Add Size"}
             </span>
-            {justAdded && <Check className="w-3 h-3 text-[#00FF87]" />}
+            <div className="flex items-center gap-1.5">
+              {justAdded && <Check className="w-3 h-3 text-[#00FF87]" />}
+              {showSizes && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setShowSizes(false);
+                  }}
+                  className="sm:hidden text-[10px] text-[#94A3B8] font-bold uppercase hover:text-[#00FF87] min-h-[44px] px-2.5 flex items-center justify-center"
+                >
+                  Close
+                </button>
+              )}
+            </div>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="grid grid-cols-3 sm:flex sm:items-center gap-1.5 overflow-y-auto">
             {availableSizes.map((size) => {
               const variant = variants.find((v) => v.size === size);
               const inStock = variant && variant.stockQuantity > 0;
@@ -161,7 +176,7 @@ export function CompactProductCard({
                   type="button"
                   disabled={!inStock}
                   onClick={(e) => handleQuickAdd(size, e)}
-                  className={`flex-1 h-6 text-[10px] font-sans font-bold rounded-none flex items-center justify-center transition-colors ${
+                  className={`w-full min-h-[44px] sm:min-h-0 sm:h-6 sm:flex-1 text-[11px] sm:text-[10px] font-sans font-bold rounded-none flex items-center justify-center transition-colors ${
                     !inStock
                       ? "opacity-30 cursor-not-allowed bg-[#0A0A1A] text-[#475569] line-through"
                       : isSelected
@@ -177,18 +192,18 @@ export function CompactProductCard({
           </div>
         </div>
 
-        {/* Mobile quick add toggle button */}
-        <div className="sm:hidden absolute bottom-1.5 right-1.5 z-10">
+        {/* Mobile quick add toggle button with ergonomic 44x44px touch target */}
+        <div className="sm:hidden absolute bottom-1 right-1 z-10">
           <button
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
               setShowSizes(!showSizes);
             }}
-            className="w-6 h-6 rounded-full bg-[#16213E] border border-[#1F294D] text-[#00FF87] hover:border-[#60EFFF] flex items-center justify-center shadow-xs"
+            className="w-11 h-11 rounded-full bg-[#16213E]/95 border border-[#1F294D] text-[#00FF87] hover:border-[#60EFFF] flex items-center justify-center shadow-md transition-colors"
             aria-label="Toggle size options"
           >
-            <Plus className="w-3 h-3 text-[#00FF87]" />
+            <Plus className="w-4 h-4 text-[#00FF87]" />
           </button>
         </div>
       </div>

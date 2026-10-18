@@ -332,6 +332,26 @@
       "priority": 18,
       "passes": true,
       "notes": "Passed tsc --noEmit, npm run build (35/35 routes), CodeRabbit review (0 findings across 18 files), and live server verification."
+    },
+    {
+      "id": "US-019",
+      "title": "Hero Split Layout (Left Name, Right Contained 3D Orbit) & Full Mobile UI/UX",
+      "description": "As a shopper on desktop and mobile, I want the hero section to cleanly display the brand identity, headline, and CTAs on the left, paired with a contained 3D circular orbit turntable on the right with reduced space, while the entire storefront provides comprehensive mobile UI/UX support with 44px+ touch targets, safe-area insets, and zero horizontal overflow.",
+      "acceptanceCriteria": [
+        "Hero section structured as 2-column split grid on desktop (col-span-7 left brand/headline/CTAs, col-span-5 right 3D circle orbit)",
+        "Right-side 3D circle orbit contained with reduced spatial footprint (rx ~145px, ry ~92px, garment size 118px) revolving around central RS turntable hologram pedestal",
+        "Mobile viewport hierarchy establishes vertical stream: Brand emblem -> Headline -> Compact 3D turntable (H=260px, rx ~100px, ry ~55px, garment size 68px) with 'Tap cloth to buy' badge -> Full-width touch CTAs -> Specs",
+        "ClothBuyDrawer upgraded with iOS Safari home-indicator safe-area insets (pb-[max(env(safe-area-inset-bottom,16px),16px)]) and 44px+ touch targets",
+        "HoverExpandSilhouettes mobile carousel upgraded with momentum swipe and edge-to-edge bleed",
+        "ProductCard and CompactProductCard mobile quick-add triggers enlarged to ergonomic touch targets",
+        "Root layout themeColor updated to #0A0A1A, dark html class, and overflow-x-hidden on body ensuring zero horizontal viewport overflow",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes"
+      ],
+      "priority": 19,
+      "passes": true,
+      "notes": "Passed tsc --noEmit, npm run build (35/35 routes), CodeRabbit review, and live server verification."
     }
   ]
 }

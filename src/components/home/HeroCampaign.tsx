@@ -209,14 +209,16 @@ export function HeroCampaign({
     Array.isArray(initialGarments) ? initialGarments : DEFAULT_FLOATING_GARMENTS
   );
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<ClothBuyProduct | null>(null);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
   const latestSelectionRef = useRef<string | null>(null);
 
   // Responsive mobile screen detection
   useEffect(() => {
+    setMounted(true);
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
     checkMobile();
     window.addEventListener("resize", checkMobile);
@@ -341,35 +343,20 @@ export function HeroCampaign({
         <ProgressiveBlur
           position="top"
           backgroundColor="#0A0A1A"
-          height="110px"
+          height="100px"
           blurAmount="10px"
           className="z-[2]"
         />
         <ProgressiveBlur
           position="bottom"
           backgroundColor="#0A0A1A"
-          height="140px"
+          height="120px"
           blurAmount="12px"
           className="z-[2]"
         />
 
-        {/* ========================================================================= */}
-        {/* 3D CIRCULAR / ORBITAL REVOLVING CLOTHES CANVAS */}
-        {/* ========================================================================= */}
-        <CircularFloatingCanvas
-          garments={activeGarments}
-          onSelect={handleSelectGarment}
-          isMobile={isMobile}
-        />
-
-        {/* Interactive Floating Hint Pill */}
-        <div className="absolute top-24 left-4 sm:left-8 z-20 hidden sm:flex items-center space-x-2 px-3 py-1 bg-[#16213E]/90 backdrop-blur-md border border-[#1F294D] text-[10px] font-sans text-[#94A3B8] uppercase tracking-widest shadow-xs">
-          <Sparkles className="w-3 h-3 text-[#00FF87]" />
-          <span>Click any revolving cloth to open Buy Section</span>
-        </div>
-
         {/* Top Controls: Slide Switcher */}
-        <div className="absolute top-6 right-4 sm:right-8 z-20 flex items-center space-x-2">
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-30 flex items-center space-x-2">
           <div className="flex items-center space-x-1 p-1 bg-[#16213E]/90 backdrop-blur-md border border-[#1F294D] rounded-full shadow-sm">
             <button
               onClick={() =>
@@ -407,113 +394,146 @@ export function HeroCampaign({
         </div>
 
         {/* ========================================================================= */}
-        {/* HERO EDITORIAL CONTENT & HEADLINE (Safe Zone — Unobstructed Center & Left) */}
+        {/* HERO 2-COLUMN SPLIT GRID (Left: Name/Headline/CTAs | Right: 3D Circle Orbit) */}
         {/* ========================================================================= */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 pt-28 sm:pt-36 w-full pointer-events-auto">
-          <div className="max-w-2xl space-y-4 sm:space-y-6">
-            {/* Bespoke Royal RS Monogram Emblem in Hero */}
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="mb-1"
-            >
-              <RsLogo size="md" variant="full" />
-            </motion.div>
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28 pb-12 sm:pb-16 w-full pointer-events-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
+            
+            {/* LEFT COLUMN: Brand Name, Insignia, Headline, CTAs, Specs (lg:col-span-7) */}
+            <div className="lg:col-span-7 space-y-4 sm:space-y-5">
+              {/* Bespoke Royal RS Monogram Emblem */}
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="mb-1"
+              >
+                <RsLogo size="md" variant="full" />
+              </motion.div>
 
-            {/* Live Drop Pill */}
-            <motion.div
-              key={`tag-${slide.id}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="inline-flex items-center space-x-2 px-3 py-1.5 bg-[#16213E]/90 border border-[#00FF87]/40 text-[#F8FAFC] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-xs backdrop-blur-md"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00FF87] animate-pulse shadow-[0_0_8px_#00FF87]" />
-              <span className="text-[#00FF87] font-bold">ROYAL ATELIER</span>
-              <span className="text-[#475569]">•</span>
-              <span className="text-[#F8FAFC]">
-                {slide.tag
-                  .replace("ROYAL DROP 01 // ", "")
-                  .replace("ROYAL DROP 02 // ", "")
-                  .replace("ROYAL DROP 03 // ", "")}
-              </span>
-            </motion.div>
+              {/* Live Drop Pill */}
+              <motion.div
+                key={`tag-${slide.id}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="inline-flex items-center space-x-2 px-3 py-1.5 bg-[#16213E]/90 border border-[#00FF87]/40 text-[#F8FAFC] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-xs backdrop-blur-md"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00FF87] animate-pulse shadow-[0_0_8px_#00FF87]" />
+                <span className="text-[#00FF87] font-bold">ROYAL ATELIER</span>
+                <span className="text-[#475569]">•</span>
+                <span className="text-[#F8FAFC]">
+                  {slide.tag
+                    .replace("ROYAL DROP 01 // ", "")
+                    .replace("ROYAL DROP 02 // ", "")
+                    .replace("ROYAL DROP 03 // ", "")}
+                </span>
+              </motion.div>
 
-            {/* Regal Cormorant Garamond Headline */}
-            <motion.h1
-              key={`title-${slide.id}`}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-              className="text-4xl sm:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-white font-serif leading-[1.1] sm:leading-[1.05]"
-            >
-              {slide.title}
-              <br />
-              <span className="text-[#60EFFF] italic font-normal">{slide.subtitle}</span>
-            </motion.h1>
+              {/* Regal Cormorant Garamond Headline */}
+              <motion.h1
+                key={`title-${slide.id}`}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.05 }}
+                className="text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-white font-serif leading-[1.1] sm:leading-[1.05]"
+              >
+                {slide.title}
+                <br />
+                <span className="text-[#60EFFF] italic font-normal text-2xl sm:text-4xl lg:text-5xl">
+                  {slide.subtitle}
+                </span>
+              </motion.h1>
 
-            {/* Subtext */}
-            <motion.p
-              key={`desc-${slide.id}`}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-xs sm:text-sm text-[#94A3B8] font-normal max-w-lg leading-relaxed line-clamp-3 sm:line-clamp-none font-sans"
-            >
-              {slide.description}
-            </motion.p>
+              {/* MOBILE ONLY: 3D Circle Orbit Turntable Stage (Between Headline & CTAs) */}
+              <div className="block lg:hidden my-2">
+                <div className="relative w-full max-w-[360px] mx-auto h-[260px] sm:h-[300px] flex items-center justify-center rounded-xl bg-[#0A0A1A]/40 border border-[#1F294D]/60 backdrop-blur-xs">
+                  {mounted && isMobile && (
+                    <CircularFloatingCanvas
+                      garments={activeGarments}
+                      onSelect={handleSelectGarment}
+                      isMobile={true}
+                    />
+                  )}
+                </div>
+              </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Link href={slide.ctaLink} className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className="w-full sm:w-auto h-12 min-h-[48px] bg-gradient-to-r from-[#00FF87] to-[#60EFFF] hover:opacity-90 text-[#0A0A1A] font-black uppercase tracking-wider text-xs px-8 rounded-none shadow-lg shadow-[#00FF87]/20 transition-all flex items-center justify-center space-x-2 active:scale-[0.98] border border-transparent"
-                >
-                  <span>{slide.ctaText}</span>
-                  <ArrowRight className="w-4 h-4 ml-1 text-[#0A0A1A]" />
-                </Button>
-              </Link>
+              {/* Subtext Description */}
+              <motion.p
+                key={`desc-${slide.id}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-xs sm:text-sm text-[#94A3B8] font-normal max-w-xl leading-relaxed font-sans line-clamp-3 sm:line-clamp-none"
+              >
+                {slide.description}
+              </motion.p>
 
-              <Link href="/collections/all" className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="w-full sm:w-auto h-12 min-h-[48px] border-[#1F294D] bg-[#16213E] text-white hover:border-[#60EFFF] hover:text-[#60EFFF] hover:bg-[#1B284D] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
-                >
-                  <span>View All Royal Drops</span>
-                </Button>
-              </Link>
+              {/* Action Buttons with 48px+ touch targets */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <Link href={slide.ctaLink} className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto h-12 min-h-[48px] bg-gradient-to-r from-[#00FF87] to-[#60EFFF] hover:opacity-90 text-[#0A0A1A] font-black uppercase tracking-wider text-xs px-8 rounded-none shadow-lg shadow-[#00FF87]/20 transition-all flex items-center justify-center space-x-2 active:scale-[0.98] border border-transparent"
+                  >
+                    <span>{slide.ctaText}</span>
+                    <ArrowRight className="w-4 h-4 ml-1 text-[#0A0A1A]" />
+                  </Button>
+                </Link>
+
+                <Link href="/collections/all" className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full sm:w-auto h-12 min-h-[48px] border-[#1F294D] bg-[#16213E] text-white hover:border-[#60EFFF] hover:text-[#60EFFF] hover:bg-[#1B284D] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
+                  >
+                    <span>View All Royal Drops</span>
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Quality Specs Grid with Color-Coded Accents */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 border-t border-[#1F294D] max-w-lg">
+                <div>
+                  <span className="block text-lg sm:text-2xl font-serif font-bold text-[#00FF87] tabular-nums">
+                    {slide.metric1}
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-widest text-[#94A3B8] block">
+                    {slide.metric1Sub}
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-lg sm:text-2xl font-serif font-bold text-[#60EFFF] tabular-nums">
+                    {slide.metric2}
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-widest text-[#94A3B8] block">
+                    {slide.metric2Sub}
+                  </span>
+                </div>
+                <div>
+                  <span className="block text-lg sm:text-2xl font-serif font-bold text-white">
+                    JODHPUR
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-widest text-[#00FF87] font-bold block">
+                    Atelier Origin
+                  </span>
+                </div>
+              </div>
             </div>
 
-            {/* Quality Specs Grid with Color-Coded Accents */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-[#1F294D] max-w-md">
-              <div>
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#00FF87] tabular-nums">
-                  {slide.metric1}
-                </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#94A3B8]">
-                  {slide.metric1Sub}
-                </span>
-              </div>
-              <div>
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#60EFFF] tabular-nums">
-                  {slide.metric2}
-                </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#94A3B8]">
-                  {slide.metric2Sub}
-                </span>
-              </div>
-              <div className="hidden sm:block">
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-white">
-                  JODHPUR
-                </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#00FF87] font-bold">
-                  Atelier Origin
-                </span>
+            {/* RIGHT COLUMN (Desktop/Tablet): Contained 3D Circle Orbit Turntable (lg:col-span-5) */}
+            <div className="hidden lg:flex lg:col-span-5 items-center justify-center">
+              <div className="relative w-full max-w-[440px] xl:max-w-[480px] h-[440px] xl:h-[480px] flex items-center justify-center rounded-2xl bg-[#0A0A1A]/40 border border-[#1F294D]/60 backdrop-blur-xs shadow-2xl">
+                {mounted && !isMobile && (
+                  <CircularFloatingCanvas
+                    garments={activeGarments}
+                    onSelect={handleSelectGarment}
+                    isMobile={false}
+                  />
+                )}
               </div>
             </div>
+
           </div>
         </div>
       </div>

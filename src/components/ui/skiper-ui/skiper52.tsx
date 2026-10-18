@@ -36,7 +36,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
   if (!items || items.length === 0) return null;
 
   return (
-    <div className={cn("w-full overflow-hidden py-2 select-none", className)}>
+    <div className={cn("w-full md:overflow-hidden py-2 select-none", className)}>
       {/* Desktop & Tablet: Smooth Expanding Accordion with Clean Typography */}
       <div className="hidden md:flex w-full items-stretch justify-center gap-3 min-h-[420px] lg:min-h-[480px]">
         {items.map((item, index) => {
@@ -134,13 +134,16 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
         })}
       </div>
 
-      {/* Mobile Touch Carousel: Horizontal card carousel with swipe gestures */}
-      <div className="flex md:hidden overflow-x-auto gap-4 px-4 pb-4 snap-x snap-mandatory scrollbar-none">
+      {/* Mobile Touch Carousel: Horizontal card carousel with momentum swipe gestures and edge bleed */}
+      <div
+        className="flex md:hidden overflow-x-auto gap-3.5 -mx-4 px-4 sm:-mx-6 sm:px-6 pb-4 pt-1 snap-x snap-mandatory scrollbar-none"
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
         {items.map((item, index) => (
           <Link
             key={item.id || index}
             href={`/collections/${item.slug}`}
-            className="flex-shrink-0 w-[78vw] max-w-[320px] snap-center relative aspect-[3/4] rounded-xl overflow-hidden border border-[#1F294D] shadow-md group bg-[#16213E]"
+            className="flex-shrink-0 w-[74vw] max-w-[290px] snap-center relative aspect-[3/4] rounded-xl overflow-hidden border border-[#1F294D] shadow-md group bg-[#16213E] active:scale-[0.98] transition-transform"
           >
             <Image
               src={item.imageUrl}

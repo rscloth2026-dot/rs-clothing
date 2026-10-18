@@ -10,6 +10,7 @@ Started: Tue Oct 13 00:33:30 IST 2026
 - Organic Floating Clothes Animation Physics: Lissajous non-circular drift with asymmetric multi-axis keyframes, prime-fractional cycle durations (6.4s to 9.1s), and safe peripheral bounds ensuring 100% headline and RS logo visibility on all viewports.
 - Hero Config Store & Race Resilience: Dynamic floating garment records persisted in StoreSetting with AuditLog logging, hydrated server-side into page.tsx for zero CLS, and protected against out-of-order quick-view fetches using latestSelectionRef.
 - Cyber Aurora Luxury Streetwear Palette: Canvas (#0A0A1A), Cards/Drawers (#16213E), Hairline Borders (#1F294D), Dual Electric Accents (#00FF87 Electric Neon Mint & #60EFFF Electric Aqua Cyan). High-luminance buttons and badges strictly use deep ink #0A0A1A text ensuring >14:1 WCAG AAA contrast.
+- Hero Split Layout & Mobile Turntable Architecture: Desktop features a balanced 2-column split (col-span-7 editorial identity and CTAs, col-span-5 contained 3D circular orbit with glowing RS hologram pedestal). On mobile (<1024px), conditionally mounts only the active compact turntable (H=260px, rx=100px) avoiding duplicate rAF loops, with 48px+ touch targets and iOS safe-area bottom insets.
 
 ---
 
@@ -110,5 +111,21 @@ Started: Tue Oct 13 00:33:30 IST 2026
   - CodeRabbit automated agent review: 0 findings across all 18 modified files.
   - Live server HTTP 200 verification on `http://localhost:3000/`.
 
-
-
+### [2026-10-18] Hero Split Layout & Storefront Mobile UI/UX Optimization (US-019)
+- Hero 2-Column Split Architecture (`HeroCampaign.tsx`):
+  - Desktop: Clean 2-column grid (`lg:grid-cols-12`). Left side (`col-span-7`) showcases RS logo monogram, live drop pill, Cormorant Garamond headline, subtitle, description, primary & secondary CTAs, and quality specs metrics.
+  - Right side (`col-span-5`): Contained 3D circle orbit stage (`max-w-[440px]`, `h-[440px]`) with compact radius ($R_x \approx 145px, R_y \approx 92px$, garment size 118px), eliminating full-viewport intrusion and visual dominance.
+  - Center Turntable Hologram Pedestal: Glowing RS emblem core with neon mint border, ambient radial spotlight, and 3D depth layering ($z=30$ foreground vs $z=10$ background).
+- Mobile Viewport Hierarchy & Performance (`< 1024px`):
+  - Single-column vertical stream: Brand emblem -> Headline -> Compact 3D turntable ($H=260px$, $R_x \approx 100px$, $R_y \approx 55px$, garment size 68px) with "Tap cloth to buy" badge -> Full-width touch CTAs -> Specs.
+  - Responsive conditional mounting: Only mounts the active breakpoint's `CircularFloatingCanvas` based on `isMobile`, avoiding duplicate `requestAnimationFrame` loops and hidden canvas state updates (per CodeRabbit finding).
+- Storefront Mobile UI/UX Enhancements:
+  - `ClothBuyDrawer.tsx`: Added iOS Safari home bar safe-area insets (`pb-[max(env(safe-area-inset-bottom,16px),16px)]`), tuned mobile padding (`p-4 sm:p-6`), enlarged size chips and quantity buttons to 44px+ touch targets.
+  - `skiper52.tsx`: Re-architected mobile silhouette carousel with `-mx-4 px-4` edge bleed, momentum swipe scrolling, and removed `touch-pan-x` to permit smooth vertical page scrolling.
+  - `ProductCard.tsx` & `CompactProductCard.tsx`: Enlarged mobile quick-add buttons to ergonomic 44px hit areas.
+  - `layout.tsx`: Updated `themeColor` to `#0A0A1A`, ensured `dark` html class, and applied `overflow-x-hidden` on `body` ensuring zero horizontal viewport scrolling.
+- Quality Gates Passed:
+  - TypeScript typecheck (`tsc --noEmit`): 0 errors.
+  - Next.js production build (`npm run build`): All 35 routes compiled & static pages generated.
+  - CodeRabbit automated agent review: resolved all findings (admin garment size preservation, zero-CLS pre-mount container reservation, center-directed tooltips, touch-device mobile overlay dismiss, and carousel gutter bleed).
+  - Live server HTTP 200 OK verified across `/`, `/cart`, and `/checkout`.

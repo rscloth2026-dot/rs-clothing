@@ -187,7 +187,7 @@ export function ProductCard({
           </div>
         </div>
 
-        {/* Mobile Quick Add Trigger */}
+        {/* Mobile Quick Add Trigger with 44px hit area */}
         <div className="lg:hidden absolute bottom-2 right-2 z-10">
           <button
             onClick={(e) => {
@@ -195,17 +195,17 @@ export function ProductCard({
               e.stopPropagation();
               setShowMobileSizes(!showMobileSizes);
             }}
-            className="w-8 h-8 rounded-full bg-[#16213E] border border-[#1F294D] text-[#00FF87] hover:border-[#60EFFF] flex items-center justify-center shadow-xs active:scale-95"
+            className="w-11 h-11 rounded-full bg-[#16213E] border border-[#1F294D] text-[#00FF87] hover:border-[#60EFFF] flex items-center justify-center shadow-md transition-colors"
             aria-label="Quick add size"
           >
-            <Plus className="w-4 h-4 text-[#00FF87]" />
+            <Plus className="w-5 h-5 text-[#00FF87]" />
           </button>
         </div>
 
         {/* Mobile Expandable Size Pill Sheet */}
         {showMobileSizes && (
-          <div className="lg:hidden absolute inset-x-0 bottom-0 bg-[#0A0A1A]/95 backdrop-blur-md p-3 border-t border-[#1F294D] z-20 animate-accordion-down">
-            <div className="flex items-center justify-between mb-2">
+          <div className="lg:hidden absolute inset-x-0 bottom-0 max-h-full overflow-y-auto bg-[#0A0A1A]/95 backdrop-blur-md p-2.5 sm:p-3 border-t border-[#1F294D] z-20 animate-accordion-down flex flex-col">
+            <div className="flex items-center justify-between mb-2 shrink-0">
               <span className="text-[10px] font-sans uppercase font-bold text-[#00FF87]">
                 Select Size
               </span>
@@ -215,12 +215,12 @@ export function ProductCard({
                   e.stopPropagation();
                   setShowMobileSizes(false);
                 }}
-                className="text-[10px] text-[#94A3B8] uppercase font-bold hover:text-[#00FF87]"
+                className="min-h-[44px] px-3 text-xs text-[#94A3B8] uppercase font-bold hover:text-[#00FF87] flex items-center justify-center shrink-0"
               >
                 Close
               </button>
             </div>
-            <div className="flex flex-wrap gap-1.5">
+            <div className="grid grid-cols-3 gap-1.5 sm:flex sm:flex-wrap sm:gap-2 overflow-y-auto">
               {availableSizes.map((size) => {
                 const variant = variants.find((v) => v.size === size);
                 const inStock = variant && variant.stockQuantity > 0;
@@ -229,7 +229,7 @@ export function ProductCard({
                     key={size}
                     disabled={!inStock}
                     onClick={(e) => handleQuickAdd(size, e)}
-                    className="flex-1 min-w-[38px] h-8 bg-[#16213E] border border-[#1F294D] text-xs font-bold text-[#F8FAFC] hover:bg-gradient-to-r hover:from-[#00FF87] hover:to-[#60EFFF] hover:text-[#0A0A1A] hover:border-transparent rounded-none transition-colors"
+                    className="min-h-[44px] min-w-[38px] sm:min-w-[44px] bg-[#16213E] border border-[#1F294D] text-xs font-bold text-[#F8FAFC] hover:bg-gradient-to-r hover:from-[#00FF87] hover:to-[#60EFFF] hover:text-[#0A0A1A] hover:border-transparent rounded-none transition-colors flex items-center justify-center"
                   >
                     {size}
                   </button>
