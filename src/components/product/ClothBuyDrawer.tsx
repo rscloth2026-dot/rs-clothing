@@ -171,13 +171,13 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
-        <div className="w-screen max-w-xl bg-[#0F1118] border-l border-[#1F2433] shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300 text-[#F8FAFC]">
+        <div className="w-screen max-w-xl bg-[#16213E] border-l border-[#1F294D] shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300 text-[#F8FAFC]">
           {/* Header */}
-          <div className="p-5 sm:p-6 border-b border-[#1F2433] flex items-center justify-between bg-[#12141D]/90 backdrop-blur-md">
+          <div className="p-5 sm:p-6 border-b border-[#1F294D] flex items-center justify-between bg-[#16213E]/95 backdrop-blur-md">
             <div>
               <div className="flex items-center space-x-2">
-                <span className="w-2 h-2 rounded-full bg-[#D4FF00] animate-pulse" />
-                <span className="text-[10px] font-black tracking-widest uppercase text-[#D4FF00]">
+                <span className="w-2 h-2 rounded-full bg-[#00FF87] animate-pulse" />
+                <span className="text-[10px] font-black tracking-widest uppercase text-[#00FF87]">
                   ATELIER ARCHIVE // QUICK BUY
                 </span>
               </div>
@@ -191,7 +191,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
 
             <button
               onClick={onClose}
-              className="p-2 bg-[#1A1D2A] border border-[#252A3C] text-[#94A3B8] hover:text-[#D4FF00] hover:border-[#D4FF00] transition-colors rounded-none"
+              className="p-2 bg-[#0A0A1A] border border-[#1F294D] text-[#94A3B8] hover:text-[#00FF87] hover:border-[#00FF87] transition-colors rounded-none"
               aria-label="Close buy section"
             >
               <X className="w-5 h-5" />
@@ -201,7 +201,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
           {/* Drawer Body - Scrollable */}
           <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6">
             {/* Visual Garment Display */}
-            <div className="relative w-full aspect-4/3 bg-[#090A0F] border border-[#1E2230] rounded-none overflow-hidden flex items-center justify-center p-4">
+            <div className="relative w-full aspect-4/3 bg-[#0A0A1A] border border-[#1F294D] rounded-none overflow-hidden flex items-center justify-center p-4">
               <Image
                 src={activeImage}
                 alt={product.title}
@@ -214,12 +214,12 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
               {/* Status pill in corner */}
               <div className="absolute top-3 left-3 flex flex-col space-y-1">
                 {discountPercent && (
-                  <Badge variant="volt" className="text-[10px] px-2 py-0.5">
+                  <Badge variant="aurora" className="text-[10px] px-2 py-0.5 text-[#0A0A1A] font-black">
                     {discountPercent}% OFF
                   </Badge>
                 )}
                 {product.fit && (
-                  <Badge variant="carbon" className="text-[10px] px-2 py-0.5">
+                  <Badge variant="cyanSubtle" className="text-[10px] px-2 py-0.5">
                     {product.fit}
                   </Badge>
                 )}
@@ -233,10 +233,10 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                   <button
                     key={idx}
                     onClick={() => setSelectedImageIndex(idx)}
-                    className={`relative w-14 h-14 border bg-[#090A0F] rounded-none shrink-0 overflow-hidden transition-all ${
+                    className={`relative w-14 h-14 border bg-[#0A0A1A] rounded-none shrink-0 overflow-hidden transition-all ${
                       selectedImageIndex === idx
-                        ? "border-[#D4FF00] ring-1 ring-[#D4FF00]"
-                        : "border-[#1E2230] opacity-60 hover:opacity-100"
+                        ? "border-[#00FF87] ring-1 ring-[#00FF87]"
+                        : "border-[#1F294D] opacity-60 hover:opacity-100 hover:border-[#60EFFF]"
                     }`}
                   >
                     <Image src={img.url} alt="" fill className="object-contain p-1" sizes="56px" />
@@ -246,8 +246,8 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
             )}
 
             {/* Pricing Section */}
-            <div className="flex items-baseline space-x-3 border-b border-[#1F2433] pb-4">
-              <span className="text-3xl font-black tracking-tight text-[#D4FF00] tabular-nums">
+            <div className="flex items-baseline space-x-3 border-b border-[#1F294D] pb-4">
+              <span className="text-3xl font-black tracking-tight text-[#00FF87] tabular-nums">
                 {formatPrice(product.basePrice)}
               </span>
               {product.comparePrice && product.comparePrice > product.basePrice && (
@@ -266,7 +266,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                 <span className="text-xs font-black uppercase tracking-wider text-white">
                   Select Size
                 </span>
-                <span className="text-[11px] text-[#D4FF00] font-bold">
+                <span className="text-[11px] text-[#60EFFF] font-bold">
                   {currentVariant?.stockQuantity && currentVariant.stockQuantity < 5
                     ? `⚡ Low Stock: Only ${currentVariant.stockQuantity} left`
                     : "✓ In Stock — Ready to Ship"}
@@ -285,10 +285,10 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                       disabled={isOutOfStock}
                       className={`py-3 px-2 border text-center text-xs font-black tracking-wider transition-all relative ${
                         isSelected
-                          ? "border-[#D4FF00] bg-[#D4FF00] text-black shadow-md shadow-[#D4FF00]/10"
+                          ? "border-[#00FF87] bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] shadow-md shadow-[#00FF87]/20 font-black"
                           : isOutOfStock
-                          ? "border-[#1F2433] text-[#475569] bg-[#0A0B10] line-through cursor-not-allowed opacity-50"
-                          : "border-[#1E2230] bg-[#13151F] text-[#F8FAFC] hover:border-[#D4FF00]/60 hover:text-white"
+                          ? "border-[#1F294D] text-[#475569] bg-[#0A0A1A] line-through cursor-not-allowed opacity-50"
+                          : "border-[#1F294D] bg-[#0A0A1A] text-[#F8FAFC] hover:border-[#60EFFF] hover:text-[#60EFFF]"
                       }`}
                     >
                       {v.size}
@@ -299,19 +299,19 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
             </div>
 
             {/* Quantity Selector */}
-            <div className="flex items-center justify-between border-y border-[#1F2433] py-4">
+            <div className="flex items-center justify-between border-y border-[#1F294D] py-4">
               <span className="text-xs font-black uppercase tracking-wider text-white">
                 Quantity
               </span>
-              <div className="flex items-center border border-[#1E2230] bg-[#12141D]">
+              <div className="flex items-center border border-[#1F294D] bg-[#0A0A1A]">
                 <button
                   type="button"
                   onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                  className="px-3 py-1.5 text-sm text-[#94A3B8] hover:text-[#D4FF00] transition-colors"
+                  className="px-3 py-1.5 text-sm text-[#94A3B8] hover:text-[#00FF87] transition-colors"
                 >
                   -
                 </button>
-                <span className="px-4 py-1.5 text-sm font-bold text-white tabular-nums border-x border-[#1E2230]">
+                <span className="px-4 py-1.5 text-sm font-bold text-white tabular-nums border-x border-[#1F294D]">
                   {quantity}
                 </span>
                 <button
@@ -321,7 +321,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                       Math.min(currentVariant?.stockQuantity || 10, prev + 1)
                     )
                   }
-                  className="px-3 py-1.5 text-sm text-[#94A3B8] hover:text-[#D4FF00] transition-colors"
+                  className="px-3 py-1.5 text-sm text-[#94A3B8] hover:text-[#00FF87] transition-colors"
                 >
                   +
                 </button>
@@ -329,9 +329,9 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
             </div>
 
             {/* PIN Code Delivery Estimator */}
-            <div className="bg-[#12141D] border border-[#1E2230] p-4">
+            <div className="bg-[#0A0A1A] border border-[#1F294D] p-4">
               <div className="flex items-center space-x-2 text-xs font-bold text-white mb-2">
-                <MapPin className="w-4 h-4 text-[#D4FF00]" />
+                <MapPin className="w-4 h-4 text-[#00FF87]" />
                 <span>Estimate Indian Delivery</span>
               </div>
               <form onSubmit={handleCheckPin} className="flex space-x-2">
@@ -341,17 +341,17 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                   placeholder="Enter 6-digit PIN"
                   value={pinCode}
                   onChange={(e) => setPinCode(e.target.value.replace(/\D/g, ""))}
-                  className="bg-[#090A0F] border border-[#1E2230] px-3 py-2 text-xs text-white placeholder-[#64748B] focus:border-[#D4FF00] focus:outline-none flex-1 font-mono"
+                  className="bg-[#16213E] border border-[#1F294D] px-3 py-2 text-xs text-white placeholder-[#64748B] focus:border-[#00FF87] focus:outline-none flex-1 font-mono"
                 />
                 <button
                   type="submit"
-                  className="px-3 py-2 bg-[#1C1F2E] border border-[#2B3044] text-xs font-bold text-white hover:text-[#D4FF00] hover:border-[#D4FF00] transition-colors"
+                  className="px-3 py-2 bg-[#16213E] border border-[#1F294D] text-xs font-bold text-white hover:text-[#00FF87] hover:border-[#00FF87] transition-colors"
                 >
                   Check
                 </button>
               </form>
               {pinStatus && (
-                <p className="mt-2 text-[11px] text-[#D4FF00] font-medium leading-relaxed">
+                <p className="mt-2 text-[11px] text-[#00FF87] font-medium leading-relaxed">
                   {pinStatus}
                 </p>
               )}
@@ -369,13 +369,13 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
           </div>
 
           {/* Action CTAs Footer */}
-          <div className="p-5 sm:p-6 border-t border-[#1F2433] bg-[#12141D]/95 backdrop-blur-md space-y-3">
+          <div className="p-5 sm:p-6 border-t border-[#1F294D] bg-[#16213E]/95 backdrop-blur-md space-y-3">
             {/* Primary Action 1: Instant BUY NOW */}
             <Button
               onClick={handleBuyNow}
-              className="w-full bg-[#D4FF00] hover:bg-[#BCE600] text-black font-black uppercase tracking-wider py-6 rounded-none text-sm shadow-lg shadow-[#D4FF00]/15 flex items-center justify-center space-x-2 group transition-all"
+              className="w-full bg-gradient-to-r from-[#00FF87] to-[#60EFFF] hover:opacity-95 text-[#0A0A1A] font-black uppercase tracking-wider py-6 rounded-none text-sm shadow-lg shadow-[#00FF87]/20 flex items-center justify-center space-x-2 group transition-all border-none"
             >
-              <Zap className="w-4 h-4 fill-black" />
+              <Zap className="w-4 h-4 fill-[#0A0A1A] text-[#0A0A1A]" />
               <span>Buy Now — Instant Checkout</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -385,12 +385,12 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
               onClick={handleAddToCart}
               variant="outline"
               disabled={added}
-              className="w-full bg-[#181B26] hover:bg-[#1E2230] text-white border-[#2A2F42] hover:border-[#D4FF00] font-bold uppercase tracking-wider py-5 rounded-none text-xs flex items-center justify-center space-x-2 transition-all"
+              className="w-full bg-[#0A0A1A] hover:bg-[#1B284D] text-white border-[#1F294D] hover:border-[#60EFFF] font-bold uppercase tracking-wider py-5 rounded-none text-xs flex items-center justify-center space-x-2 transition-all"
             >
               {added ? (
                 <>
-                  <Check className="w-4 h-4 text-[#D4FF00]" />
-                  <span className="text-[#D4FF00]">Added to Bag!</span>
+                  <Check className="w-4 h-4 text-[#00FF87]" />
+                  <span className="text-[#00FF87]">Added to Bag!</span>
                 </>
               ) : (
                 <>
@@ -405,7 +405,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
               <Link
                 href={`/products/${product.slug}`}
                 onClick={onClose}
-                className="text-[11px] font-bold uppercase tracking-wider text-[#94A3B8] hover:text-[#D4FF00] transition-colors inline-flex items-center space-x-1"
+                className="text-[11px] font-bold uppercase tracking-wider text-[#94A3B8] hover:text-[#60EFFF] transition-colors inline-flex items-center space-x-1"
               >
                 <span>View Full Specifications & Size Guide</span>
                 <ArrowRight className="w-3 h-3" />

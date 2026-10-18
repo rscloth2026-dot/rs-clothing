@@ -105,7 +105,7 @@ export function CircularFloatingCanvas({
         style={{
           width: `${rx * 2}px`,
           height: `${ry * 2}px`,
-          boxShadow: "0 0 50px rgba(212, 255, 0, 0.03)",
+          boxShadow: "0 0 50px rgba(0, 255, 135, 0.08)",
         }}
       />
 
@@ -188,7 +188,7 @@ export function CircularFloatingCanvas({
             <div
               className={`absolute inset-0 rounded-full transition-all duration-300 pointer-events-none ${
                 isHovered
-                  ? "bg-[#D4FF00]/15 ring-2 ring-[#D4FF00] shadow-[0_0_35px_rgba(212,255,0,0.35)] scale-110"
+                  ? "bg-gradient-to-r from-[#00FF87]/20 to-[#60EFFF]/20 ring-2 ring-[#00FF87] shadow-[0_0_35px_rgba(0,255,135,0.4)] scale-110"
                   : "bg-transparent ring-0"
               }`}
             />
@@ -217,22 +217,22 @@ export function CircularFloatingCanvas({
                   : "opacity-0 translate-y-1 scale-95"
               }`}
             >
-              <div className="bg-[#090A0F] border border-[#D4FF00] px-3 py-1 text-center shadow-xl shadow-black/80 flex items-center space-x-1.5">
-                <Zap className="w-3 h-3 text-[#D4FF00] fill-[#D4FF00]" />
+              <div className="bg-[#0A0A1A] border border-[#00FF87] px-3 py-1 text-center shadow-xl shadow-black/80 flex items-center space-x-1.5">
+                <Zap className="w-3 h-3 text-[#00FF87] fill-[#00FF87]" />
                 <span className="text-[10px] font-black uppercase tracking-wider text-white">
                   {garment.name}
                 </span>
-                <span className="text-[10px] font-black text-[#D4FF00] tabular-nums pl-1 border-l border-white/20">
+                <span className="text-[10px] font-black text-[#60EFFF] tabular-nums pl-1 border-l border-white/20">
                   {formatPrice(garment.price)}
                 </span>
               </div>
-              <span className="text-[8px] font-bold text-[#D4FF00] tracking-widest uppercase mt-0.5 animate-pulse">
+              <span className="text-[8px] font-bold text-[#00FF87] tracking-widest uppercase mt-0.5 animate-pulse">
                 Click to Open Buy Section
               </span>
             </div>
 
             {/* Subtle category dot */}
-            <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#D4FF00] opacity-80 group-hover:scale-150 group-hover:opacity-100 transition-all shadow-xs shadow-[#D4FF00]" />
+            <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#00FF87] opacity-80 group-hover:scale-150 group-hover:opacity-100 transition-all shadow-xs shadow-[#00FF87]" />
           </motion.div>
         );
       })}

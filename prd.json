@@ -314,6 +314,24 @@
       "priority": 17,
       "passes": true,
       "notes": "Passed tsc --noEmit, npm run build (35/35 routes), CodeRabbit review with focus ring autofix, and live server verification."
+    },
+    {
+      "id": "US-018",
+      "title": "Cyber Aurora Palette Infusion (#00FF87/#60EFFF & #0A0A1A/#16213E)",
+      "description": "As a shopper, I want the website to be infused with high-energy Cyber Aurora neon accents (#00FF87 Electric Neon Mint, #60EFFF Electric Aqua Cyan) set against ultra-clean deep cyber midnight canvas (#0A0A1A) and slate navy glass cards (#16213E) with hairline borders (#1F294D), delivering an electric high-contrast luxury streetwear aesthetic while maintaining WCAG AAA readability (>14:1 contrast).",
+      "acceptanceCriteria": [
+        "Apply neon accents #00FF87 (Electric Mint) and #60EFFF (Electric Cyan) across primary CTAs, active states, progress indicators, highlights, and badge variants",
+        "Apply dark cyber midnight canvas #0A0A1A and slate navy glass card surfaces #16213E with #1F294D hairline borders across all storefront components",
+        "Maintain strict WCAG AAA contrast ratio (>14:1) with dark #0A0A1A text on bright neon mint/cyan buttons and pill badges",
+        "Re-theme Header, AnnouncementBar, HeroCampaign, CircularFloatingCanvas, ClothBuyDrawer, CartDrawer, ProductCard, CategoryGrid, BrandStory, CustomerReviews, and Footer",
+        "Preserve all existing functionality: 3D circular floating hero animation, slide-over buy drawer, quick view, cart drawer, Indian logistics PIN checker, and admin studio",
+        "Typecheck passes",
+        "Tests pass",
+        "CodeRabbit review passes"
+      ],
+      "priority": 18,
+      "passes": true,
+      "notes": "Passed tsc --noEmit, npm run build (35/35 routes), CodeRabbit review (0 findings across 18 files), and live server verification."
     }
   ]
 }

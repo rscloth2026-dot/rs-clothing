@@ -303,7 +303,7 @@ export function HeroCampaign({
   const activeGarments = floatingGarments.filter((g) => g.isEnabled !== false);
 
   return (
-    <section className="relative w-full bg-[#090A0F] overflow-hidden border-b border-[#1E2230]">
+    <section className="relative w-full bg-[#0A0A1A] overflow-hidden border-b border-[#1F294D]">
       {/* Hero Card Container */}
       <div className="relative w-full min-h-[86vh] sm:min-h-[90vh] lg:min-h-[94vh] flex flex-col justify-end">
         {/* Editorial Background Image with Smooth Crossfade */}
@@ -329,25 +329,25 @@ export function HeroCampaign({
           </AnimatePresence>
 
           {/* Editorial Atelier gradients for sharp typography contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#090A0F] via-[#090A0F]/85 to-transparent" />
-          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#090A0F]/95 via-[#090A0F]/60 to-transparent w-3/4" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A1A] via-[#0A0A1A]/85 to-transparent" />
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#0A0A1A]/95 via-[#0A0A1A]/60 to-transparent w-3/4" />
 
-          {/* Subtle Ambient Cyber Volt & Gold Lighting Accents */}
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#D4FF00]/8 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute top-1/3 -right-24 w-80 h-80 bg-[#FBBF24]/8 rounded-full blur-3xl pointer-events-none" />
+          {/* Subtle Ambient Cyber Mint & Cyan Lighting Accents */}
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#00FF87]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/3 -right-24 w-80 h-80 bg-[#60EFFF]/10 rounded-full blur-3xl pointer-events-none" />
         </div>
 
         {/* Skiper-UI: Progressive Blur Overlays for Depth and Polish */}
         <ProgressiveBlur
           position="top"
-          backgroundColor="#090A0F"
+          backgroundColor="#0A0A1A"
           height="110px"
           blurAmount="10px"
           className="z-[2]"
         />
         <ProgressiveBlur
           position="bottom"
-          backgroundColor="#090A0F"
+          backgroundColor="#0A0A1A"
           height="140px"
           blurAmount="12px"
           className="z-[2]"
@@ -363,19 +363,19 @@ export function HeroCampaign({
         />
 
         {/* Interactive Floating Hint Pill */}
-        <div className="absolute top-24 left-4 sm:left-8 z-20 hidden sm:flex items-center space-x-2 px-3 py-1 bg-[#12141D]/90 backdrop-blur-md border border-[#1E2230] text-[10px] font-sans text-[#94A3B8] uppercase tracking-widest shadow-xs">
-          <Sparkles className="w-3 h-3 text-[#D4FF00]" />
+        <div className="absolute top-24 left-4 sm:left-8 z-20 hidden sm:flex items-center space-x-2 px-3 py-1 bg-[#16213E]/90 backdrop-blur-md border border-[#1F294D] text-[10px] font-sans text-[#94A3B8] uppercase tracking-widest shadow-xs">
+          <Sparkles className="w-3 h-3 text-[#00FF87]" />
           <span>Click any revolving cloth to open Buy Section</span>
         </div>
 
         {/* Top Controls: Slide Switcher */}
         <div className="absolute top-6 right-4 sm:right-8 z-20 flex items-center space-x-2">
-          <div className="flex items-center space-x-1 p-1 bg-[#12141D]/90 backdrop-blur-md border border-[#1E2230] rounded-full shadow-sm">
+          <div className="flex items-center space-x-1 p-1 bg-[#16213E]/90 backdrop-blur-md border border-[#1F294D] rounded-full shadow-sm">
             <button
               onClick={() =>
                 setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
               }
-              className="p-1 rounded-full text-[#94A3B8] hover:text-[#D4FF00] transition-colors"
+              className="p-1 rounded-full text-[#94A3B8] hover:text-[#00FF87] transition-colors"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -387,8 +387,8 @@ export function HeroCampaign({
                 onClick={() => setCurrentSlide(idx)}
                 className={`px-3 py-1 rounded-full text-[10px] font-sans font-bold transition-all ${
                   currentSlide === idx
-                    ? "bg-[#D4FF00] text-black shadow-xs font-black"
-                    : "text-[#94A3B8] hover:text-[#D4FF00]"
+                    ? "bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] shadow-xs font-black"
+                    : "text-[#94A3B8] hover:text-[#00FF87]"
                 }`}
                 aria-label={`Switch to slide ${s.id}`}
               >
@@ -398,7 +398,7 @@ export function HeroCampaign({
 
             <button
               onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-              className="p-1 rounded-full text-[#94A3B8] hover:text-[#D4FF00] transition-colors"
+              className="p-1 rounded-full text-[#94A3B8] hover:text-[#00FF87] transition-colors"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />
@@ -427,10 +427,10 @@ export function HeroCampaign({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="inline-flex items-center space-x-2 px-3 py-1.5 bg-[#12141D]/90 border border-[#D4FF00]/40 text-[#F8FAFC] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-xs backdrop-blur-md"
+              className="inline-flex items-center space-x-2 px-3 py-1.5 bg-[#16213E]/90 border border-[#00FF87]/40 text-[#F8FAFC] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-xs backdrop-blur-md"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D4FF00] animate-pulse shadow-[0_0_8px_#D4FF00]" />
-              <span className="text-[#D4FF00] font-bold">ROYAL ATELIER</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00FF87] animate-pulse shadow-[0_0_8px_#00FF87]" />
+              <span className="text-[#00FF87] font-bold">ROYAL ATELIER</span>
               <span className="text-[#475569]">•</span>
               <span className="text-[#F8FAFC]">
                 {slide.tag
@@ -450,7 +450,7 @@ export function HeroCampaign({
             >
               {slide.title}
               <br />
-              <span className="text-[#D4FF00] italic font-normal">{slide.subtitle}</span>
+              <span className="text-[#60EFFF] italic font-normal">{slide.subtitle}</span>
             </motion.h1>
 
             {/* Subtext */}
@@ -469,10 +469,10 @@ export function HeroCampaign({
               <Link href={slide.ctaLink} className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto h-12 min-h-[48px] bg-[#D4FF00] hover:bg-[#BCE600] text-black font-black uppercase tracking-wider text-xs px-8 rounded-none shadow-lg shadow-[#D4FF00]/15 transition-all flex items-center justify-center space-x-2 active:scale-[0.98] border border-transparent"
+                  className="w-full sm:w-auto h-12 min-h-[48px] bg-gradient-to-r from-[#00FF87] to-[#60EFFF] hover:opacity-90 text-[#0A0A1A] font-black uppercase tracking-wider text-xs px-8 rounded-none shadow-lg shadow-[#00FF87]/20 transition-all flex items-center justify-center space-x-2 active:scale-[0.98] border border-transparent"
                 >
                   <span>{slide.ctaText}</span>
-                  <ArrowRight className="w-4 h-4 ml-1 text-black" />
+                  <ArrowRight className="w-4 h-4 ml-1 text-[#0A0A1A]" />
                 </Button>
               </Link>
 
@@ -480,7 +480,7 @@ export function HeroCampaign({
                 <Button
                   size="lg"
                   variant="outline"
-                  className="w-full sm:w-auto h-12 min-h-[48px] border-[#1E2230] bg-[#12141D] text-white hover:border-[#D4FF00] hover:text-[#D4FF00] hover:bg-[#161824] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
+                  className="w-full sm:w-auto h-12 min-h-[48px] border-[#1F294D] bg-[#16213E] text-white hover:border-[#60EFFF] hover:text-[#60EFFF] hover:bg-[#1B284D] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
                 >
                   <span>View All Royal Drops</span>
                 </Button>
@@ -488,9 +488,9 @@ export function HeroCampaign({
             </div>
 
             {/* Quality Specs Grid with Color-Coded Accents */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-[#1E2230] max-w-md">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-[#1F294D] max-w-md">
               <div>
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#D4FF00] tabular-nums">
+                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#00FF87] tabular-nums">
                   {slide.metric1}
                 </span>
                 <span className="text-[10px] font-sans uppercase tracking-widest text-[#94A3B8]">
@@ -498,7 +498,7 @@ export function HeroCampaign({
                 </span>
               </div>
               <div>
-                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#FBBF24] tabular-nums">
+                <span className="block text-xl sm:text-2xl font-serif font-bold text-[#60EFFF] tabular-nums">
                   {slide.metric2}
                 </span>
                 <span className="text-[10px] font-sans uppercase tracking-widest text-[#94A3B8]">
@@ -509,7 +509,7 @@ export function HeroCampaign({
                 <span className="block text-xl sm:text-2xl font-serif font-bold text-white">
                   JODHPUR
                 </span>
-                <span className="text-[10px] font-sans uppercase tracking-widest text-[#D4FF00] font-bold">
+                <span className="text-[10px] font-sans uppercase tracking-widest text-[#00FF87] font-bold">
                   Atelier Origin
                 </span>
               </div>

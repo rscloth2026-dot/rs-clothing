@@ -100,7 +100,7 @@ export default async function HomePage() {
   }));
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#090A0F]">
+    <div className="flex flex-col min-h-screen bg-[#0A0A1A]">
       {/* 1. Hero Campaign Section with Floating Interactive Clothes */}
       <HeroCampaign initialGarments={heroGarments} />
 
@@ -144,12 +144,12 @@ export default async function HomePage() {
       <BrandStory />
 
       {/* 6. Verified Patronage & Customer Reviews - Static 3-Card Regal Grid */}
-      <section className="py-16 sm:py-24 bg-[#090A0F] border-b border-[#1E2230]">
+      <section className="py-16 sm:py-24 bg-[#0A0A1A] border-b border-[#1F294D]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#12141D] border border-[#1E2230] rounded-full mb-3 shadow-xs">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#16213E] border border-[#1F294D] rounded-full mb-3 shadow-xs">
               <Star className="w-3.5 h-3.5 fill-[#FBBF24] text-[#FBBF24]" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#D4FF00]">
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#00FF87]">
                 ROYAL COMMENDATIONS // 4.9 RATING
               </span>
             </div>
@@ -190,7 +190,7 @@ export default async function HomePage() {
             ]).map((rev, idx) => (
               <div
                 key={rev.id || idx}
-                className="p-6 bg-[#12141D] border border-[#1E2230] hover:border-[#D4FF00]/50 hover:shadow-[0_12px_28px_rgba(212,255,0,0.06)] transition-all rounded-none shadow-xs flex flex-col justify-between"
+                className="p-6 bg-[#16213E] border border-[#1F294D] hover:border-[#60EFFF]/80 hover:shadow-[0_12px_28px_rgba(0,255,135,0.1)] transition-all rounded-none shadow-xs flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center space-x-1 text-[#FBBF24] mb-3">
@@ -202,17 +202,17 @@ export default async function HomePage() {
                     &ldquo;{rev.comment}&rdquo;
                   </p>
                 </div>
-                <div className="pt-4 border-t border-[#1E2230] flex items-center justify-between">
+                <div className="pt-4 border-t border-[#1F294D] flex items-center justify-between">
                   <div>
                     <div className="text-xs font-bold font-sans text-[#F8FAFC] flex items-center space-x-1.5">
                       <span>{rev.customerName}</span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#D4FF00]" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#00FF87]" />
                     </div>
                     <div className="text-[11px] text-[#94A3B8] font-sans">
                       {("city" in rev && rev.city) ? rev.city : "Verified Buyer"}
                     </div>
                   </div>
-                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#D4FF00] bg-[#D4FF00]/10 px-2 py-0.5 rounded-none border border-[#D4FF00]/20">
+                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#00FF87] bg-[#00FF87]/10 px-2 py-0.5 rounded-none border border-[#00FF87]/30">
                     {("product" in rev && rev.product?.title) ? rev.product.title : (rev as any).productTitle || "Verified"}
                   </span>
                 </div>

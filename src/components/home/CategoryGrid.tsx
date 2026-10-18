@@ -26,14 +26,14 @@ export function CategoryGrid({ categories }: { categories: CategoryItem[] }) {
   }));
 
   return (
-    <section className="relative py-14 sm:py-20 bg-[#090A0F] border-b border-[#1E2230] overflow-hidden select-none">
+    <section className="relative py-14 sm:py-20 bg-[#0A0A1A] border-b border-[#1F294D] overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
         {/* Section Header with Royal Aesthetics & Generous Spacing */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-5 border-b border-[#1E2230]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-5 border-b border-[#1F294D]">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#12141D] border border-[#1E2230] rounded-full shadow-xs">
-              <Sparkles className="w-3 h-3 text-[#D4FF00]" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#D4FF00]">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#16213E] border border-[#1F294D] rounded-full shadow-xs">
+              <Sparkles className="w-3 h-3 text-[#00FF87]" />
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#00FF87]">
                 COLLECTION DIRECTORY
               </span>
             </div>
@@ -47,10 +47,10 @@ export function CategoryGrid({ categories }: { categories: CategoryItem[] }) {
 
           <Link
             href="/collections/all"
-            className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-[#F8FAFC] hover:text-[#D4FF00] transition-colors group py-1"
+            className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-[#F8FAFC] hover:text-[#00FF87] transition-colors group py-1"
           >
             <span>All Silhouettes</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#D4FF00] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#00FF87] group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>
