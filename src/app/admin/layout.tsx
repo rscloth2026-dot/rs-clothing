@@ -45,7 +45,7 @@ export default async function AdminLayout({
             <ArrowRight className="w-4 h-4" />
           </Link>
           <p className="text-[11px] font-mono text-[#A1A1AA]">
-            Demo credentials: admin@rsclothing.in / admin123
+            Authorized Administrator Access Only
           </p>
         </div>
       </div>

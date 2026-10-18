@@ -712,21 +712,21 @@ export function HeroManagerClient({
 
             {/* Simulated Hero Stage */}
             <div
-              className={`relative bg-[#0A0A1A] border border-[#1F294D] overflow-hidden mx-auto transition-all ${
+              className={`relative bg-zinc-950 border border-zinc-800 overflow-hidden mx-auto transition-all ${
                 previewMode === "desktop"
                   ? "w-full h-80 sm:h-96"
-                  : "w-72 h-[380px] border-2 border-[#1F294D]"
+                  : "w-72 h-[380px] border-2 border-zinc-800"
               }`}
             >
               {/* Center Watermark & Headline Representation */}
               <div className="absolute inset-0 flex flex-col justify-end p-6 z-0 select-none opacity-40">
-                <span className="text-[9px] font-mono text-[#00FF87] uppercase tracking-widest">
+                <span className="text-[9px] font-mono text-zinc-300 uppercase tracking-widest">
                   ROYAL ATELIER // RUNWAY
                 </span>
-                <span className="font-serif font-bold text-2xl uppercase tracking-tight text-[#F8FAFC]">
+                <span className="font-serif font-bold text-2xl uppercase tracking-tight text-white">
                   RAJPUTANA STREETWEAR
                 </span>
-                <span className="text-[10px] font-sans text-[#94A3B8] mt-1">
+                <span className="text-[10px] font-sans text-zinc-400 mt-1">
                   Circular orbital zone — revolving clothes orbit center emblem
                 </span>
               </div>

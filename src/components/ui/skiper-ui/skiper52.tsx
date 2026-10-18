@@ -46,7 +46,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
             <motion.div
               key={item.id || index}
               layout
-              className="relative cursor-pointer overflow-hidden rounded-xl border border-[#1F294D] hover:border-[#60EFFF]/80 bg-[#16213E] shadow-sm transition-all hover:shadow-[0_8px_25px_rgba(0,255,135,0.15)]"
+              className="relative cursor-pointer overflow-hidden rounded-xl border border-zinc-800 hover:border-zinc-600 bg-zinc-900 shadow-sm transition-all hover:shadow-xl"
               animate={{
                 flex: isActive ? 3.5 : 1,
               }}
@@ -82,8 +82,8 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
               {/* Collapsed State: Crisp Bottom Index Label (Horizontal, Never Rotated) */}
               {!isActive && (
                 <div className="absolute inset-x-0 bottom-0 p-3.5 z-10 flex flex-col items-center justify-end text-center pointer-events-none">
-                  <div className="w-full bg-[#0A0A1A]/90 backdrop-blur-md border border-[#1F294D] py-2 px-1 rounded-[4px] shadow-sm">
-                    <span className="block text-[10px] font-sans font-bold tracking-widest text-[#00FF87] uppercase">
+                  <div className="w-full bg-[#09090B]/90 backdrop-blur-md border border-zinc-800 py-2 px-1 rounded-[4px] shadow-sm">
+                    <span className="block text-[10px] font-sans font-bold tracking-widest text-zinc-400 uppercase">
                       0{index + 1}
                     </span>
                     <span className="block text-[11px] font-serif font-bold text-white uppercase tracking-wider truncate mt-0.5 px-1">
@@ -102,8 +102,8 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
                   className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 text-white z-10"
                 >
                   <div className="space-y-2.5 max-w-md">
-                    <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] text-[9px] font-sans font-black uppercase tracking-widest rounded-full shadow-sm backdrop-blur-md">
-                      <Sparkles className="w-2.5 h-2.5 text-[#0A0A1A]" />
+                    <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 bg-white text-black text-[9px] font-sans font-black uppercase tracking-widest rounded-full shadow-sm backdrop-blur-md">
+                      <Sparkles className="w-2.5 h-2.5 text-black" />
                       <span>{item.code || `SILHOUETTE 0${index + 1}`}</span>
                     </div>
 
@@ -120,10 +120,10 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
                     <div className="pt-2">
                       <Link
                         href={`/collections/${item.slug}`}
-                        className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-[#00FF87] hover:text-[#60EFFF] transition-colors group"
+                        className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-zinc-200 hover:text-white transition-colors group"
                       >
                         <span>Explore Silhouette</span>
-                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-[#00FF87]" />
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-white" />
                       </Link>
                     </div>
                   </div>
@@ -143,7 +143,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
           <Link
             key={item.id || index}
             href={`/collections/${item.slug}`}
-            className="flex-shrink-0 w-[74vw] max-w-[290px] snap-center relative aspect-[3/4] rounded-xl overflow-hidden border border-[#1F294D] shadow-md group bg-[#16213E] active:scale-[0.98] transition-transform"
+            className="flex-shrink-0 w-[74vw] max-w-[290px] snap-center relative aspect-[3/4] rounded-xl overflow-hidden border border-zinc-800 shadow-md group bg-zinc-900 active:scale-[0.98] transition-transform"
           >
             <Image
               src={item.imageUrl}
@@ -155,7 +155,7 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
 
             <div className="absolute inset-x-0 bottom-0 p-5 space-y-2">
-              <span className="inline-block px-2.5 py-0.5 bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] text-[9px] font-sans font-black uppercase tracking-widest rounded-full shadow-xs">
+              <span className="inline-block px-2.5 py-0.5 bg-white text-black text-[9px] font-sans font-black uppercase tracking-widest rounded-full shadow-xs">
                 {item.code || `0${index + 1} // JODHPUR`}
               </span>
               <h3 className="text-xl font-serif font-bold text-white tracking-wide leading-tight">
@@ -166,9 +166,9 @@ export const HoverExpandSilhouettes: React.FC<HoverExpandSilhouettesProps> = ({
                   {item.description}
                 </p>
               )}
-              <div className="pt-1 flex items-center space-x-1.5 text-[#00FF87] text-[11px] font-sans font-bold uppercase tracking-wider">
+              <div className="pt-1 flex items-center space-x-1.5 text-zinc-200 text-[11px] font-sans font-bold uppercase tracking-wider">
                 <span>View Collection</span>
-                <ArrowRight className="w-3 h-3" />
+                <ArrowRight className="w-3 h-3 text-white" />
               </div>
             </div>
           </Link>

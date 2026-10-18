@@ -1,6 +1,8 @@
 import { cookies } from "next/headers";
 import { prisma } from "./db";
 
+import * as crypto from "crypto";
+
 export const AUTH_COOKIE_NAME = "rs_session";
 const SESSION_SECRET = process.env.SESSION_SECRET || "rs_clothing_secret_key_2026_jwt_token_auth";
 
@@ -12,24 +14,47 @@ export interface SessionUser {
   phone?: string | null;
 }
 
+function signPayload(payloadB64: string): string {
+  return crypto.createHmac("sha256", SESSION_SECRET).update(payloadB64).digest("base64url");
+}
+
 /**
- * Creates a simple secure base64-encoded session payload with signature
+ * Creates a cryptographically signed HMAC-SHA256 session token
  */
 export function createSessionToken(user: SessionUser): string {
   const payload = JSON.stringify({
     ...user,
     exp: Date.now() + 1000 * 60 * 60 * 24 * 7, // 7 days
   });
-  return Buffer.from(payload).toString("base64");
+  const payloadB64 = Buffer.from(payload).toString("base64url");
+  const signature = signPayload(payloadB64);
+  return `${payloadB64}.${signature}`;
 }
 
 export function parseSessionToken(token: string): SessionUser | null {
   try {
-    const json = Buffer.from(token, "base64").toString("utf-8");
-    const data = JSON.parse(json);
-    if (data.exp && data.exp < Date.now()) {
+    if (!token || typeof token !== "string") return null;
+    const parts = token.split(".");
+    if (parts.length !== 2) {
       return null;
     }
+
+    const [payloadB64, signature] = parts;
+    const expectedSignature = signPayload(payloadB64);
+
+    const sigBuf = Buffer.from(signature);
+    const expBuf = Buffer.from(expectedSignature);
+
+    if (sigBuf.length !== expBuf.length || !crypto.timingSafeEqual(sigBuf, expBuf)) {
+      return null;
+    }
+
+    const json = Buffer.from(payloadB64, "base64url").toString("utf-8");
+    const data = JSON.parse(json);
+    if (!data.id || !data.role || (data.exp && data.exp < Date.now())) {
+      return null;
+    }
+
     return {
       id: data.id,
       name: data.name,

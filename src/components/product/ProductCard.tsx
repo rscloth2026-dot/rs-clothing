@@ -106,12 +106,12 @@ export function ProductCard({
 
   return (
     <div
-      className="group relative flex flex-col bg-[#16213E] border border-[#1F294D] hover:border-[#60EFFF]/80 hover:shadow-[0_12px_32px_rgba(0,255,135,0.12)] transition-all rounded-none overflow-hidden shadow-sm"
+      className="group relative flex flex-col bg-zinc-900 border border-zinc-800 hover:border-zinc-600 hover:shadow-2xl transition-all rounded-none overflow-hidden shadow-sm"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Visual Badge & Wishlist Container */}
-      <div className="relative aspect-[3/4] w-full bg-[#0A0A1A] overflow-hidden select-none">
+      <div className="relative aspect-[3/4] w-full bg-zinc-950 overflow-hidden select-none">
         <Link href={`/products/${slug}`} className="block w-full h-full">
           <Image
             src={isHovered ? hoverImage : primaryImage}
@@ -125,17 +125,17 @@ export function ProductCard({
         {/* Badges */}
         <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-10 pointer-events-none">
           {isNewDrop && (
-            <span className="px-2 py-0.5 bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] text-[9px] font-sans font-black uppercase tracking-wider rounded-none shadow-sm">
+            <span className="px-2 py-0.5 bg-white text-black text-[9px] font-sans font-black uppercase tracking-wider rounded-none shadow-sm">
               ROYAL DROP
             </span>
           )}
           {isBestseller && (
-            <span className="px-2 py-0.5 bg-[#FBBF24] text-[#0A0A1A] text-[9px] font-sans font-black uppercase tracking-wider rounded-none shadow-sm">
+            <span className="px-2 py-0.5 bg-[#FBBF24] text-black text-[9px] font-sans font-black uppercase tracking-wider rounded-none shadow-sm">
               BESTSELLER
             </span>
           )}
           {discountPercent > 0 && (
-            <span className="px-2 py-0.5 bg-[#0A0A1A] text-[#00FF87] border border-[#00FF87]/40 text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-sm">
+            <span className="px-2 py-0.5 bg-zinc-950/90 text-zinc-300 border border-zinc-700 text-[9px] font-sans font-bold uppercase tracking-wider rounded-none shadow-sm">
               {discountPercent}% OFF
             </span>
           )}
@@ -146,17 +146,17 @@ export function ProductCard({
           onClick={handleWishlistToggle}
           className={`absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-90 ${
             wishlisted
-              ? "bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] shadow-sm"
-              : "bg-[#16213E]/90 text-[#94A3B8] hover:text-[#00FF87] hover:border-[#00FF87]/60 border border-[#1F294D] backdrop-blur-md shadow-sm"
+              ? "bg-white text-black shadow-sm"
+              : "bg-zinc-900/90 text-zinc-400 hover:text-white hover:border-zinc-600 border border-zinc-800 backdrop-blur-md shadow-sm"
           }`}
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
-          <Heart className={`w-4 h-4 ${wishlisted ? "fill-[#0A0A1A]" : ""}`} />
+          <Heart className={`w-4 h-4 ${wishlisted ? "fill-black" : ""}`} />
         </button>
 
         {/* 1-Click Quick Add Size Tray (Desktop Hover Reveal) */}
-        <div className="hidden lg:flex absolute bottom-0 left-0 right-0 p-3 bg-[#0A0A1A]/95 backdrop-blur-md border-t border-[#1F294D] translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex-col gap-1.5 z-20">
-          <span className="text-[10px] font-sans uppercase font-bold text-[#00FF87] tracking-wider text-center">
+        <div className="hidden lg:flex absolute bottom-0 left-0 right-0 p-3 bg-[#09090B]/95 backdrop-blur-md border-t border-zinc-800 translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex-col gap-1.5 z-20">
+          <span className="text-[10px] font-sans uppercase font-bold text-zinc-300 tracking-wider text-center">
             {justAdded ? "Added to Atelier Bag!" : "Quick Add Size"}
           </span>
           <div className="flex items-center justify-center gap-1.5">
@@ -173,14 +173,14 @@ export function ProductCard({
                   onClick={(e) => handleQuickAdd(size, e)}
                   className={`h-7 px-2.5 text-[11px] font-sans font-bold rounded-none flex items-center justify-center transition-colors ${
                     !inStock
-                      ? "opacity-30 cursor-not-allowed bg-[#0A0A1A] text-[#475569] line-through"
+                      ? "opacity-30 cursor-not-allowed bg-zinc-950 text-zinc-600 line-through"
                       : isSelected
-                      ? "bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] shadow-xs font-black"
-                      : "bg-[#16213E] border border-[#1F294D] text-[#F8FAFC] hover:border-[#00FF87] hover:text-[#00FF87] hover:bg-[#1B284D]"
+                      ? "bg-white text-black shadow-xs font-black"
+                      : "bg-zinc-800 border border-zinc-700 text-zinc-200 hover:border-zinc-500 hover:text-white hover:bg-zinc-750"
                   }`}
                   aria-label={`Quick add size ${size}`}
                 >
-                  {isSelected ? <Check className="w-3 h-3 text-[#0A0A1A]" /> : size}
+                  {isSelected ? <Check className="w-3 h-3 text-black" /> : size}
                 </button>
               );
             })}
@@ -195,18 +195,18 @@ export function ProductCard({
               e.stopPropagation();
               setShowMobileSizes(!showMobileSizes);
             }}
-            className="w-11 h-11 rounded-full bg-[#16213E] border border-[#1F294D] text-[#00FF87] hover:border-[#60EFFF] flex items-center justify-center shadow-md transition-colors"
+            className="w-11 h-11 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 hover:border-zinc-600 flex items-center justify-center shadow-md transition-colors"
             aria-label="Quick add size"
           >
-            <Plus className="w-5 h-5 text-[#00FF87]" />
+            <Plus className="w-5 h-5 text-zinc-300" />
           </button>
         </div>
 
         {/* Mobile Expandable Size Pill Sheet */}
         {showMobileSizes && (
-          <div className="lg:hidden absolute inset-x-0 bottom-0 max-h-full overflow-y-auto bg-[#0A0A1A]/95 backdrop-blur-md p-2.5 sm:p-3 border-t border-[#1F294D] z-20 animate-accordion-down flex flex-col">
+          <div className="lg:hidden absolute inset-x-0 bottom-0 max-h-full overflow-y-auto bg-[#09090B]/95 backdrop-blur-md p-2.5 sm:p-3 border-t border-zinc-800 z-20 animate-accordion-down flex flex-col">
             <div className="flex items-center justify-between mb-2 shrink-0">
-              <span className="text-[10px] font-sans uppercase font-bold text-[#00FF87]">
+              <span className="text-[10px] font-sans uppercase font-bold text-zinc-300">
                 Select Size
               </span>
               <button
@@ -215,7 +215,7 @@ export function ProductCard({
                   e.stopPropagation();
                   setShowMobileSizes(false);
                 }}
-                className="min-h-[44px] px-3 text-xs text-[#94A3B8] uppercase font-bold hover:text-[#00FF87] flex items-center justify-center shrink-0"
+                className="min-h-[44px] px-3 text-xs text-zinc-400 uppercase font-bold hover:text-white flex items-center justify-center shrink-0"
               >
                 Close
               </button>
@@ -229,7 +229,7 @@ export function ProductCard({
                     key={size}
                     disabled={!inStock}
                     onClick={(e) => handleQuickAdd(size, e)}
-                    className="min-h-[44px] min-w-[38px] sm:min-w-[44px] bg-[#16213E] border border-[#1F294D] text-xs font-bold text-[#F8FAFC] hover:bg-gradient-to-r hover:from-[#00FF87] hover:to-[#60EFFF] hover:text-[#0A0A1A] hover:border-transparent rounded-none transition-colors flex items-center justify-center"
+                    className="min-h-[44px] min-w-[38px] sm:min-w-[44px] bg-zinc-800 border border-zinc-700 text-xs font-bold text-zinc-200 hover:bg-white hover:text-black hover:border-transparent rounded-none transition-colors flex items-center justify-center"
                   >
                     {size}
                   </button>
@@ -241,27 +241,27 @@ export function ProductCard({
       </div>
 
       {/* Product Details Section */}
-      <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1 space-y-2 bg-[#16213E]">
+      <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-1 space-y-2 bg-zinc-900">
         <div>
-          <div className="flex items-center justify-between text-[10px] font-sans text-[#94A3B8] uppercase tracking-wider mb-1">
+          <div className="flex items-center justify-between text-[10px] font-sans text-zinc-400 uppercase tracking-wider mb-1">
             <span>{categoryName || "Royal Streetwear"}</span>
-            <span className="font-semibold text-[#60EFFF]">{fit} FIT</span>
+            <span className="font-semibold text-zinc-300">{fit} FIT</span>
           </div>
 
-          <Link href={`/products/${slug}`} className="block group-hover:text-[#00FF87] transition-colors">
-            <h3 className="font-serif font-bold text-sm sm:text-base text-[#F8FAFC] line-clamp-1 leading-snug">
+          <Link href={`/products/${slug}`} className="block group-hover:text-zinc-300 transition-colors">
+            <h3 className="font-serif font-bold text-sm sm:text-base text-white line-clamp-1 leading-snug">
               {title}
             </h3>
           </Link>
         </div>
 
         {/* Price Tag with High-Contrast Typography */}
-        <div className="flex items-baseline space-x-2 pt-1 border-t border-[#1F294D]">
-          <span className="text-base sm:text-lg font-bold text-[#00FF87] font-sans tabular-nums">
+        <div className="flex items-baseline space-x-2 pt-1 border-t border-zinc-800">
+          <span className="text-base sm:text-lg font-bold text-white font-sans tabular-nums">
             {formatPrice(basePrice)}
           </span>
           {comparePrice && (
-            <span className="text-xs text-[#64748B] line-through font-sans tabular-nums">
+            <span className="text-xs text-zinc-500 line-through font-sans tabular-nums">
               {formatPrice(comparePrice)}
             </span>
           )}

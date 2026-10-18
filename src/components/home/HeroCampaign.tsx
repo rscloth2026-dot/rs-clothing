@@ -245,8 +245,8 @@ export function HeroCampaign({
       typeof garment.name === "string" ? garment.name.trim().toLowerCase() : "";
 
     try {
-      // Fetch full product record with variants and gallery
-      const res = await fetch(`/api/admin/products`);
+      // Fetch full product record with variants and gallery from public storefront API
+      const res = await fetch(`/api/products`);
       if (res.ok) {
         const data = await res.json();
         // Ignore stale async response if another garment was clicked in the meantime
@@ -305,7 +305,7 @@ export function HeroCampaign({
   const activeGarments = floatingGarments.filter((g) => g.isEnabled !== false);
 
   return (
-    <section className="relative w-full bg-[#0A0A1A] overflow-hidden border-b border-[#1F294D]">
+    <section className="relative w-full bg-[#09090B] overflow-hidden border-b border-zinc-800/80">
       {/* Hero Card Container */}
       <div className="relative w-full min-h-[86vh] sm:min-h-[90vh] lg:min-h-[94vh] flex flex-col justify-end">
         {/* Editorial Background Image with Smooth Crossfade */}
@@ -331,25 +331,25 @@ export function HeroCampaign({
           </AnimatePresence>
 
           {/* Editorial Atelier gradients for sharp typography contrast */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A1A] via-[#0A0A1A]/85 to-transparent" />
-          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#0A0A1A]/95 via-[#0A0A1A]/60 to-transparent w-3/4" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-[#09090B]/85 to-transparent" />
+          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#09090B]/95 via-[#09090B]/60 to-transparent w-3/4" />
 
-          {/* Subtle Ambient Cyber Mint & Cyan Lighting Accents */}
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#00FF87]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute top-1/3 -right-24 w-80 h-80 bg-[#60EFFF]/10 rounded-full blur-3xl pointer-events-none" />
+          {/* Subtle Ambient Lighting Accents */}
+          <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/[0.03] rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/3 -right-24 w-80 h-80 bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
         </div>
 
         {/* Skiper-UI: Progressive Blur Overlays for Depth and Polish */}
         <ProgressiveBlur
           position="top"
-          backgroundColor="#0A0A1A"
+          backgroundColor="#09090B"
           height="100px"
           blurAmount="10px"
           className="z-[2]"
         />
         <ProgressiveBlur
           position="bottom"
-          backgroundColor="#0A0A1A"
+          backgroundColor="#09090B"
           height="120px"
           blurAmount="12px"
           className="z-[2]"
@@ -357,12 +357,12 @@ export function HeroCampaign({
 
         {/* Top Controls: Slide Switcher */}
         <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-30 flex items-center space-x-2">
-          <div className="flex items-center space-x-1 p-1 bg-[#16213E]/90 backdrop-blur-md border border-[#1F294D] rounded-full shadow-sm">
+          <div className="flex items-center space-x-1 p-1 bg-zinc-900/90 backdrop-blur-md border border-zinc-800 rounded-full shadow-sm">
             <button
               onClick={() =>
                 setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
               }
-              className="p-1 rounded-full text-[#94A3B8] hover:text-[#00FF87] transition-colors"
+              className="p-1 rounded-full text-zinc-400 hover:text-white transition-colors"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -374,8 +374,8 @@ export function HeroCampaign({
                 onClick={() => setCurrentSlide(idx)}
                 className={`px-3 py-1 rounded-full text-[10px] font-sans font-bold transition-all ${
                   currentSlide === idx
-                    ? "bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] shadow-xs font-black"
-                    : "text-[#94A3B8] hover:text-[#00FF87]"
+                    ? "bg-white text-black shadow-xs font-black"
+                    : "text-zinc-400 hover:text-white"
                 }`}
                 aria-label={`Switch to slide ${s.id}`}
               >
@@ -385,7 +385,7 @@ export function HeroCampaign({
 
             <button
               onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
-              className="p-1 rounded-full text-[#94A3B8] hover:text-[#00FF87] transition-colors"
+              className="p-1 rounded-full text-zinc-400 hover:text-white transition-colors"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />
@@ -417,12 +417,12 @@ export function HeroCampaign({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4 }}
-                className="inline-flex items-center space-x-2 px-3 py-1.5 bg-[#16213E]/90 border border-[#00FF87]/40 text-[#F8FAFC] text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-xs backdrop-blur-md"
+                className="inline-flex items-center space-x-2 px-3 py-1.5 bg-zinc-900/90 border border-zinc-800 text-zinc-200 text-[10px] font-sans font-bold uppercase tracking-[0.2em] rounded-full shadow-xs backdrop-blur-md"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00FF87] animate-pulse shadow-[0_0_8px_#00FF87]" />
-                <span className="text-[#00FF87] font-bold">ROYAL ATELIER</span>
-                <span className="text-[#475569]">•</span>
-                <span className="text-[#F8FAFC]">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                <span className="text-white font-bold">ROYAL ATELIER</span>
+                <span className="text-zinc-600">•</span>
+                <span className="text-zinc-300">
                   {slide.tag
                     .replace("ROYAL DROP 01 // ", "")
                     .replace("ROYAL DROP 02 // ", "")
@@ -440,14 +440,14 @@ export function HeroCampaign({
               >
                 {slide.title}
                 <br />
-                <span className="text-[#60EFFF] italic font-normal text-2xl sm:text-4xl lg:text-5xl">
+                <span className="text-zinc-300 italic font-normal text-2xl sm:text-4xl lg:text-5xl">
                   {slide.subtitle}
                 </span>
               </motion.h1>
 
               {/* MOBILE ONLY: 3D Circle Orbit Turntable Stage (Between Headline & CTAs) */}
               <div className="block lg:hidden my-2">
-                <div className="relative w-full max-w-[360px] mx-auto h-[260px] sm:h-[300px] flex items-center justify-center rounded-xl bg-[#0A0A1A]/40 border border-[#1F294D]/60 backdrop-blur-xs">
+                <div className="relative w-full max-w-[360px] mx-auto h-[260px] sm:h-[300px] flex items-center justify-center">
                   {mounted && isMobile && (
                     <CircularFloatingCanvas
                       garments={activeGarments}
@@ -464,7 +464,7 @@ export function HeroCampaign({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-xs sm:text-sm text-[#94A3B8] font-normal max-w-xl leading-relaxed font-sans line-clamp-3 sm:line-clamp-none"
+                className="text-xs sm:text-sm text-zinc-400 font-normal max-w-xl leading-relaxed font-sans line-clamp-3 sm:line-clamp-none"
               >
                 {slide.description}
               </motion.p>
@@ -474,10 +474,10 @@ export function HeroCampaign({
                 <Link href={slide.ctaLink} className="w-full sm:w-auto">
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto h-12 min-h-[48px] bg-gradient-to-r from-[#00FF87] to-[#60EFFF] hover:opacity-90 text-[#0A0A1A] font-black uppercase tracking-wider text-xs px-8 rounded-none shadow-lg shadow-[#00FF87]/20 transition-all flex items-center justify-center space-x-2 active:scale-[0.98] border border-transparent"
+                    className="w-full sm:w-auto h-12 min-h-[48px] bg-white hover:bg-zinc-200 text-black font-black uppercase tracking-wider text-xs px-8 rounded-none shadow-lg transition-all flex items-center justify-center space-x-2 active:scale-[0.98] border border-transparent"
                   >
                     <span>{slide.ctaText}</span>
-                    <ArrowRight className="w-4 h-4 ml-1 text-[#0A0A1A]" />
+                    <ArrowRight className="w-4 h-4 ml-1 text-black" />
                   </Button>
                 </Link>
 
@@ -485,28 +485,28 @@ export function HeroCampaign({
                   <Button
                     size="lg"
                     variant="outline"
-                    className="w-full sm:w-auto h-12 min-h-[48px] border-[#1F294D] bg-[#16213E] text-white hover:border-[#60EFFF] hover:text-[#60EFFF] hover:bg-[#1B284D] font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
+                    className="w-full sm:w-auto h-12 min-h-[48px] border-zinc-800 bg-zinc-900/60 text-white hover:border-zinc-600 hover:text-white hover:bg-zinc-800/80 font-bold uppercase tracking-wider text-xs px-6 rounded-none shadow-sm active:scale-[0.98]"
                   >
                     <span>View All Royal Drops</span>
                   </Button>
                 </Link>
               </div>
 
-              {/* Quality Specs Grid with Color-Coded Accents */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 border-t border-[#1F294D] max-w-lg">
+              {/* Quality Specs Grid with Minimalist Accents */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-4 border-t border-zinc-800 max-w-lg">
                 <div>
-                  <span className="block text-lg sm:text-2xl font-serif font-bold text-[#00FF87] tabular-nums">
+                  <span className="block text-lg sm:text-2xl font-serif font-bold text-white tabular-nums">
                     {slide.metric1}
                   </span>
-                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-widest text-[#94A3B8] block">
+                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-widest text-zinc-400 block">
                     {slide.metric1Sub}
                   </span>
                 </div>
                 <div>
-                  <span className="block text-lg sm:text-2xl font-serif font-bold text-[#60EFFF] tabular-nums">
+                  <span className="block text-lg sm:text-2xl font-serif font-bold text-zinc-200 tabular-nums">
                     {slide.metric2}
                   </span>
-                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-widest text-[#94A3B8] block">
+                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-widest text-zinc-400 block">
                     {slide.metric2Sub}
                   </span>
                 </div>
@@ -514,16 +514,16 @@ export function HeroCampaign({
                   <span className="block text-lg sm:text-2xl font-serif font-bold text-white">
                     JODHPUR
                   </span>
-                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-widest text-[#00FF87] font-bold block">
+                  <span className="text-[9px] sm:text-[10px] font-sans uppercase tracking-widest text-zinc-400 font-bold block">
                     Atelier Origin
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT COLUMN (Desktop/Tablet): Contained 3D Circle Orbit Turntable (lg:col-span-5) */}
+            {/* RIGHT COLUMN (Desktop/Tablet): Free-floating 3D Circle Orbit (No box or outline) */}
             <div className="hidden lg:flex lg:col-span-5 items-center justify-center">
-              <div className="relative w-full max-w-[440px] xl:max-w-[480px] h-[440px] xl:h-[480px] flex items-center justify-center rounded-2xl bg-[#0A0A1A]/40 border border-[#1F294D]/60 backdrop-blur-xs shadow-2xl">
+              <div className="relative w-full max-w-[440px] xl:max-w-[480px] h-[440px] xl:h-[480px] flex items-center justify-center">
                 {mounted && !isMobile && (
                   <CircularFloatingCanvas
                     garments={activeGarments}

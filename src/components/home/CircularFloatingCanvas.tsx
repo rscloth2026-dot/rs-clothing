@@ -114,34 +114,34 @@ export function CircularFloatingCanvas({
       className="relative w-full h-full pointer-events-auto overflow-hidden select-none"
       aria-label="Interactive 3D revolving streetwear collection"
     >
-      {/* Ambient Radial Spotlight inside Orbit Stage */}
-      <div className="absolute inset-0 bg-radial from-[#16213E]/60 via-transparent to-transparent pointer-events-none" />
+      {/* Ambient Subtle Depth Lighting inside Orbit Stage */}
+      <div className="absolute inset-0 bg-radial from-white/[0.02] via-transparent to-transparent pointer-events-none" />
 
-      {/* Visual Orbital Track Guide - Subtle Cyber Aurora Ring */}
+      {/* Visual Orbital Track Guide - Subtle Minimalist Ring */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#00FF87]/20 pointer-events-none transition-all duration-500"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 pointer-events-none transition-all duration-500"
         style={{
           width: `${rx * 2}px`,
           height: `${ry * 2}px`,
-          boxShadow: "0 0 35px rgba(0, 255, 135, 0.12), inset 0 0 20px rgba(96, 239, 255, 0.08)",
+          boxShadow: "0 0 25px rgba(255, 255, 255, 0.04), inset 0 0 15px rgba(255, 255, 255, 0.02)",
         }}
       />
 
       {/* Hologram Turntable Center Pedestal */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center pointer-events-none z-[12]">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#16213E]/85 border border-[#00FF87]/40 backdrop-blur-md flex items-center justify-center shadow-[0_0_28px_rgba(0,255,135,0.2)]">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0A0A1A] border border-[#1F294D] flex items-center justify-center">
-            <span className="font-serif font-black text-xs sm:text-sm tracking-widest text-[#00FF87]">RS</span>
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-zinc-900/90 border border-zinc-700/80 backdrop-blur-md flex items-center justify-center shadow-lg shadow-black/80">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center">
+            <span className="font-serif font-black text-xs sm:text-sm tracking-widest text-white">RS</span>
           </div>
         </div>
-        <span className="mt-1.5 text-[8px] sm:text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#60EFFF] bg-[#0A0A1A]/90 px-2 py-0.5 border border-[#1F294D] rounded-full shadow-xs">
+        <span className="mt-1.5 text-[8px] sm:text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-zinc-400 bg-zinc-950/90 px-2 py-0.5 border border-zinc-800 rounded-full shadow-xs">
           3D ORBIT
         </span>
       </div>
 
       {/* Interactive Mobile Tap / Desktop Hover Micro-Badge */}
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-1.5 px-2.5 py-0.5 bg-[#0A0A1A]/90 backdrop-blur-md border border-[#1F294D] text-[9px] font-sans text-[#94A3B8] uppercase tracking-wider rounded-full shadow-xs">
-        <Sparkles className="w-2.5 h-2.5 text-[#00FF87]" />
+      <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-1.5 px-2.5 py-0.5 bg-zinc-900/90 backdrop-blur-md border border-zinc-800 text-[9px] font-sans text-zinc-400 uppercase tracking-wider rounded-full shadow-xs">
+        <Sparkles className="w-2.5 h-2.5 text-zinc-200" />
         <span>{isMobile ? "Tap cloth to buy" : "Hover to pause • Click to buy"}</span>
       </div>
 
@@ -222,11 +222,11 @@ export function CircularFloatingCanvas({
               }
             }}
           >
-            {/* Outer Cyber Aura Ring on Hover */}
+            {/* Outer Minimalist Aura Ring on Hover */}
             <div
               className={`absolute inset-0 rounded-full transition-all duration-300 pointer-events-none ${
                 isHovered
-                  ? "bg-gradient-to-r from-[#00FF87]/20 to-[#60EFFF]/20 ring-2 ring-[#00FF87] shadow-[0_0_35px_rgba(0,255,135,0.4)] scale-110"
+                  ? "bg-white/5 ring-1 ring-white/60 shadow-[0_0_25px_rgba(255,255,255,0.15)] scale-110"
                   : "bg-transparent ring-0"
               }`}
             />
@@ -263,22 +263,22 @@ export function CircularFloatingCanvas({
                   : "opacity-0 translate-y-1 scale-95"
               }`}
             >
-              <div className="bg-[#0A0A1A] border border-[#00FF87] px-3 py-1 text-center shadow-xl shadow-black/80 flex items-center space-x-1.5 max-w-[240px]">
-                <Zap className="w-3 h-3 text-[#00FF87] fill-[#00FF87] shrink-0" />
+              <div className="bg-zinc-950/95 border border-zinc-700 px-3 py-1 text-center shadow-xl shadow-black/90 flex items-center space-x-1.5 max-w-[240px]">
+                <Zap className="w-3 h-3 text-white fill-white shrink-0" />
                 <span className="text-[10px] font-black uppercase tracking-wider text-white truncate max-w-[120px] sm:max-w-[150px]">
                   {garment.name}
                 </span>
-                <span className="text-[10px] font-black text-[#60EFFF] tabular-nums pl-1 border-l border-white/20">
+                <span className="text-[10px] font-black text-zinc-300 tabular-nums pl-1 border-l border-zinc-700">
                   {formatPrice(garment.price)}
                 </span>
               </div>
-              <span className="text-[8px] font-bold text-[#00FF87] tracking-widest uppercase mt-0.5 animate-pulse">
+              <span className="text-[8px] font-bold text-zinc-400 tracking-widest uppercase mt-0.5">
                 Click to Open Buy Section
               </span>
             </div>
 
             {/* Subtle category dot */}
-            <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[#00FF87] opacity-80 group-hover:scale-150 group-hover:opacity-100 transition-all shadow-xs shadow-[#00FF87]" />
+            <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-zinc-400 opacity-80 group-hover:scale-150 group-hover:opacity-100 transition-all shadow-xs shadow-white/30" />
           </motion.div>
         );
       })}

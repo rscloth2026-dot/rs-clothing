@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 240 44% 7%;          /* #0A0A1A Deep Cyber Midnight */
-    --foreground: 210 40% 98%;         /* #F8FAFC Titanium Crisp White */
-    --card: 223 47% 17%;               /* #16213E Dark Slate Navy Glass */
-    --card-foreground: 210 40% 98%;    /* #F8FAFC */
-    --popover: 223 47% 17%;            /* #16213E */
-    --popover-foreground: 210 40% 98%;
-    --primary: 152 100% 50%;           /* #00FF87 Electric Neon Mint */
-    --primary-foreground: 240 44% 7%;  /* #0A0A1A Deep Midnight */
-    --secondary: 223 47% 17%;          /* #16213E */
-    --secondary-foreground: 210 40% 98%;
-    --muted: 224 40% 12%;              /* #111A33 */
-    --muted-foreground: 215 16% 65%;   /* #94A3B8 Cool Slate */
-    --accent: 186 100% 69%;            /* #60EFFF Electric Aqua Cyan */
-    --accent-foreground: 240 44% 7%;
-    --destructive: 0 84% 60%;          /* #EF4444 */
+    --background: 240 10% 4%;           /* #09090B Deep Obsidian Matte Black */
+    --foreground: 0 0% 98%;             /* #FAFAFA Titanium Crisp White */
+    --card: 240 6% 9%;                 /* #141416 Elevated Dark Zinc */
+    --card-foreground: 0 0% 98%;       /* #FAFAFA */
+    --popover: 240 6% 9%;              /* #141416 */
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 100%;              /* #FFFFFF Crisp High-Contrast White */
+    --primary-foreground: 0 0% 0%;     /* #000000 Jet Black */
+    --secondary: 240 5% 15%;           /* #27272A Zinc-800 */
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 5% 12%;               /* #18181B */
+    --muted-foreground: 240 5% 65%;    /* #A1A1AA Cool Zinc */
+    --accent: 0 0% 90%;                /* #E4E4E7 Platinum Silver */
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;           /* #EF4444 */
     --destructive-foreground: 0 0% 100%;
-    --border: 227 43% 21%;             /* #1F294D Midnight Sub-grid */
-    --input: 227 43% 21%;
-    --ring: 152 100% 50%;              /* #00FF87 Neon Mint Ring */
+    --border: 240 6% 16%;              /* #27272A Subtle Hairline Zinc */
+    --input: 240 6% 16%;
+    --ring: 0 0% 100%;                 /* #FFFFFF Focus Ring */
     --radius: 0.125rem;
   }
 
@@ -31,91 +31,98 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-[#00FF87] selection:text-[#0A0A1A];
+    @apply bg-background text-foreground antialiased selection:bg-white selection:text-black;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   /* Accessible high-contrast focus rings */
   :focus-visible {
-    outline: 2px solid #00FF87;
+    outline: 2px solid #FFFFFF;
     outline-offset: 2px;
   }
 
-  /* Accessible high-contrast focus outline for light surfaces and admin panels */
+  /* Accessible high-contrast focus outline for white-background controls themselves and on light surfaces */
+  .bg-white:focus-visible,
+  button.bg-white:focus-visible,
+  a.bg-white:focus-visible,
   .bg-white :focus-visible,
+  .bg-\[\#FAFAFA\]:focus-visible,
   .bg-\[\#FAFAFA\] :focus-visible,
+  .bg-\[\#FFFFFF\]:focus-visible,
   .bg-\[\#FFFFFF\] :focus-visible,
+  .bg-\[\#F4F4F5\]:focus-visible,
   .bg-\[\#F4F4F5\] :focus-visible {
-    outline: 2px solid #0A0A1A;
+    outline: 2px solid #09090B !important;
     outline-offset: 2px;
   }
 
   /* High-contrast focus outline for controls on dark surfaces */
   .bg-\[\#0A0A0A\] :focus-visible,
-  .bg-\[\#0A0A1A\] :focus-visible,
-  .bg-\[\#16213E\] :focus-visible,
+  .bg-\[\#09090B\] :focus-visible,
+  .bg-\[\#141416\] :focus-visible,
+  .bg-\[\#18181B\] :focus-visible,
   .bg-\[\#12141D\] :focus-visible,
   .bg-\[\#1C1917\] :focus-visible,
   .bg-black :focus-visible,
   .dark :focus-visible {
-    outline: 2px solid #00FF87;
+    outline: 2px solid #FFFFFF;
     outline-offset: 2px;
   }
 }
 
 /* Luxury Royal Streetwear Card & Surface Utilities */
 .rajasthan-card {
-  background: #16213E;
-  border: 1px solid #1F294D;
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.4);
+  background: #141416;
+  border: 1px solid #27272A;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.5);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .rajasthan-card:hover {
-  border-color: #60EFFF;
-  box-shadow: 0 12px 32px 0 rgba(96, 239, 255, 0.15);
+  border-color: #52525B;
+  box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.8);
   transform: translateY(-2px);
 }
 
-/* Cyber Mint & Cyan Tokens & Accents */
+/* Minimalist Monochrome Tokens & Accents */
 .bg-neon-mint {
-  background-color: #00FF87;
+  background-color: #FFFFFF;
 }
 
 .text-neon-mint {
-  color: #00FF87;
+  color: #FFFFFF;
 }
 
 .border-neon-mint {
-  border-color: #00FF87;
+  border-color: #3F3F46;
 }
 
 .bg-neon-cyan {
-  background-color: #60EFFF;
+  background-color: #E4E4E7;
 }
 
 .text-neon-cyan {
-  color: #60EFFF;
+  color: #D4D4D8;
 }
 
 .border-neon-cyan {
-  border-color: #60EFFF;
+  border-color: #52525B;
 }
 
 .bg-cyber-aurora {
-  background: linear-gradient(135deg, #00FF87 0%, #60EFFF 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #A1A1AA 100%);
 }
 
 .text-cyber-aurora {
-  background: linear-gradient(135deg, #00FF87 0%, #60EFFF 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #D4D4D8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 /* Announcement Bar Ambient Gradient */
 .jodhpur-gradient-bar {
-  background: linear-gradient(90deg, #0A0A1A 0%, #16213E 50%, #0A0A1A 100%);
-  border-bottom: 1px solid #1F294D;
+  background: linear-gradient(90deg, #09090B 0%, #141416 50%, #09090B 100%);
+  border-bottom: 1px solid #27272A;
 }
 
 /* Luxury Royal Gold Foil Touch */
@@ -140,7 +147,7 @@
 }
 
 .gold-gradient-text {
-  background: linear-gradient(135deg, #FFFFFF 20%, #00FF87 60%, #60EFFF 100%);
+  background: linear-gradient(135deg, #FFFFFF 20%, #E4E4E7 60%, #A1A1AA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -167,14 +174,14 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A1A;
+  background: #09090B;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1F294D;
+  background: #27272A;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #303E6D;
+  background: #3F3F46;
 }
 
 /* Tabular numbers for price accuracy */

@@ -7,6 +7,7 @@ import { type FloatingGarmentItem } from "@/components/home/FloatingGarment";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
 import { RoyalProductRail } from "@/components/home/RoyalProductRail";
 import { BrandStory } from "@/components/home/BrandStory";
+import { ReviewMarquee } from "@/components/home/ReviewMarquee";
 
 export const revalidate = 60; // ISR cache revalidation every minute
 
@@ -37,7 +38,7 @@ export default async function HomePage() {
     prisma.review.findMany({
       where: { isApproved: true },
       include: { product: true },
-      take: 3,
+      take: 12,
     }),
     prisma.storeSetting.findUnique({
       where: { key: "hero_floating_garments_v1" },
@@ -100,10 +101,9 @@ export default async function HomePage() {
   }));
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0A0A1A]">
+    <div className="flex flex-col min-h-screen bg-[#09090B]">
       {/* 1. Hero Campaign Section with Floating Interactive Clothes */}
       <HeroCampaign initialGarments={heroGarments} />
-
 
       {/* 2. Shop by Category / Royal Silhouettes (Compact silhouette runway) */}
       <CategoryGrid
@@ -143,82 +143,25 @@ export default async function HomePage() {
       {/* 5. Brand Story & Rajasthani Craftsmanship Manifesto */}
       <BrandStory />
 
-      {/* 6. Verified Patronage & Customer Reviews - Static 3-Card Regal Grid */}
-      <section className="py-16 sm:py-24 bg-[#0A0A1A] border-b border-[#1F294D]">
+      {/* 6. Verified Patronage & Customer Reviews - Compact Infinite Auto-Scrolling Marquee */}
+      <section className="py-14 sm:py-20 bg-[#09090B] border-b border-zinc-800/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#16213E] border border-[#1F294D] rounded-full mb-3 shadow-xs">
-              <Star className="w-3.5 h-3.5 fill-[#FBBF24] text-[#FBBF24]" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#00FF87]">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full mb-3 shadow-xs">
+              <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-zinc-300">
                 ROYAL COMMENDATIONS // 4.9 RATING
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#F8FAFC] tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight">
               Words From Our Patrons
             </h2>
-            <p className="text-xs sm:text-sm text-[#94A3B8] font-sans mt-2">
+            <p className="text-xs sm:text-sm text-zinc-400 font-sans mt-2">
               4.9/5 Rating across 1,800+ authenticated orders. Verified fabric weight and zero sagging collars.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {(reviews.length > 0 ? reviews : [
-              {
-                id: "r1",
-                customerName: "Ranveer Rathore",
-                city: "Jodhpur, RJ",
-                rating: 5,
-                comment: "The 380 GSM weight is unreal. It has that authentic heavy haveli drape that cheap retail brands can never replicate. Collar stays crisp after 10+ washes.",
-                productTitle: "Royal Haveli Oversized Tee",
-              },
-              {
-                id: "r2",
-                customerName: "Aarav Singhania",
-                city: "South Mumbai",
-                rating: 5,
-                comment: "The French Terry texture and antique brass hardware details are unmatched. Received compliments the very first day in Bandra. Legit luxury feel.",
-                productTitle: "Marwar Palace Zip Hoodie",
-              },
-              {
-                id: "r3",
-                customerName: "Kabir Mehta",
-                city: "Indiranagar, Bengaluru",
-                rating: 5,
-                comment: "BlueDart express arrived in 48 hours. Packaging came with custom wax seal stamp and fabric care card. Truly a five-star experience.",
-                productTitle: "Raw Selvedge Baggy Denim",
-              },
-            ]).map((rev, idx) => (
-              <div
-                key={rev.id || idx}
-                className="p-6 bg-[#16213E] border border-[#1F294D] hover:border-[#60EFFF]/80 hover:shadow-[0_12px_28px_rgba(0,255,135,0.1)] transition-all rounded-none shadow-xs flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center space-x-1 text-[#FBBF24] mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#FBBF24] text-[#FBBF24]" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-[#E2E8F0] font-sans leading-relaxed italic mb-4">
-                    &ldquo;{rev.comment}&rdquo;
-                  </p>
-                </div>
-                <div className="pt-4 border-t border-[#1F294D] flex items-center justify-between">
-                  <div>
-                    <div className="text-xs font-bold font-sans text-[#F8FAFC] flex items-center space-x-1.5">
-                      <span>{rev.customerName}</span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#00FF87]" />
-                    </div>
-                    <div className="text-[11px] text-[#94A3B8] font-sans">
-                      {("city" in rev && rev.city) ? rev.city : "Verified Buyer"}
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-sans font-medium uppercase tracking-wider text-[#00FF87] bg-[#00FF87]/10 px-2 py-0.5 rounded-none border border-[#00FF87]/30">
-                    {("product" in rev && rev.product?.title) ? rev.product.title : (rev as any).productTitle || "Verified"}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ReviewMarquee reviews={reviews as any} />
         </div>
       </section>
     </div>

@@ -26,31 +26,31 @@ export function CategoryGrid({ categories }: { categories: CategoryItem[] }) {
   }));
 
   return (
-    <section className="relative py-14 sm:py-20 bg-[#0A0A1A] border-b border-[#1F294D] overflow-hidden select-none">
+    <section className="relative py-14 sm:py-20 bg-[#09090B] border-b border-zinc-800/80 overflow-hidden select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 sm:mb-10">
-        {/* Section Header with Royal Aesthetics & Generous Spacing */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-5 border-b border-[#1F294D]">
+        {/* Section Header with Minimalist Aesthetics & Generous Spacing */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-5 border-b border-zinc-800/80">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-[#16213E] border border-[#1F294D] rounded-full shadow-xs">
-              <Sparkles className="w-3 h-3 text-[#00FF87]" />
-              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-[#00FF87]">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full shadow-xs">
+              <Sparkles className="w-3 h-3 text-zinc-300" />
+              <span className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-zinc-300">
                 COLLECTION DIRECTORY
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#F8FAFC] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight leading-snug">
               Shop by Silhouette
             </h2>
-            <p className="text-xs sm:text-sm text-[#94A3B8] font-sans leading-relaxed">
+            <p className="text-xs sm:text-sm text-zinc-400 font-sans leading-relaxed">
               Architectural boxy cuts structured by cotton density, drape, and heritage dyes.
             </p>
           </div>
 
           <Link
             href="/collections/all"
-            className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-[#F8FAFC] hover:text-[#00FF87] transition-colors group py-1"
+            className="inline-flex items-center space-x-2 text-xs font-sans font-bold uppercase tracking-widest text-zinc-300 hover:text-white transition-colors group py-1"
           >
             <span>All Silhouettes</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#00FF87] group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
       </div>

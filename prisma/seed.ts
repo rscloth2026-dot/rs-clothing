@@ -22,12 +22,24 @@ async function main() {
   await prisma.user.deleteMany();
   await prisma.newsletter.deleteMany();
 
-  // Create Admin User & Demo Customer
-  const adminPassword = await bcrypt.hash("admin123", 10);
+  // Create Admin User (sujal@rscloth / radhasolanki or ADMIN_PASSWORD env var)
+  const adminPlainPassword = process.env.ADMIN_PASSWORD || "radhasolanki";
+  const adminPassword = await bcrypt.hash(adminPlainPassword, 10);
   const admin = await prisma.user.create({
     data: {
-      name: "Admin Kult",
-      email: "admin@kult.in",
+      name: "Sujal Solanki",
+      email: "sujal@rscloth",
+      passwordHash: adminPassword,
+      role: "ADMIN",
+      phone: "+91 9876543210",
+    },
+  });
+
+  // Also create sujal@rscloth.com alias for full email format compatibility
+  await prisma.user.create({
+    data: {
+      name: "Sujal Solanki",
+      email: "sujal@rscloth.com",
       passwordHash: adminPassword,
       role: "ADMIN",
       phone: "+91 9876543210",

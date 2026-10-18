@@ -171,13 +171,13 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
-        <div className="w-screen max-w-xl bg-[#16213E] border-l border-[#1F294D] shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300 text-[#F8FAFC]">
+        <div className="w-screen max-w-xl bg-zinc-900 border-l border-zinc-800 shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-300 text-zinc-100">
           {/* Header */}
-          <div className="p-5 sm:p-6 border-b border-[#1F294D] flex items-center justify-between bg-[#16213E]/95 backdrop-blur-md">
+          <div className="p-5 sm:p-6 border-b border-zinc-800 flex items-center justify-between bg-zinc-900/95 backdrop-blur-md">
             <div>
               <div className="flex items-center space-x-2">
-                <span className="w-2 h-2 rounded-full bg-[#00FF87] animate-pulse" />
-                <span className="text-[10px] font-black tracking-widest uppercase text-[#00FF87]">
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <span className="text-[10px] font-black tracking-widest uppercase text-zinc-300">
                   ATELIER ARCHIVE // QUICK BUY
                 </span>
               </div>
@@ -191,7 +191,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
 
             <button
               onClick={onClose}
-              className="p-2 bg-[#0A0A1A] border border-[#1F294D] text-[#94A3B8] hover:text-[#00FF87] hover:border-[#00FF87] transition-colors rounded-none"
+              className="p-2 bg-zinc-950 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-600 transition-colors rounded-none"
               aria-label="Close buy section"
             >
               <X className="w-5 h-5" />
@@ -201,7 +201,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
           {/* Drawer Body - Scrollable */}
           <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6">
             {/* Visual Garment Display */}
-            <div className="relative w-full aspect-4/3 bg-[#0A0A1A] border border-[#1F294D] rounded-none overflow-hidden flex items-center justify-center p-4">
+            <div className="relative w-full aspect-4/3 bg-zinc-950 border border-zinc-800 rounded-none overflow-hidden flex items-center justify-center p-4">
               <Image
                 src={activeImage}
                 alt={product.title}
@@ -214,12 +214,12 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
               {/* Status pill in corner */}
               <div className="absolute top-3 left-3 flex flex-col space-y-1">
                 {discountPercent && (
-                  <Badge variant="aurora" className="text-[10px] px-2 py-0.5 text-[#0A0A1A] font-black">
+                  <Badge variant="outline" className="text-[10px] px-2 py-0.5 bg-white text-black font-black border-transparent">
                     {discountPercent}% OFF
                   </Badge>
                 )}
                 {product.fit && (
-                  <Badge variant="cyanSubtle" className="text-[10px] px-2 py-0.5">
+                  <Badge variant="secondary" className="text-[10px] px-2 py-0.5 bg-zinc-800 text-zinc-300 border-zinc-700">
                     {product.fit}
                   </Badge>
                 )}
@@ -233,10 +233,10 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                   <button
                     key={idx}
                     onClick={() => setSelectedImageIndex(idx)}
-                    className={`relative w-14 h-14 border bg-[#0A0A1A] rounded-none shrink-0 overflow-hidden transition-all ${
+                    className={`relative w-14 h-14 border bg-zinc-950 rounded-none shrink-0 overflow-hidden transition-all ${
                       selectedImageIndex === idx
-                        ? "border-[#00FF87] ring-1 ring-[#00FF87]"
-                        : "border-[#1F294D] opacity-60 hover:opacity-100 hover:border-[#60EFFF]"
+                        ? "border-white ring-1 ring-white"
+                        : "border-zinc-800 opacity-60 hover:opacity-100 hover:border-zinc-600"
                     }`}
                   >
                     <Image src={img.url} alt="" fill className="object-contain p-1" sizes="56px" />
@@ -246,16 +246,16 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
             )}
 
             {/* Pricing Section */}
-            <div className="flex items-baseline space-x-3 border-b border-[#1F294D] pb-4">
-              <span className="text-3xl font-black tracking-tight text-[#00FF87] tabular-nums">
+            <div className="flex items-baseline space-x-3 border-b border-zinc-800 pb-4">
+              <span className="text-3xl font-black tracking-tight text-white tabular-nums">
                 {formatPrice(product.basePrice)}
               </span>
               {product.comparePrice && product.comparePrice > product.basePrice && (
-                <span className="text-base text-[#64748B] line-through tabular-nums">
+                <span className="text-base text-zinc-500 line-through tabular-nums">
                   {formatPrice(product.comparePrice)}
                 </span>
               )}
-              <span className="text-xs text-[#94A3B8] font-medium ml-auto">
+              <span className="text-xs text-zinc-400 font-medium ml-auto">
                 Inclusive of all taxes
               </span>
             </div>
@@ -266,7 +266,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                 <span className="text-xs font-black uppercase tracking-wider text-white">
                   Select Size
                 </span>
-                <span className="text-[11px] text-[#60EFFF] font-bold">
+                <span className="text-[11px] text-zinc-400 font-bold">
                   {currentVariant?.stockQuantity && currentVariant.stockQuantity < 5
                     ? `⚡ Low Stock: Only ${currentVariant.stockQuantity} left`
                     : "✓ In Stock — Ready to Ship"}
@@ -285,10 +285,10 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                       disabled={isOutOfStock}
                       className={`min-h-[44px] py-2.5 px-2 border text-center text-xs font-black tracking-wider transition-all relative flex items-center justify-center active:scale-95 ${
                         isSelected
-                          ? "border-[#00FF87] bg-gradient-to-r from-[#00FF87] to-[#60EFFF] text-[#0A0A1A] shadow-md shadow-[#00FF87]/20 font-black"
+                          ? "border-white bg-white text-black shadow-md font-black"
                           : isOutOfStock
-                          ? "border-[#1F294D] text-[#475569] bg-[#0A0A1A] line-through cursor-not-allowed opacity-50"
-                          : "border-[#1F294D] bg-[#0A0A1A] text-[#F8FAFC] hover:border-[#60EFFF] hover:text-[#60EFFF]"
+                          ? "border-zinc-800 text-zinc-600 bg-zinc-950 line-through cursor-not-allowed opacity-40"
+                          : "border-zinc-800 bg-zinc-950 text-zinc-200 hover:border-zinc-600 hover:text-white"
                       }`}
                     >
                       {v.size}
@@ -299,20 +299,20 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
             </div>
 
             {/* Quantity Selector */}
-            <div className="flex items-center justify-between border-y border-[#1F294D] py-3.5">
+            <div className="flex items-center justify-between border-y border-zinc-800 py-3.5">
               <span className="text-xs font-black uppercase tracking-wider text-white">
                 Quantity
               </span>
-              <div className="flex items-center border border-[#1F294D] bg-[#0A0A1A]">
+              <div className="flex items-center border border-zinc-800 bg-zinc-950">
                 <button
                   type="button"
                   onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                  className="w-11 h-11 text-base text-[#94A3B8] hover:text-[#00FF87] transition-colors flex items-center justify-center active:scale-90"
+                  className="w-11 h-11 text-base text-zinc-400 hover:text-white transition-colors flex items-center justify-center active:scale-90"
                   aria-label="Decrease quantity"
                 >
                   -
                 </button>
-                <span className="px-4 py-2 text-sm font-bold text-white tabular-nums border-x border-[#1F294D] min-w-[40px] text-center">
+                <span className="px-4 py-2 text-sm font-bold text-white tabular-nums border-x border-zinc-800 min-w-[40px] text-center">
                   {quantity}
                 </span>
                 <button
@@ -322,7 +322,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                       Math.min(currentVariant?.stockQuantity || 10, prev + 1)
                     )
                   }
-                  className="w-11 h-11 text-base text-[#94A3B8] hover:text-[#00FF87] transition-colors flex items-center justify-center active:scale-90"
+                  className="w-11 h-11 text-base text-zinc-400 hover:text-white transition-colors flex items-center justify-center active:scale-90"
                   aria-label="Increase quantity"
                 >
                   +
@@ -331,9 +331,9 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
             </div>
 
             {/* PIN Code Delivery Estimator */}
-            <div className="bg-[#0A0A1A] border border-[#1F294D] p-4">
+            <div className="bg-zinc-950 border border-zinc-800 p-4">
               <div className="flex items-center space-x-2 text-xs font-bold text-white mb-2">
-                <MapPin className="w-4 h-4 text-[#00FF87]" />
+                <MapPin className="w-4 h-4 text-zinc-300" />
                 <span>Estimate Indian Delivery</span>
               </div>
               <form onSubmit={handleCheckPin} className="flex space-x-2">
@@ -343,17 +343,17 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
                   placeholder="Enter 6-digit PIN"
                   value={pinCode}
                   onChange={(e) => setPinCode(e.target.value.replace(/\D/g, ""))}
-                  className="bg-[#16213E] border border-[#1F294D] px-3 py-2 text-xs text-white placeholder-[#64748B] focus:border-[#00FF87] focus:outline-none flex-1 font-mono"
+                  className="bg-zinc-900 border border-zinc-800 px-3 py-2 text-xs text-white placeholder-zinc-500 focus:border-zinc-500 focus:outline-none flex-1 font-mono"
                 />
                 <button
                   type="submit"
-                  className="px-3 py-2 bg-[#16213E] border border-[#1F294D] text-xs font-bold text-white hover:text-[#00FF87] hover:border-[#00FF87] transition-colors"
+                  className="px-3 py-2 bg-zinc-800 border border-zinc-700 text-xs font-bold text-white hover:bg-zinc-750 transition-colors"
                 >
                   Check
                 </button>
               </form>
               {pinStatus && (
-                <p className="mt-2 text-[11px] text-[#00FF87] font-medium leading-relaxed">
+                <p className="mt-2 text-[11px] text-zinc-300 font-medium leading-relaxed">
                   {pinStatus}
                 </p>
               )}
@@ -361,7 +361,7 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
 
             {/* Fabric & Architecture Highlights */}
             {product.fabricDetails && (
-              <div className="space-y-1.5 text-xs text-[#94A3B8] leading-relaxed">
+              <div className="space-y-1.5 text-xs text-zinc-400 leading-relaxed">
                 <span className="font-bold text-white uppercase text-[11px] tracking-wider block">
                   Material & Craft:
                 </span>
@@ -371,13 +371,13 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
           </div>
 
           {/* Action CTAs Footer with iOS Home Bar Safe Area Insets */}
-          <div className="p-4 sm:p-6 border-t border-[#1F294D] bg-[#16213E]/95 backdrop-blur-md space-y-2.5 pb-[max(env(safe-area-inset-bottom,16px),16px)] sm:pb-[max(env(safe-area-inset-bottom,24px),24px)]">
+          <div className="p-4 sm:p-6 border-t border-zinc-800 bg-zinc-900/95 backdrop-blur-md space-y-2.5 pb-[max(env(safe-area-inset-bottom,16px),16px)] sm:pb-[max(env(safe-area-inset-bottom,24px),24px)]">
             {/* Primary Action 1: Instant BUY NOW */}
             <Button
               onClick={handleBuyNow}
-              className="w-full min-h-[48px] bg-gradient-to-r from-[#00FF87] to-[#60EFFF] hover:opacity-95 text-[#0A0A1A] font-black uppercase tracking-wider py-4 rounded-none text-xs sm:text-sm shadow-lg shadow-[#00FF87]/20 flex items-center justify-center space-x-2 group transition-all border-none active:scale-[0.98]"
+              className="w-full min-h-[48px] bg-white hover:bg-zinc-200 text-black font-black uppercase tracking-wider py-4 rounded-none text-xs sm:text-sm shadow-lg flex items-center justify-center space-x-2 group transition-all border-none active:scale-[0.98]"
             >
-              <Zap className="w-4 h-4 fill-[#0A0A1A] text-[#0A0A1A]" />
+              <Zap className="w-4 h-4 fill-black text-black" />
               <span>Buy Now — Instant Checkout</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -387,16 +387,16 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
               onClick={handleAddToCart}
               variant="outline"
               disabled={added}
-              className="w-full min-h-[44px] bg-[#0A0A1A] hover:bg-[#1B284D] text-white border-[#1F294D] hover:border-[#60EFFF] font-bold uppercase tracking-wider py-3.5 rounded-none text-xs flex items-center justify-center space-x-2 transition-all active:scale-[0.98]"
+              className="w-full min-h-[44px] bg-zinc-950 hover:bg-zinc-800 text-white border-zinc-750 hover:border-zinc-500 font-bold uppercase tracking-wider py-3.5 rounded-none text-xs flex items-center justify-center space-x-2 transition-all active:scale-[0.98]"
             >
               {added ? (
                 <>
-                  <Check className="w-4 h-4 text-[#00FF87]" />
-                  <span className="text-[#00FF87]">Added to Bag!</span>
+                  <Check className="w-4 h-4 text-white" />
+                  <span className="text-white">Added to Bag!</span>
                 </>
               ) : (
                 <>
-                  <ShoppingBag className="w-4 h-4" />
+                  <ShoppingBag className="w-4 h-4 text-zinc-300" />
                   <span>Add to Bag ({formatPrice(product.basePrice * quantity)})</span>
                 </>
               )}
@@ -407,10 +407,10 @@ export function ClothBuyDrawer({ product, isOpen, onClose }: ClothBuyDrawerProps
               <Link
                 href={`/products/${product.slug}`}
                 onClick={onClose}
-                className="text-[11px] font-bold uppercase tracking-wider text-[#94A3B8] hover:text-[#60EFFF] transition-colors inline-flex items-center space-x-1"
+                className="text-[11px] font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-colors inline-flex items-center space-x-1"
               >
                 <span>View Full Specifications & Size Guide</span>
-                <ArrowRight className="w-3 h-3" />
+                <ArrowRight className="w-3 h-3 text-zinc-400" />
               </Link>
             </div>
           </div>
